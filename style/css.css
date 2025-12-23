@@ -1,0 +1,32 @@
+.week-card {
+    display: inline-block;
+    padding: 30px 60px;
+    background: #FF8C00;       /* Dark orange */
+    color: #000000;            /* Black text */
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* red glow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: intenseGlow 1.8s infinite alternate; /* stronger glow animation */
+}
+
+/* Hover effect */
+.week-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 1);
+}
+
+/* Strong red glow animation */
+@keyframes intenseGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 0, 0, 0.9), 0 0 60px rgba(255, 0, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 1), 0 0 80px rgba(255, 0, 0, 0.8);
+    }
+}

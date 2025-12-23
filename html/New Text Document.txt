@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 1 - HTML Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/css.css"> <!-- Link to your existing CSS -->
+</head>
+<body>
+
+    <div class="container py-5">
+        <!-- Page Heading -->
+        <h1 class="text-center mb-5" style="color:#FF8C00;">Week 1 - HTML Lab</h1>
+
+        <!-- Topics Section -->
+        <div class="mb-4">
+            <h2 class="mb-3" style="color:#FF8C00;">Topics</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Introduction to HTML</li>
+                <li class="list-group-item">Use of HTML Tags</li>
+                <li class="list-group-item">Difference between HTML and HTML5</li>
+            </ul>
+        </div>
+
+        <!-- Tool Section -->
+        <div class="mb-4">
+            <h2 class="mb-3" style="color:#FF8C00;">Tool to use</h2>
+            <div class="card p-3">
+                <p><strong>VS Editor</strong> - Refer the attached Video to understand how to design a HTML page using VS Editor.</p>
+            </div>
+        </div>
+
+        <!-- Lab Programmes Section -->
+        <div class="mb-4">
+            <h2 class="mb-3" style="color:#FF8C00;">Lab Programmes</h2>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Create an HTML page to display student marks using a table.</li>
+                <li class="list-group-item">Create an HTML webpage that includes images, lists, anchor (hyperlink) tags, and other basic HTML tags.</li>
+            </ol>
+        </div>
+
+        <!-- References Section -->
+        <div class="mb-4">
+            <h2 class="mb-3" style="color:#FF8C00;">References</h2>
+            <p>
+                <a href="https://www.htmldog.com/" target="_blank">https://www.htmldog.com/</a>
+            </p>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-5">
+            <a href="../index.html" class="btn btn-dark btn-lg">Back to Main Page</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for components if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
