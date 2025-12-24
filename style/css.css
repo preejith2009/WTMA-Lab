@@ -1,3 +1,10 @@
+.highlight-title {
+    color: #5a2d0c;      /* dark brown */
+    font-size: 1.6rem;   /* larger text */
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
 .week-card {
     display: inline-block;
     padding: 30px 60px;
@@ -30,3 +37,48 @@
         box-shadow: 0 0 50px rgba(255, 0, 0, 1), 0 0 80px rgba(255, 0, 0, 0.8);
     }
 }
+
+/* Highlighted Outcome Text with hover animation */
+p.highlight-outcome {
+    color: #3e1f0f;             /* dark brown font */
+    font-size: 1.4rem;          /* larger text */
+    font-weight: 700;           /* bold */
+    background-color: #fff3e0;  /* light highlight */
+    padding: 10px 15px;         /* spacing inside box */
+    border-radius: 8px;         /* rounded corners */
+    display: inline-block;      /* wrap background tightly */
+    
+    /* Smooth transition for hover effect */
+    opacity: 0.6;               /* partially visible by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover state: fade in and slight move up */
+p.highlight-outcome:hover {
+    opacity: 1;                 /* fully visible */
+    transform: translateY(-5px); /* slight lift */
+}
+
+/* Fade-in/out animation for Objective text */
+p.highlight-objective,
+h2.highlight-objective {
+    color: #3e1f0f;            /* dark brown font */
+    font-weight: 700;
+    background-color: #fff3e0; /* light highlight */
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;      /* wrap background tightly */
+    opacity: 0.6;               /* partially visible by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover: fade in + slight lift */
+p.highlight-objective:hover,
+h2.highlight-objective:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+
+
+
