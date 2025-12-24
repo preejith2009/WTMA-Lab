@@ -79,6 +79,18 @@ h2.highlight-objective:hover {
     transform: translateY(-5px);
 }
 
+/* Continuous rotation for any element with class .rotate */
+.rotate {
+    animation: spin 10s linear infinite; /* 10 seconds per full rotation, infinite loop */
+    display: inline-block; /* ensures rotation works properly */
+}
+
+/* Keyframes for rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 
 

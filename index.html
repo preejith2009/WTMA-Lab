@@ -11,6 +11,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/css.css">
+    <img src="./mat/aadhi.png" id="floatingImage" alt="Floating Image"
+     style="position:absolute; width:100px; height:100px;">
+     <script src="./script/script.js"></script>
 </head>
 
 <body>
@@ -32,8 +35,31 @@
 </nav>
 	
 <!-- HERO SECTION -->
-<section id="home" class="bg-primary text-white text-center p-5">
+<!--<section id="home" class="bg-primary text-white text-center p-5">-->
+<!-- HERO SECTION -->
+<section id="home" class="bg-primary text-white text-center p-5 position-relative">
     <div class="container">
+
+        <!-- Rotating Circle Text Logo with PNG inside -->
+        <svg viewBox="0 0 300 300" style="position:absolute; top:50%; left:20px; transform:translateY(-50%); max-width:260px;">
+            
+            <!-- Circle Path for Text -->
+            <defs>
+                <path id="circlePath" d="M150,150 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
+            </defs>
+
+            <!-- Rotating Text -->
+            <text class="rotating" fill="#6a0dad" font-size="32" font-family="Arial Black, Impact, sans-serif" font-weight="900" text-anchor="middle" stroke="#6a0dad" stroke-width="1.5">
+                <textPath href="#circlePath" startOffset="50%">
+                    Rajalakshmi Engineering College
+                </textPath>
+            </text>
+
+            <!-- Center PNG Image -->
+            <image href="./mat/aadhi.png" x="100" y="100" width="100" height="100" />
+        </svg>
+
+
         <h1>Web Technology & Mobile Application</h1>
         <p class="lead">WTMA Practical Class Demonstration using Bootstrap</p>
 		<!--
