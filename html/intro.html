@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WTMA – Web Technology & Mobile Application</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f8f9fa;
+            font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
+        }
+        .hero{
+            background:#007BFF;
+            color:white;
+            padding:60px 0;
+            text-align:center;
+            position:relative;
+        }
+        .rotating-logo{
+            position:absolute;
+            top:50%;
+            left:20px;
+            transform:translateY(-50%);
+            max-width:260px;
+        }
+        .rotating-text{
+            animation:rotate 10s linear infinite;
+            transform-origin:150px 150px;
+        }
+        @keyframes rotate{
+            0%{transform:rotate(0deg)}
+            100%{transform:rotate(360deg)}
+        }
+
+        section[class^="bg"]{
+            padding:30px;
+            margin-bottom:25px;
+            border-radius:14px;
+            font-weight:bold;
+        }
+        .bg1{background:linear-gradient(135deg,#e3f2fd,#bbdefb);}
+        .bg2{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);}
+        .bg3{background:linear-gradient(135deg,#fff3e0,#ffe0b2);}
+        .bg4{background:linear-gradient(135deg,#f3e5f5,#e1bee7);}
+        .bg5{background:linear-gradient(135deg,#ede7f6,#d1c4e9);}
+
+        h2{
+            color:#6a0dad;
+            font-weight:800;
+            margin-bottom:15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">WTMA Lab</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#content">Content</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>WEB TECHNOLOGY & MOBILE APPLICATION</h1>
+        <p class="lead">AI23431 | WTMA – Introduction to Web & Mobile Technology</p>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<div class="container my-5" id="content">
+
+<section class="bg1">
+<span style="font-size:1.6em; font-weight:bold;">Web Technology</span> is used to construct and operate websites and web applications on the internet.
+It includes client-side technologies like HTML, CSS, and JavaScript used for user interaction
+with a website as well as server-side technologies like PHP, Python, and databases used to run
+these sites behind the scenes. Web technology facilitates communication, interaction, and
+content delivery across networks via client/server architecture.
+</section>
+
+<section class="bg2">
+From simple static websites to complex, dynamic web applications, web technologies are integral
+to nearly every online experience. In 2025, the scope of web technology has expanded to include
+cutting-edge functionalities like real-time communication, artificial intelligence (AI), and
+decentralized networks.
+</section>
+
+<section class="bg3">
+<h2>Core Components Of Web Technology</h2>
+<ul>
+<li>HTML (HyperText Markup Language): Defines structure of web pages.</li>
+<li>CSS (Cascading Style Sheets): Controls appearance, layout, and responsiveness.</li>
+<li>JavaScript: Adds interactivity and dynamic content.</li>
+<li>Web Browsers: Render websites on users’ devices.</li>
+<li>Web Servers: Host websites and deliver content over HTTP/HTTPS.</li>
+<li>Web Protocols: Rules governing communication (HTTP, HTTPS, HTTP/2, HTTP/3).</li>
+<li>APIs (Application Programming Interfaces): Enable communication between software systems.</li>
+<li>Databases: Store and manage website and application data (MySQL, MongoDB, PostgreSQL).</li>
+</ul>
+</section>
+
+<section class="bg4">
+<h2>Types Of Web Technologies</h2>
+
+Frontend Technologies
+<ul>
+<li>HTML, CSS, JavaScript</li>
+<li>Frontend Frameworks: React, Vue.js, Angular</li>
+</ul>
+
+Backend Technologies
+<ul>
+<li>Server-side Languages: Python, Ruby, PHP, Node.js</li>
+<li>Database Management Systems: MySQL, MongoDB, PostgreSQL</li>
+<li>Web Servers: Apache, Nginx, AWS, Google Cloud</li>
+</ul>
+
+Full-Stack Technologies
+<p>
+Frameworks like Django, Ruby on Rails, and Node.js allow both frontend and backend development.
+</p>
+
+Web APIs
+<ul>
+<li>RESTful APIs</li>
+<li>GraphQL</li>
+<li>WebSockets</li>
+</ul>
+</section>
+
+<section class="bg5">
+<h2>How Web Technologies Work Together</h2>
+<ul>
+<li>HTML provides the structure of the web page.</li>
+<li>CSS styles the content, making it visually appealing.</li>
+<li>JavaScript adds dynamic features and interactivity.</li>
+</ul>
+</section>
+
+<section class="bg1">
+<h2>Popular Web Development Frameworks in 2025</h2>
+<ul>
+<li>React.js, Vue.js, Angular</li>
+<li>Node.js, Django, Ruby on Rails</li>
+</ul>
+</section>
+
+<section class="bg2">
+<h2>Mobile Applications</h2>
+<p>
+Mobile applications are software programs designed to run on smartphones and tablets.
+They play a crucial role in extending web technologies to mobile devices and delivering
+rich, interactive user experiences.
+</p>
+<ul>
+<li><b>Native Mobile Apps:</b> Built specifically for platforms like Android (Java/Kotlin) and iOS (Swift).</li>
+<li><b>Hybrid Mobile Apps:</b> Use web technologies (HTML, CSS, JavaScript) wrapped inside a native container.</li>
+<li><b>Web-Based Mobile Apps:</b> Run directly in mobile browsers using responsive web design.</li>
+<li><b>Progressive Web Apps (PWAs):</b> Combine web and mobile features such as offline access, push notifications, and fast loading.</li>
+</ul>
+<p>
+Web technologies enable mobile application development by allowing code reuse, faster
+development, and cross-platform compatibility.
+</p>
+</section>
+
+<section class="bg3">
+<h2>Web Technology And Mobile Integration</h2>
+<p>
+Technologies like HTML5, CSS3, and JavaScript allow mobile-friendly websites and hybrid
+mobile apps. Progressive Web Apps (PWAs) combine web and mobile features, offering offline
+usage, faster load times, and push notifications.
+</p>
+</section>
+
+<section class="bg4">
+    <h2>Role of Web Servers in Web Technology</h2>
+    <p>
+        Web servers are software and hardware that serve content to users over the internet.
+        They process incoming requests from browsers, deliver requested resources like HTML pages,
+        images, CSS, and JavaScript, and handle backend logic in coordination with databases and APIs.
+    </p>
+    <ul>
+        <li><b>Content Hosting:</b> Store and deliver website files to clients.</li>
+        <li><b>Request Handling:</b> Process HTTP/HTTPS requests efficiently.</li>
+        <li><b>Load Balancing:</b> Distribute traffic across multiple servers to ensure uptime.</li>
+        <li><b>Security:</b> SSL/TLS encryption, firewall, and protection from attacks.</li>
+        <li><b>Server Monitoring:</b> Logs, analytics, and health checks for smooth operation.</li>
+    </ul>
+    <p>
+        Popular web servers include Apache, Nginx, Microsoft IIS, and cloud-hosted servers like AWS EC2.
+    </p>
+</section>
+
+
+<section class="bg4">
+<h2>The Role Of Web Technology In Businesses</h2>
+<ul>
+<li>Engage with customers through websites and apps.</li>
+<li>Improve operational efficiency via cloud, APIs, and databases.</li>
+<li>Enhance user experience with AI, real-time data, and responsive design.</li>
+<li>Increase sales and marketing reach using SEO, CMS, and analytics.</li>
+</ul>
+</section>
+
+<section class="bg5">
+<h2>Future & Trends Of Web Technology</h2>
+<ul>
+<li>AI and Machine Learning for personalization and automation.</li>
+<li>Blockchain for decentralized security and smart contracts.</li>
+<li>5G connectivity for faster, high-quality web experiences.</li>
+<li>WebAssembly (Wasm) for high-performance browser applications.</li>
+<li>Augmented Reality (AR) and Virtual Reality (VR) for immersive experiences.</li>
+</ul>
+</section>
+
+<section class="bg1">
+<h2>Conclusion</h2>
+<p>
+The future of web technology promises faster speeds, enhanced security, deeper user
+engagement, immersive AR/VR experiences, and innovative solutions for businesses,
+developers, and users. Staying informed about web technologies is essential for thriving
+in the digital landscape.
+</p>
+</section>
+
+
+<section class="bg2">
+    <h2>Video Learning Resources</h2>
+    <p>
+        Here are some recommended YouTube videos to help you understand web technology and mobile application concepts better. Watch these videos to reinforce your learning with practical demonstrations and examples.
+    </p>
+
+    <div class="row mt-4">
+        <!-- Video 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/ysEN5RaKOlA" 
+                        title="Client/Server Side Architecture" 
+                        allowfullscreen></iframe>
+            </div>
+            <p class="mt-2 text-center">Client/Server Side Architecture</p>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/thJSev60yfg" 
+                        title="Web Server Architecture" 
+                        allowfullscreen></iframe>
+            </div>
+            <p class="mt-2 text-center">Web Server Architecture</p>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/beJ8fDbX9vs" 
+                        title="Using VS Code Editor" 
+                        allowfullscreen></iframe>
+            </div>
+            <p class="mt-2 text-center">How to Use VS Code Editor in Coding</p>
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
