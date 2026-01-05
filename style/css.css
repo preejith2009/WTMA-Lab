@@ -1,3 +1,33 @@
+/* ==========================
+   Welcome Box
+   ========================== */
+.welcome-box {
+    background-color: #ffffff;       /* white background */
+    border: 2px solid #0a4da2;      /* match your theme color */
+    border-radius: 12px;
+    padding: 25px 30px;
+    max-width: 700px;                /* keeps text inside boundary */
+    margin: 40px auto;               /* centers the box */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    line-height: 1.6;
+    font-size: 18px;
+    color: #333333;
+}
+
+.welcome-box h1 {
+    color: #0a4da2;
+    margin-bottom: 20px;
+}
+
+.welcome-box p {
+    font-size: 16px;
+    color: #333333;
+    margin: 0;
+}
+
+
+
 .highlight-title {
     color: #5a2d0c;      /* dark brown */
     font-size: 1.6rem;   /* larger text */
