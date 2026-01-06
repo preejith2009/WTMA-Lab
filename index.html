@@ -37,7 +37,15 @@
     margin-left: 15px;      /* slight indent */
 }
 
-
+@media (max-width: 768px) {
+    .table-mobile-wrap th,
+    .table-mobile-wrap td {
+        white-space: normal;   /* allow text to wrap */
+        word-wrap: break-word; /* break long words */
+        font-size: 12px;       /* smaller font for mobile */
+        padding: 4px 6px;      /* less padding */
+    }
+}
 </style>
 </head>
 
@@ -219,42 +227,40 @@ LAB MANUAL CONTENT SECTION
             </div>
 
                     <!-- Table -->
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0 text-center align-middle">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Lab No.</th>
-                                        <th>Experiment Name</th>
-                                        <th>Scheduled Date</th>
-                                        <th>Resources / Submission</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>01</td>
-                                        <td>Building Responsive Layouts</td>
-                                        <td>01-01-2026</td>
-                                        <td>
-                                            <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
-                                            <br>
-                                            <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>02</td>
-                                        <td>Building Web Page with CSS</td>
-                                        <td>01-10-2026</td>
-                                        <td>
-                                            <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
-                                            <br>
-                                            <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> <!-- card-body -->
+            <div class="card-body p-0">
+    <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <thead class="table-light">
+            <tr>
+                <th>Lab No.</th>
+                <th>Experiment Name</th>
+                <th>Scheduled Date</th>
+                <th>Resources / Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Building Responsive Layouts</td>
+                <td>01-08-2026</td>
+                <td>
+                    <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
+                    <br>
+                    <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
+                </td>
+            </tr>
+                        <tr>
+                <td>02</td>
+                <td>Building Responsive website using CSS and JavaScript for dynamic illusion</td>
+                <td>01-10-2026</td>
+                <td>
+                    <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
+                    <br>
+                    <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
                 </div> <!-- card -->
             </div>
