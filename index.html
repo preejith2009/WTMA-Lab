@@ -28,6 +28,16 @@
     footer {
         margin-top: auto;
     }
+
+.text-red-bold-left {
+    color: red;
+    font-weight: 950;       /* extra bold */
+    text-align: center;       /* left-aligned */
+    font-size: 13px;        /* smaller */
+    margin-left: 15px;      /* slight indent */
+}
+
+
 </style>
 </head>
 
@@ -123,8 +133,8 @@
 
 
 
-
-<!-- LAB MANUAL CONTENT SECTION -->
+<!--
+LAB MANUAL CONTENT SECTION 
 <section id="manual" class="p-5 bg-light">
     <div class="container">
 
@@ -183,6 +193,72 @@
             </div>
         </div>
 
+    </div>
+</section>
+-->
+
+<!-- LAB MANUAL / SUBMISSION SECTION -->
+<section id="manual" class="p-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+
+                    <!-- Card Header -->
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Lab Experiment Submission Schedule</h5>
+                        <span class="badge bg-primary">Academic Year 2025-26</span>
+                    </div>
+
+            <!-- Description -->
+            <div class="p-3 border-bottom bg-light">
+            <p class="mb-0 text-red-bold-left">
+                Follow this schedule to submit your lab experiments on time. Download the manuals and upload your work using the provided links.
+            </p>
+            </div>
+
+                    <!-- Table -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 text-center align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Lab No.</th>
+                                        <th>Experiment Name</th>
+                                        <th>Scheduled Date</th>
+                                        <th>Resources / Submission</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Building Responsive Layouts</td>
+                                        <td>01-01-2026</td>
+                                        <td>
+                                            <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
+                                            <br>
+                                            <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>Building Web Page with CSS</td>
+                                        <td>01-10-2026</td>
+                                        <td>
+                                            <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
+                                            <br>
+                                            <a href="#" class="btn btn-sm btn-success">Upload DOC</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- card-body -->
+
+                </div> <!-- card -->
+            </div>
+        </div>
     </div>
 </section>
 
