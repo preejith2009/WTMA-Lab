@@ -46,75 +46,6 @@
         padding: 4px 6px;      /* less padding */
     }
 }
-
-/* HERO SECTION RESPONSIVE */
-.hero-container {
-    position: relative;
-}
-
-/* SVG circle positioning */
-.hero-svg {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    max-width: 260px;
-}
-
-/* Hero title */
-.hero-title {
-    font-size: 2rem;
-    font-weight: 900;
-    margin-top: 20px;
-}
-
-/* Hero description text */
-.hero-text {
-    font-size: 1rem;
-    margin-top: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
-    text-align: justify;
-}
-
-/* Buttons wrap on smaller screens */
-.hero-buttons .btn {
-    min-width: 150px;
-}
-
-/* MOBILE FIXES */
-@media (max-width: 768px) {
-    /* Scale down SVG */
-    .hero-svg {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        display: block;
-        margin: 0 auto 15px auto;
-        max-width: 180px;
-    }
-
-    /* Hero title smaller */
-    .hero-title {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
-
-    /* Hero description smaller */
-    .hero-text {
-        font-size: 0.9rem;
-        margin: 0 10px 15px 10px;
-    }
-
-    /* Buttons wrap into rows */
-    .hero-buttons .btn {
-        min-width: 120px;
-        flex: 1 1 45%;
-        margin-bottom: 10px;
-    }
-}
-
 </style>
 </head>
 
@@ -130,50 +61,64 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/exp.html">Lab Programmes</a></li>
-                <li class="nav-item"><a class="nav-link" href="#manual">Lab Manual</a></li>
+                <li class="nav-item"><a class="nav-link" href="/html/unit1.html">Class Notes</a></li>
             </ul>
         </div>
     </div>
 </nav>
 	
 <!-- HERO SECTION -->
+<!--<section id="home" class="bg-primary text-white text-center p-5">-->
+<!-- HERO SECTION -->
 <section id="home" class="bg-primary text-white text-center p-5 position-relative">
-    <div class="container hero-container">
+    <div class="container">
 
         <!-- Rotating Circle Text Logo with PNG inside -->
-        <svg viewBox="0 0 300 300" class="hero-svg">
+<!--        <svg viewBox="0 0 300 300" style="position:absolute; top:50%; left:20px; transform:translateY(-50%); max-width:260px;">
+            
+            Circle Path for Text 
             <defs>
                 <path id="circlePath" d="M150,150 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
             </defs>
 
+            Rotating Text 
             <text class="rotating" fill="#6a0dad" font-size="32" font-family="Arial Black, Impact, sans-serif" font-weight="900" text-anchor="middle" stroke="#6a0dad" stroke-width="1.5">
                 <textPath href="#circlePath" startOffset="50%">
                     Rajalakshmi Engineering College
                 </textPath>
             </text>
 
+            Center PNG Image 
             <image href="./mat/aadhi.png" x="100" y="100" width="100" height="100" />
-        </svg>
+        </svg>-->
 
-        <h1 class="hero-title">Web Technology & Mobile Application</h1>
-        <p class="lead hero-text">
-            Welcome to the WTMA Learning Hub! Here every concept, example, and Lab Program is explained clearly for you.
-        </p>
+        <h1>Web Technology & Mobile Application</h1>
+        <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the WTMA Learning Hub !. Here every concept, example, and Lab Program is explained clearly for you.</p>
+    <!--
+        <div class="welcome-box">
+    <h1>Web Technology & Mobile Application</h1>
+    <p>
+        Welcome to the WTMA Learning Hub! Here, every concept, example, and lab program is explained clearly for you. Dive in, explore each topic, and discover how exciting web technologies and mobile applications can be. The more you explore, the more you’ll learn—so start your journey now!
+    </p>-->
+</div>
 
-        <div class="container mb-4 text-center hero-buttons">
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="html/syl.html" class="btn btn-light">WTMA Syllabus</a>
-                <a href="html/the.html" class="btn btn-light">WTMA Theory Schedule</a>
-                <a href="html/dep.html" class="btn btn-light">WTMA Lab Schedule</a>
-                <a href="html/ai-tools.html" class="btn btn-light">Explore AI Tools</a>
-            </div>
-        </div>
-
+		<!--
+        <a href="html/ai-tools.html" class="btn btn-light">Explore AI Tools</a>
+		<a href="html/wtma_into.html" class="btn btn-light">Introduction</a>
+		-->
+    
+		<div class="container mb-4 text-center">
+    <div class="d-flex justify-content-center gap-3">
+		<a href="html/syl.html" class="btn btn-light">WTMA Syllabus</a>
+        <a href="html/the.html" class="btn btn-light">WTMA Theory Schedule</a>
+        <a href="html/dep.html" class="btn btn-light">WTMA Lab Schedule</a>
+        <a href="html/ai-tools.html" class="btn btn-light">Explore AI Tools</a>
+        <!--<a href="https://docs.google.com/forms/d/e/1FAIpQLSela9nv--HBfJ5wDbKgdRvL0hDClbwPSiYKWor-a9D3NbpQgg/viewform?usp=publish-editor" class="btn btn-light">Todays Attendance</a> -->
+    </div>
+</div>
+		
     </div>
 </section>
-
-
-
 
 
 <!-- EXPERIMENTS SECTION -->
@@ -183,19 +128,110 @@
         <h2 class="mb-4">Lab Experiments</h2>
 <br>
         <a href="html/intro.html" class="week-card">
-            Day 1 - WTMA Introduction
+            WTMA Introduction
         </a>
 
-        <!--
+        
         <a href="week2/week2.html" class="week-card">
             WEEK 2
         </a>
-        -->
 
     </div>
 </section>
 
+        <!-- LAB MANUAL / SUBMISSION SECTION -->
+<section id="manual" class="p-5 bg-light">
+    <div class="container">
 
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+
+                    <!-- Card Header -->
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Lab Experiment Schedule</h5>
+                        <span class="badge bg-primary">Academic Year 2025-26</span> 
+                    </div>
+                                    <!-- Table -->
+            <div class="card-body p-0">
+    <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <tr><td>&nbsp;</td></tr>
+            <tr><td
+                 <a href="html/intro.html" class="week-card">
+            WTMA Introduction
+        </a></td
+            </tr>
+        <tbody>
+            <tr>
+                <td>              </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- LAB MANUAL / SUBMISSION SECTION -->
+<section id="manual" class="p-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+
+                    <!-- Card Header -->
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Lab Experiments</h5>
+                        <span class="badge bg-primary">Academic Year 2025-26</span> 
+                    </div>
+
+                    <!-- Table -->
+                    <div class="card-body p-0">
+                        <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+                            <tbody>
+                                  <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td>
+                                        <a href="html/intro.html" class="week-card">
+                                            WTMA Introduction
+                                        </a>
+                                    </td>
+                                     <td>
+                                        <a href="html/intro.html" class="week-card">
+                                            Week 1 - Introduction to html
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!--
+                                <tr><td>&nbsp;</td></tr>
+                                
+                                <tr>
+                                    <td>
+                                        <a href="html/intro.html" class="week-card">
+                                            WTMA Introduction
+                                        </a>
+                                    </td>
+                                     <td>
+                                        <a href="html/intro.html" class="week-card">
+                                            Week 1 - Introduction to html
+                                        </a>
+                                    </td>
+                                </tr>
+                            -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <!--
 LAB MANUAL CONTENT SECTION 
@@ -296,22 +332,12 @@ LAB MANUAL CONTENT SECTION
         <tbody>
             <tr>
                 <td>01</td>
-                <td>Building Responsive Layouts</td>
-                <td>01-08-2026</td>
+                <td>Introduction to html using VS Code Editor</td>
+                <td>01-20-2026 - Tuesday</td>
                 <td>
-                    <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
+                    <a href="mat/Day1_LabProgramme.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual</a>
                     <br>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZKIfZ8N_NP2pov6rg59jD08xrp62hj2IAXUJeoRGSj_55yw/viewform?usp=dialog" class="btn btn-sm btn-success">Upload DOC</a>
-                </td>
-            </tr>
-                        <tr>
-                <td>02</td>
-                <td>Building Responsive website using CSS and JavaScript for dynamic illusion</td>
-                <td>01-10-2026</td>
-                <td>
-                    <a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download PDF</a>
-                    <br>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZKIfZ8N_NP2pov6rg59jD08xrp62hj2IAXUJeoRGSj_55yw/viewform?usp=dialog" class="btn btn-sm btn-success">Upload DOC</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdctCqSM_qLVUAOjc-cCruYXlTWhvTepDyeyvE6rfpEMc5i5w/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>
                 </td>
             </tr>
         </tbody>
@@ -334,5 +360,4 @@ LAB MANUAL CONTENT SECTION
 
 </body>
 </html>
-
 
