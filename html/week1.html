@@ -7,6 +7,28 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+.text-red-bold-left {
+  color: red;
+  font-weight: 900; /* very bold */
+  text-align: left;
+  font-size: 14px;  /* optional: increase size */
+}
+
+.flash-warning {
+  animation: flashText 10s infinite;
+}
+
+@keyframes flashText {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+    </style>
 </head>
 
 <body>
@@ -155,14 +177,31 @@
                     https://www.htmldog.com/
                 </a>
             </div>
+            <div class="card-body">
+                    <a href="mat/html5.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Click here for class note</a>
+
+            </div>
         </div>
 
             <!-- REFERENCES -->
+
         <div class="card mt-4">
-            <div class="card-header bg-dark text-white">
-                Lab Experiment Submission Schedule
-            </div>
+         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lab Experiment Submission Schedule</span>
+            <span class="badge bg-success">Academic Year 2025-26</span>
+        </div>
+        </div>
+
+
             <div class="card-body">
+                <div class="p-3 border-bottom bg-light">
+            <p class="mb-0 text-red-bold-left flash-warning">
+  Follow this schedule to submit your lab experiments on time. Download the Lab Manual and upload your work using the provided link.<br>
+  Note - Completion date is till Saturday 31st jan, after that Upload link will be disabled.
+</p>
+
+<
+            </div> 
                 <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
         <thead class="table-light">
             <tr>
@@ -176,11 +215,11 @@
             <tr>
                 <td>01</td>
                 <td>5 HTML Programmes using VS Code Editor</td>
-                <td>01-21-2026 - Wednesday</td>
+                <td>01-27-2026 - HTML-Week1</td>
                 <td>
-                    <!--<a href="#" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual</a>>
+                    <a href="mat/week1_manual.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual</a>
                     <br>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdctCqSM_qLVUAOjc-cCruYXlTWhvTepDyeyvE6rfpEMc5i5w/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>-->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdctCqSM_qLVUAOjc-cCruYXlTWhvTepDyeyvE6rfpEMc5i5w/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>
                 </td>
             </tr>
         </tbody>
