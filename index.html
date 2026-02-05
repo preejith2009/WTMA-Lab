@@ -46,6 +46,56 @@
         padding: 4px 6px;      /* less padding */
     }
 }
+
+/* Week Card Base Style */
+.week-card {
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Completed Style */
+.week-completed {
+    background-color: #28a745;   /* Green */
+    color: #e70c0c;
+}
+
+/* Completed Badge */
+.completed-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;   /* Green badge */
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+/* Ongoing Badge */
+.ongoing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;  /* Orange */
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
 </style>
 </head>
 
@@ -122,199 +172,82 @@
 
 <!-- LAB MANUAL / SUBMISSION SECTION -->
 <section id="manual" class="p-5 bg-light">
+
     <div class="container">
 
         <div class="row">
             <div class="col-12">
+
                 <div class="card shadow-sm">
 
                     <!-- Card Header -->
                     <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Lab Experiments</h5>
-                        <span class="badge bg-primary">Academic Year 2025-26</span> 
+                        <span class="badge bg-primary">Academic Year 2025–26</span>
                     </div>
 
-                    <!-- Table -->
+                    <!-- Table Body -->
                     <div class="card-body p-0">
+                        <!-- Card Body (Spacing Added Here) --> <div class="card-body pt-4"></div>
                         <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
                             <tbody>
-                                  <tr><td>&nbsp;</td></tr>
+
+                                <!-- Row 1 -->
                                 <tr>
                                     <td>
-                                        <a href="html/intro.html" class="week-card">
+                                        <a href="html/intro.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
                                             WTMA Introduction
                                         </a>
                                     </td>
-                                     <td>
-                                        <a href="html/week1.html" class="week-card">
-                                            Week 1 - Introduction to html
+
+                                    <td>
+                                        <a href="html/week1.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
+                                            Week 1 – Introduction to HTML
                                         </a>
                                     </td>
-                                    <tr> <td>&nbsp;</td></tr>
-                                    <tr> <td>
-                                        <a href="html/week2.html" class="week-card">
-                                            Week 2 - Introduction to CSS
-                                        </a>
-                                    </td>   </tr>
-                                    
                                 </tr>
-                        <!--
+
+                                <!-- Spacing Row -->
                                 <tr>
-                                     <td class="text-center align-middle">
-                                      <a href="html/intro.html" class="week-card">
-                                      WTMA Introduction
-                                     </a>
-                                    </td>
-                                  <td class="text-center align-middle">
-                                    <a href="html/week1.html" class="week-card">
-                                   Week 1 – Introduction to HTML
-                                     </a>
-                                    </td>
+                                    <td>&nbsp;</td>
                                 </tr>
-                                <tr><td>&nbsp;</td></tr>
-                                
+
+                                <!-- Row 2 -->
                                 <tr>
                                     <td>
-                                        <a href="html/intro.html" class="week-card">
-                                            WTMA Introduction
+                                        <a href="html/week2.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
+                                            Week 2 – Introduction to CSS
                                         </a>
                                     </td>
-                                     <td>
-                                        <a href="html/intro.html" class="week-card">
-                                            Week 1 - Introduction to html
-                                        </a>
-                                    </td>
-                                </tr>
-                            -->
-                            </tbody>
-                        </table>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!--
-LAB MANUAL CONTENT SECTION 
-<section id="manual" class="p-5 bg-light">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">WTMA Lab Manual Contents</h5>
-                        <span class="badge bg-primary">Academic Year 2025-26</span>
-                    </div>
-
-                    <div class="card-body p-0">
-                        <table class="table table-hover mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Exp No.</th>
-                                    <th>Experiment Title</th>
-                                    <th>AI Integration</th>
-                                    <th>Manual Link</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                    <tr>
-    					<td>01</td>
-    					<td>Building Responsive Layouts</td>
-   					 <td>
-       					 <span class="badge bg-info text-dark">V0.dev</span>
-  					  </td>
-					    <td>
-							<a href="mat/Exp01.pdf" class="btn btn-sm btn-outline-primary mb-2" target="_blank" download>Download PDF</a>
-        <br>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZKIfZ8N_NP2pov6rg59jD08xrp62hj2IAXUJeoRGSj_55yw/viewform?usp=dialog"
-           target="_blank"
-           class="btn btn-sm btn-success">
-            Upload DOC
-        </a>
-    </td>
-</tr>
-
-                                <tr>
-                                    <td>02</td>
-                                    <td>JavaScript Event Handling</td>
-                                    <td><span class="badge bg-success">ChatGPT</span></td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">
-                                            Download PDF
+                                        <a href="html/week3.html" class="week-card">
+                                            <span class="ongoing-badge">ONGOING</span>
+                                            Week 3 – Introduction to JavaScript
                                         </a>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
+
                     </div>
+                    <!-- End Card Body -->
 
                 </div>
+                <!-- End Card -->
+
             </div>
         </div>
 
     </div>
-</section>
--->
 
-<!-- LAB MANUAL / SUBMISSION SECTION -->
-<!--
-<section id="manual" class="p-5 bg-light">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card shadow-sm"> 
-                    
-                    <!-- Card Header 
-                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Lab Experiment Submission Schedule</h5>
-                        <span class="badge bg-primary">Academic Year 2025-26</span>
-                    </div>
-            <!-- Description 
-            <div class="p-3 border-bottom bg-light">
-            <p class="mb-0 text-red-bold-left">
-                Follow this schedule to submit your lab experiments on time. Download the manuals and upload your work using the provided links.
-            </p>
-            </div> 
-
-                    <!-- Table 
-            <div class="card-body p-0">
-    <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
-        <thead class="table-light">
-            <tr>
-                <th>Lab No.</th>
-                <th>Experiment Name</th>
-                <th>Scheduled Date</th>
-                <th>Resources / Submission</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>01</td>
-                <td>Introduction to html using VS Code Editor</td>
-                <td>01-20-2026 - Tuesday</td>
-                <td>
-                    <a href="mat/Day1_LabProgramme.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual</a>
-                    <br>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdctCqSM_qLVUAOjc-cCruYXlTWhvTepDyeyvE6rfpEMc5i5w/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-                </div> <!-- card
-            </div>
-        </div>
-    </div>
 </section>
 
--->
+
 <!-- FOOTER -->
 <footer class="bg-dark text-white text-center p-3">
     &copy; 2026 WTMA Lab | Department of AIDS
