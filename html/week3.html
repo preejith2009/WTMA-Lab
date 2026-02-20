@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 3 - JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .dark-banner {
+            background: linear-gradient(135deg,#0f172a,#020617);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+    
+
+        /* ECOSYSTEM CARD ANIMATION */
+        .eco-card{
+            background:#f8f9fa;
+            border-radius:20px;
+            padding:25px;
+            height:100%;
+            box-shadow:0 6px 15px rgba(0,0,0,0.08);
+            transition:all 0.4s ease;
+            animation:fadeUp 1s ease forwards;
+            opacity:0;
+        }
+
+        .eco-card:hover{
+            transform:translateY(-10px) scale(1.03);
+            box-shadow:0 12px 25px rgba(0,0,0,0.18);
+        }
+
+        /* Fade Up Animation */
+        @keyframes fadeUp{
+            from{
+                transform:translateY(40px);
+                opacity:0;
+            }
+            to{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+
+        /* Delay for each card */
+        .delay-1{animation-delay:0.2s;}
+        .delay-2{animation-delay:0.4s;}
+        .delay-3{animation-delay:0.6s;}
+        .delay-4{animation-delay:0.8s;}
+
+
+
+/* MOBILE RESPONSIVENESS FIXES */
+
+@media (max-width: 992px){
+
+    /* Reduce header text size */
+    section.bg-primary h1{
+        font-size:28px;
+    }
+
+    section.bg-primary p{
+        font-size:16px;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    /* Card padding adjust */
+    .card-body{
+        padding:20px;
+    }
+
+    /* Ecosystem cards spacing */
+    .eco-card{
+        margin-bottom:15px;
+        text-align:left;
+    }
+
+}
+
+@media (max-width: 576px){
+
+    /* Stack ecosystem title nicely */
+    h2{
+        font-size:22px;
+    }
+
+    /* Reduce banner text size */
+    .dark-banner h3{
+        font-size:18px;
+        line-height:1.5;
+    }
+
+    /* Container padding reduce */
+    .container{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+}
+
+.text-red-bold-left {
+  color: red;
+  font-weight: 900; /* very bold */
+  text-align: left;
+  font-size: 14px;  /* optional: increase size */
+}
+
+.flash-warning {
+  animation: flashText 10s infinite;
+}
+
+@keyframes flashText {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Week 3 - Javascript Lab</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<section class="bg-primary text-white text-center p-5">
+    <div class="container">
+        <h1>Week 3 – Javascript Basics</h1>
+        <p class="lead">Introduction to JavaScript fundamentals and basic programming concepts</p>
+    </div>
+</section>
+
+<!-- DARK MOTIVATION BANNER -->
+<div class="container">
+<div class="dark-banner">
+<h3>“HTML builds the structure, CSS adds style, JavaScript brings life.”</h3>
+</div>
+</div>
+
+<!-- CONTENT -->
+<section class="p-5">
+<div class="container">
+
+<!-- WHY LEARN JS -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">Why Learn JavaScript?</div>
+    <div class="card-body">
+        <ul>
+            <li>JavaScript is the brain of a web page — it makes websites think and act.</li>
+            <li>Without JavaScript, websites are just static pages.</li>
+            <li>Creates interactive forms, buttons, animations, and games.</li>
+            <li>Used in every modern website.</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- INTERESTING FACTORS -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">What Makes JavaScript Interesting?</div>
+    <div class="card-body">
+        <ul>
+            <li>Runs directly in the browser.</li>
+            <li>Instant output on refresh.</li>
+            <li>Small scripts create powerful effects.</li>
+            <li>Supports events like click, hover, keypress.</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- REAL WORLD USES -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">Real‑World Uses</div>
+    <div class="card-body">
+        <ul>
+            <li>Form validation</li>
+            <li>Pop‑up alerts</li>
+            <li>Image sliders</li>
+            <li>Chat applications</li>
+            <li>Online editors & calculators</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- FUN FACTS -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">Fun Facts</div>
+    <div class="card-body">
+        <ul>
+            <li>Created in just 10 days</li>
+            <li>Developed by Brendan Eich (1995)</li>
+            <li>Originally Mocha → LiveScript → JavaScript</li>
+            <li>One of the most in‑demand languages today</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- JS ECOSYSTEM -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">JavaScript Ecosystem</div>
+    <div class="card-body">
+
+        <!-- INFOGRAPHIC SECTION -->
+        <div style="text-align:center;margin-bottom:30px;">
+            <h2>🌐 JavaScript Ecosystem</h2>
+            <p>Technologies Built on Top of JavaScript</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Node.js -->
+            <div class="col-md-3">
+                <div class="eco-card delay-1">
+                    <h4>🟢 Node.js</h4>
+                    <ul>
+                        <li>Runs JavaScript outside browser</li>
+                        <li>Used for server-side development</li>
+                        <li>Builds web servers & APIs</li>
+                        <li>Supports full‑stack development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- NPM -->
+            <div class="col-md-3">
+                <div class="eco-card delay-2">
+                    <h4>📦 NPM</h4>
+                    <ul>
+                        <li>Largest package library</li>
+                        <li>Installs ready‑made tools</li>
+                        <li>Comes with Node.js</li>
+                        <li>Saves development time</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JSON -->
+            <div class="col-md-3">
+                <div class="eco-card delay-3">
+                    <h4>🔗 JSON</h4>
+                    <ul>
+                        <li>Lightweight data format</li>
+                        <li>Easy to read & write</li>
+                        <li>Used in APIs</li>
+                        <li>Replaced XML in modern apps</li>
+                        <li>Widely used to transfer data between client & server</li>
+                        <li>Language‑independent data format</li>
+                        <li>Supports nested objects & arrays</li>
+                        <li>Fast parsing and generation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AJAX -->
+            <div class="col-md-3">
+                <div class="eco-card delay-4">
+                    <h4>⚡ AJAX</h4>
+                    <ul>
+                        <li>Loads data without refresh</li>
+                        <li>Makes sites faster</li>
+                        <li>Works with JSON/XML</li>
+                        <li>Uses Fetch / XMLHttpRequest</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- HOW THEY WORK TOGETHER -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">How They Work Together</div>
+    <div class="card-body">
+        <ul>
+            <li>Node.js → Runs JavaScript on server</li>
+            <li>NPM → Installs libraries/tools</li>
+            <li>JSON → Transfers data</li>
+            <li>AJAX → Fetches data asynchronously</li>
+        </ul>
+        <p class="fw-bold">Together they power modern dynamic web applications.</p>
+    </div>
+</div>
+
+
+<!-- TOOL -->
+<div class="card mb-4 mt-4">
+    <div class="card-header bg-dark text-white">
+        Tool to Use
+    </div>
+    <div class="card-body">
+        <p>
+            <strong>VS Editor</strong> – Refer to this video to understand how to design an HTML page using VS Editor:
+            <a href="https://youtu.be/beJ8fDbX9vs" target="_blank">Watch Tutorial</a>
+        </p>
+        <span class="badge bg-info text-dark">Development Tool</span>
+    </div>
+</div>
+
+  <!-- REFERENCES -->
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">
+                References
+            </div>
+            <div class="card-body">
+                <a href="https://www.htmldog.com/" target="_blank">
+                    https://www.htmldog.com/
+                </a>
+            </div>
+            <div class="card-body">
+                    <a href="../mat/javascript_labnotes.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Click here for Lab note</a>
+
+            </div>
+        </div>
+
+        <!-- LAB PROGRAMMES -->
+<div class="card mb-4">
+
+    <!-- Card Header -->
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <span>Lab Programmes</span>
+        <span class="badge bg-success">Hands-on Practice</span>
+    </div>
+
+<!-- Card Body -->
+<div class="card-body">
+    <div class="card shadow-sm border-0 rounded-4 p-3">
+
+        <h5 class="fw-bold mb-3 text-primary">
+            Javascript Lab Programmes.
+        </h5>
+
+        <ul class="list-group">
+
+            <!-- Programme 1 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto fw-semibold">
+                    <strong>Programme 1 –</strong>
+                    Write JavaScript to validate the following fields of the Registration page: First Name, Password, E-mail ID, Mobile Number, Last Name and Address as per the specified validation rules.
+                </div>
+                <span class="badge bg-success rounded-pill">Exp-1</span>
+            </li>
+
+            <!-- Programme 2 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto fw-semibold">
+                    <strong>Programme 2 –</strong>
+                    Write a JavaScript code to display a Pop-Up message <strong>"Form Submitted"</strong> when the user clicks on the Submit button of the Registration Form.
+                </div>
+                <span class="badge bg-warning text-dark rounded-pill">Exp-2</span>
+            </li>
+
+            <!-- Programme 3 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto fw-semibold">
+                    <strong>Programme 3 –</strong>
+                    Create a web page with a text box or image that responds to mouse events such as mouseover, mouseout, and click using DOM event handling.
+                </div>
+                <span class="badge bg-info text-dark rounded-pill">Exp-3</span>
+            </li>
+
+            <!-- Programme 4 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto fw-semibold">
+                    <strong>Programme 4 –</strong>
+                    Write an HTML page with JavaScript that takes a number (0–999) from a text field and displays it in words. Validate to restrict four digits, alphabets, and special characters.
+                </div>
+                <span class="badge bg-primary rounded-pill">Exp-4</span>
+            </li>
+
+            <!-- Programme 5 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto fw-semibold">
+                    <strong>Programme 5 –</strong>
+                    Create an Employee object with properties like Employee ID, Name, Designation, and Salary. Store multiple objects in an array and use functions to display details and calculate total salary expenditure.
+                </div>
+                <span class="badge bg-danger rounded-pill">Exp-5</span>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+
+
+            <!-- REFERENCES -->
+
+        <div class="card mt-4">
+         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lab Experiment Submission Schedule</span>
+            <span class="badge bg-success">Academic Year 2025-26</span>
+        </div>
+        </div>
+
+
+            <div class="card-body">
+                <div class="p-3 border-bottom bg-light">
+            <p class="mb-0 text-red-bold-left flash-warning">
+  Follow this schedule to submit your lab experiments on time. Download the Lab Manual and upload your work using the provided link.<br>
+  Note - Completion date is till Saturday Feb - 21, after that Upload link will be disabled.
+</p>
+
+
+            </div> 
+                <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <thead class="table-light">
+            <tr>
+                <th>Lab No.</th>
+                <th>Experiment Name</th>
+                <th>Scheduled Date</th>
+                <th>Resources / Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>5 Javascript Programmes using VS Code Editor</td>
+                <td>02-09-2026 - Javascript-Week 3</td>
+                <td>
+                    <a href="../mat/week3_Javascript_manual.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual for Javascript - Week 3</a>
+                    <br>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd36vCI_A-E4A01ZVJckVCYPNw9qdIbbGOFYCApg3NLQmMYBQ/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

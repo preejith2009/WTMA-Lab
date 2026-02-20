@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>WTMA Lab – Experiment Selector</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar & Footer */
+.navbar, footer {
+    flex-shrink: 0;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+.section.active {
+    display: block;
+}
+
+/* Banner */
+section#banner {
+    padding: 40px 15px;
+    background-color: #0a4da2;
+    color: white;
+    text-align: center;
+}
+
+/* Buttons */
+.menu-btn {
+    display: block;
+    margin: 20px auto;
+    border: none;
+    border-radius: 8px;
+    background: #0a4da2;
+    color: white;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+/* Full-width buttons */
+.full-btn {
+    width: 95%;
+    max-width: 500px;
+    padding: 25px;
+    font-size: 22px;
+}
+
+.menu-btn:hover {
+    background: #083b7a;
+    transform: scale(1.06);
+}
+
+/* Mini Project button */
+#miniProjectBtn {
+    font-weight: 700;
+    font-size: 25px;
+    color: #ffeb3b;
+    background: #0a4da2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#miniProjectBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Back button */
+.back {
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    background: #444;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.back:hover {
+    background: #222;
+}
+
+/* Tables */
+.exp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.exp-table th, .exp-table td {
+    border: 1px solid #0a4da2;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+.exp-table th {
+    background-color: #0a4da2;
+    color: white;
+    text-align: center;
+}
+.exp-table td {
+    background-color: #f8faff;
+}
+.exp-html {
+    background-color: #ffe0b2;
+    color: #e65100;
+    font-weight: 700;
+}
+.html-heading td {
+    background-color: #ffcc80;
+    color: #e65100;
+    font-weight: 700;
+}
+
+/* Lists */
+ul {
+    line-height: 1.9;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/index.html">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section id="banner">
+    <div class="container">
+        <h1>WTMA Lab Programmes Overview</h1>
+        <p class="lead">List of Web Development and Mobile Application Programmes</p>
+    </div>
+</section>
+
+<!-- Main content -->
+<main>
+    <!-- Home Section -->
+    <div id="home" class="section active">
+        <p class="lead text-center" style="font-weight: 700; font-size: 1.3em;">
+            <span>List of Web Development and Mobile Application Programmes</span><br>
+            <span>Total programme Count = 17</span>
+        </p>
+
+        <button class="menu-btn full-btn" onclick="navigateTo('web')">Section 1 - Web Development</button>
+        <button class="menu-btn full-btn" onclick="navigateTo('mobile')">Section 2 - Mobile App Development</button>
+       <!-- <button class="menu-btn full-btn" id="miniProjectBtn">Mini Project</button>-->
+    </div>
+
+    <!-- Web Development Section -->
+    <div id="web" class="section">
+        <h2>Web Development Experiments</h2>
+
+        <table class="exp-table" style="width: 90%; margin: 0 auto;">
+            <thead>
+                <tr><th>Client Side</th></tr>
+            </thead>
+            <tbody>
+                <tr class="html-heading"><td class="exp-html">HTML Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – Design a simple static HTML web page using ordered lists, unordered lists, and tables to display and maintain student record information in a structured format.</td></tr>
+                <tr><td><b>Programme 2</b> – Design the following static web pages required for an online book store web site. 
+                    <br>
+a)	HOME PAGE: The static home page must contain three frames.<br> 
+b)	LOGIN PAGE <br>
+c)	CATOLOGUE PAGE: The catalogue page should contain the details of all the books available in the web site in a table. <br>
+d)	REGISTRATION PAGE
+</td></tr>
+
+                <tr><td><b>Programme 3</b> – create a web page using HTML that contains a form to collect student information including name, email, branch, gender, and address.</td></tr>
+
+                <tr class="html-heading"><td class="exp-html">CSS Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – Develop and demonstrate the usage of inline, internal and external style sheet using CSS.</td></tr>
+                <tr><td><b>Programme 2</b> – Design a Student Record Web Page Using CSS Keyframe Animation.</td></tr>
+ 
+
+                <tr class="html-heading"><td class="exp-html">JavaScript Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – Write JavaScript to validate the following fields of the Registration page. 
+<br>
+                    a)	First Name (Name should contains alphabets and the length should not be less than 6 characters). 
+<br>
+                    b)	Password (Password should not be less than 6 characters length). 
+<br>
+                    c)	E-mail id (should not contain any invalid and must follow the standard pattern name@domain.com) 
+<br>
+                    d)	Mobile Number (Phone number should contain 10 digits only). 
+<br>
+                    e)	Last Name and Address (should not be Empty).
+</td></tr>
+                <tr><td><b>Programme 2</b> – Write a Javscript code to display a Pop Up "Form Submitted" when User clicks on submit Button on above Form.</td></tr>
+                <tr><td><b>Programme 3</b> – Write an HTML page including any required JavaScript that takes a number from text field in the range of 0 to 999 and shows it in words. It should not accept four and above digits, alphabets and special characters.</td></tr>
+                
+
+                <tr class="html-heading"><td class="exp-html">AJAX Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – Create a simple web page that fetches student data from a text file using AJAX and displays it dynamically without reloading the page.</td></tr>
+
+                <tr class="html-heading"><td class="exp-html">JSON Programmes</td></tr>
+                <tr><td><b>Programme 2</b> – Create a simple web page that fetches student records in JSON format and displays them dynamically using JavaScript.</td></tr>
+            </tbody>
+        </table>
+
+        <table class="exp-table" style="width: 90%; margin: 20px auto 0 auto;">
+            <thead>
+                <tr><th>Server Side</th></tr>
+            </thead>
+            <tbody>
+                 <tr class="html-heading"><td class="exp-html">Servlet Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – Write a Servlet program that prints "Hello, World!" when accessed through a browser.</td></tr>
+                <tr><td><b>Programme 2</b> – Create a web form that accepts a user's name and age. Write a Servlet to process the form data and display it back on the browser.</td></tr>
+                <tr><td><b>Programme 3</b> – Write a Servlet to demonstrate session tracking using HttpSession. Implement a simple login system where the user's session is tracked.</td></tr>
+                 <tr class="html-heading"><td class="exp-html">JSP Programmes</td></tr>
+                <tr><td><b>Programme 1</b> – create a JSP web page that accepts user input via HTML form and displays the submitted data using both GET and POST methods.</td></tr>
+            </tbody>
+        </table>
+
+        <button class="back" onclick="window.location.href='exp.html'" style="margin-left: 70px;">⬅ Back</button>
+    </div>
+
+    <!-- Mobile Section 
+    <div id="mobile" class="section">
+        <h2>Mobile App Development Experiments</h2>
+        <ul>
+            <li>Experiment 1 – Android Studio Setup</li>
+            <li>Experiment 2 – Simple Activity</li>
+            <li>Experiment 3 – Intents & Layouts</li>
+            <li>Experiment 4 – APK Generation</li>
+        </ul>
+        <button class="back" onclick="window.location.href='exp.html'" style="margin-left: 70px;">⬅ Back</button>
+    </div>
+</main>-->
+
+
+ <div id="mobile" class="section">
+        <table class="exp-table" style="width: 90%; margin: 20px auto 0 auto;">
+            <thead>
+                <tr><th>Mobile App Development Programmes</th></tr>
+            </thead>
+            <tbody>
+                 <tr class="html-heading"><td class="exp-html">Programmes using Android Studio</td></tr>
+                <tr><td><b>Programme 1</b> – Develop an Android application using controls like Button, TextView, EditText for designing a calculator having basic functionality like Addition, Subtraction, multiplication, and Division.</td></tr>
+                <tr><td><b>Programme 2</b> – Develop an application to change the font and color of the text and display toast message when the user presses the button.</td></tr>
+                <tr><td><b>Programme 3</b> – Develop a mobile application to send an email.</td></tr>
+            </tbody>
+        </table>
+        <button class="back" onclick="window.location.href='exp.html'" style="margin-left: 70px;">⬅ Back</button>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer>
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Mini Project button animation
+const miniBtn = document.getElementById('miniProjectBtn');
+setInterval(() => {
+    miniBtn.style.transform = 'translateY(-3px) scale(1.03)';
+    setTimeout(() => { miniBtn.style.transform = 'translateY(0) scale(1)'; }, 300);
+}, 2000);
+
+// Navigate sections with URL hash
+function navigateTo(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.location.hash = id;
+}
+
+// Handle hash on load and back/forward buttons
+window.addEventListener('load', () => {
+    let hash = window.location.hash.substring(1);
+    if(hash && document.getElementById(hash)) navigateTo(hash);
+});
+window.addEventListener('hashchange', () => {
+    let hash = window.location.hash.substring(1);
+    if(hash && document.getElementById(hash)) navigateTo(hash);
+});
+</script>
+
+</body>
+</html>

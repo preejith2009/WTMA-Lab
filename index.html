@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>WTMA Practical Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/css.css">
+    <img src="./mat/aadhi.png" id="floatingImage" alt="Floating Image"
+     style="position:absolute; width:100px; height:100px;">
+     <script src="./script/script.js"></script>
+     <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+.text-red-bold-left {
+    color: red;
+    font-weight: 950;       /* extra bold */
+    text-align: center;       /* left-aligned */
+    font-size: 13px;        /* smaller */
+    margin-left: 15px;      /* slight indent */
+}
+
+@media (max-width: 768px) {
+    .table-mobile-wrap th,
+    .table-mobile-wrap td {
+        white-space: normal;   /* allow text to wrap */
+        word-wrap: break-word; /* break long words */
+        font-size: 12px;       /* smaller font for mobile */
+        padding: 4px 6px;      /* less padding */
+    }
+}
+
+/* Week Card Base Style */
+.week-card {
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Completed Style */
+.week-completed {
+    background-color: #28a745;   /* Green */
+    color: #e70c0c;
+}
+
+/* Completed Badge */
+.completed-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;   /* Green badge */
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+/* Ongoing Badge */
+.ongoing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;  /* Orange */
+    color: #ffffff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    z-index: 10;
+}
+
+/* Mini Project button */
+#miniProjectBtn {
+    font-weight: 900;
+    font-size: 25px;
+    color: #ffeb3b;
+    background: #0a4da2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#miniProjectBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Bigger Button */
+.full-btn {
+    padding: 29px 38px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 80px;
+    background-color: #0d6efd;   /* Bootstrap primary blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.full-btn:hover {
+    background-color: #084298;
+    transform: scale(1.05);
+}
+
+/* Smooth Bounce Animation */
+@keyframes bounceMini {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.full-btn {
+    animation: bounceMini 2s infinite;
+}
+
+</style>
+</head>
+
+<body>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">WTMA - AI23431</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/student_list.html">Student List</a></li>
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/exp.html">Lab Programmes</a></li>
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/unit1.html">Class Notes</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+	
+<!-- HERO SECTION -->
+<!--<section id="home" class="bg-primary text-white text-center p-5">-->
+<!-- HERO SECTION -->
+<section id="home" class="bg-primary text-white text-center p-5 position-relative">
+    <div class="container">
+
+        <!-- Rotating Circle Text Logo with PNG inside -->
+<!--        <svg viewBox="0 0 300 300" style="position:absolute; top:50%; left:20px; transform:translateY(-50%); max-width:260px;">
+            
+            Circle Path for Text 
+            <defs>
+                <path id="circlePath" d="M150,150 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
+            </defs>
+
+            Rotating Text 
+            <text class="rotating" fill="#6a0dad" font-size="32" font-family="Arial Black, Impact, sans-serif" font-weight="900" text-anchor="middle" stroke="#6a0dad" stroke-width="1.5">
+                <textPath href="#circlePath" startOffset="50%">
+                    Rajalakshmi Engineering College
+                </textPath>
+            </text>
+
+            Center PNG Image 
+            <image href="./mat/aadhi.png" x="100" y="100" width="100" height="100" />
+        </svg>-->
+
+        <h1>Web Technology & Mobile Applications</h1>
+        <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to the WTMA Learning Hub !. Here every concept, example, and Lab Program is explained clearly for you.</p>
+    <!--
+        <div class="welcome-box">
+    <h1>Web Technology & Mobile Application</h1>
+    <p>
+        Welcome to the WTMA Learning Hub! Here, every concept, example, and lab program is explained clearly for you. Dive in, explore each topic, and discover how exciting web technologies and mobile applications can be. The more you explore, the more you’ll learn—so start your journey now!
+    </p>-->
+</div>
+
+		<!--
+        <a href="html/ai-tools.html" class="btn btn-light">Explore AI Tools</a>
+		<a href="html/wtma_into.html" class="btn btn-light">Introduction</a>
+		-->
+    
+		<div class="container mb-4 text-center">
+    <div class="d-flex justify-content-center gap-3">
+		<a href="html/syl.html" class="btn btn-light">WTMA Syllabus</a>
+        <a href="html/the.html" class="btn btn-light">WTMA Theory Schedule</a>
+        <a href="html/dep.html" class="btn btn-light">WTMA Lab Schedule</a>
+        <a href="html/ai-tools.html" class="btn btn-light">Explore AI Tools</a>
+  <!--  <a href="https://docs.google.com/forms/d/e/1FAIpQLSela9nv--HBfJ5wDbKgdRvL0hDClbwPSiYKWor-a9D3NbpQgg/viewform?usp=publish-editor" class="btn btn-light">Todays Attendance</a> -->
+    </div>
+</div>
+		
+    </div>
+</section>
+
+<!-- LAB MANUAL / SUBMISSION SECTION -->
+<section id="manual" class="p-5 bg-light">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card shadow-sm">
+
+                    <!-- Card Header -->
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Lab Experiments</h5>
+                        <span class="badge bg-primary">Academic Year 2025–26</span>
+                    </div>
+
+                    <!-- Table Body -->
+                    <div class="card-body p-0">
+                        <!-- Card Body (Spacing Added Here) --> <div class="card-body pt-4"></div>
+                        <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+                            <tbody>
+
+                                <!-- Row 1 -->
+                                <tr>
+                                    <td>
+                                        <a href="html/intro.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
+                                            WTMA Introduction
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a href="html/week1.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
+                                            Week 1 – Introduction to HTML
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <!-- Spacing Row -->
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <tr>
+                                    <td>
+                                        <a href="html/week2.html" class="week-card week-completed">
+                                            <span class="completed-badge">COMPLETED</span>
+                                            Week 2 – Introduction to CSS
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a href="html/week3.html" class="week-card">
+                                            <span class="ongoing-badge">ONGOING</span>
+                                            Week 3 – Introduction to JavaScript
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <!-- Spacing Row -->
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                    <td>
+                                        <a href="html/week4.html" class="week-card">
+                                            <span class="ongoing-badge">ONGOING</span>
+                                           <span style="font-size: 1.8rem;">
+                                            Week 4 – Introduction to JSON & AJAX
+                              </span>
+                                        </a>
+                                    </td>
+                               <td style="vertical-align: middle;">
+
+    <div style="display: flex; align-items: center;">
+        <span class="ongoing-badge">
+            ONGOING
+        </span>
+
+        <button class="menu-btn full-btn" id="miniProjectBtn" 
+                style="margin: 0 auto;">
+            Mini Project
+        </button>
+    </div>
+</td>      
+                                </tr> 
+                                <!-- Spacing Row -->
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr> 
+                                <tr>
+                                <td style="text-align: center; vertical-align: middle;">
+                                        <a href="html/servlet.html" class="week-card">
+                                            <span class="ongoing-badge">To Start</span>
+                                           <span style="font-size: 1.8rem;">
+                                            Week 5 – Servlet & Jsp
+                              </span>
+                                        </a>
+                                    </td>
+
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <a href="#" class="week-card">
+                                            <span class="ongoing-badge">To Start</span>
+                                           <span style="font-size: 1.8rem;">
+                                            Week 6 – Mobile App Development
+                              </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const miniBtn = document.getElementById('miniProjectBtn');
+
+    if (miniBtn) {
+        setInterval(() => {
+            miniBtn.style.transform = 'translateY(-3px) scale(1.03)';
+            setTimeout(() => {
+                miniBtn.style.transform = 'translateY(0) scale(1)';
+            }, 300);
+        }, 2000);
+    }
+});
+</script>
+
+                    </div>
+                    <!-- End Card Body -->
+
+                </div>
+                <!-- End Card -->
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

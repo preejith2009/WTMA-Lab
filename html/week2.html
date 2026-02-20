@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 2 - CSS3.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+.text-red-bold-left {
+  color: red;
+  font-weight: 900; /* very bold */
+  text-align: left;
+  font-size: 14px;  /* optional: increase size */
+}
+
+.flash-warning {
+  animation: flashText 10s infinite;
+}
+
+@keyframes flashText {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Week 2 - CSS Lab</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- PAGE HEADER -->
+<section class="bg-primary text-white text-center p-5">
+    <div class="container">
+        <h1>Week 2 – CSS Basics</h1>
+        <p class="lead">
+            Introduction to CSS fundamentals and basic webpage design
+        </p>
+    </div>
+</section>
+
+<!-- WEEK 1 CONTENT -->
+<section class="p-5">
+    <div class="container">
+
+        <!-- TOPICS -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                Topics
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>CSS (Cascading Style Sheets): Used to style HTML web pages (fonts, colors, layout).</li>
+                    <li>CSS3: Latest upgraded version of CSS with new advanced styling features.</li>
+                    <li>CSS3: Supports animations using :<strong> @keyframes </strong> </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOOL -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                Tool to Use
+            </div>
+            <div class="card-body">
+                <p>
+    <strong>VS Editor</strong> – Refer to this video to understand how to design an HTML page using VS Editor: 
+    <a href="https://youtu.be/beJ8fDbX9vs" target="_blank">Watch Tutorial</a>
+</p>
+                <span class="badge bg-info text-dark">Development Tool</span>
+            </div>
+        </div>
+
+<!-- LAB PROGRAMMES -->
+<div class="card mb-4">
+
+    <!-- Card Header -->
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <span>Lab Programmes</span>
+        <span class="badge bg-success">Hands-on Practice</span>
+    </div>
+
+    <!-- Card Body -->
+    <div class="card-body">
+        <div class="card shadow-sm border-0 rounded-4 p-3">
+    <h5 class="fw-bold mb-3 text-primary">
+        Introduction to CSS.
+    </h5>
+
+    <ol class="list-group list-group-numbered">
+        
+        <!-- Programme 1 -->
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-semibold">
+                    Develop and demonstrate the usage of inline, internal and external style sheet using CSS.
+                </div>
+            </div>
+            <span class="badge bg-success rounded-pill">Program 1</span>
+        </li>
+
+        <!-- Programme 2 -->
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-semibold">
+                    Design a Student Record Web Page Using CSS Keyframe Animation.
+                </div>
+            </div>
+            <span class="badge bg-warning text-dark rounded-pill">Program 2</span>
+        </li>
+
+    </ol>
+</div>
+
+    </div>
+
+</div>
+
+
+
+        <!-- REFERENCES -->
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">
+                References
+            </div>
+            <div class="card-body">
+                <a href="https://www.htmldog.com/" target="_blank">
+                    https://www.htmldog.com/
+                </a>
+            </div>
+            <div class="card-body">
+                    <a href="../mat/CSS3_labnotes.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Click here for Lab note</a>
+
+            </div>
+        </div>
+
+            <!-- REFERENCES -->
+
+        <div class="card mt-4">
+         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lab Experiment Submission Schedule</span>
+            <span class="badge bg-success">Academic Year 2025-26</span>
+        </div>
+        </div>
+
+
+            <div class="card-body">
+                <div class="p-3 border-bottom bg-light">
+            <p class="mb-0 text-red-bold-left flash-warning">
+  Follow this schedule to submit your lab experiments on time. Download the Lab Manual and upload your work using the provided link.<br>
+  Note - Completion date is till Saturday Feb - 7, after that Upload link will be disabled.
+</p>
+
+
+            </div> 
+                <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <thead class="table-light">
+            <tr>
+                <th>Lab No.</th>
+                <th>Experiment Name</th>
+                <th>Scheduled Date</th>
+                <th>Resources / Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>2 CSS Programmes using VS Code Editor</td>
+                <td>02-03-2026 - CSS-Week2</td>
+                <td>
+                    <a href="../mat/week2_css_manual.pdf" class="btn btn-sm btn-outline-primary mb-2" download>Download Lab Manual for CSS - Week 2</a>
+                    <br>
+                    <!--<a href="https://docs.google.com/forms/d/e/1FAIpQLScwa4-te3J9V1jrl1C5KWx4E3MfTtJFkwHcMia6wZfgsWqG0Q/viewform?usp=publish-editor">Upload Screen Output</a>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+

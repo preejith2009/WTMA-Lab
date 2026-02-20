@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.quiz-container{
+    width:70%;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 1s ease;
+}
+
+h2{ margin-bottom:20px; }
+
+.option{
+    display:block;
+    margin:12px 0;
+    padding:12px;
+    background:#f3f3f3;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.option:hover{
+    background:#dfe9ff;
+    transform:scale(1.03);
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:linear-gradient(45deg,#42a5f5,#478ed1);
+    color:white;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.result-card{
+    text-align:center;
+    padding:40px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#43cea2,#185a9d);
+    color:white;
+    animation:zoomIn 1s ease;
+}
+
+.score{
+    font-size:50px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.bar{
+    width:100%;
+    height:20px;
+    background:#ffffff55;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.fill{
+    height:100%;
+    width:0%;
+    background:#00ffcc;
+    animation:fillBar 2s forwards;
+}
+
+/* CONFETTI */
+
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://i.imgur.com/6RMhx.gif');
+    opacity:0;
+    pointer-events:none;
+}
+
+.show-confetti::after{ opacity:0.4; }
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1;}
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.5); opacity:0;}
+to{transform:scale(1);}
+}
+
+@keyframes fillBar{
+from{width:0;}
+to{width:var(--percent);}
+}
+
+.review-box{
+background:#fff;
+padding:15px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+<div id="quiz"></div>
+<button id="nextBtn">Next</button>
+
+<div id="result"></div>
+<div id="review"></div>
+
+</div>
+
+<script>
+
+/* QUESTIONS */
+
+const quizData = [
+
+{
+q:"1. Python is classified as which type of programming language?",
+a:[
+"Low-level compiled language",
+"High-level interpreted general-purpose language",
+"Assembly-level language",
+"Hardware description language"
+],
+correct:1
+},
+
+{
+q:"2. Python is widely known for its ______.",
+a:[
+"Complex syntax",
+"Simplicity and readability",
+"Hardware dependency",
+"Execution speed"
+],
+correct:1
+},
+
+{
+q:"3. Who developed the Python programming language?",
+a:[
+"Dennis Ritchie",
+"James Gosling",
+"Guido van Rossum",
+"Bjarne Stroustrup"
+],
+correct:2
+},
+
+{
+q:"4. In which year was Python first introduced?",
+a:["1985","1991","1995","2000"],
+correct:1
+},
+
+{
+q:"5. Which programming paradigms does Python support?",
+a:[
+"Only Object-Oriented",
+"Only Functional",
+"OOP and Functional programming",
+"Procedural only"
+],
+correct:2
+},
+
+{
+q:"6. Which of the following is a key feature of Python?",
+a:[
+"Platform dependent",
+"Manual memory management",
+"Automatic memory management",
+"No library support"
+],
+correct:2
+},
+
+{
+q:"7. Python is considered platform independent because it ______.",
+a:[
+"Runs only on Windows",
+"Runs on multiple operating systems",
+"Needs hardware compilation",
+"Works without OS"
+],
+correct:1
+},
+
+{
+q:"8. APIs in Python are primarily used for ______.",
+a:[
+"Designing UI",
+"System communication",
+"Database storage",
+"Game development"
+],
+correct:1
+},
+
+{
+q:"9. Which Python module is commonly used for API requests?",
+a:["requests","numpy","flask","tkinter"],
+correct:0
+},
+
+{
+q:"10. Which of the following frameworks is used for web development in Python?",
+a:[
+"Django",
+"Pandas",
+"Matplotlib",
+"SciPy"
+],
+correct:0
+},
+
+{
+q:"11. How is Python executed?",
+a:[
+"Compiled",
+"Interpreted",
+"Assembler-based",
+"Linked execution"
+],
+correct:1
+},
+
+{
+q:"12. Compared to C and C++, Python programs generally execute ______.",
+a:[
+"Faster",
+"Slower",
+"At same speed",
+"Only on Linux"
+],
+correct:1
+},
+
+{
+q:"13. Memory allocation in Python is ______.",
+a:[
+"Manual",
+"Automatic",
+"Hardware-controlled",
+"Not required"
+],
+correct:1
+},
+
+{
+q:"14. In the Python learning path, which topic appears in Stage 1?",
+a:[
+"OOP Concepts",
+"AI Specialization",
+"Syntax and Variables",
+"File Handling"
+],
+correct:2
+},
+
+{
+q:"15. Which keyword is used to import a module in Python?",
+a:[
+"include",
+"import",
+"using",
+"define"
+],
+correct:1
+},
+
+{
+q:"16. How are variables declared in Python?",
+a:[
+"Using var keyword",
+"Using data type before name",
+"Declared automatically when assigned",
+"Using declare statement"
+],
+correct:2
+},
+
+{
+q:"17. NumPy library in Python is mainly used for ______.",
+a:[
+"Web development",
+"Numerical computing and array processing",
+"Game design",
+"Network security"
+],
+correct:1
+},
+
+{
+q:"18. Pandas library is primarily used for ______.",
+a:[
+"Data analysis and data frames",
+"Image processing",
+"Operating systems",
+"Compiler design"
+],
+correct:0
+},
+
+{
+q:"19. Which library is used for Machine Learning in Python?",
+a:[
+"TensorFlow",
+"Bootstrap",
+"HTML",
+"CSS"
+],
+correct:0
+},
+
+{
+q:"20. OpenCV is mainly used for ______.",
+a:[
+"Web development",
+"Computer vision applications",
+"Database management",
+"Game design"
+],
+correct:1
+}
+
+
+];
+
+let index=0;
+let score=0;
+let userAnswers=[];
+
+/* LOAD QUESTION */
+
+function loadQuestion(){
+
+let q=quizData[index];
+
+document.getElementById("quiz").innerHTML=`
+<h2>${q.q}</h2>
+${q.a.map((opt,i)=>
+`<label class="option">
+<input type="radio" name="opt" value="${i}">
+${opt}
+</label>`).join("")}
+`;
+
+if(index===quizData.length-1)
+nextBtn.innerText="Submit";
+}
+
+/* NEXT BUTTON */
+
+nextBtn.onclick=function(){
+
+let sel=document.querySelector('input[name="opt"]:checked');
+
+if(!sel){alert("Select an answer"); return;}
+
+userAnswers[index]=Number(sel.value);
+
+if(userAnswers[index]===quizData[index].correct)
+score++;
+
+index++;
+
+if(index<quizData.length) loadQuestion();
+else showResult();
+};
+
+/* RESULT */
+
+function showResult(){
+
+document.body.classList.add("show-confetti");
+
+let percent=Math.round((score/quizData.length)*100);
+
+document.getElementById("quiz").style.display="none";
+nextBtn.style.display="none";
+
+document.getElementById("result").innerHTML=`
+
+<div class="result-card">
+<h1>🎉 Quiz Completed 🎉</h1>
+
+<div class="score" id="scoreCount">0</div>
+
+<p>You scored ${score} out of ${quizData.length}</p>
+
+<div class="bar">
+<div class="fill" style="--percent:${percent}%"></div>
+</div>
+
+<p>${percent}%</p>
+</div>
+`;
+
+animateScore(score);
+showReview();
+}
+
+/* SCORE ANIMATION */
+
+function animateScore(finalScore){
+
+let count=0;
+let el=document.getElementById("scoreCount");
+
+let interval=setInterval(()=>{
+el.innerText=count;
+if(count===finalScore) clearInterval(interval);
+count++;
+},100);
+}
+
+/* ANSWER REVIEW */
+
+function showReview(){
+
+let reviewHTML="<h2 style='margin-top:40px'>Answer Review</h2>";
+
+quizData.forEach((q,i)=>{
+
+let userAns=userAnswers[i];
+let correctAns=q.correct;
+
+reviewHTML+=`
+<div class="review-box">
+
+<b>${q.q}</b><br><br>
+
+Your Answer:
+<span style="color:${userAns===correctAns?'green':'red'}">
+${q.a[userAns] ?? "Not Answered"}
+</span><br>
+
+Correct Answer:
+<span style="color:green">
+${q.a[correctAns]}
+</span>
+
+</div>
+`;
+});
+
+
+document.getElementById("review").innerHTML=reviewHTML;
+}
+
+loadQuestion();
+
+</script>
+
+
+
+
+</body>
+</html>

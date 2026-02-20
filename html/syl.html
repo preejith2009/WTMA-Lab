@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WTMA Practical Demo - Web Technology & Mobile Application</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/css.css">
+
+
+    <!-- Custom Script -->
+    <script src="./script/script.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .hero {
+            background-color: #007BFF;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+        .section-title {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #007BFF;
+        }
+        .objectives li, .course-outcomes li {
+            margin-bottom: 10px;
+        }
+        .unit-card {
+            margin-bottom: 20px;
+        }
+        .unit-card h5 {
+            font-weight: bold;
+            color: #6a0dad;
+        }
+        /* Rotating circular logo */
+        .rotating-logo {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            max-width: 260px;
+        }
+        .rotating-text {
+            animation: rotate 10s linear infinite;
+            transform-origin: 150px 150px;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#units">Units</a></li>
+                <li class="nav-item"><a class="nav-link" href="#outcomes">Course Outcomes</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="container">
+
+        <!-- Rotating Circle Text Logo with PNG -->
+        <svg viewBox="0 0 300 300" class="rotating-logo">
+            <defs>
+                <path id="circlePath" d="M150,150 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"/>
+            </defs>
+
+            <!-- Rotating Text -->
+            <text class="rotating-text" fill="#6a0dad" font-size="32" font-family="Arial Black, Impact, sans-serif" font-weight="900" text-anchor="middle" stroke="#6a0dad" stroke-width="1.5">
+                <textPath href="#circlePath" startOffset="50%">
+                    Rajalakshmi Engineering College
+                </textPath>
+            </text>
+
+            <!-- Center PNG Image -->
+            <image href="../mat/aadhi.png" x="100" y="100" width="100" height="100" />
+        </svg>
+
+        <!-- Centered Heading and Buttons -->
+        <h1>WEB TECHNOLOGY & MOBILE APPLICATION</h1>
+        <p class="lead">Subject Code: AI23431 | PC | L-T-P-C: 1-0-4-3</p>
+        <p class="lead">Artificial Intelligence & Data Science and Artificial Intelligence & Machine Learning</p>
+    </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="container my-5">
+    <h2 class="section-title">Course Objectives</h2>
+    <ul class="objectives">
+        <li>Provide foundational knowledge and practical skills in creating and structuring web pages using HTML.</li>
+        <li>Understand and practice Embedded Dynamic Scripting on Client-side Internet Programming.</li>
+        <li>Implement Server Side Scripting.</li>
+        <li>Understand Android Application Design.</li>
+        <li>Gain a basic understanding of Android application development.</li>
+    </ul>
+</section>
+
+<!-- UNITS -->
+<section class="container my-5" id="units">
+    <h2 class="section-title">Course Units</h2>
+
+    <div class="card unit-card shadow-sm p-3">
+        <h5>UNIT I: Web Site Basics, HTML 5.2, CSS 3.0</h5>
+        <p>Internet Protocols – HTTP, Understanding Internet, Difference between website and application server, Internet technology overview, HTML5.2 and CSS 3.0</p>
+    </div>
+
+    <div class="card unit-card shadow-sm p-3">
+        <h5>UNIT II: JavaScript</h5>
+        <p>Introduction to Scripting, Core features, Data types and Variables, Operators, Expressions, Functions, Arrays, Objects, DOM, Event Handling, JSON, Introduction to AJAX.</p>
+    </div>
+
+    <div class="card unit-card shadow-sm p-3">
+        <h5>UNIT III: Server Side Programming</h5>
+        <p>Servlets: Java Servlet Architecture, Servlet Life Cycle, Form GET and POST actions, Session Handling, Cookies. DATABASE CONNECTIVITY: JDBC perspectives and examples. JSP: Java Server Pages, JSTL, Creating HTML forms embedding JSP code.</p>
+    </div>
+
+    <div class="card unit-card shadow-sm p-3">
+        <h5>UNIT IV: Mobile Application Development</h5>
+        <p>Android Application Design Essentials: Anatomy of Android applications, Android terminologies, Application Context, Activities, Services, Intents, Receiving and Broadcasting Intents, Manifest File, Permissions.</p>
+    </div>
+
+    <div class="card unit-card shadow-sm p-3">
+        <h5>UNIT V: Android User Interface Design</h5>
+        <p>User Interface elements, Designing UI with Layouts, Drawing and Animation, Testing Android applications, Publishing Android applications.</p>
+    </div>
+
+    <p><strong>Total Contact Hours:</strong> 15</p>
+</section>
+
+<!-- COURSE OUTCOMES -->
+<section class="container my-5" id="outcomes">
+    <h2 class="section-title">Course Outcomes</h2>
+    <ul class="course-outcomes">
+        <li>Design and develop basic web pages with proper structure and semantic elements, ensuring accessibility and functionality.</li>
+        <li>Design and implement dynamic web pages with validation using JavaScript objects and event handling mechanisms.</li>
+        <li>Design and implement simple webpages to learn JSP and Servlets.</li>
+        <li>Design and implement simple Android application designs.</li>
+        <li>Identify various concepts of mobile programming that make it unique from programming for other platforms.</li>
+    </ul>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

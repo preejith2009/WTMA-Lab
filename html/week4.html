@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON & AJAX Notes - WTMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .text-red-bold-left {
+            color: red;
+            font-weight: 900;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .flash-warning {
+            animation: flashText 10s infinite;
+        }
+
+        @keyframes flashText {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        pre {
+            background: #f4f6f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">JSON & AJAX</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<section class="bg-primary text-white text-center p-5">
+    <div class="container">
+        <h1>AJAX & JSON</h1>
+        <p class="lead">
+            Client-Server Data Communication using Asynchronous Requests 
+            and Structured Data Exchange in Web Applications
+        </p>
+    </div>
+</section>
+
+
+<!-- CONTENT -->
+<section class="p-5">
+<div class="container">
+
+<!-- 1 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣ Introduction to JSON</div>
+<div class="card-body">
+
+<p>
+JSON (JavaScript Object Notation) is a lightweight data-interchange format used to store and exchange data between a server and a web application.
+</p>
+
+<ul>
+<li>Text-based</li>
+<li>Human readable</li>
+<li>Easy for machines to parse</li>
+<li>Language independent (Python, Java, PHP, etc.)</li>
+</ul>
+
+<p>👉 Commonly used with AJAX to send/receive data without reloading the webpage.</p>
+
+</div>
+</div>
+
+
+<!-- 2 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">2️⃣ Why JSON is Used</div>
+<div class="card-body">
+<ul>
+<li>Faster than XML</li>
+<li>Lightweight format</li>
+<li>Easy to read & write</li>
+<li>Supported by all programming languages</li>
+<li>Ideal for APIs and web services</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 3 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">3️⃣ JSON Syntax Rules</div>
+<div class="card-body">
+<ul>
+<li>Data is in key–value pairs</li>
+<li>Keys must be in double quotes</li>
+<li>Values: String, Number, Boolean, Array, Object, Null</li>
+<li>Data separated by commas</li>
+<li>Curly braces { } hold objects</li>
+<li>Square brackets [ ] hold arrays</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 4 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">4️⃣ Basic JSON Structure</div>
+<div class="card-body">
+
+<pre>{
+  "name": "John",
+  "age": 21,
+  "isStudent": true
+}</pre>
+
+<ul>
+<li>"name" → Key</li>
+<li>"John" → Value</li>
+<li>Stored as key–value pairs</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 5 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">5️⃣ JSON Data Types</div>
+<div class="card-body">
+
+<table class="table table-bordered">
+<tr><th>Data Type</th><th>Example</th></tr>
+<tr><td>String</td><td>"city": "Chennai"</td></tr>
+<tr><td>Number</td><td>"marks": 85</td></tr>
+<tr><td>Boolean</td><td>"placed": true</td></tr>
+<tr><td>Array</td><td>"skills": ["Java","Python"]</td></tr>
+<tr><td>Object</td><td>"address": {"city":"Chennai"}</td></tr>
+<tr><td>Null</td><td>"middleName": null</td></tr>
+</table>
+
+</div>
+</div>
+
+
+<!-- 6 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">6️⃣ JSON Object Example</div>
+<div class="card-body">
+
+<pre>{
+  "student": {
+    "id": 101,
+    "name": "Agalya",
+    "department": "CSE"
+  }
+}</pre>
+
+</div>
+</div>
+
+
+<!-- 7 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">7️⃣ JSON Array Example</div>
+<div class="card-body">
+
+<pre>{
+  "subjects": ["DAA","DBMS","OS","CN"]
+}</pre>
+
+</div>
+</div>
+
+
+<!-- 8 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">8️⃣ Combined JSON Example</div>
+<div class="card-body">
+
+<pre>{
+  "students": [
+    {"id":1,"name":"Ram","marks":78},
+    {"id":2,"name":"Sophie","marks":85}
+  ]
+}</pre>
+
+</div>
+</div>
+
+
+<!-- 9 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">9️⃣ JSON vs XML</div>
+<div class="card-body">
+
+<table class="table table-bordered">
+<tr><th>JSON</th><th>XML</th></tr>
+<tr><td>Lightweight</td><td>Heavy</td></tr>
+<tr><td>Faster</td><td>Slower</td></tr>
+<tr><td>Easy syntax</td><td>Complex tags</td></tr>
+<tr><td>Less data size</td><td>More data size</td></tr>
+<tr><td>Used in AJAX</td><td>Older systems</td></tr>
+</table>
+
+</div>
+</div>
+
+
+<!-- 10 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">🔟 JSON in JavaScript</div>
+<div class="card-body">
+
+<p><strong>Convert JSON → Object</strong></p>
+
+<pre>
+let data = '{"name":"John","age":22}';
+let obj = JSON.parse(data);
+console.log(obj.name);
+</pre>
+
+<p><strong>Convert Object → JSON</strong></p>
+
+<pre>
+let student = { name:"Ram", marks:90 };
+let jsonData = JSON.stringify(student);
+console.log(jsonData);
+</pre>
+
+</div>
+</div>
+
+
+<!-- 11 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣1️⃣ JSON with AJAX</div>
+<div class="card-body">
+
+<pre>
+Client Request → Server
+Server sends JSON → Client
+Client displays data
+</pre>
+
+<ul>
+<li>Student portals</li>
+<li>Placement systems</li>
+<li>Feedback forms</li>
+<li>Live dashboards</li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- 12 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣2️⃣ Advantages</div>
+<div class="card-body">
+<ul>
+<li>Compact</li>
+<li>Fast transmission</li>
+<li>Easy parsing</li>
+<li>API friendly</li>
+<li>Language independent</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 13 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣3️⃣ Disadvantages</div>
+<div class="card-body">
+<ul>
+<li>No comments allowed</li>
+<li>Less secure if not validated</li>
+<li>Only data format</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 14 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣4️⃣ Real-Time Use Cases</div>
+<div class="card-body">
+<ul>
+<li>WTMA / College portals</li>
+<li>Weather apps</li>
+<li>Google Maps</li>
+<li>Payment gateways</li>
+<li>Social media feeds</li>
+</ul>
+</div>
+</div>
+
+<!-- ================= AJAX SECTION START ================= -->
+
+<!-- AJAX TITLE -->
+<div class="card mb-4">
+<div class="card-header bg-primary text-white">
+    ⚡ AJAX (Asynchronous JavaScript and XML)
+</div>
+<div class="card-body">
+
+<p>
+AJAX is a web development technique used to create dynamic and interactive web pages. 
+It allows data to be sent and received from a server without reloading the entire webpage.
+</p>
+
+</div>
+</div>
+
+
+<!-- 1 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">1️⃣ Meaning of AJAX</div>
+<div class="card-body">
+
+<table class="table table-bordered">
+<tr><th>Letter</th><th>Stands For</th></tr>
+<tr><td>A</td><td>Asynchronous</td></tr>
+<tr><td>J</td><td>JavaScript</td></tr>
+<tr><td>A</td><td>And</td></tr>
+<tr><td>X</td><td>XML</td></tr>
+</table>
+
+<p><strong>Note:</strong> Modern AJAX uses JSON instead of XML.</p>
+
+</div>
+</div>
+
+
+<!-- 2 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">2️⃣ Why AJAX is Used</div>
+<div class="card-body">
+<ul>
+<li>No full page reload</li>
+<li>Faster data transfer</li>
+<li>Better user experience</li>
+<li>Real-time updates</li>
+<li>Background communication with server</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 3 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">3️⃣ How AJAX Works</div>
+<div class="card-body">
+
+<pre>
+User Action
+   ↓
+JavaScript sends request
+   ↓
+Server processes request
+   ↓
+Server sends JSON data
+   ↓
+Webpage updates dynamically
+</pre>
+
+</div>
+</div>
+
+
+<!-- 4 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">4️⃣ Technologies Used in AJAX</div>
+<div class="card-body">
+<ul>
+<li>HTML & CSS</li>
+<li>JavaScript</li>
+<li>DOM</li>
+<li>JSON / XML</li>
+<li>XMLHttpRequest / Fetch API</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 5 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">5️⃣ AJAX Example (XMLHttpRequest)</div>
+<div class="card-body">
+
+<pre>
+function loadData(){
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+
+  xhttp.open("GET","data.txt",true);
+  xhttp.send();
+}
+</pre>
+
+</div>
+</div>
+
+
+<!-- 6 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">6️⃣ Modern AJAX – Fetch API</div>
+<div class="card-body">
+
+<pre>
+fetch("student.json")
+.then(response => response.json())
+.then(data => {
+   console.log(data);
+});
+</pre>
+
+</div>
+</div>
+
+
+<!-- 7 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">7️⃣ Advantages of AJAX</div>
+<div class="card-body">
+<ul>
+<li>No page reload</li>
+<li>Faster response</li>
+<li>Bandwidth saving</li>
+<li>Better UX</li>
+<li>Live data display</li>
+</ul>
+</div>
+</div>
+
+
+<!-- 8 -->
+<div class="card mb-4">
+<div class="card-header bg-dark text-white">8️⃣ Real-Time Applications</div>
+<div class="card-body">
+<ul>
+<li>Gmail</li>
+<li>Google Maps</li>
+<li>Facebook feeds</li>
+<li>Online voting systems</li>
+<li>WTMA Student Portals</li>
+<li>Live dashboards</li>
+</ul>
+</div>
+</div>
+
+<!-- ================= AJAX SECTION END ================= -->
+
+ <!-- REFERENCES -->
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">
+                References
+            </div>
+            <div class="card-body">
+                    <a href="../mat/Week4_programmes.zip" class="btn btn-sm btn-outline-primary mb-2" download>Click here for Lab notes ( download <strong> Week4_programmes.zip </strong> )</a>
+
+            </div>
+        </div>
+
+ <!-- Card Body -->
+   <div class="card mb-4">
+
+    <!-- Card Header -->
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <span>Lab Programmes</span>
+        <span class="badge bg-success">Hands-on Practice</span>
+    </div>
+    
+    <div class="card-body">
+        <div class="card shadow-sm border-0 rounded-4 p-3">
+    <h5 class="fw-bold mb-3 text-primary">
+            Introduction to AJAX & JSON.
+        </h5>
+
+        <ol class="list-group list-group-numbered">
+            
+            <!-- Programme 1 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-semibold">
+                        Create a simple web page that fetches student data from a text file 
+                        using AJAX and displays it dynamically without reloading the page.
+                        <br>
+                        <small class="text-muted">
+                            <strong> Tip – Use the Week4_Programmes.zip for output.</strong>
+                        </small>
+                    </div>
+                </div>
+                <span class="badge bg-success rounded-pill">Programme 1</span>
+            </li>
+
+            <!-- Programme 2 -->
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-semibold">
+                        Create a simple web page that fetches student records in JSON format 
+                        and displays them dynamically using JavaScript.
+                        <br>
+                        <small class="text-muted">
+                            <strong>  Tip – Use the Week4_Programmes.zip for output.  </strong>
+                        </small>
+                    </div>
+                </div>
+                <span class="badge bg-warning text-dark rounded-pill">Programme 2</span>
+            </li>
+
+        </ol>
+    </div>
+</div>
+</div>
+
+
+            <!-- REFERENCES -->
+
+        <div class="card mt-4">
+         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lab Experiment Submission Schedule</span>
+            <span class="badge bg-success">Academic Year 2025-26</span>
+        </div>
+        </div>
+
+
+            <div class="card-body">
+                <div class="p-3 border-bottom bg-light">
+            <p class="mb-0 text-red-bold-left flash-warning">
+  Follow this schedule to submit your lab experiments on time. Download the Lab Manual and upload your work using the provided link.<br>
+  Note - Completion date is till Saturday Feb - 21, after that Upload link will be disabled.
+</p>
+
+
+            </div> 
+                <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <thead class="table-light">
+            <tr>
+                <th>Lab No.</th>
+                <th>Experiment Name</th>
+                <th>Scheduled Date</th>
+                <th>Resources / Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>2 Programmes in json and Ajax using VS Code Editor</td>
+                <td>02-16-2026 - Json/Ajax - Week4</td>
+                <td>
+                    <span class="btn btn-sm btn-outline-primary mb-2">
+                      Use the <strong>Week4_programmes.zip</strong> file in References section above
+                     </span> 
+                    <br>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDc00A8EIsCey6h9ltZCVB9TbysoCzsLVVUhCeb3rgV4QfXA/viewform?usp=publish-editor" class="btn btn-sm btn-success">Upload Screen Output</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

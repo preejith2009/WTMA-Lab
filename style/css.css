@@ -1,0 +1,312 @@
+/* ==========================
+   Welcome Box
+   ========================== */
+.welcome-box {
+    background-color: #ffffff;       /* white background */
+    border: 2px solid #0a4da2;      /* match your theme color */
+    border-radius: 12px;
+    padding: 25px 30px;
+    max-width: 700px;                /* keeps text inside boundary */
+    margin: 40px auto;               /* centers the box */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    line-height: 1.6;
+    font-size: 18px;
+    color: #333333;
+}
+
+.welcome-box h1 {
+    color: #0a4da2;
+    margin-bottom: 20px;
+}
+
+.welcome-box p {
+    font-size: 16px;
+    color: #333333;
+    margin: 0;
+}
+
+
+
+.highlight-title {
+    color: #5a2d0c;      /* dark brown */
+    font-size: 1.6rem;   /* larger text */
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+.week-card {
+    display: inline-block;
+    padding: 30px 60px;
+    background: #FF8C00;       /* Dark orange */
+    color: #000000;            /* Black text */
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* red glow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: intenseGlow 1.8s infinite alternate; /* stronger glow animation */
+}
+
+/* Hover effect */
+.week-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 1);
+}
+
+/* Strong red glow animation */
+@keyframes intenseGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 0, 0, 0.9), 0 0 60px rgba(255, 0, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 1), 0 0 80px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Highlighted Outcome Text with hover animation */
+p.highlight-outcome {
+    color: #3e1f0f;             /* dark brown font */
+    font-size: 1.4rem;          /* larger text */
+    font-weight: 700;           /* bold */
+    background-color: #fff3e0;  /* light highlight */
+    padding: 10px 15px;         /* spacing inside box */
+    border-radius: 8px;         /* rounded corners */
+    display: inline-block;      /* wrap background tightly */
+    
+    /* Smooth transition for hover effect */
+    opacity: 0.6;               /* partially visible by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover state: fade in and slight move up */
+p.highlight-outcome:hover {
+    opacity: 1;                 /* fully visible */
+    transform: translateY(-5px); /* slight lift */
+}
+
+/* Fade-in/out animation for Objective text */
+p.highlight-objective,
+h2.highlight-objective {
+    color: #3e1f0f;            /* dark brown font */
+    font-weight: 700;
+    background-color: #fff3e0; /* light highlight */
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;      /* wrap background tightly */
+    opacity: 0.6;               /* partially visible by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover: fade in + slight lift */
+p.highlight-objective:hover,
+h2.highlight-objective:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+/* Continuous rotation for any element with class .rotate */
+.rotate {
+    animation: spin 10s linear infinite; /* 10 seconds per full rotation, infinite loop */
+    display: inline-block; /* ensures rotation works properly */
+}
+
+/* Keyframes for rotation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f2f4f8;
+}
+
+header {
+    background: #0a4da2;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.menu button {
+    padding: 15px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #0a4da2;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu button:hover {
+    background: #083b7a;
+    transform: scale(1.05);
+}
+
+.back {
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    background: #444;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.back:hover {
+    background: #222;
+}
+
+/* ================================
+   Experiments Table
+   ================================ */
+.exp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.exp-table th, .exp-table td {
+    border: 1px solid #0a4da2;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.exp-table th {
+    background-color: #0a4da2;
+    color: white;
+    text-align: center;
+}
+
+.exp-table td {
+    background-color: #f8faff;
+}
+
+/* ==========================
+   Global Styles
+   ========================== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    overflow-x: hidden;
+}
+
+header {
+    background: #0a4da2;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 300vw; /* 3 columns */
+    transition: transform 0.5s ease;
+}
+
+.column {
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+    padding: 30px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.column h2 {
+    color: #0a4da2;
+}
+
+
+
+.menu-btn {
+    display: block;
+    width: 75%;
+    padding: 8px;
+    margin: 20px 0;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #0a4da2;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    background: #083b7a;
+    transform: scale(1.03);
+}
+
+ul {
+    line-height: 1.9;
+}
+
+.back {
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    background: #444;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.back:hover {
+    background: #222;
+}
+
+/* ==========================
+   Experiments Table
+   ========================== */
+.exp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.exp-table th, .exp-table td {
+    border: 1px solid #0a4da2;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.exp-table th {
+    background-color: #0a4da2;
+    color: white;
+    text-align: center;
+}
+
+.exp-table td {
+    background-color: #f8faff;
+}
+
+

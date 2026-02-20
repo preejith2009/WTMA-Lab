@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>WTMA Theory Schedule</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/css.css">
+    <img src="./mat/aadhi.png" id="floatingImage" alt="Floating Image"
+         style="position:absolute; width:100px; height:100px;">
+    <script src="./script/script.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experiments">Experiments</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Theory Schedule</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section id="home" class="bg-primary text-white text-center p-5">
+    <div class="container">
+        <h1>WTMA Theory Schedule</h1>
+        <p class="lead">Overview of Client, Server, and Mobile Application Architecture</p>
+    </div>
+</section>
+
+<!-- THEORY CONTENT -->
+<section id="experiments" class="p-5">
+    <div class="container">
+
+        <!-- Web Application Architecture -->
+        <h2>Introduction to Web Application Architecture</h2>
+        <p>Web applications follow the <strong>Client–Server architecture</strong>.</p>
+        <ul>
+            <li><strong>Client (Front end):</strong> Sends requests (browser / mobile app)</li>
+            <li><strong>Server (Back end):</strong> Processes requests and returns responses</li>
+            <li><strong>Communication:</strong> HTTP / HTTPS</li>
+        </ul>
+
+        <!-- Mobile Application Architecture -->
+        <h2>Introduction to Mobile Application Architecture</h2>
+        <p>Mobile Application Architecture refers to the structured design and organization of a mobile application, defining how components like UI, business logic, and data interact with each other.</p>
+
+        <!-- Client Side -->
+        <h2>Client Side</h2>
+        <p>Client-side refers to the part of a web application that executes in the user’s browser and handles the presentation layer.</p>
+
+        <h3>Client Side Technologies</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Technology</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>HTML</td><td>Structure of web pages</td></tr>
+                <tr><td>CSS</td><td>Styling and layout</td></tr>
+                <tr><td>JavaScript</td><td>Interactivity and validation</td></tr>
+                <tr><td>AJAX</td><td>Asynchronous communication with server</td></tr>
+                <tr><td>JSON</td><td>Data exchange format</td></tr>
+                <tr><td>Bootstrap / Tailwind</td><td>Responsive UI</td></tr>
+                <tr><td>React / Angular / Vue</td><td>Front-end frameworks</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Client Side Tools</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tool</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Web Browser</td><td>Execute client-side code</td></tr>
+                <tr><td>VS Code</td><td>Front-end coding</td></tr>
+                <tr><td>Chrome DevTools</td><td>Debugging</td></tr>
+                <tr><td>Live Server</td><td>Page preview</td></tr>
+                <tr><td>GitHub / GitHub Pages</td><td>Version control & hosting</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Server Side -->
+        <h2>Server Side</h2>
+        <p>Server-side refers to the part of the application that runs on the server and handles business logic and database interaction.</p>
+
+        <h3>Server Side Technologies</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Technology</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Java (Servlets, JSP)</td><td>Enterprise web applications</td></tr>
+                <tr><td>PHP</td><td>Server-side scripting</td></tr>
+                <tr><td>Node.js</td><td>JavaScript backend</td></tr>
+                <tr><td>Python</td><td>Backend logic</td></tr>
+                <tr><td>.NET</td><td>Server applications</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Server Side Tools</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tool</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Eclipse IDE</td><td>Java server-side development, debugging, deploying applications on Tomcat</td></tr>
+                <tr><td>Apache Tomcat</td><td>Servlet/JSP server</td></tr>
+                <tr><td>XAMPP</td><td>PHP + MySQL server</td></tr>
+                <tr><td>Node.js</td><td>Backend runtime</td></tr>
+                <tr><td>MySQL / MongoDB</td><td>Database</td></tr>
+                <tr><td>Postman</td><td>API testing</td></tr>
+                <tr><td>GitHub</td><td>Code management</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Note:</strong> Eclipse is commonly used in WTMA for developing Servlets & JSP, debugging backend logic, and deploying applications on Tomcat.</p>
+
+        <!-- Android Architecture -->
+        <h2>Android Architecture Components (Overview)</h2>
+        <p>Used mainly in MVVM (Model–View–ViewModel):</p>
+        <ul>
+            <li><strong>ViewModel:</strong> Stores UI data</li>
+            <li><strong>LiveData:</strong> Observable data holder</li>
+            <li><strong>Room:</strong> Database layer</li>
+            <li><strong>Repository:</strong> Manages data sources</li>
+            <li><strong>WorkManager:</strong> Background tasks</li>
+        </ul>
+
+        <h3>MVVM Components</h3>
+        <ul>
+            <li><strong>Model:</strong> Data</li>
+            <li><strong>View:</strong> UI</li>
+            <li><strong>ViewModel:</strong> Manages UI-related data</li>
+        </ul>
+
+        <!-- Android Studio -->
+        <h2>Tool for Mobile Application Development - Android Studio</h2>
+        <p>Android Studio is the official IDE for Android development. It supports modern architectures like MVVM using built-in Android Architecture Components.</p>
+        <ul>
+            <li>Recommended Architecture: MVVM (Model–View–ViewModel)</li>
+            <li>Limitations: Limited applications in free trial version and requires higher memory for efficient running.</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

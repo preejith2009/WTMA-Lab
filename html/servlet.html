@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server-Side Programming - WTMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+  section[class^="bg"]{
+            padding:30px;
+            margin-bottom:25px;
+            border-radius:14px;
+            font-weight:bold;
+        }
+        .bg1{background:linear-gradient(135deg,#e3f2fd,#bbdefb);}
+        .bg2{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);}
+        .bg3{background:linear-gradient(135deg,#fff3e0,#ffe0b2);}
+        .bg4{background:linear-gradient(135deg,#f3e5f5,#e1bee7);}
+        .bg5{background:linear-gradient(135deg,#ede7f6,#d1c4e9);}
+        h2{
+            color:#6a0dad;
+            font-weight:800;
+            margin-bottom:15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">WTMA Lab</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Server-Side Java</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="bg-primary text-white text-center p-5">
+    <div class="container">
+        <h1>Server-Side Programming using Java</h1>
+        <p class="lead">
+            Understanding Java Servlets, JSP and Session Handling
+        </p>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<section class="p-5">
+<div class="container">
+
+<!-- INTRODUCTION -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        1️⃣ Introduction to Server-Side Programming
+    </div>
+    <div class="card-body">
+        <p><strong>What is Server-Side Programming?</strong></p>
+        <p>
+            Server-side programming refers to writing code that runs on the web server instead of the client’s browser.
+        </p>
+
+        <p><strong>When a user submits a form:</strong></p>
+        <ol>
+            <li>Request goes to server</li>
+            <li>Server processes logic</li>
+            <li>Database interaction happens</li>
+            <li>Response is sent back to client</li>
+        </ol>
+    </div>
+</div>
+
+<!-- CLIENT VS SERVER -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        Client Side vs Server Side
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Client-Side</th>
+                        <th>Server-Side</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Runs On</td>
+                        <td>Browser</td>
+                        <td>Web Server</td>
+                    </tr>
+                    <tr>
+                        <td>Languages</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td>Java, PHP, Python, Node</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>Less secure</td>
+                        <td>More secure</td>
+                    </tr>
+                    <tr>
+                        <td>DB Access</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- JAVA AS SERVER LANGUAGE -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        2️⃣ Java as a Server-Side Language
+    </div>
+    <div class="card-body">
+        <p>Java is widely used for enterprise-level web applications.</p>
+
+        <p><strong>Why Java for Server-Side?</strong></p>
+        <ul>
+            <li>Platform independent</li>
+            <li>Strong security</li>
+            <li>Multithreading support</li>
+            <li>Scalable</li>
+            <li>Used in enterprise systems</li>
+        </ul>
+
+        <p><strong>Popular Java Server Technologies:</strong></p>
+        <ul>
+            <li>Servlet</li>
+            <li>JSP</li>
+            <li>JDBC</li>
+            <li>Spring Framework</li>
+        </ul>
+    </div>
+</div>
+
+<!-- WEB ARCHITECTURE -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        3️⃣ Web Architecture Overview
+    </div>
+    <div class="card-body">
+        <p><strong>3-Tier Architecture</strong></p>
+        <ol>
+            <li>Presentation Layer (HTML/CSS/JS)</li>
+            <li>Business Logic Layer (Servlet / Java)</li>
+            <li>Data Layer (MySQL / Oracle)</li>
+        </ol>
+    </div>
+</div>
+
+<!-- SERVLETS -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        4️⃣ Java Servlets
+    </div>
+    <div class="card-body">
+        <p><strong>What is a Servlet?</strong></p>
+        <p>
+            A Servlet is a Java class that handles HTTP requests and responses.
+            It runs inside a Servlet Container like <strong>Apache Tomcat</strong>.
+        </p>
+
+        <p><strong>Servlet Lifecycle</strong></p>
+        <ol>
+            <li>init()</li>
+            <li>service()</li>
+            <li>destroy()</li>
+        </ol>
+
+        <p><strong>Simple Servlet Example:</strong></p>
+<pre class="bg-light p-3">
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class HelloServlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request,
+                      HttpServletResponse response)
+                      throws ServletException, IOException {
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("&lt;h2&gt;Hello WTMA Students!&lt;/h2&gt;");
+    }
+}
+</pre>
+    </div>
+</div>
+
+<!-- JSP -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        5️⃣ JSP (Java Server Pages)
+    </div>
+    <div class="card-body">
+        <p><strong>What is JSP?</strong></p>
+        <p>JSP allows embedding Java code inside HTML.</p>
+
+<pre class="bg-light p-3">
+&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;Welcome to WTMA Portal&lt;/h2&gt;
+&lt;%
+   out.println("Today is: " + new java.util.Date());
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </div>
+</div>
+
+<!-- HANDLING FORMS -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        7️⃣ Handling Forms in Servlet
+    </div>
+    <div class="card-body">
+        <p><strong>HTML Form:</strong></p>
+
+<pre class="bg-light p-3">
+&lt;form action="LoginServlet" method="post"&gt;
+   Username: &lt;input type="text" name="username"&gt;
+   Password: &lt;input type="password" name="password"&gt;
+   &lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+
+        <p><strong>Servlet Code:</strong></p>
+
+<pre class="bg-light p-3">
+String user = request.getParameter("username");
+String pass = request.getParameter("password");
+</pre>
+    </div>
+</div>
+
+<!-- SESSION MANAGEMENT -->
+<div class="card mb-4">
+    <div class="card-header bg-dark text-white">
+        8️⃣ Session Management
+    </div>
+    <div class="card-body">
+        <ul>
+            <li>Cookies</li>
+            <li>HttpSession</li>
+            <li>URL Rewriting</li>
+        </ul>
+
+<pre class="bg-light p-3">
+HttpSession session = request.getSession();
+session.setAttribute("user", user);
+</pre>
+    </div>
+</div>
+
+<section class="bg2">
+    <h2>Video Learning Resources</h2>
+    <p>
+        Here are some recommended YouTube videos to help you understand web technology and mobile application concepts better. Watch these videos to reinforce your learning with practical demonstrations and examples.
+    </p>
+
+    <div class="row mt-4">
+   <!-- Video 1 -->
+<div class="col-md-4 mb-4">
+    <div class="ratio ratio-16x9">
+        <iframe 
+            src="https://www.youtube.com/embed/IaWo6DbuKHA"
+            title="Introduction to Servlet"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="mt-2 text-center">Introduction to Servlet</p>
+</div>
+
+        <!-- Video 2 -->
+<div class="col-md-4 mb-4">
+    <div class="ratio ratio-16x9">
+        <iframe 
+            src="https://www.youtube.com/embed/cCscR-f6UY8"
+            title="Eclipse Configuration"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="mt-2 text-center">
+        Configuring Eclipse IDE for servlet
+    </p>
+</div>
+
+       <!-- Video 3 -->
+<div class="col-md-4 mb-4">
+    <div class="ratio ratio-16x9">
+        <iframe 
+            src="https://www.youtube.com/embed/r3o_eN-QJNw"
+            title="Running first servlet program"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="mt-2 text-center">
+        Running first servlet program
+    </p>
+</div>
+
+    </div>
+</section>
+
+
+<!-- REFERENCES -->
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-white">
+                References
+            </div>
+            <div class="card-body">
+                <a href="../mat/servlet_install.pdf" class="btn btn-sm btn-outline-primary mb-2" download>
+                    Download servlet Instruction document
+                </a>
+                <br>
+                    <a href="#" class="btn btn-sm btn-outline-primary mb-2" download>Click here for downloading Servlet (<strong> Servlet.zip </strong> )</a>
+
+            </div>
+        </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    &copy; 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Basics – Exam Programs</title>
+
+<style>
+
+/* Disable text selection */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background: linear-gradient(120deg,#e3f2fd,#fce4ec);
+
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Container */
+.container{
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Main Heading */
+h1{
+    text-align:center;
+    color:#0b5394;
+    background:#d0e0ff;
+    padding:15px;
+    border-radius:10px;
+}
+
+/* Program Card */
+.program{
+    background:white;
+    margin-top:25px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+    border-left:8px solid #6aa84f;
+}
+
+.program h2{
+    color:#38761d;
+}
+
+/* Description Box */
+.description{
+    background:#f4f9ff;
+    border-left:6px solid #0b5394;
+    padding:12px;
+    margin:12px 0 18px 0;
+    border-radius:8px;
+    font-weight:bold;
+    color:#073763;
+    line-height:1.6;
+}
+
+/* Code Box */
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:10px;
+    overflow-x:auto;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    margin-top:30px;
+    padding:10px;
+    color:white;
+    background:#0b5394;
+    border-radius:8px;
+}
+
+#flashPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupBox {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b, #ffcc00);
+    padding: 30px 45px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 30px rgba(255,255,255,0.7);
+    animation: zoomIn 0.35s ease-in-out;
+}
+
+.popupBox h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.popupBox p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.popupBox button {
+    margin-top: 20px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #ff416c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popupBox button:hover {
+    background: black;
+    color: white;
+}
+
+/* Animations */
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.mainTitle {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+/* Line 1 */
+.mainTitle {
+    font-size: 36px;
+    color: #ff4b2b;   /* flashy top line */
+    letter-spacing: 1px;
+}
+
+/* Line 2 */
+.mainTitle span {
+    display: block;
+    font-size: 28px;
+    margin-top: 5px;
+    color: #1a1a2e;   /* dark suited color */
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<div class="container">
+<h1 class="mainTitle">
+    Lab Programs <br>
+    <span>Python Basics - Introduction</span>
+</h1>
+
+<!-- Program 1 -->
+<div class="program">
+<h2>Program 1 — Student Mark Analysis</h2>
+
+<div class="description">
+Read the marks of five subjects from the user.  
+Calculate the <b>Total</b> and <b>Average</b> marks and display the <b>Grade</b> based on the average using conditional statements.
+<br>Grade Rules:<br>
+	≥ 90 → A<br>
+	≥ 75 → B<br>
+	≥ 60 → C<br>
+	≥ 50 → D<br>
+	< 50 → Fail<br>
+
+</div>
+
+<pre>
+total = 0
+
+for i in range(1, 6):
+    mark = int(input(f"Enter mark {i}: "))
+    total += mark
+
+average = total / 5
+
+print("Total Marks =", total)
+print("Average =", average)
+
+if average >= 90:
+    print("Grade: A")
+elif average >= 75:
+    print("Grade: B")
+elif average >= 60:
+    print("Grade: C")
+elif average >= 50:
+    print("Grade: D")
+else:
+    print("Grade: Fail")
+</pre>
+</div>
+
+<!-- Program 2 -->
+<div class="program">
+<h2>Program 2 — Number Classification</h2>
+
+<div class="description">
+Read a number from the user and determine whether it is  
+<b>Positive, Negative, or Zero</b>.  
+Also check whether the number is <b>Even or Odd</b>.
+</div>
+
+<pre>
+num = int(input("Enter a number: "))
+
+if num > 0:
+    print("Positive Number")
+elif num < 0:
+    print("Negative Number")
+else:
+    print("Zero")
+
+if num % 2 == 0:
+    print("Even Number")
+else:
+    print("Odd Number")
+</pre>
+</div>
+
+<!-- Program 3 -->
+<div class="program">
+<h2>Program 3 — List Operations</h2>
+
+<div class="description">
+Read five numbers into a <b>List</b>.  
+Display the <b>Largest</b>, <b>Smallest</b>, and <b>Sum</b> of all elements.
+</div>
+
+<pre>
+numbers = []
+
+for i in range(5):
+    n = int(input("Enter number: "))
+    numbers.append(n)
+
+print("List:", numbers)
+print("Largest =", max(numbers))
+print("Smallest =", min(numbers))
+print("Sum =", sum(numbers))
+</pre>
+</div>
+
+<!-- Program 4 -->
+<div class="program">
+<h2>Program 4 — Function Calculator</h2>
+
+<div class="description">
+Create user-defined <b>Functions</b> to perform  
+Addition, Subtraction, Multiplication, and Division  
+for two input numbers.
+</div>
+
+<pre>
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
+def mul(a, b):
+    return a * b
+
+def div(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Division by zero not allowed"
+
+x = int(input("Enter first number: "))
+y = int(input("Enter second number: "))
+
+print("Addition =", add(x, y))
+print("Subtraction =", sub(x, y))
+print("Multiplication =", mul(x, y))
+print("Division =", div(x, y))
+</pre>
+</div>
+
+<!-- Program 5 -->
+<div class="program">
+<h2>Program 5 — Type Casting Demonstration</h2>
+
+<div class="description">
+Demonstrate <b>Type Conversion</b> in Python by converting:  
+Integer → Float and Float → Integer.  
+Display both original and converted data types.
+</div>
+
+<pre>
+# Integer to Float
+int_num = int(input("Enter an Integer value: "))
+float_num = float(int_num)
+
+print("Original Integer:", int_num)
+print("Converted Float:", float_num)
+print("Type:", type(float_num))
+
+# Float to Integer
+float_value = float(input("Enter a Float value: "))
+int_value = int(float_value)
+
+print("Original Float:", float_value)
+print("Converted Integer:", int_value)
+print("Type:", type(int_value))
+</pre>
+</div>
+
+
+<!-- ================= POPUP HTML ================= -->
+<div id="flashPopup">
+    <div class="popupBox">
+        <h2>🚫 Action Blocked 🚨</h2>
+        <p>Right-Click / Copy / Paste is disabled on this Exam Page.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+
+<!-- ================= SCRIPT ================= -->
+<script>
+
+// Show Popup
+function showPopup() {
+    document.getElementById("flashPopup").style.display = "flex";
+}
+
+// Close Popup
+function closePopup() {
+    document.getElementById("flashPopup").style.display = "none";
+}
+
+//
+// ✅ RIGHT CLICK (Mouse)
+//
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();   // Blocks right click menu
+    showPopup();          // Shows flashy popup
+});
+
+//
+// ✅ COPY / PASTE / CUT
+//
+["copy","paste","cut"].forEach(event => {
+    document.addEventListener(event, function(e) {
+        e.preventDefault();
+        showPopup();
+    });
+});
+
+//
+// ✅ CTRL SHORTCUTS
+//
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && ["c","v","x","u","s","p"].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        showPopup();
+    }
+});
+
+</script>
+
+<footer>
+&copy; 2026 Python Lab | Department of AIDS
+</footer>
+
+</div>
+
+<!-- Security Scripts -->
+<script>
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('cut', e => e.preventDefault());
+
+document.addEventListener('keydown', function(e){
+    if (e.ctrlKey && ['c','u','s','p'].includes(e.key.toLowerCase())){
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
