@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 2 - Control Structures</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:#e2e8f0;
+    margin:0;
+    padding:0;
+}
+
+header{
+    background:#111827;
+    padding:20px;
+    text-align:center;
+}
+
+section{
+    padding:30px;
+    margin:20px;
+    background:#1e293b;
+    border-radius:8px;
+}
+
+h2{
+    color:#38bdf8;
+}
+
+h3{
+    color:#facc15;
+}
+
+.code-box{
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    margin-top:10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.keyword{
+    background:#334155;
+    padding:3px 8px;
+    border-radius:5px;
+    font-family: monospace;
+}
+
+ul{
+    margin-left:20px;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    margin-top:15px;
+}
+
+table, th, td{
+    border:1px solid #475569;
+}
+
+th, td{
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#334155;
+}
+
+.quiz-section{
+    width:90%;
+    margin:60px auto;
+    padding:60px 20px;
+    background:#173b6c; /* Deep blue */
+    border-radius:25px;
+    text-align:center;
+}
+
+.quiz-title{
+    color:#ffffff;
+    font-size:32px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.quiz-btn{
+    display:inline-block;
+    padding:18px 45px;
+    background:linear-gradient(45deg,#f59e0b,#d97706);
+    color:white;
+    font-size:20px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.quiz-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Week 2: Control Structures in Python</h1>
+</header>
+
+<!-- INTRODUCTION -->
+<section>
+<h2>Introduction</h2>
+
+<p>
+“Till now, our program executes line by line. But what if we want decisions? Or repetition?”
+</p>
+
+<p>
+👉 <strong>Control structures control the flow of execution of a program.</strong>
+</p>
+
+<p><strong>Normally Python executes:</strong></p>
+
+<div class="code-box">
+Line 1
+Line 2
+Line 3
+</div>
+
+<p><strong>But control structures allow:</strong></p>
+
+<ul>
+<li>✔️ Decision making</li>
+<li>✔️ Repeating tasks</li>
+<li>✔️ Skipping parts of code</li>
+</ul>
+
+</section>
+
+<!-- TYPES SECTION -->
+<section>
+<h2>Types of Control Structures in Python</h2>
+
+<ol>
+<li><strong>Decision Making Statements</strong>
+    <ul>
+        <li><span class="keyword">if</span></li>
+        <li><span class="keyword">if-else</span></li>
+        <li><span class="keyword">if-elif-else</span></li>
+    </ul>
+</li>
+
+<li><strong>Looping Statements</strong>
+    <ul>
+        <li><span class="keyword">for</span></li>
+        <li><span class="keyword">while</span></li>
+    </ul>
+</li>
+
+<li><strong>Jump Statements</strong>
+    <ul>
+        <li><span class="keyword">break</span></li>
+        <li><span class="keyword">continue</span></li>
+        <li><span class="keyword">pass</span></li>
+    </ul>
+</li>
+</ol>
+</section>
+
+<!-- DECISION MAKING -->
+<section>
+<h2>PART 1: Decision Making Statements</h2>
+
+<h3>1️⃣ if Statement</h3>
+
+<p><strong>Syntax:</strong></p>
+<div class="code-box">
+if condition:
+    statement
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="code-box">
+age = 18
+
+if age >= 18:
+    print("You are eligible to vote")
+</div>
+
+<p><strong>Explain clearly:</strong></p>
+<ul>
+<li>Condition must return True or False</li>
+<li>Indentation is mandatory in Python</li>
+</ul>
+
+<p><strong>Multiple Condition Example:</strong></p>
+<div class="code-box">
+if x > y and x > z:
+    print(f"The maximum number is: {x}")
+</div>
+
+<p><strong>Real Example:</strong></p>
+<div class="code-box">
+day = int(input())
+
+doctor = ""
+
+if day == 1 or day == 8 or day == 14:
+    doctor = "Dr. Smith"
+</div>
+
+
+<h3>2️⃣ if-else Statement</h3>
+
+<div class="code-box">
+num = 10
+
+if num % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")
+</div>
+
+<ul>
+<li>Only one block executes</li>
+<li>Else runs when condition is False</li>
+</ul>
+
+
+<h3>3️⃣ if-elif-else Ladder</h3>
+
+<div class="code-box">
+marks = 75
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 75:
+    print("Grade B")
+elif marks >= 50:
+    print("Grade C")
+else:
+    print("Fail")
+</div>
+
+<ul>
+<li>Multiple conditions</li>
+<li>Checked top to bottom</li>
+<li>First True condition executes</li>
+</ul>
+
+</section>
+
+
+<!-- LOOPING -->
+<section>
+<h2>PART 2: Looping Statements</h2>
+
+<p><strong>What if I want to print Hello 100 times?</strong></p>
+<p>Instead of writing print 100 times — use loops.</p>
+
+<h3>1️⃣ for Loop</h3>
+<p>Used when number of repetitions is known.</p>
+
+<div class="code-box">
+for i in range(5):
+    print("Hello")
+</div>
+
+<p><strong>Explain:</strong></p>
+<ul>
+<li>range(5) → 0 to 4</li>
+<li>Loop runs 5 times</li>
+</ul>
+
+<p><strong>Another Example:</strong></p>
+
+<div class="code-box">
+for i in range(1, 6):
+    print(i)
+</div>
+
+<ul>
+<li>Start = 1</li>
+<li>End = 6 (excluded)</li>
+<li>Output: 1 2 3 4 5</li>
+</ul>
+
+
+<h3>2️⃣ while Loop</h3>
+<p>Used when condition is based.</p>
+
+<div class="code-box">
+count = 1
+
+while count <= 5:
+    print(count)
+    count += 1
+</div>
+
+<ul>
+<li>Loop runs while condition is True</li>
+<li>Important: Update variable</li>
+<li>Otherwise → Infinite loop</li>
+</ul>
+
+<h3>Difference: while vs do-while</h3>
+
+<table>
+<tr>
+<th>while loop</th>
+<th>do-while loop</th>
+</tr>
+<tr>
+<td>Condition checked first</td>
+<td>Condition checked last</td>
+</tr>
+<tr>
+<td>May not execute even once</td>
+<td>Executes at least once</td>
+</tr>
+</table>
+
+<p><strong>Note:</strong> Python does NOT have a do-while loop.  
+Instead, we simulate it using <span class="keyword">while True</span>.</p>
+
+<div class="code-box">
+x = 5
+
+while True:
+    print(x)
+    x += 1
+
+    if x >= 5:
+        break
+</div>
+
+</section>
+
+
+<!-- JUMP -->
+<section>
+<h2>PART 3: Jump Statements</h2>
+
+<h3>break</h3>
+<p>Stops loop immediately.</p>
+
+<div class="code-box">
+for i in range(1, 10):
+    if i == 5:
+        break
+    print(i)
+</div>
+
+<h3>continue</h3>
+<p>Skips current iteration.</p>
+
+<div class="code-box">
+for i in range(1, 6):
+    if i == 3:
+        continue
+    print(i)
+</div>
+
+<p><strong>Output:</strong> 1 2 4 5</p>
+
+</section>
+
+<!-- QUIZ CTA SECTION -->
+
+<div class="quiz-section">
+
+    <h2 class="quiz-title">
+        Ready to Test Your Knowledge?
+    </h2>
+
+    <a href="quiz1.html" class="quiz-btn">
+        Take Your Quiz
+    </a>
+
+</div>
+
+</body>
+</html>
