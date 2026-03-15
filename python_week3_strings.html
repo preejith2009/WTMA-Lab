@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 3 - Strings</title>
+<style>
+body{font-family:Arial, Helvetica, sans-serif; margin:40px; line-height:1.6; background:#fafafa}
+h1,h2,h3{color:#2c3e50}
+code{background:#f4f4f4; padding:3px 6px; border-radius:4px}
+pre{background:#272822; color:#f8f8f2; padding:12px; border-radius:6px; overflow-x:auto}
+section{margin-bottom:30px}
+table{border-collapse:collapse; width:70%}
+table,th,td{border:1px solid #ccc}
+th,td{padding:8px; text-align:left}
+th{background:#eee}
+.note{background:#eef6ff;border-left:5px solid #3b82f6;padding:10px;margin:10px 0}
+
+
+.quiz-section{
+    width:90%;
+    margin:60px auto;
+    padding:60px 20px;
+    background:#173b6c; /* Deep blue */
+    border-radius:25px;
+    text-align:center;
+}
+
+.quiz-title{
+    color:#ffffff;
+    font-size:32px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.quiz-btn{
+    display:inline-block;
+    padding:18px 45px;
+    background:linear-gradient(45deg,#f59e0b,#d97706);
+    color:white;
+    font-size:20px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.quiz-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Python Strings – Lecture and Lab Notes</h1>
+<p>This page contains theoretical concepts and laboratory programs for learning <b>Python String Manipulation</b>.</p>
+
+<section>
+<h2>Character vs String in Python</h2>
+
+<p>
+In Python, the difference between <b>character</b> and <b>string</b> is a little different compared to languages like 
+<b>C</b> or <b>Java</b>.
+</p>
+
+<h3>Character in Python</h3>
+
+<p>
+Python does <b>not have a separate <code>char</code> data type</b>. 
+A single character is treated as a <b>string with length = 1</b>.
+</p>
+
+<p><b>Example:</b></p>
+
+<pre>
+ch = 'A'
+
+print(type(ch))
+print(len(ch))
+</pre>
+
+<p><b>Output:</b></p>
+
+<pre>
+&lt;class 'str'&gt;
+1
+</pre>
+
+<div class="note">
+Here <b>'A'</b> is not a character type. In Python it is a <b>string of length 1</b>.
+</div>
+
+</section>
+
+<section>
+<h2>1. Introduction to Strings</h2>
+<p>In Python, a <b>string</b> is a sequence of characters enclosed within quotes.</p>
+
+<ul>
+<li>Single Quotes : 'Hello'</li>
+<li>Double Quotes : "Hello"</li>
+<li>Triple Quotes : '''Hello'''</li>
+</ul>
+
+<pre>
+s1 = 'Hello'
+s2 = "Python"
+s3 = '''Welcome to Python Programming'''
+</pre>
+
+<div class="note">
+Strings are <b>immutable</b> which means their value cannot be changed after creation.
+</div>
+</section>
+
+<section>
+<h2>2. String Indexing</h2>
+
+<pre>
+H  E  L  L  O
+0  1  2  3  4
+</pre>
+
+<p>Negative Indexing:</p>
+
+<pre>
+H  E  L  L  O
+-5 -4 -3 -2 -1
+</pre>
+
+<pre>
+text = "Python"
+print(text[0])
+print(text[-1])
+</pre>
+
+</section>
+
+<section>
+
+<h2>3. String Slicing</h2>
+
+<p><strong>String Slicing in Python</strong></p>
+
+<p>Slicing extracts a portion of a string using the syntax:</p>
+
+<pre>
+string[start:end]
+</pre>
+
+<h4>Example Program</h4>
+
+<pre>
+text = "Python Programming"
+
+# Extract characters from index 0 to 5
+print(text[0:6])
+
+# Extract characters from index 7 to the end
+print(text[7:])
+</pre>
+
+<h4>Output</h4>
+
+<pre>
+Python
+Programming
+</pre>
+
+<p><strong>Explanation:</strong></p>
+
+<p>
+text[0:6] → characters from index 0 to 5 (end index is not included)
+<br>
+text[7:] → characters from index 7 to the end of the string
+</p>
+
+<h4>Using Step in Slicing</h4>
+
+<p>The step value allows skipping characters.</p>
+
+<pre>
+text = "PYTHON"
+
+# Skip every 2 characters
+print(text[::2])
+
+# Start from index 1 and skip every 2 characters
+print(text[1::2])
+
+# Reverse the string using negative step
+print(text[::-1])
+
+# Start from index 0 to 6 and skip every 3 characters
+print(text[0:6:3])
+</pre>
+
+<h4>Output</h4>
+
+<pre>
+PTO
+YHN
+NOHTYP
+PH
+</pre>
+
+<h4>Explanation</h4>
+
+<table border="1" cellpadding="8" style="border-collapse:collapse;">
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Result</th>
+</tr>
+
+<tr>
+<td>text[::2]</td>
+<td>Start from beginning, skip every 2 characters</td>
+<td>PTO</td>
+</tr>
+
+<tr>
+<td>text[1::2]</td>
+<td>Start from index 1 and skip every 2 characters</td>
+<td>YHN</td>
+</tr>
+
+<tr>
+<td>text[::-1]</td>
+<td>Reverse the string</td>
+<td>NOHTYP</td>
+</tr>
+
+<tr>
+<td>text[0:6:3]</td>
+<td>From index 0 to 6, skip every 3 characters</td>
+<td>PH</td>
+</tr>
+
+</table>
+
+<h4>Note for Students</h4>
+
+<p>Python slicing format:</p>
+
+<pre>
+string[start : end : step]
+</pre>
+
+<p>
+start → starting index<br>
+end → stopping index (not included)<br>
+step → number of characters to skip
+</p>
+
+</section>
+
+<section>
+<h2>4. Important String Functions</h2>
+
+<table>
+<tr><th>Function</th><th>Description</th></tr>
+<tr><td>len()</td><td>Returns the length of the string</td></tr>
+<tr><td>lower()</td><td>Converts string to lowercase</td></tr>
+<tr><td>upper()</td><td>Converts string to uppercase</td></tr>
+<tr><td>strip()</td><td>Removes spaces or specified characters</td></tr>
+<tr><td>replace()</td><td>Replaces characters or words</td></tr>
+<tr><td>find()</td><td>Returns index of substring</td></tr>
+<tr><td>count()</td><td>Counts occurrences of substring</td></tr>
+<tr><td>startswith()</td><td>Checks starting word</td></tr>
+<tr><td>endswith()</td><td>Checks ending word</td></tr>
+<tr><td>split()</td><td>Splits string into list</td></tr>
+<tr><td>join()</td><td>Joins list elements into string</td></tr>
+<tr><td>isalpha()</td><td>Checks if characters are alphabets</td></tr>
+<tr><td>isdigit()</td><td>Checks if characters are digits</td></tr>
+<tr><td>isalnum()</td><td>Checks if characters are alphanumeric</td></tr>
+</table>
+
+</section>
+
+<section>
+<h2>5. Escape Characters</h2>
+
+<table>
+<tr><th>Escape</th><th>Meaning</th></tr>
+<tr><td>\n</td><td>New Line</td></tr>
+<tr><td>\t</td><td>Tab</td></tr>
+<tr><td>\\</td><td>Backslash</td></tr>
+<tr><td>\'</td><td>Single Quote</td></tr>
+<tr><td>\"</td><td>Double Quote</td></tr>
+</table>
+
+</section>
+
+<section>
+<h2>6. Laboratory Programs – String Manipulation</h2>
+
+<h3>Program 1 – Strip Characters from String</h3>
+<pre>
+txt = input()
+char_to_strip = input()
+
+cleaned_txt = txt.strip(char_to_strip)
+
+print("Cleaned text : ", cleaned_txt)
+</pre>
+
+<div class="note">
+Function Used : <b>strip()</b> removes specified characters from beginning and end of the string.
+</div>
+
+
+<h3>Program 2 – Find Length and Copy String</h3>
+<pre>
+# Read the input string
+A = input().strip()
+
+# Find the length using len()
+length = len(A)
+print("Length of the string:", length)
+
+# Copy the content of A to B
+B = A
+
+# Print the copied string
+print("Copied string:", B, end="")
+</pre>
+
+<div class="note">
+Functions Used : <b>len()</b>, <b>strip()</b>
+</div>
+
+
+<h3>Program 3 – Generate Email Address</h3>
+
+<pre>
+first_name = input()
+last_name = input()
+role = input()
+company = input()
+
+first_name = first_name.lower()
+role = role.lower()
+company = company.lower()
+
+if role == "admin":
+    suffix = "@admin." + company + ".com"
+else:
+    suffix = "@" + company + ".com"
+
+email = first_name[0] + last_name.lower() + suffix
+
+print(email)
+</pre>
+
+<div class="note">
+Functions Used : <b>lower()</b>, <b>indexing</b>, <b>string concatenation</b>
+</div>
+
+
+<h3>Program 4 – Reverse Second String and Concatenate</h3>
+
+<pre>
+string1 = input()
+string2 = input()
+
+reversed_string2 = string2[::-1]
+
+result = string1 + reversed_string2
+
+print(result)
+</pre>
+
+<div class="note">
+Concept Used : <b>String slicing</b> for reversing a string.
+</div>
+
+
+<h3>Program 5 – Replace Character in Two Strings</h3>
+
+<pre>
+string1 = input()
+string2 = input()
+
+char_to_replace = input()
+char_to_replace_with = input()
+
+str1 = ""
+for char in string1:
+    if char == char_to_replace:
+        str1 += char_to_replace_with
+    else:
+        str1 += char
+
+str2 = ""
+for char in string2:
+    if char == char_to_replace:
+        str2 += char_to_replace_with
+    else:
+        str2 += char
+
+result = "{} {}".format(str1, str2)
+
+print(result)
+</pre>
+
+<div class="note">
+Concept Used : <b>for loop</b>, <b>character comparison</b>, <b>string building</b>, <b>format()</b>
+</div>
+
+</section>
+
+<section>
+<h2>7. Summary</h2>
+
+<ul>
+<li>String processing is one of the most important operations in Python, as the language provides many simple and powerful built-in functions for manipulating and working with strings.</li>
+<li>Strings are immutable sequences of characters.</li>
+<li>In Python, string functions can be used directly without including any header files or libraries.</li>
+<li>Important operations include slicing, searching, replacing and joining.</li>
+</ul>
+
+</section>
+
+
+
+<!-- QUIZ CTA SECTION -->
+
+<div class="quiz-section">
+
+    <h2 class="quiz-title">
+        Ready to Test Your Knowledge?
+    </h2>
+
+    <a href="quiz3.html" class="quiz-btn">
+        Take Your Quiz
+    </a>
+
+</div>
+
+</body>
+</html>

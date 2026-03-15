@@ -139,6 +139,7 @@
     animation: bounceMini 2s infinite;
 }
 
+
 </style>
 </head>
 
@@ -153,7 +154,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/student_list.html">Student List</a></li>
+                <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/student_list.html">Student Report</a></li>
                 <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/exp.html">Lab Programmes</a></li>
                 <li class="nav-item"><a class="nav-link" href="/WTMA-Lab/html/unit1.html">Class Notes</a></li>
             </ul>
@@ -298,10 +299,13 @@
 <button class="menu-btn full-btn" id="miniProjectBtn" 
                 style="margin: 0 auto;"
         onclick="window.location.href='html/Mini_Project_Status.html';">
-    Mini Project
-</button>
-    </div>
-</td>      
+        <span class="ongoing-badge" style="background-color:#4caf50; color:white; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:bold;">
+                                            Ongoing
+                                            </span> 
+                                         Mini Project
+                                        </button>
+                                          </div>
+                                </td>      
                                 </tr> 
                                 <!-- Spacing Row -->
                                 <tr>
@@ -310,7 +314,9 @@
                                 <tr>
                                 <td style="text-align: center; vertical-align: middle;">
                                         <a href="html/servlet.html" class="week-card">
-                                            <span class="ongoing-badge">To Start</span>
+                                            <span class="ongoing-badge" style="background-color:#0d6efd; color:white; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:bold;">
+                                            Ongoing
+                                            </span>
                                            <span style="font-size: 1.8rem;">
                                             Week 5 – Servlet & Jsp
                               </span>
