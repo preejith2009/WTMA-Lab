@@ -429,7 +429,94 @@ View Videos
             <p class="mb-0 text-red-bold-left">
   Students will have to run the programmes and show the output to the Faculty during the lab session for getting Lab marks.
 </p>
-            </div> 
+            </div>
+            
+            <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #53f11f;
+        vertical-align: top;
+    }
+
+    /* Highlight Date column */
+    td:nth-child(2) {
+        background-color: #e8f4ff;
+        font-weight: 600;
+    }
+
+    /* Highlight Program column */
+    td:nth-child(3) {
+        background-color: #f5fff0;
+    }
+
+    /* Row hover effect */
+    tr:hover {
+        background-color: #85d2ea;
+    }
+
+    /* Improve button look */
+    .btn {
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    .btn-outline-primary {
+        border: 1px solid #0d6efd;
+        color: #0d6efd;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    /* Column 1 - Sl No */
+td:nth-child(1) {
+    background-color: #f1f3f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Column 2 - Date */
+td:nth-child(2) {
+    background-color: #e7f1ff;
+    font-weight: 600;
+}
+
+/* Column 3 - Programs (optional but recommended) */
+td:nth-child(3) {
+    background-color: #f4fff2;
+}
+
+/* Slight rounded feel for table */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Row hover */
+tr:hover {
+    background-color: #fafafa;
+}
+
+.current-row:hover td {
+    background-color: #ffe69c !important;
+}
+
+.current-row {
+    border-left: 5px solid #ffc107;
+}
+
+</style>
+
                 <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
         <thead class="table-light">
             <tr>
@@ -440,31 +527,48 @@ View Videos
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>01</td>
-                <td>Monday, March - 16</td>
-                <td>1) Hello world using Servlet  <strong> “HelloServlet“</strong><br>
-                    2) Create <strong> index.jsp</strong> page and link it to <strong> “HelloServlet“</strong> servlet</td>
-                <td>
-                     <a href="../mat/Server_Side_Lab_Manual.doc" class="btn btn-sm btn-outline-primary mb-2" download>Download <strong>Lab Manual</strong> for this programmes</a>
-                    <br>
-                </td>
-            </tr>
-     <!--
-             <tr>
-                <td>01</td>
-                <td>Monday, March - 16</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1) Hello world using Servlet<br>
-                    2) Hello world using Jsp</td>
-                <td>
-                    <span class="btn btn-sm btn-outline-primary mb-2">
-                      Download <strong>Lab Manual</strong> for  this programmes
-                     </span> 
-                    <br>
-                </td>
-            </tr>
-        -->
-        </tbody>
+    <tr>
+        <td><strong>01</strong></td>
+        <td>Monday, March - 16</td>
+        <td>
+            1) Hello world using Servlet <strong>“HelloServlet”</strong><br>
+            2) Create <strong>index.jsp</strong> page and link it to <strong>“HelloServlet”</strong> servlet
+        </td>
+        <td>
+            <a href="#" 
+               class="btn btn-outline-primary mb-2">
+               Download <strong>Lab Manual</strong>
+            </a>
+        </td>
+    </tr>
+
+    <tr class="current-row">
+        <td><strong>02</strong></td>
+        <td>Wednesday, March - 18</td>
+        <td><span style="color: #5a189a; font-weight: 600;"> 1) Calculator Application using JSP and Servlet</span>
+        </td>
+        <td>  
+                <a href="../mat/Server_Side_Lab_Manual.doc" class="btn btn-outline-primary mb-2" download>
+               Download <strong>Lab Manual</strong>
+            </a>
+        </td>
+    </tr>
+   <!--
+    <tr >
+        <td><strong>02</strong></td>
+        <td>Wednesday, March - 18</td>
+        <td><span style="color: #5a189a; font-weight: 600;"> 1) Calculator Application using JSP and Servlet</span>
+        </td>
+        <td>  
+                <a href="../mat/Server_Side_Lab_Manual.doc" class="btn btn-outline-primary mb-2" download>
+               Download <strong>Lab Manual</strong>
+            </a>
+        </td>
+    </tr>
+-->
+</tbody>
+        
+
     </table>
             </div>
         </div>
