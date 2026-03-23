@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python List Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* (Keeping your exact styling unchanged) */
+
+body{
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.quiz-container{
+    width:70%;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 1s ease;
+}
+
+h2{ margin-bottom:20px; }
+
+.option{
+    display:block;
+    margin:12px 0;
+    padding:12px;
+    background:#f3f3f3;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.option:hover{
+    background:#dfe9ff;
+    transform:scale(1.03);
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:linear-gradient(45deg,#42a5f5,#478ed1);
+    color:white;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.result-card{
+    text-align:center;
+    padding:40px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#43cea2,#185a9d);
+    color:white;
+    animation:zoomIn 1s ease;
+}
+
+.score{
+    font-size:50px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.bar{
+    width:100%;
+    height:20px;
+    background:#ffffff55;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.fill{
+    height:100%;
+    width:0%;
+    background:#00ffcc;
+    animation:fillBar 2s forwards;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://i.imgur.com/6RMhx.gif');
+    opacity:0;
+    pointer-events:none;
+}
+
+.show-confetti::after{ opacity:0.4; }
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1;}
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.5); opacity:0;}
+to{transform:scale(1);}
+}
+
+@keyframes fillBar{
+from{width:0;}
+to{width:var(--percent);}
+}
+
+.review-box{
+background:#fff;
+padding:15px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+<div id="quiz"></div>
+<button id="nextBtn">Next</button>
+<div id="result"></div>
+<div id="review"></div>
+</div>
+
+<script>
+
+/* CONTROL STRUCTURES QUESTIONS */
+/* PYTHON STRING QUESTIONS */
+
+/* PYTHON STRING QUIZ + STRING SLICING QUIZ */
+
+const quizData = [
+
+{
+q:"1. What is a List in Python?",
+a:[
+"A collection of characters",
+"A collection of ordered elements",
+"A loop structure",
+"A mathematical function"
+],
+correct:1
+},
+
+{
+q:"2. Which symbol is used to create a list in Python?",
+a:[
+"{}",
+"()",
+"[]",
+"<>"
+],
+correct:2
+},
+
+{
+q:"3. Lists in Python are:",
+a:[
+"Immutable",
+"Mutable",
+"Constant",
+"Numeric only"
+],
+correct:1
+},
+
+{
+q:"4. Which function returns the number of elements in a list?",
+a:[
+"count()",
+"length()",
+"size()",
+"len()"
+],
+correct:3
+},
+
+{
+q:"5. What will be the output?\nlist1 = [10,20,30]\nprint(list1[1])",
+a:[
+"10",
+"20",
+"30",
+"Error"
+],
+correct:1
+},
+
+{
+q:"6. Which method is used to add an element at the end of a list?",
+a:[
+"append()",
+"add()",
+"insert()",
+"extend()"
+],
+correct:0
+},
+
+{
+q:"7. Which method removes an element from a list?",
+a:[
+"delete()",
+"remove()",
+"clear()",
+"pop()"
+],
+correct:1
+},
+
+{
+q:"8. What will be the output?\nnums = [1,2,3]\nnums.append(4)\nprint(nums)",
+a:[
+"[1,2,3]",
+"[1,2,3,4]",
+"[4,3,2,1]",
+"Error"
+],
+correct:1
+},
+
+{
+q:"9. Which method adds an element at a specific index?",
+a:[
+"append()",
+"insert()",
+"add()",
+"extend()"
+],
+correct:1
+},
+
+{
+q:"10. What will be the output?\na = [5,10,15]\nprint(a[0])",
+a:[
+"5",
+"10",
+"15",
+"Error"
+],
+correct:0
+},
+
+{
+q:"11. Lists allow duplicate values.",
+a:[
+"True",
+"False"
+],
+correct:0
+},
+
+{
+q:"12. Which method removes the last element from a list?",
+a:[
+"delete()",
+"remove()",
+"pop()",
+"discard()"
+],
+correct:2
+},
+
+{
+q:"13. What will be the output?\nnums = [10,20,30,40]\nprint(nums[1:3])",
+a:[
+"[20,30]",
+"[10,20]",
+"[30,40]",
+"[20,30,40]"
+],
+correct:0
+},
+
+{
+q:"14. Which method removes all elements from a list?",
+a:[
+"clear()",
+"remove()",
+"delete()",
+"pop()"
+],
+correct:0
+},
+
+{
+q:"15. What will be the output?\na = [1,2]\nb = [3,4]\nprint(a + b)",
+a:[
+"[1,2,3,4]",
+"[3,4,1,2]",
+"[1,2]",
+"Error"
+],
+correct:0
+}
+
+];
+
+let index=0;
+let score=0;
+let userAnswers=[];
+
+function loadQuestion(){
+
+let q=quizData[index];
+
+document.getElementById("quiz").innerHTML=`
+<h2>${q.q}</h2>
+${q.a.map((opt,i)=>
+`<label class="option">
+<input type="radio" name="opt" value="${i}">
+${opt}
+</label>`).join("")}
+`;
+
+if(index===quizData.length-1)
+nextBtn.innerText="Submit";
+}
+
+nextBtn.onclick=function(){
+
+let sel=document.querySelector('input[name="opt"]:checked');
+
+if(!sel){alert("Select an answer"); return;}
+
+userAnswers[index]=Number(sel.value);
+
+if(userAnswers[index]===quizData[index].correct)
+score++;
+
+index++;
+
+if(index<quizData.length) loadQuestion();
+else showResult();
+};
+
+function showResult(){
+
+document.body.classList.add("show-confetti");
+
+let percent=Math.round((score/quizData.length)*100);
+
+document.getElementById("quiz").style.display="none";
+nextBtn.style.display="none";
+
+document.getElementById("result").innerHTML=`
+
+<div class="result-card">
+<h1>🎉 Quiz Completed 🎉</h1>
+<div class="score" id="scoreCount">0</div>
+<p>You scored ${score} out of ${quizData.length}</p>
+
+<div class="bar">
+<div class="fill" style="--percent:${percent}%"></div>
+</div>
+
+<p>${percent}%</p>
+</div>
+`;
+
+animateScore(score);
+showReview();
+}
+
+function animateScore(finalScore){
+
+let count=0;
+let el=document.getElementById("scoreCount");
+
+let interval=setInterval(()=>{
+el.innerText=count;
+if(count===finalScore) clearInterval(interval);
+count++;
+},100);
+}
+
+function showReview(){
+
+let reviewHTML="<h2 style='margin-top:40px'>Answer Review</h2>";
+
+quizData.forEach((q,i)=>{
+
+let userAns=userAnswers[i];
+let correctAns=q.correct;
+
+reviewHTML+=`
+<div class="review-box">
+
+<b>${q.q}</b><br><br>
+
+Your Answer:
+<span style="color:${userAns===correctAns?'green':'red'}">
+${q.a[userAns] ?? "Not Answered"}
+</span><br>
+
+Correct Answer:
+<span style="color:green">
+${q.a[correctAns]}
+</span>
+
+</div>
+`;
+});
+
+document.getElementById("review").innerHTML=reviewHTML;
+}
+
+loadQuestion();
+
+</script>
+<div style="position:fixed; top:20px; right:25px; z-index:9999;">
+    <a href="python_week5_list.html" 
+       style="color:white; text-decoration:underline; font-size:20px; font-weight:bold; letter-spacing:1px;">
+       ⬅ Back to Lesson
+    </a>
+</div>
+
+
+
+</body>
+</html>

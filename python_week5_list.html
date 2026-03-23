@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Lists - Lab Notes</title>
+<style>
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:40px;
+background:#f4f6f9;
+line-height:1.6;
+
+/* added for footer alignment */
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+/* pushes footer to bottom */
+flex:1;
+}
+
+h1{
+text-align:center;
+color:#2c3e50;
+margin-bottom:30px;
+}
+
+h2{
+color:#1a5276;
+margin-top:40px;
+}
+
+pre{
+background:#272822;
+color:#f8f8f2;
+padding:15px;
+border-radius:6px;
+overflow-x:auto;
+}
+
+.code-title{
+background:#e8f4ff;
+padding:10px;
+border-left:5px solid #3498db;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.example{
+background:#fdf2e9;
+padding:10px;
+border-left:5px solid #e67e22;
+margin-top:10px;
+}
+
+ul{
+margin-top:10px;
+}
+.quiz-section{
+    width:90%;
+    margin:60px auto;
+    padding:60px 20px;
+    background:#173b6c; /* Deep blue */
+    border-radius:25px;
+    text-align:center;
+}
+
+.quiz-title{
+    color:#ffffff;
+    font-size:32px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.quiz-btn{
+    display:inline-block;
+    padding:18px 45px;
+    background:linear-gradient(45deg,#f59e0b,#d97706);
+    color:white;
+    font-size:20px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.quiz-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+  footer {
+        margin-top: auto;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 style="text-align:center;">Week 4 - Python Non-Primitive Data Structures - LIST</h1>
+
+<p>
+Python provides several built-in data structures that allow us to store collections of data.
+These are called <b>Non-Primitive Data Structures</b> because they can hold multiple values
+instead of a single value.
+</p>
+
+<h3>The four built-in non-primitive data structures in Python are:</h3>
+
+<ul>
+<li><b>List</b> – Ordered collection of elements that can be changed.</li>
+<li><b>Tuple</b> – Ordered collection but cannot be modified.</li>
+<li><b>Set</b> – Unordered collection of unique elements.</li>
+<li><b>Dictionary</b> – Collection of key-value pairs.</li>
+</ul>
+
+<p>
+In our syllabus we mainly focus on the <b>List</b> data structure.
+</p>
+
+<hr>
+
+<h2>Python List</h2>
+
+<p>
+A <b>List</b> is one of the most commonly used data structures in Python.
+It is used to store multiple items in a single variable.
+</p>
+
+<h3>Characteristics of Lists</h3>
+
+<ul>
+<li>Lists are <b>ordered</b>.</li>
+<li>Lists are <b>mutable</b> (can be modified).</li>
+<li>Lists allow <b>duplicate values</b>.</li>
+<li>Lists can contain different data types.</li>
+</ul>
+
+<h3>Creating a List</h3>
+
+<pre>
+numbers = [10, 20, 30, 40]
+names = ["Alice", "Bob", "Charlie"]
+</pre>
+
+<h3>Accessing List Elements</h3>
+
+<pre>
+numbers = [10,20,30]
+
+print(numbers[0])   # first element
+print(numbers[1])   # second element
+</pre>
+
+<h3>Common List Operations</h3>
+
+<ul>
+<li><b>append()</b> – Adds an element at the end</li>
+<li><b>insert()</b> – Adds an element at a specific position</li>
+<li><b>remove()</b> – Removes an element</li>
+<li><b>pop()</b> – Removes element using index</li>
+<li><b>len()</b> – Returns length of list</li>
+</ul>
+
+
+<h1 style="text-align:center; color:#2c3e50; margin-bottom:30px;">
+Week 4 – Python List Programs Explanation
+</h1>
+
+<h2>Program Explanations</h2>
+
+<hr>
+
+<div class="note">
+<b>Note for Students:</b><br><br>
+
+Understand how Python <b>Lists</b> are used to store and manipulate collections of data. 
+In these programs you will learn important list concepts such as:
+
+<ul>
+<li>Creating lists and reading list elements from user input</li>
+<li>Using list operations like <code>append()</code>, <code>sort()</code>, and list concatenation</li>
+<li>Accessing elements using <b>indexing</b> and <b>slicing</b></li>
+<li>Using <b>loops</b> and <b>conditional statements</b> to process list elements</li>
+<li>Performing operations like filtering numbers, rotating elements, and modifying list values</li>
+</ul>
+
+These concepts will help you understand how lists are used to solve real programming problems in Python.
+</div>
+
+<h2 style="color:#1a5276; margin-top:20px;">
+Program 1 – Arrange Negative Numbers Before Positive Numbers
+</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+input_str = input()
+numbers = [int(num) for num in input_str.strip('[]').split(',')]
+
+negatives = []
+positives = []
+
+for num in numbers:
+    if num < 0:
+        negatives.append(num)
+    else:
+        positives.append(num)
+
+arranged_numbers = negatives + positives
+print("List = ", arranged_numbers)
+</pre>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program reads a list of numbers as input.</li>
+
+<li><b>strip('[]')</b> removes square brackets from the input.</li>
+
+<li><b>split(',')</b> separates numbers using commas.</li>
+
+<li>The list comprehension converts each value into an integer.</li>
+
+<li>Two empty lists are created:
+<ul>
+<li><b>negatives</b> – stores negative numbers</li>
+<li><b>positives</b> – stores positive numbers</li>
+</ul>
+</li>
+
+<li>The loop checks each number in the list.</li>
+
+<li>If the number is negative it is stored in the <b>negatives</b> list.</li>
+
+<li>Otherwise it is stored in the <b>positives</b> list.</li>
+
+<li>Both lists are combined so that negative numbers appear first.</li>
+
+</ul>
+
+<div class="example">
+Example Input : [3,-2,5,-7,1] <br>
+Output : [-2,-7,3,5,1]
+</div>
+
+
+<!-- PROGRAM 2 -->
+
+<h2>Program 2 – Rotate List Elements by 2 Positions</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+n = int(input())
+workers = input().split()
+
+rotated = workers[-2:] + workers[:-2]
+
+print(' '.join(rotated))
+</pre>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program reads the number of elements <b>n</b>.</li>
+
+<li>The next input reads worker names separated by spaces.</li>
+
+<li><b>split()</b> converts the input into a list.</li>
+
+<li>The list is rotated two positions to the right using slicing.</li>
+
+<li><b>workers[-2:]</b> returns the last two elements.</li>
+
+<li><b>workers[:-2]</b> returns the remaining elements.</li>
+
+<li>The two lists are combined to produce the rotated list.</li>
+
+<li><b>join()</b> prints the list as a space separated string.</li>
+
+</ul>
+
+<div class="example">
+Input : A B C D E <br>
+Output : D E A B C
+</div>
+
+
+<!-- PROGRAM 3 -->
+
+<h2>Program 3 – Find the Smallest Missing Positive Number</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+n = int(input())
+st = input().split()
+a = [int(num) for num in st]
+
+positive_numbers = []
+
+for num in a:
+    if num > 0 and num not in positive_numbers:
+        positive_numbers.append(num)
+
+index = 1
+while True:
+    if index not in positive_numbers:
+        print(index)
+        break
+    index += 1
+</pre>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program reads a list of integers.</li>
+
+<li>The list comprehension converts input strings into integers.</li>
+
+<li>A new list <b>positive_numbers</b> stores only positive numbers.</li>
+
+<li>Duplicates are avoided using the condition
+<b>num not in positive_numbers</b>.</li>
+
+<li>The program then checks numbers starting from <b>1</b>.</li>
+
+<li>The first number not found in the list is printed.</li>
+
+</ul>
+
+<div class="example">
+Input : 3 4 -1 1 2 <br>
+Output : 5
+</div>
+
+
+<!-- PROGRAM 4 -->
+
+<h2>Program 4 – Find the Largest Divisor from the List</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+n = int(input())
+st = input().split(',')
+
+lst = [int(n) for n in st]
+
+out = []
+
+for ind in range(n):
+
+    divlst = [-1]
+
+    for div in range(n):
+
+        if lst[ind] % lst[div] == 0 and ind != div:
+            divlst.append(lst[div])
+
+    out.append(max(divlst))
+
+print(out)
+</pre>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program reads numbers separated by commas.</li>
+
+<li>List comprehension converts them into integers.</li>
+
+<li>For each number, the program checks which numbers divide it.</li>
+
+<li>The condition used is <b>lst[ind] % lst[div] == 0</b>.</li>
+
+<li>All divisors are stored in the list <b>divlst</b>.</li>
+
+<li><b>max(divlst)</b> finds the largest divisor.</li>
+
+<li>The result for each number is stored in the list <b>out</b>.</li>
+
+</ul>
+
+<div class="example">
+Input : 2,3,4,8 <br>
+Output : [-1,-1,2,4]
+</div>
+
+
+<!-- PROGRAM 5 -->
+
+<h2>Program 5 – Replace List Elements Using Conditions</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+n=int(input())
+l=[]
+
+for i in range(n):
+    l.append(int(input()))
+
+l.sort()
+print("Original List:",l)
+
+for i in range(len(l)):
+    if i==0:
+        l[i]=0
+    elif i%2==0:
+        l[i]=l[i]*l[i]*l[i]
+    else:
+        l[i]=l[i]*l[i]
+
+print("Replaced List:",l)
+</pre>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program reads <b>n</b> numbers from the user.</li>
+
+<li>All numbers are stored in a list.</li>
+
+<li>The list is sorted using <b>sort()</b>.</li>
+
+<li>The program modifies elements based on index position.</li>
+
+</ul>
+
+<b>Rules Applied</b>
+
+<ul>
+<li>Index 0 → replaced with 0</li>
+<li>Even index → square of the number</li>
+<li>Odd index → cube of the number</li>
+</ul>
+
+<div class="example">
+Original List : [1,2,3,4,5] <br>
+Replaced List : [0,4,27,16,125]
+</div>
+
+<!-- QUIZ CTA SECTION -->
+
+<div class="quiz-section">
+
+    <h2 class="quiz-title">
+        Ready to Test Your Knowledge?
+    </h2>
+
+    <a href="quiz4.html" class="quiz-btn">
+        Take Your Quiz
+    </a>
+
+</div>
+
+</div>
+<br>
+<br>
+<footer style="text-align:center; padding:10px;">
+&copy; 2026 Python Lab | Department of AIDS
+</footer>
+
+</body>
+</html>
