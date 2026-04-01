@@ -143,7 +143,7 @@ font-size: 15px;
 <div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav ms-auto">
 <li class="nav-item"><a class="nav-link" href="../index.html"><strong>Home</strong></a></li>
-<li class="nav-item"><a class="nav-link active" href="../mat/Bonafide_certificate.pdf" download>| Download Bonafide Certificate</a></li>
+<!--<li class="nav-item"><a class="nav-link active" href="../mat/Bonafide_certificate.pdf" download>| Download Bonafide Certificate</a></li>-->
 </ul>
 </div>
 </div>
@@ -184,11 +184,15 @@ Submissions after this Date will <span class="project-not-done"><b>NOT</b></span
 
 <button class="btn btn-outline-success me-2" onclick="filterStatus('submitted')">Submitted</button>
 
+<!--
+
 <button class="btn btn-outline-secondary me-2" onclick="filterStatus('pending')">Pending</button>
 
 <button class="btn btn-outline-warning me-2" onclick="filterStatus('clarification')">Need Clarification</button>
 
 <button class="btn btn-outline-dark" onclick="filterStatus('notitle')">Title Not Given</button>
+
+-->
 
 <button class="btn btn-outline-danger me-2" onclick="filterStatus('notsubmitted')">Not Submitted</button>
 
@@ -368,7 +372,6 @@ Viva (10) & Project Evaluation (50)
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
 const clarificationStudents = [
      //"241801125"
@@ -402,6 +405,41 @@ const completedStudents = [
      "241801154",
      "241801231",
      "241801214",
+     "241801081",
+    "241801086",
+    "241801126",
+    "241801130",
+    "241801139",
+    "241801142",
+    "241801147",
+    "241801157",
+    "241801165",
+    "241801166",
+    "241801187",
+    "241801204",
+    "241801218",
+    "241801223",
+    "241801236",
+    "241801242",
+    "241801244",
+    "241801250",
+    "241801254",
+    "241801256",
+    "241801262",
+    "241801270",
+    "241801275",
+    "241801294",
+    "241801297",
+    "241801310",
+    "241801323",
+    "241801027",
+    "241801029",
+    "241801044",
+    "241801050",
+    "241801056",
+    "241801071",
+    "241801163"
+
 
 ];
 
@@ -433,21 +471,58 @@ const marksData = {
     "241801154": "56",
     "241801231": "53",
     "241801214": "55",
-
-    
-
-
-
-
-
-  
+    "241801027": "51",
+    "241801029": "51",
+    "241801044": "53",
+    "241801050": "53",
+    "241801056": "52",
+    "241801071": "52",
+    "241801081": "54",
+    "241801086": "51",
+    "241801126": "52",
+    "241801130": "52",
+    "241801139": "51",
+    "241801142": "56",
+    "241801147": "51",
+    "241801157": "52",
+    "241801165": "54",
+    "241801166": "51",
+    "241801187": "51",
+    "241801204": "51",
+    "241801218": "60",
+    "241801223": "56",
+    "241801236": "52",
+    "241801242": "51",
+    "241801244": "53",
+    "241801250": "51",
+    "241801254": "53",
+    "241801256": "51",
+    "241801262": "51",
+    "241801270": "51",
+    "241801275": "55",
+    "241801294": "52",
+    "241801297": "53",
+    "241801310": "53",
+    "241801323": "55",  
+    "241801163": "40"
 
 };
 
 const notSubmittedStudents = [
-   //  "241801086",
 
+    "241801018",
+    "241801116",
+    "241801140",
+    //"241801163",
+    "241801188",
+    "241801211",
+    "241801257",
+    "241801272",
+    "241801274",
+    "241801293",
 ];
+
+document.addEventListener("DOMContentLoaded", function () {
 
 const rows = document.querySelectorAll("#projectTable tbody tr");
 
@@ -551,29 +626,25 @@ const rows = document.querySelectorAll("#projectTable tbody tr");
 
 rows.forEach(row => {
 
-const submission = row.cells[5].innerText.toLowerCase();
-const faculty = row.cells[4].innerText.toLowerCase();
-const title = row.cells[3].innerText.toLowerCase();
+const regNo = row.cells[1].innerText.trim();
 
 row.style.display = "";
 
-if(status === "submitted" && !submission.includes("submitted"))
+if(status === "submitted" && !completedStudents.includes(regNo))
 row.style.display = "none";
 
-else if(status === "pending" && !submission.includes("pending"))
+else if(status === "pending" && completedStudents.includes(regNo))
 row.style.display = "none";
 
-else if(status === "clarification" && !faculty.includes("clarification"))
+else if(status === "clarification" && !clarificationStudents.includes(regNo))
 row.style.display = "none";
 
-else if(status === "notsubmitted" && !submission.includes("not submitted"))
-row.style.display = "none";
-
-else if(status === "notitle" && !title.includes("title not given"))
+else if(status === "notsubmitted" && !notSubmittedStudents.includes(regNo))
 row.style.display = "none";
 
 });
-updateSerialNumbers(); 
+
+updateSerialNumbers();
 }
 
 function updateSerialNumbers() {
@@ -600,7 +671,7 @@ count++;
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script> 
 
 </body>
 </html>

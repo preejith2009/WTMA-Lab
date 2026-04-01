@@ -131,6 +131,32 @@ color:black;
 font-weight:bold;
 }
 
+.failed-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.failed-table th {
+    background-color: #6a4c93;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.failed-table td {
+    background-color: #ffb3b3;
+    color: #000;
+    font-weight: 600;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #999;
+}
+
+.failed-table tr:hover td {
+    background-color: #ff8a8a;
+}
+
 </style>
 
 <script>
@@ -140,6 +166,11 @@ function showMarks(type){
 document.getElementById("clientMarks").style.display="none";
 document.getElementById("serverMarks").style.display="none";
 document.getElementById("attendanceMarks").style.display="none";
+document.getElementById("mobileMarks").style.display="none";
+
+/* reset search result */
+document.getElementById("searchBox").value="";
+document.getElementById("studentResult").style.display="none";
 
 if(type=="client"){
 document.getElementById("clientMarks").style.display="block";
@@ -147,6 +178,10 @@ document.getElementById("clientMarks").style.display="block";
 
 if(type=="server"){
 document.getElementById("serverMarks").style.display="block";
+}
+
+if(type=="mobile"){
+document.getElementById("mobileMarks").style.display="block";
 }
 
 if(type=="attendance"){
@@ -157,28 +192,47 @@ document.getElementById("attendanceMarks").style.display="block";
 
 function searchStudent(){
 
-let input=document.getElementById("searchBox").value.toUpperCase();
-let table=document.getElementById("marksTable");
-let tr=table.getElementsByTagName("tr");
+let input = document.getElementById("searchBox").value.trim().toUpperCase();
 
-for(let i=1;i<tr.length;i++){
-
-let td=tr[i].getElementsByTagName("td")[0];
-
-if(td){
-
-let txtValue=td.textContent || td.innerText;
-
-if(txtValue.toUpperCase().indexOf(input)>-1){
-tr[i].style.display="";
-}
-else{
-tr[i].style.display="none";
+if(input.length < 3){
+document.getElementById("studentResult").style.display = "none";
+return;
 }
 
+let rows = document.querySelectorAll("#marksTable tbody tr");
+let found = false;
+
+rows.forEach(function(row){
+
+let reg = row.cells[0].innerText.trim().toUpperCase();
+
+if(reg.includes(input)){
+
+let name = row.cells[1].innerText;
+let total = row.cells[7].innerText;
+
+document.getElementById("studentResult").style.display = "block";
+
+document.getElementById("resultContent").innerHTML =
+"Register No: <b>"+reg+"</b> &nbsp;&nbsp; | &nbsp;&nbsp; " +
+"Name: <b>"+name+"</b> &nbsp;&nbsp; | &nbsp;&nbsp; " +
+"Total: <b>"+total+" / 100</b>";
+
+found = true;
+
+}
+
+});
+
+if(!found){
+document.getElementById("studentResult").style.display="none";
 }
 
 }
+
+function clearSearch(){
+
+document.getElementById("searchBox").value = "";
 
 }
 
@@ -248,6 +302,10 @@ Client Side Marks
 Server Side Marks
 </button>
 
+<button class="btn btn-success me-3" onclick="showMarks('mobile')">
+Mobile App Marks
+</button>
+
 <button class="btn btn-warning" onclick="showMarks('attendance')">
 Student Attendance
 </button>
@@ -257,7 +315,7 @@ Student Attendance
 </div>
 
 
-
+<!--
 <div id="clientMarks" class="marks-section">
 
 <div class="mb-3 text-center">
@@ -279,6 +337,82 @@ placeholder="🔎 Search Your Register Number Here">
 </div>
 
 </div>
+<h4 style="color:#b02a37;">Students Below 50 Marks</h4>
+
+<table class="failed-table">
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Reg No</th>
+<th>Total (100)</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Luei Johncena J</td>
+<td>241801140</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Karan S</td>
+<td>241801116</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td>Anandh M</td>
+<td>241801018</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>S.K.PRATHOSH</td>
+<td>241801211</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>Snehan S</td>
+<td>241801272</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>THARUN ADITHYA A</td>
+<td>241801293</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>Mohamed Rayan M I</td>
+<td>241801163</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Nischal S</td>
+<td>241801188</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Shakthi bm</td>
+<td>241801257</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Srikumaran S</td>
+<td>241801274</td>
+<td>40</td>
+</tr>
+
+</tbody>
+</table>
 
 <table class="marks-table" id="marksTable">
 
@@ -301,82 +435,275 @@ placeholder="🔎 Search Your Register Number Here">
 
 <tbody>
 
-<!-- student Mark row -->
+ student Mark row 
 
-<tr><td>241801018</td><td>Anandh M</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801027</td><td>Arun s</td><td>10</td><td>10</td><td>0</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801029</td><td>Athin Parish D</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801038</td><td>Danya A</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801042</td><td>DARSSHINI P</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801044</td><td>Deepika G</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801050</td><td>Dhanalakshmi M</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801056</td><td>DILIP R</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801071</td><td>Gayathri.m</td><td>10</td><td>10</td><td>0</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801081</td><td>HARIPRIYA P</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801086</td><td>Harishkumar ID</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801116</td><td>Karan S</td><td>10</td><td>0</td><td>0</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801125</td><td>Keshini L</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801126</td><td>Kiran Ajay SN</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801130</td><td>Lakshana.b</td><td>10</td><td>10</td><td>0</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801139</td><td>lokeshwaran B</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801140</td><td>Luei Johncena J</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801142</td><td>Madhan Rasamalla Venkatesalu</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801147</td><td>Mageshwaran G</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801150</td><td>Manikandan .V</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801154</td><td>Maragadhavel.T</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801157</td><td>K K Mithul Kiruthik</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801163</td><td>Mohamed Rayan M I</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801165</td><td>Mohammed Fayyad</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801166</td><td>Mohammed Irfan S</td><td>0</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801176</td><td>Muthuraj R</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801187</td><td>Niranjan Kumar A</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801188</td><td>Nischal S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801189</td><td>Nishanth R</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801197</td><td>Parvendhan C</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801204</td><td>PRAJESH B</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801211</td><td>S.K.PRATHOSH</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801214</td><td>Praveen Ramanan K</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801215</td><td>Predhep Raj V</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801218</td><td>PUSHPA LAKSHMI J</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801223</td><td>Ramya J T</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801231</td><td>ROHAN GIRI</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801236</td><td>Sabarish T</td><td>0</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801238</td><td>Sai Rajaram J</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801239</td><td>Sai Sri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801242</td><td>Sanjai.E</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801244</td><td>sanjay kumar k</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801249</td><td>Santhiya Shree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801250</td><td>Santhosh kumar.R</td><td>10</td><td>0</td><td>0</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801254</td><td>Saravanan B</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801255</td><td>Senthil Kumar S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801256</td><td>V Shailesh Kumar</td><td>0</td><td>0</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801257</td><td>Shakthi bm</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801262</td><td>Shavin C</td><td>0</td><td>0</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801267</td><td>Shyam M</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801268</td><td>shyam sundar k</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801270</td><td>Siva Sri Ranjhan S</td><td>0</td><td>0</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801272</td><td>Snehan S</td><td>0</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801274</td><td>Srikumaran S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801275</td><td>Sri Ramkanna</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801281</td><td>Sujitha Neelakandan Vigneshwar</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801282</td><td>B Sunetra</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801284</td><td>SURIYA SM</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801291</td><td>Tarrun B</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801293</td><td>THARUN ADITHYA A</td><td>10</td><td>0</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801294</td><td>Tharun N</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801297</td><td>THARUNIKA SS</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801298</td><td>tharunprakash g</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801300</td><td>K Thirunesh</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801310</td><td>Vidhyashree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801311</td><td>vijay antony l</td><td>10</td><td>10</td><td>10</td><td>0</td><td></td><td></td></tr>
-<tr><td>241801315</td><td>vishal G</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801317</td><td>VISHAL V</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801323</td><td>Yashwanth.S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
-<tr><td>241801325</td><td>Yogasri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td></td><td></td></tr>
+<tr><td>241801018</td><td>Anandh M</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>30</td></tr>
+<tr><td>241801027</td><td>Arun s</td><td>10</td><td>10</td><td>0</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801029</td><td>Athin Parish D</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801038</td><td>Danya A</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801042</td><td>DARSSHINI P</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801044</td><td>Deepika G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801050</td><td>Dhanalakshmi M</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801056</td><td>DILIP R</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801071</td><td>Gayathri.m</td><td>10</td><td>10</td><td>0</td><td>0</td><td>52</td><td>72</td></tr>
+<tr><td>241801081</td><td>HARIPRIYA P</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801086</td><td>Harishkumar ID</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801116</td><td>Karan S</td><td>10</td><td>0</td><td>0</td><td>10</td><td>0</td><td>20</td></tr>
+<tr><td>241801125</td><td>Keshini L</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801126</td><td>Kiran Ajay SN</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801130</td><td>Lakshana.b</td><td>10</td><td>10</td><td>0</td><td>0</td><td>52</td><td>72</td></tr>
+<tr><td>241801139</td><td>lokeshwaran B</td><td>10</td><td>10</td><td>10</td><td>0</td><td>51</td><td>81</td></tr>
+<tr><td>241801140</td><td>Luei Johncena J</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>241801142</td><td>Madhan Rasamalla Venkatesalu</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801147</td><td>Mageshwaran G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801150</td><td>Manikandan .V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100</td></tr>
+<tr><td>241801154</td><td>Maragadhavel.T</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801157</td><td>K K Mithul Kiruthik</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801163</td><td>Mohamed Rayan M I</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801165</td><td>Mohammed Fayyad</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801166</td><td>Mohammed Irfan S</td><td>0</td><td>10</td><td>10</td><td>0</td><td>51</td><td>71</td></tr>
+<tr><td>241801176</td><td>Muthuraj R</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801187</td><td>Niranjan Kumar A</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801188</td><td>Nischal S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801189</td><td>Nishanth R</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801197</td><td>Parvendhan C</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801204</td><td>PRAJESH B</td><td>10</td><td>0</td><td>10</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801211</td><td>S.K.PRATHOSH</td><td>10</td><td>0</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801214</td><td>Praveen Ramanan K</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801215</td><td>Predhep Raj V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801218</td><td>PUSHPA LAKSHMI J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100</td></tr>
+<tr><td>241801223</td><td>Ramya J T</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801231</td><td>ROHAN GIRI</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801236</td><td>Sabarish T</td><td>0</td><td>0</td><td>10</td><td>10</td><td>52</td><td>72</td></tr>
+<tr><td>241801238</td><td>Sai Rajaram J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801239</td><td>Sai Sri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801242</td><td>Sanjai.E</td><td>10</td><td>0</td><td>10</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801244</td><td>sanjay kumar k</td><td>10</td><td>0</td><td>10</td><td>10</td><td>53</td><td>83</td></tr>
+<tr><td>241801249</td><td>Santhiya Shree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801250</td><td>Santhosh kumar.R</td><td>10</td><td>0</td><td>0</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801254</td><td>Saravanan B</td><td>0</td><td>0</td><td>0</td><td>0</td><td>53</td><td>53</td></tr>
+<tr><td>241801255</td><td>Senthil Kumar S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801256</td><td>V Shailesh Kumar</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801257</td><td>Shakthi bm</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801262</td><td>Shavin C</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801267</td><td>Shyam M</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801268</td><td>shyam sundar k</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801270</td><td>Siva Sri Ranjhan S</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801272</td><td>Snehan S</td><td>0</td><td>10</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801274</td><td>Srikumaran S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801275</td><td>Sri Ramkanna</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801281</td><td>Sujitha Neelakandan Vigneshwar</td><td>10</td><td>0</td><td>10</td><td>10</td><td>52</td><td>82</td></tr>
+<tr><td>241801282</td><td>B Sunetra</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801284</td><td>SURIYA SM</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801291</td><td>Tarrun B</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801293</td><td>THARUN ADITHYA A</td><td>10</td><td>0</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801294</td><td>Tharun N</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801297</td><td>THARUNIKA SS</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801298</td><td>tharunprakash g</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801300</td><td>K Thirunesh</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801310</td><td>Vidhyashree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801311</td><td>vijay antony l</td><td>10</td><td>10</td><td>10</td><td>0</td><td>54</td><td>84</td></tr>
+<tr><td>241801315</td><td>vishal G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801317</td><td>VISHAL V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801323</td><td>Yashwanth.S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801325</td><td>Yogasri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+</tbody>
+
+</table>
+
+</div>
+-->
+
+<!-- new code section-->
+ <div id="clientMarks" class="marks-section container mt-4">
+
+<!-- ===== Section Title ===== -->
+<h3 class="text-center mb-4">WTMA Student Marks Dashboard</h3>
+
+
+<!-- ===== Search + Download Row ===== -->
+<div class="row mb-4 align-items-center">
+
+<div class="col-md-6">
+<input
+type="text"
+id="searchBox"
+onkeyup="searchStudent()"
+onblur="clearSearch()"
+class="form-control"
+placeholder="🔎 Search using Register Number, Enter atleast 3 Digit">
+</div>
+
+
+
+
+<div class="col-md-6 text-end">
+<button class="btn btn-success" onclick="downloadExcel()">
+📥 Download Excel
+</button>
+</div>
+
+</div>
+
+<div id="studentResult" class="alert alert-info text-center" style="display:none;">
+<strong>Student Result</strong><br>
+<span id="resultContent"></span>
+</div>
+
+<!-- ===== Students Requiring Improvement ===== -->
+
+<div class="card mb-5 shadow-sm">
+
+<div class="card-header bg-danger text-white">
+Students Requiring Improvement (Below 50 Marks)
+</div>
+
+<div class="card-body p-0">
+
+<table class="table table-bordered table-hover text-center mb-0">
+
+<thead class="table-light">
+<tr>
+<th>Sl No</th>
+<th>Name</th>
+<th>Register No</th>
+<th>Total (100)</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr class="table-danger"><td>1</td><td>Luei Johncena J</td><td>241801140</td><td>0</td></tr>
+<tr class="table-danger"><td>2</td><td>Karan S</td><td>241801116</td><td>20</td></tr>
+<tr class="table-danger"><td>3</td><td>Anandh M</td><td>241801018</td><td>30</td></tr>
+<tr class="table-danger"><td>4</td><td>S.K.PRATHOSH</td><td>241801211</td><td>30</td></tr>
+<tr class="table-danger"><td>5</td><td>Snehan S</td><td>241801272</td><td>30</td></tr>
+<tr class="table-danger"><td>6</td><td>THARUN ADITHYA A</td><td>241801293</td><td>30</td></tr>
+<!--<tr class="table-danger"><td>7</td><td>Mohamed Rayan M I</td><td>241801163</td><td>40</td></tr>-->
+<tr class="table-danger"><td>7</td><td>Nischal S</td><td>241801188</td><td>40</td></tr>
+<tr class="table-danger"><td>8</td><td>Shakthi bm</td><td>241801257</td><td>40</td></tr>
+<tr class="table-danger"><td>9</td><td>Srikumaran S</td><td>241801274</td><td>40</td></tr>
 
 </tbody>
 
 </table>
+</div>
+</div>
+
+
+
+<!-- ===== Complete Marks Table ===== -->
+
+<div class="card shadow-sm">
+
+<div class="card-header bg-primary text-white">
+Complete Student Marks
+</div>
+
+<div class="card-body p-0">
+
+<div class="table-responsive">
+
+<table class="table table-striped table-bordered text-center mb-0" id="marksTable">
+
+<thead class="table-dark">
+
+<tr>
+<th>Register No</th>
+<th>Student Name</th>
+<th>Week 1</th>
+<th>Week 2</th>
+<th>Week 3</th>
+<th>Week 4</th>
+<th>Mini Project (60)</th>
+<th>Total (100)</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<!-- student Mark row -->
+
+<tr><td>241801018</td><td>Anandh M</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>30</td></tr>
+<tr><td>241801027</td><td>Arun s</td><td>10</td><td>10</td><td>0</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801029</td><td>Athin Parish D</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801038</td><td>Danya A</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801042</td><td>DARSSHINI P</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801044</td><td>Deepika G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801050</td><td>Dhanalakshmi M</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801056</td><td>DILIP R</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801071</td><td>Gayathri.m</td><td>10</td><td>10</td><td>0</td><td>0</td><td>52</td><td>72</td></tr>
+<tr><td>241801081</td><td>HARIPRIYA P</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801086</td><td>Harishkumar ID</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801116</td><td>Karan S</td><td>10</td><td>0</td><td>0</td><td>10</td><td>0</td><td>20</td></tr>
+<tr><td>241801125</td><td>Keshini L</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801126</td><td>Kiran Ajay SN</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801130</td><td>Lakshana.b</td><td>10</td><td>10</td><td>0</td><td>0</td><td>52</td><td>72</td></tr>
+<tr><td>241801139</td><td>lokeshwaran B</td><td>10</td><td>10</td><td>10</td><td>0</td><td>51</td><td>81</td></tr>
+<tr><td>241801140</td><td>Luei Johncena J</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>241801142</td><td>Madhan Rasamalla Venkatesalu</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801147</td><td>Mageshwaran G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801150</td><td>Manikandan .V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100</td></tr>
+<tr><td>241801154</td><td>Maragadhavel.T</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801157</td><td>K K Mithul Kiruthik</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801163</td><td>Mohamed Rayan M I</td><td>10</td><td>10</td><td>10</td><td>10</td><td>40</td><td>80</td></tr>
+<tr><td>241801165</td><td>Mohammed Fayyad</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801166</td><td>Mohammed Irfan S</td><td>0</td><td>10</td><td>10</td><td>0</td><td>51</td><td>71</td></tr>
+<tr><td>241801176</td><td>Muthuraj R</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801187</td><td>Niranjan Kumar A</td><td>10</td><td>10</td><td>10</td><td>10</td><td>51</td><td>91</td></tr>
+<tr><td>241801188</td><td>Nischal S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801189</td><td>Nishanth R</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801197</td><td>Parvendhan C</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801204</td><td>PRAJESH B</td><td>10</td><td>0</td><td>10</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801211</td><td>S.K.PRATHOSH</td><td>10</td><td>0</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801214</td><td>Praveen Ramanan K</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801215</td><td>Predhep Raj V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801218</td><td>PUSHPA LAKSHMI J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>60</td><td>100</td></tr>
+<tr><td>241801223</td><td>Ramya J T</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801231</td><td>ROHAN GIRI</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801236</td><td>Sabarish T</td><td>0</td><td>0</td><td>10</td><td>10</td><td>52</td><td>72</td></tr>
+<tr><td>241801238</td><td>Sai Rajaram J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801239</td><td>Sai Sri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801242</td><td>Sanjai.E</td><td>10</td><td>0</td><td>10</td><td>10</td><td>51</td><td>81</td></tr>
+<tr><td>241801244</td><td>sanjay kumar k</td><td>10</td><td>0</td><td>10</td><td>10</td><td>53</td><td>83</td></tr>
+<tr><td>241801249</td><td>Santhiya Shree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801250</td><td>Santhosh kumar.R</td><td>10</td><td>0</td><td>0</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801254</td><td>Saravanan B</td><td>0</td><td>0</td><td>0</td><td>0</td><td>53</td><td>53</td></tr>
+<tr><td>241801255</td><td>Senthil Kumar S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>57</td><td>97</td></tr>
+<tr><td>241801256</td><td>V Shailesh Kumar</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801257</td><td>Shakthi bm</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801262</td><td>Shavin C</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801267</td><td>Shyam M</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801268</td><td>shyam sundar k</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801270</td><td>Siva Sri Ranjhan S</td><td>0</td><td>0</td><td>10</td><td>0</td><td>51</td><td>61</td></tr>
+<tr><td>241801272</td><td>Snehan S</td><td>0</td><td>10</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801274</td><td>Srikumaran S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>40</td></tr>
+<tr><td>241801275</td><td>Sri Ramkanna</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801281</td><td>Sujitha Neelakandan Vigneshwar</td><td>10</td><td>0</td><td>10</td><td>10</td><td>52</td><td>82</td></tr>
+<tr><td>241801282</td><td>B Sunetra</td><td>10</td><td>10</td><td>10</td><td>10</td><td>58</td><td>98</td></tr>
+<tr><td>241801284</td><td>SURIYA SM</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801291</td><td>Tarrun B</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801293</td><td>THARUN ADITHYA A</td><td>10</td><td>0</td><td>10</td><td>10</td><td>0</td><td>30</td></tr>
+<tr><td>241801294</td><td>Tharun N</td><td>10</td><td>10</td><td>10</td><td>0</td><td>52</td><td>82</td></tr>
+<tr><td>241801297</td><td>THARUNIKA SS</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801298</td><td>tharunprakash g</td><td>10</td><td>10</td><td>10</td><td>10</td><td>56</td><td>96</td></tr>
+<tr><td>241801300</td><td>K Thirunesh</td><td>10</td><td>10</td><td>10</td><td>10</td><td>53</td><td>93</td></tr>
+<tr><td>241801310</td><td>Vidhyashree J</td><td>10</td><td>10</td><td>10</td><td>10</td><td>52</td><td>92</td></tr>
+<tr><td>241801311</td><td>vijay antony l</td><td>10</td><td>10</td><td>10</td><td>0</td><td>54</td><td>84</td></tr>
+<tr><td>241801315</td><td>vishal G</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801317</td><td>VISHAL V</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+<tr><td>241801323</td><td>Yashwanth.S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>54</td><td>94</td></tr>
+<tr><td>241801325</td><td>Yogasri S</td><td>10</td><td>10</td><td>10</td><td>10</td><td>55</td><td>95</td></tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
 
 </div>
 
@@ -386,6 +713,13 @@ placeholder="🔎 Search Your Register Number Here">
 <h3 class="text-center"><strong>Server Side Marks will be Published after Completion</strong></h3>
 
 </div>
+
+<div id="mobileMarks" class="marks-section">
+
+<h3 class="text-center"><strong>Mobile App Marks will be Published after Completion</strong></h3>
+
+</div>
+
 
 <div id="attendanceMarks" class="marks-section">
 
