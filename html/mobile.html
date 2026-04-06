@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mobile Application Programming - WTMA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+h2{
+color:#6a0dad;
+font-weight:800;
+margin-bottom:15px;
+}
+
+section[class^="bg"]{
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:14px;
+    font-weight:bold;
+}
+
+.bg1{background:linear-gradient(135deg,#e3f2fd,#bbdefb);}
+.bg2{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);}
+.bg3{background:linear-gradient(135deg,#fff3e0,#ffe0b2);}
+.bg4{background:linear-gradient(135deg,#f3e5f5,#e1bee7);}
+.bg5{background:linear-gradient(135deg,#ede7f6,#d1c4e9);}
+
+h2{
+color:#6a0dad;
+font-weight:800;
+margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+
+<a class="navbar-brand" href="../index.html">WTMA Lab</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="../index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="#">Mobile App Programming</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+<!-- PAGE HEADER -->
+
+<section class="bg-primary text-white text-center p-5">
+
+<div class="container">
+
+<h1>Mobile Application Programming</h1>
+
+<p class="lead">
+Android Development using Android Studio
+</p>
+
+</div>
+
+</section>
+
+<section class="p-5">
+
+<div class="container">
+
+<!-- INTRODUCTION -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+1️⃣ Introduction to Android
+</div>
+
+<div class="card-body">
+
+<p>
+Android is an open-source mobile operating system developed by Google.
+It is widely used to develop applications for smartphones, tablets and wearable devices.
+</p>
+
+<ul>
+<li>Uses Java / Kotlin programming</li>
+<li>UI designed using XML</li>
+<li>Developed using Android Studio IDE</li>
+</ul>
+
+</div>
+</div>
+
+<!-- UI ELEMENTS -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+2️⃣ Android UI Screen Elements
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered text-center">
+
+<thead class="table-light">
+
+<tr>
+<th>UI Element</th>
+<th>Description</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>TextView</td>
+<td>Displays text</td>
+</tr>
+
+<tr>
+<td>EditText</td>
+<td>User input field</td>
+</tr>
+
+<tr>
+<td>Button</td>
+<td>Triggers action</td>
+</tr>
+
+<tr>
+<td>ImageView</td>
+<td>Displays images</td>
+</tr>
+
+<tr>
+<td>CheckBox</td>
+<td>Multiple selections</td>
+</tr>
+
+<tr>
+<td>RadioButton</td>
+<td>Single selection</td>
+</tr>
+
+<tr>
+<td>Spinner</td>
+<td>Dropdown list</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+<!-- LAYOUTS -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+3️⃣ Designing User Interfaces with Layouts
+</div>
+
+<div class="card-body">
+
+<p>
+Layouts arrange UI elements on the screen.
+</p>
+
+<ul>
+<li>LinearLayout</li>
+<li>RelativeLayout</li>
+<li>ConstraintLayout</li>
+<li>FrameLayout</li>
+<li>TableLayout</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<pre class="bg-light p-3">
+
+&lt;LinearLayout
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"&gt;
+
+&lt;TextView android:text="Username"/&gt;
+
+&lt;EditText android:id="@+id/txtUser"/&gt;
+
+&lt;Button android:text="Login"/&gt;
+
+&lt;/LinearLayout&gt;
+
+</pre>
+
+</div>
+</div>
+
+<!-- ANIMATION -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+4️⃣ Drawing and Working with Animation
+</div>
+
+<div class="card-body">
+
+<ul>
+
+<li>Tween Animation</li>
+
+<li>Frame Animation</li>
+
+</ul>
+
+<pre class="bg-light p-3">
+
+&lt;alpha
+android:duration="2000"
+android:fromAlpha="0.0"
+android:toAlpha="1.0"/&gt;
+
+</pre>
+
+</div>
+</div>
+
+<!-- TESTING -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+5️⃣ Testing Android Applications
+</div>
+
+<div class="card-body">
+
+<ul>
+
+<li>Unit Testing</li>
+
+<li>UI Testing</li>
+
+<li>Integration Testing</li>
+
+<li>Manual Testing</li>
+
+</ul>
+
+<p><strong>Testing Tools:</strong></p>
+
+<ul>
+
+<li>Android Emulator</li>
+
+<li>Logcat</li>
+
+<li>JUnit</li>
+
+<li>Espresso</li>
+
+</ul>
+
+</div>
+</div>
+
+<!-- PUBLISHING -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+6️⃣ Publishing Android Applications
+</div>
+
+<div class="card-body">
+
+<ol>
+
+<li>Develop the application</li>
+
+<li>Test the application</li>
+
+<li>Generate Signed APK</li>
+
+<li>Create Google Play Developer Account</li>
+
+<li>Upload application</li>
+
+</ol>
+
+<pre class="bg-light p-3">
+
+Build → Generate Signed Bundle / APK
+
+</pre>
+
+</div>
+</div>
+
+<!-- ARCHITECTURE -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+7️⃣ Android Architecture
+</div>
+
+<div class="card-body">
+
+<ul>
+
+<li>Applications</li>
+
+<li>Application Framework</li>
+
+<li>Android Runtime</li>
+
+<li>Native Libraries</li>
+
+<li>Linux Kernel</li>
+
+</ul>
+
+<img src="https://developer.android.com/static/guide/platform/images/android-stack_2x.png" class="img-fluid">
+
+</div>
+</div>
+
+<!-- ACTIVITY LIFECYCLE -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+8️⃣ Activity Lifecycle
+</div>
+
+<div class="card-body">
+
+<ul>
+
+<li>onCreate()</li>
+
+<li>onStart()</li>
+
+<li>onResume()</li>
+
+<li>onPause()</li>
+
+<li>onStop()</li>
+
+<li>onDestroy()</li>
+
+</ul>
+
+<img src="https://developer.android.com/static/images/activity_lifecycle.png" class="img-fluid">
+
+</div>
+</div>
+
+<!-- ANDROID STUDIO -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+9️⃣ Android Studio Installation
+</div>
+
+<div class="card-body">
+
+<ol>
+
+<li>Download Android Studio</li>
+
+<li>Run installer</li>
+
+<li>Install SDK components</li>
+
+<li>Launch Android Studio</li>
+
+</ol>
+
+<a href="https://developer.android.com/studio" class="btn btn-outline-primary" target="_blank">
+Download Android Studio
+</a>
+
+</div>
+</div>
+
+<!-- EMULATOR -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+🔟 Android Emulator Setup
+</div>
+
+<div class="card-body">
+
+<ol>
+
+<li>Open Android Studio</li>
+
+<li>Open Device Manager</li>
+
+<li>Create Virtual Device</li>
+
+<li>Select Android Version</li>
+
+<li>Start Emulator</li>
+
+</ol>
+
+</div>
+</div>
+
+<!-- MANIFEST -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+1️⃣1️⃣ Android Manifest File
+</div>
+
+<div class="card-body">
+
+<p>The AndroidManifest.xml file contains essential information about the application.</p>
+
+<pre class="bg-light p-3">
+
+&lt;manifest package="com.example.app"&gt;
+
+&lt;application&gt;
+
+&lt;activity android:name=".MainActivity"&gt;
+
+&lt;intent-filter&gt;
+&lt;action android:name="android.intent.action.MAIN"/&gt;
+&lt;category android:name="android.intent.category.LAUNCHER"/&gt;
+&lt;/intent-filter&gt;
+
+&lt;/activity&gt;
+
+&lt;/application&gt;
+
+&lt;/manifest&gt;
+
+</pre>
+
+</div>
+</div>
+
+<!-- INTENTS -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+1️⃣2️⃣ Android Intents
+</div>
+
+<div class="card-body">
+
+<p>Intents are used for communication between Android components.</p>
+
+<pre class="bg-light p-3">
+
+Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+startActivity(intent);
+
+</pre>
+
+</div>
+</div>
+
+<!-- PERMISSIONS -->
+
+<div class="card mb-4">
+
+<div class="card-header bg-dark text-white">
+1️⃣3️⃣ Android Permissions
+</div>
+
+<div class="card-body">
+
+<p>Permissions allow apps to access sensitive device features.</p>
+
+<pre class="bg-light p-3">
+
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+
+&lt;uses-permission android:name="android.permission.CAMERA"/&gt;
+
+</pre>
+
+</div>
+</div>
+
+<!-- VIDEO RESOURCES -->
+<section class="bg2 py-5">
+
+<h2 class="text-center">Video Learning Resources</h2>
+<p class="text-center">
+Here are some recommended videos to help you understand 
+Android application development concepts better.
+</p>
+
+<div class="container mt-4">
+
+<h4 class="text-center mb-4">
+Step-by-Step Android Development Videos
+</h4>
+
+<!-- Row 1 -->
+<div class="row justify-content-center">
+
+<div class="col-md-4 mb-4">
+<div class="ratio ratio-16x9 shadow-sm">
+<iframe src="https://www.youtube.com/embed/iqI6MAsi1Xg"
+title="Introduction to Android App Development"
+frameborder="0"
+allowfullscreen></iframe>
+</div>
+
+<p class="mt-2 text-center fw-semibold">
+Introduction to Android App Development
+</p>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="ratio ratio-16x9 shadow-sm">
+
+<iframe src="https://www.youtube.com/embed/AGmoCiMNBFw"
+title="Installing Android Studio"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<p class="mt-2 text-center fw-semibold">
+Installing/Configuring Android Studio
+</p>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="ratio ratio-16x9 shadow-sm">
+<iframe src="https://www.youtube.com/embed/QI1dCZa1c2Q" allowfullscreen></iframe>
+
+</div>
+<p class="mt-2 text-center fw-semibold">
+Creating First Android Hello World Application
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+         <!-- REFERENCES -->
+
+        <div class="card mt-4">
+         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <span>Lab Experiment Schedule</span>
+            <span class="badge bg-success">Academic Year 2025-26</span>
+        </div>
+        </div>
+            
+            <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #53f11f;
+        vertical-align: top;
+    }
+
+    /* Highlight Date column */
+    td:nth-child(2) {
+        background-color: #e8f4ff;
+        font-weight: 600;
+    }
+
+    /* Highlight Program column */
+    td:nth-child(3) {
+        background-color: #f5fff0;
+    }
+
+    /* Row hover effect */
+    tr:hover {
+        background-color: #85d2ea;
+    }
+
+    /* Improve button look */
+    .btn {
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    .btn-outline-primary {
+        border: 1px solid #0d6efd;
+        color: #0d6efd;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    /* Column 1 - Sl No */
+td:nth-child(1) {
+    background-color: #f1f3f5;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Column 2 - Date */
+td:nth-child(2) {
+    background-color: #e7f1ff;
+    font-weight: 600;
+}
+
+/* Column 3 - Programs (optional but recommended) */
+td:nth-child(3) {
+    background-color: #f4fff2;
+}
+
+/* Slight rounded feel for table */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Row hover */
+tr:hover {
+    background-color: #fafafa;
+}
+
+.current-row:hover td {
+    background-color: #ffe69c !important;
+}
+
+.current-row {
+    border-left: 5px solid #ffc107;
+}
+
+ table td, 
+    table th {
+        vertical-align: middle !important;
+        text-align: center;
+    }
+
+</style>
+
+                <table class="table table-hover mb-0 text-center align-middle table-mobile-wrap">
+        <thead class="table-light">
+            <tr>
+                <th>Lab No.</th>
+                <th>Scheduled Date</th>
+                <th>Experiment Name</th>
+                <th>Resources</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="current-row">
+   <td>
+  <span class="badge bg-warning text-dark">ON-GOING</span><br>
+  <strong>04</strong>
+</td>
+
+    <td>
+        <strong>2 Programmes for this Week</strong><br>
+        <span style="color:#6c757d;">April 01 - 08</span>
+    </td>
+
+    <td>
+        <ol style="
+    margin: 0;
+    padding-left: 0;
+    margin-left: -8px;
+    list-style-position: inside;
+    color: #5a189a;
+    font-weight: 600;
+    line-height: 1.5;
+">
+    <li style="margin-bottom: 6px;">
+        Create a Student Marks Processing Application system using JSP and Servlet using web.xml
+    </li>
+</ol>
+    </td>
+
+    <td>
+        <a href="../mat/Server_Side_Lab_Manualll.doc" 
+           class="btn btn-outline-primary mb-2" 
+           download>
+           Download <strong>Lab Manual</strong>
+        </a>
+    </td>
+</tr>
+
+
+            <!--
+    <tr>
+                <td>
+  <span class="badge bg-success">COMPLETED</span><br>
+  <strong>02</strong>
+</td>
+        <td>Wednesday, March - 18</td>
+        <td> 1) <strong>Calculator Application </strong> using JSP and Servlet
+        </td>
+        <td>  
+                <span style="color: #0d6efd; font-weight: 500;">
+    Refer <strong>Lab Manual</strong> Below
+</span>
+        </td>
+    </tr>
+   
+    <tr>
+            <td>
+  <span class="badge bg-success">COMPLETED</span><br>
+  <strong>03</strong>
+</td>
+
+    <td>
+        <strong>2 Programmes for this Week</strong><br>
+        <span style="color:#6c757d;">March 23 - 29</span>
+    </td>
+
+    <td>
+        1. Create a JSP web page that accepts user input through an HTML form and displays the submitted data using both GET and POST methods using a Servlet.
+        <br>
+        2. Develop a web application using JSP and Servlet to implement a simple login system.
+    </td>
+
+    <td>
+       <span style="color: #0d6efd; font-weight: 500;">
+    Refer <strong>Lab Manual</strong> Below
+</span>
+    </td>
+</tr>
+
+<tr class="current-row">
+   <td>
+  <span class="badge bg-warning text-dark">ON-GOING</span><br>
+  <strong>04</strong>
+</td>
+
+    <td>
+        <strong>2 Programmes for this Week</strong><br>
+        <span style="color:#6c757d;">April 01 - 08</span>
+    </td>
+
+    <td>
+        <ol style="
+    margin: 0;
+    padding-left: 0;
+    margin-left: -8px;
+    list-style-position: inside;
+    color: #5a189a;
+    font-weight: 600;
+    line-height: 1.5;
+">
+    <li style="margin-bottom: 6px;">
+        Create a Student Marks Processing Application system using JSP and Servlet using web.xml
+    </li>
+    <li style="margin-left: 2px;">
+    Create a servlet program that demonstrates session tracking using HttpSession by implementing a simple login system and maintaining user session information.
+</li>
+</ol>
+    </td>
+
+    <td>
+        <a href="../mat/Server_Side_Lab_Manual.doc" 
+           class="btn btn-outline-primary mb-2" 
+           download>
+           Download <strong>Lab Manual</strong>
+        </a>
+    </td>
+</tr>
+-->
+
+</tbody>
+        
+
+    </table>
+            </div>
+        </div>
+    </div>
+</div>   
+</div>
+
+
+</div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="bg-dark text-white text-center p-3">
+
+© 2026 WTMA Lab | Department of AIDS
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
