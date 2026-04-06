@@ -684,6 +684,26 @@ tr:hover {
         vertical-align: middle !important;
         text-align: center;
     }
+    
+    .lab-list{
+    margin:0;
+    padding-left:0;
+    list-style:none;
+    counter-reset: lab-counter;
+    color:#5a189a;
+    font-weight:600;
+    line-height:1.6;
+}
+
+.lab-list li{
+    counter-increment: lab-counter;
+    margin-bottom:6px;
+}
+
+.lab-list li::before{
+    content: counter(lab-counter) ". ";
+    font-weight:700;
+}
 
 </style>
 
@@ -700,28 +720,33 @@ tr:hover {
             <tr class="current-row">
    <td>
   <span class="badge bg-warning text-dark">ON-GOING</span><br>
-  <strong>04</strong>
+  <strong>01</strong>
 </td>
 
     <td>
-        <strong>2 Programmes for this Week</strong><br>
-        <span style="color:#6c757d;">April 01 - 08</span>
+        <strong>Programmes for this Module</strong><br>
+        <span style="color:#6c757d;">April Month</span>
     </td>
 
     <td>
-        <ol style="
-    margin: 0;
-    padding-left: 0;
-    margin-left: -8px;
-    list-style-position: inside;
-    color: #5a189a;
-    font-weight: 600;
-    line-height: 1.5;
-">
-    <li style="margin-bottom: 6px;">
-        Create a Student Marks Processing Application system using JSP and Servlet using web.xml
+        <ol class="lab-list">
+    <li>
+        Develop an Android App to show "Hello World" in Android Emulator.
+    </li>
+
+    <li>
+        Develop an Android application using controls like Button, TextView, EditText for designing a calculator having basic functionality like Addition, Subtraction, multiplication, and Division.
+    </li>
+
+    <li>
+        Develop an application to change the font and color of the text and display toast message when the user presses the button.
+    </li>
+
+    <li style="margin-bottom:2px; padding-left:-2px;">
+        Develop a mobile application to send an email.
     </li>
 </ol>
+
     </td>
 
     <td>

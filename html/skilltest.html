@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WTMA Skill Test</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+.main-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+width:850px;
+background:#101a33;
+padding:25px;
+border-radius:12px;
+}
+
+input{
+padding:10px;
+width:250px;
+}
+
+button{
+padding:10px 15px;
+margin-left:10px;
+cursor:pointer;
+}
+
+.qbox{
+margin-top:15px;
+padding:15px;
+background:#1c2a55;
+border-radius:8px;
+}
+
+.qtitle{
+font-weight:bold;
+color:#5ad7ff;
+margin-bottom:8px;
+}
+
+.qtext{
+white-space:pre-wrap;
+line-height:1.6;
+}
+
+.msg{
+margin-top:10px;
+color:#ff6b6b;
+}
+
+footer{
+background:#343a40;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="main-content">
+
+<div class="container">
+
+<h1 style="text-align:center; font-size:42px; font-weight:bold; margin-bottom:20px;">
+WTMA Skill Test
+</h1>
+
+<div style="margin-top:20px; text-align:center;">
+
+<a href="http://172.16.0.3/rec/" target="_blank"
+style="display:inline-block;
+padding:10px 20px;
+background-color:#007bff;
+color:white;
+text-decoration:none;
+border-radius:5px;
+font-weight:bold;
+margin-right:10px;">
+Download Servlet Softwares
+</a>
+
+<a href="https://developer.android.com/studio" target="_blank"
+style="display:inline-block;
+padding:10px 20px;
+background-color:#007bff;
+color:white;
+text-decoration:none;
+border-radius:5px;
+font-weight:bold;">
+Download Android Studio
+</a>
+
+</div>
+
+<p style="text-align:center; font-weight:bold; color:#ec0a0a;">
+If required, download the softwares from the above links.
+</p>
+
+<p>Enter your Register Number to view your assigned questions. Do not refresh once questions are loaded.</p>
+
+<div id="studentInfo" style="margin-top:15px; font-size:18px; font-weight:bold; color:#5ad7ff;"></div>
+<br>
+
+<input id="regno" placeholder="Enter Register Number (Eg: 241801018)">
+<button onclick="getQuestions()">Get Questions</button>
+<button onclick="clearAll()">Clear</button>
+
+
+
+<div id="message" class="msg"></div>
+
+<div id="questions" style="display:none">
+
+<!-- Question 1 -->
+<div class="qbox">
+<div class="qtitle">Question 1</div>
+<div class="qtext" id="q1"></div>
+</div>
+
+<div class="qbox">
+<div class="qtitle">Write your Steps / Code for Question 1</div>
+
+<textarea id="ans1" rows="7"
+style="width:100%; padding:10px; border-radius:6px; margin-top:8px;"
+placeholder="Write algorithm / steps / important code here..."></textarea>
+
+<div style="margin-top:10px;">
+<button onclick="submitQ1()" style="background:#28a745;color:white;border:none;padding:8px 18px;border-radius:5px;">
+Submit Answer 1
+</button>
+</div>
+
+<div id="msg1" style="margin-top:8px;color:#5ad7ff;font-weight:bold;"></div>
+
+</div>
+
+
+<!-- Question 2 -->
+<div class="qbox">
+<div class="qtitle">Question 2</div>
+<div class="qtext" id="q2"></div>
+</div>
+
+<div class="qbox">
+<div class="qtitle">Write your Steps / Code for Question 2</div>
+
+<textarea id="ans2" rows="7"
+style="width:100%; padding:10px; border-radius:6px; margin-top:8px;"
+placeholder="Write algorithm / steps / important code here..."></textarea>
+
+<div style="margin-top:10px;">
+<button onclick="submitQ2()" style="background:#28a745;color:white;border:none;padding:8px 18px;border-radius:5px;">
+Submit Answer 2
+</button>
+</div>
+
+<div id="msg2" style="margin-top:8px;color:#5ad7ff;font-weight:bold;"></div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 WTMA Lab | Department of AIDS
+</footer>
+
+<script>
+
+let DB={};
+
+async function loadExcel(){
+
+const response=await fetch("WTMA_SkillTest_Questions_new.xlsx");
+const data=await response.arrayBuffer();
+
+const workbook=XLSX.read(data);
+
+const sheet=workbook.Sheets[workbook.SheetNames[0]];
+
+const rows=XLSX.utils.sheet_to_json(sheet);
+
+rows.forEach(r=>{
+
+const reg=String(r.RegNo).trim();
+
+DB[reg]={
+name: r.Name || "",
+q1: r.Question1 || "",
+q2: r.Question2 || ""
+};
+
+});
+
+}
+
+loadExcel();
+
+function getQuestions(){
+
+const reg=document.getElementById("regno").value.trim();
+const message=document.getElementById("message");
+
+if(!reg){
+message.textContent="Enter Register Number";
+return;
+}
+
+if(!DB[reg]){
+message.textContent="Register Number not found";
+return;
+}
+
+document.getElementById("studentInfo").textContent =
+"Student Name: " + DB[reg].name + " | Register Number: " + reg;
+
+document.getElementById("q1").textContent=DB[reg].q1;
+document.getElementById("q2").textContent=DB[reg].q2;
+
+document.getElementById("questions").style.display="block";
+message.textContent="";
+
+document.getElementById("regno").disabled=true;
+
+}
+
+function clearAll(){
+
+document.getElementById("regno").value="";
+document.getElementById("regno").disabled=false;
+document.getElementById("questions").style.display="none";
+document.getElementById("message").textContent="";
+document.getElementById("studentInfo").textContent="";
+
+}
+
+function submitQ1(){
+
+document.getElementById("ans1").disabled=true;
+
+document.getElementById("msg1").textContent=
+"Answer submitted successfully.";
+
+}
+
+function submitQ2(){
+
+document.getElementById("ans2").disabled=true;
+
+document.getElementById("msg2").textContent=
+"Answer submitted successfully.";
+
+}
+
+</script>
+
+</body>
+</html>
