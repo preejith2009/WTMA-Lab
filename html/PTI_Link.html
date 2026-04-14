@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIDS Student Details</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+
+.header img{
+height:50px;
+}
+
+.header h1{
+margin:5px 0;
+font-size:18px;
+}
+
+.dept{
+color:#d6b3ff;
+font-size:13px;
+font-weight:bold;
+}
+
+/* MAIN */
+.main-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:650px;
+margin:auto;
+padding:20px;
+}
+
+/* QR SECTION */
+.qr-section{
+text-align:center;
+margin-bottom:20px;
+}
+
+.qr-section img{
+width:150px;
+margin-top:10px;
+}
+
+/* INPUT */
+input{
+padding:12px;
+width:65%;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:12px 15px;
+margin-left:10px;
+cursor:pointer;
+border:none;
+border-radius:6px;
+background:#5a2d82;
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+background:#7b3fb3;
+transform:scale(1.05);
+}
+
+/* MARK BOX */
+.markbox{
+margin-top:15px;
+padding:15px;
+background:#1c2a55;
+border-radius:8px;
+font-size:16px;
+}
+
+/* FOOTER */
+footer{
+background:#343a40;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+.qr-section img{
+width:160px;
+max-width:80%;
+margin-top:10px;
+background:white;
+padding:8px;
+border-radius:8px;
+}
+
+.input-group{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.input-group input{
+flex:1 1 100%;
+max-width:100%;
+}
+
+.input-group button{
+flex:1;
+min-width:120px;
+}
+
+h2{
+font-size:20px;
+}
+
+p{
+font-size:14px;
+line-height:1.5;
+}
+
+@media (max-width:600px){
+
+.container{
+padding:15px;
+}
+
+h2{
+font-size:18px;
+}
+
+input{
+width:100%;
+}
+
+button{
+width:100%;
+margin:5px 0;
+}
+
+.markbox{
+font-size:15px;
+padding:12px;
+}
+
+}
+
+input, button {
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="https://www.rajalakshmi.org/images/logo.png">
+  <h1>Rajalakshmi Engineering College</h1>
+  <div class="dept">Department of Artificial Intelligence</div>
+</div>
+
+<div class="main-content">
+
+<div class="container">
+
+<h2 style="text-align:center;">AIDS Student Details Display Page</h2>
+
+<p style="text-align:center; color:#9fb3ff; font-size:14px;">
+Enter your Register Number to view student details.
+</p>
+
+
+<!-- INPUT -->
+<div style="text-align:center;">
+<input id="regno" placeholder="Enter Register Number">
+<button onclick="getMarks()">View Details</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+
+<div id="message" style="margin-top:10px;color:#ff6b6b;text-align:center;"></div>
+
+<div id="studentInfo" style="margin-top:15px;font-size:18px;color:#5ad7ff;text-align:center;"></div>
+
+<div id="marks" style="display:none">
+
+<div class="markbox">
+<b>Unit Test I Mark :</b>
+<span id="ut1"></span>
+</div>
+
+<div class="markbox">
+<b>Unit Test II Mark :</b>
+<span id="ut2"></span>
+</div>
+
+</div>
+
+<!-- QR CODE -->
+<div class="qr-section">
+ <p style="color:#9fb3ff;">
+Scan this QR code to submit your PTI feedback (takes less than 1 minute)
+</p>
+  <img src="../mat/frame.png" alt="QR Code">
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+let DB={};
+
+async function loadExcel(){
+
+const response = await fetch("unit_test_new.xlsx");
+
+const data = await response.arrayBuffer();
+
+const workbook = XLSX.read(data,{type:"array"});
+
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+const rows = XLSX.utils.sheet_to_json(sheet);
+
+rows.forEach(r=>{
+
+const reg = String(r["Reg No"]).trim();
+
+DB[reg]={
+
+name : r["Name"] || "",
+
+ut1 : r["UT-IMark(100)"] || "",
+
+ut2 : r["UT-IIMark(100)"] || ""
+
+};
+
+});
+
+}
+
+loadExcel();
+
+function getMarks(){
+
+const reg=document.getElementById("regno").value.trim();
+const message=document.getElementById("message");
+
+if(!reg){
+message.textContent="Please enter Register Number";
+return;
+}
+
+if(!DB[reg]){
+message.textContent="Register Number not found";
+return;
+}
+
+document.getElementById("studentInfo").textContent=
+"Student Name : "+DB[reg].name+" | Register Number : "+reg;
+
+document.getElementById("ut1").textContent = DB[reg].ut1;
+document.getElementById("ut2").textContent = DB[reg].ut2;
+
+document.getElementById("marks").style.display="block";
+
+message.textContent="";
+}
+
+function clearAll(){
+
+document.getElementById("regno").value="";
+document.getElementById("marks").style.display="none";
+document.getElementById("studentInfo").textContent="";
+document.getElementById("message").textContent="";
+
+}
+
+</script>
+
+</body>
+</html>
