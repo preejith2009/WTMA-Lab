@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PTM Feedback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial;
+      background: #f4f6fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(90deg, #003366, #5a2d82);
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .header img {
+      height: 50px;
+      max-width: 100%;
+    }
+
+    .header h1 {
+      margin: 5px 0;
+      font-size: 18px;
+    }
+
+    .dept {
+      color: #d6b3ff;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 10px auto;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #5a2d82;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin-top: 15px;
+      color: #5a2d82;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* MOBILE SAFE */
+    @media (max-width: 600px) {
+      .container {
+        margin: 8px;
+        padding: 12px;
+      }
+
+      input, textarea, select {
+        font-size: 16px; /* prevents zoom on iPhone */
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="https://www.rajalakshmi.org/images/logo.png">
+  <h1>Rajalakshmi Engineering College</h1>
+  <div class="dept">Department of Artificial Intelligence</div>
+</div>
+
+<div class="container">
+  <h2>PTM Feedback Form</h2>
+
+  <label>Student Name</label>
+  <input type="text" id="studentName">
+
+  <label>Register Number</label>
+  <input type="text" id="regNo">
+
+  <label>Parent Name</label>
+  <input type="text" id="parentName">
+
+  <label>Department</label>
+  <input type="text" id="department" value="AIDS">
+
+  <div class="section-title">College Related</div>
+
+  <label>Teaching Quality</label>
+  <select id="teachingQuality">
+    <option value="">Select</option>
+    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+  </select>
+
+  <label>Syllabus Coverage</label>
+  <select id="syllabusCoverage">
+    <option value="">Select</option>
+    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+  </select>
+
+  <div class="section-title">Department Related</div>
+
+  <label>What do you like most about the department?</label>
+  <textarea id="likesDepartment"></textarea>
+
+  <label>What improvements would you suggest?</label>
+  <textarea id="improvements"></textarea>
+
+  <label>Any concerns regarding your ward’s performance?</label>
+  <textarea id="performanceConcerns"></textarea>
+
+  <label>Suggestions for college/faculty</label>
+  <textarea id="suggestions"></textarea>
+
+  <div class="section-title">Others</div>
+
+  <label>Training Effectiveness</label>
+  <select id="trainingEffectiveness">
+    <option value="">Select</option>
+    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+  </select>
+
+  <label>Overall Rating</label>
+  <select id="overallRating">
+    <option value="">Select</option>
+    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+  </select>
+
+  <label>Would you recommend this institution?</label>
+  <select id="recommendation">
+    <option value="">Select</option>
+    <option>Yes</option>
+    <option>No</option>
+    <option>Maybe</option>
+  </select>
+
+  <label>Overall Review (optional)</label>
+  <textarea id="overallReview"></textarea>
+
+  <button onclick="submitForm()">Submit Feedback</button>
+</div>
+
+<script>
+function submitForm() {
+  const data = {
+    studentName: document.getElementById("studentName").value,
+    regNo: document.getElementById("regNo").value,
+    parentName: document.getElementById("parentName").value,
+    department: document.getElementById("department").value,
+    teachingQuality: document.getElementById("teachingQuality").value,
+    syllabusCoverage: document.getElementById("syllabusCoverage").value,
+    likesDepartment: document.getElementById("likesDepartment").value,
+    improvements: document.getElementById("improvements").value,
+    performanceConcerns: document.getElementById("performanceConcerns").value,
+    suggestions: document.getElementById("suggestions").value,
+    trainingEffectiveness: document.getElementById("trainingEffectiveness").value,
+    overallRating: document.getElementById("overallRating").value,
+    recommendation: document.getElementById("recommendation").value,
+    overallReview: document.getElementById("overallReview").value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxdeWXIFuGsHQbF1oN5fHg0PWyE-zJKF7BRIGLZ58Q-LfFvyULN3L93KmIvB0YmzvLQ/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(() => {
+    alert("Feedback submitted successfully");
+    location.reload();
+  })
+  .catch(() => alert("Error submitting feedback"));
+}
+</script>
+
+</body>
+</html>
