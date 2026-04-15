@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIDS PTM Portal</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+
+.header img{
+height:90px;
+max-width:100%;
+margin-bottom:5px;
+}
+
+.header h1{
+margin:5px 0;
+font-size:20px;
+}
+
+.dept{
+color:#d6b3ff;
+font-size:14px;
+font-weight:bold;
+}
+
+/* MAIN */
+.main{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+background:#1c2a55;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:100%;
+max-width:400px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.card h2{
+margin-bottom:20px;
+}
+
+/* BUTTONS */
+.btn{
+display:block;
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+background:#5a2d82;
+color:white;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#7b3fb3;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+background:#343a40;
+text-align:center;
+padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  <img src="REC_Logo.jpg">
+  <h1>Rajalakshmi Engineering College</h1>
+  <div class="dept">Department of Artificial Intelligence</div>
+</div>
+
+<div class="main">
+
+<div class="card">
+
+<h2>PTM Student Portal</h2>
+
+<p style="color:#9fb3ff;">
+Select Year to View Student Details
+</p>
+
+<button class="btn" onclick="goToPage('second')">
+II Year Students
+</button>
+
+<button class="btn" onclick="goToPage('third')">
+III Year Students
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+function goToPage(year){
+
+if(year === "second"){
+window.location.href = "PTM_2ndYr.html";
+}
+
+if(year === "third"){
+window.location.href = "PTM_3rdYr.html";
+}
+
+}
+
+</script>
+
+</body>
+</html>
