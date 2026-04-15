@@ -273,14 +273,14 @@ const reg = String(r["Registration Id"]).trim();
 
 DB[reg]={
 
-name : r["Name"] || "",
-sem : r["Semester"] || "",
-att : r["Attendance"] || "",
+name : r["Name"] ?? "",
+sem : r["Semester"] ?? "",
+att : r["Attendance"] ?? "",
 
-sub1 : r["Gen AI"] || "--",
-sub2 : r["Natural Language Processing"] || "--",
-sub3 : r["Framework"] || "--",
-sub4 : r["Data Privacy and Security"] || "--"
+sub1 : r["Gen AI"] ?? "--",
+sub2 : r["Natural Language Processing"] ?? "--",
+sub3 : r["Framework"] ?? "--",
+sub4 : r["Data Privacy and Security"] ?? "--"
 
 };
 

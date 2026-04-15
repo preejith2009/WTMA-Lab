@@ -313,13 +313,13 @@ const reg = String(r["Registration Id"]).trim();
 
 DB[reg]={
 
-name : r["Name"] || "",
-sem : r["Semester"] || "",
-att : r["Attendance"] || "",
+name : r["Name"] ?? "",
+sem : r["Semester"] ?? "",
+att : r["Attendance"] ?? "",
 
-sub1 : r["Software Construction"] || "",
-sub2 : r["Operating Systems"] || "",
-sub3 : r["Statistical Analysis and Computing"] || ""
+sub1 : r["Software Construction"] ?? "",
+sub2 : r["Operating Systems"] ?? "",
+sub3 : r["Statistical Analysis and Computing"] ?? ""
 
 };
 

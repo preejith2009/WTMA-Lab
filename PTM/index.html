@@ -109,6 +109,58 @@ padding:15px;
 
 <div class="card">
 
+  <style>
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px #ffd166; }
+  50% { box-shadow: 0 0 15px #ffd166; }
+  100% { box-shadow: 0 0 5px #ffd166; }
+}
+
+@keyframes textPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.glow-btn {
+  display: inline-block !important;   /* 🔥 force inline */
+  width: auto !important;             /* 🔥 prevent full width */
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffd166;
+  border: 1px solid #ffd166;
+  border-radius: 6px;
+  text-decoration: none;
+  background: transparent;
+  animation: glowPulse 2.5s infinite;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.text-pulse {
+  display:inline-block;
+  animation: textPulse 1.5s infinite;
+}
+</style>
+  
+<div style="display:flex; justify-content:flex-end;">
+  <a href="StdentList_4_6.pdf" target="_blank" class="glow-btn"
+     onmouseover="
+        this.style.background='#ffd166';
+        this.style.color='#000';
+        this.style.boxShadow='0 0 20px #ffd166';
+     "
+     onmouseout="
+        this.style.background='transparent';
+        this.style.color='#ffd166';
+        this.style.boxShadow='0 0 5px #ffd166';
+     "
+  >
+     <span class="text-pulse">📄 Student List</span>
+  </a>
+</div>
+
 <h2>PTM Student Portal</h2>
 
 <p style="color:#9fb3ff;">
