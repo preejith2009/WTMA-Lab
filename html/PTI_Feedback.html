@@ -358,6 +358,7 @@ button:active {
   <textarea id="overallReview"></textarea>
 
   <button id="submitBtn" onclick="submitForm()">Submit Feedback</button>
+  <div id="errorMsg" style="color:red; text-align:center; margin-top:10px;"></div>
   <div class="loader" id="loader"></div>
 </div>
 
@@ -383,15 +384,27 @@ function submitForm() {
   const formContainer = document.querySelector(".container");
   const thankYouCard = document.getElementById("thankYouCard");
 
+  const studentName = document.getElementById("studentName").value.trim();
+  const parentName = document.getElementById("parentName").value.trim();
+  const errorMsg = document.getElementById("errorMsg");
+
+  // 🚨 VALIDATION
+  if (studentName === "" || parentName === "") {
+    errorMsg.textContent = "⚠️ Student Name and Parent Name are required";
+    return; // stop submission
+  } else {
+    errorMsg.textContent = ""; // clear message
+  }
+
   // Show loading
   btn.disabled = true;
   btn.innerText = "Submitting...";
   loader.style.display = "block";
 
   const data = {
-    studentName: document.getElementById("studentName").value,
+    studentName: studentName,
     regNo: document.getElementById("regNo").value,
-    parentName: document.getElementById("parentName").value,
+    parentName: parentName,
     department: document.getElementById("department").value,
     teachingQuality: document.getElementById("teachingQuality").value,
     syllabusCoverage: document.getElementById("syllabusCoverage").value,
@@ -430,7 +443,7 @@ function submitForm() {
     btn.disabled = false;
     btn.innerText = "Submit Feedback";
 
-    alert("Error submitting feedback");
+    errorMsg.textContent = "❌ Error submitting feedback. Try again.";
 
   });
 }
