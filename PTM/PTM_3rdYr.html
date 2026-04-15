@@ -162,6 +162,23 @@ padding:12px;
 
 <div class="container">
 
+  <div style="display:flex; justify-content:flex-end;">
+  <a href="Result Analysis_Sem4.pdf" target="_blank" 
+     style="
+        color:#ffd166;
+        margin-bottom:10px;
+        text-decoration:none;
+        font-style:italic;
+        font-family:'Brush Script MT', cursive;
+        font-size:18px;
+        letter-spacing:1px;
+     ">
+     
+     View Student Details
+     
+  </a>
+</div>
+
 <h2 style="text-align:center;">AIDS Student Details Display Page</h2>
 
 <p style="text-align:center; color:#9fb3ff;">
@@ -182,14 +199,18 @@ Enter Student Register Number to view Student details, eg 231800000
 <div id="marks" style="display:none">
 
 <div class="markbox">
-<b>Semester :</b>
+<b>No Of Arrears :</b>
 <span id="sem"></span>
 </div>
 
 <div class="markbox">
-<b>Attendance :</b>
+<b>CGPA :</b>
 <span id="att"></span>
 </div>
+
+<h3 style="text-align:center; color:#ffd166; margin-bottom:10px;">
+Current Semester CAT Marks
+</h3>
 
 <div class="markbox">
 <b>Generative AI :</b>
@@ -210,6 +231,8 @@ Enter Student Register Number to view Student details, eg 231800000
 <b>Data Privacy and Security :</b>
 <span id="sub4"></span>
 </div>
+
+<div id="analysisLink" style="text-align:center; margin-top:20px;"></div>
 
 </div>
 
@@ -296,6 +319,20 @@ document.getElementById("sub4").textContent = DB[reg].sub4;
 document.getElementById("marks").style.display="block";
 message.textContent="";
 
+// COMMON RESULT ANALYSIS PDF LINK
+document.getElementById("analysisLink").innerHTML = `
+<a href="Result Analysis_Sem4.pdf" target="_blank" 
+style="display:inline-block;
+padding:12px 20px;
+background:#28a745;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;">
+📄 View Result Analysis
+</a>
+`;
+
 }
 
 function clearAll(){
@@ -304,6 +341,7 @@ document.getElementById("regno").value="";
 document.getElementById("marks").style.display="none";
 document.getElementById("studentInfo").textContent="";
 document.getElementById("message").textContent="";
+document.getElementById("analysisLink").innerHTML = "";
 
 }
 

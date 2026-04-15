@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AIDS Student Details</title>
+<title>AIDS Second Yr Student Details</title>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
@@ -203,6 +203,24 @@ padding:12px;
 </tr>
 
 </table>
+<br>
+
+<div style="display:flex; justify-content:flex-end;">
+  <a href="Result_Analysis_Sem2.pdf" target="_blank" 
+     style="
+        color:#ffd166;
+        margin-bottom:10px;
+        text-decoration:none;
+        font-style:italic;
+        font-family:'Brush Script MT', cursive;
+        font-size:18px;
+        letter-spacing:1px;
+     ">
+     
+     View Student Details
+     
+  </a>
+</div>
 
 </div>
 
@@ -226,14 +244,18 @@ Enter Student Register Number to view Student details, eg 241800000
 <div id="marks" style="display:none">
 
 <div class="markbox">
-<b>Semester :</b>
+<b>No Of Arrears :</b>
 <span id="sem"></span>
 </div>
 
 <div class="markbox">
-<b>Attendance :</b>
+<b>CGPA :</b>
 <span id="att"></span>
 </div>
+
+<h3 style="text-align:center; color:#ffd166; margin-bottom:10px;">
+Current Semester CAT Marks
+</h3>
 
 <div class="markbox">
 <b>Software Construction :</b>
@@ -249,6 +271,8 @@ Enter Student Register Number to view Student details, eg 241800000
 <b>Statistical Analysis and Computing :</b>
 <span id="sub3"></span>
 </div>
+
+<div id="analysisLink" style="text-align:center; margin-top:20px;"></div>
 
 </div>
 
@@ -333,6 +357,20 @@ document.getElementById("sub3").textContent = DB[reg].sub3;
 document.getElementById("marks").style.display="block";
 message.textContent="";
 
+// COMMON RESULT ANALYSIS PDF LINK
+document.getElementById("analysisLink").innerHTML = `
+<a href="Result_Analysis_Sem2.pdf" target="_blank" 
+style="display:inline-block;
+padding:12px 20px;
+background:#28a745;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;">
+📄 View Result Analysis
+</a>
+`;
+
 }
 
 function clearAll(){
@@ -341,6 +379,7 @@ document.getElementById("regno").value="";
 document.getElementById("marks").style.display="none";
 document.getElementById("studentInfo").textContent="";
 document.getElementById("message").textContent="";
+document.getElementById("analysisLink").innerHTML = "";
 
 }
 
