@@ -140,11 +140,20 @@
       margin-top: 20px;
     }
 
-    /* MOBILE OPTIMIZATION */
-    @media (max-width: 600px) {
-      .header h1 { font-size: 16px; }
-      .card { flex: 1 1 100%; }
-    }
+   /* MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+  .header h1 { 
+    font-size: 16px; 
+  }
+
+  .card { 
+    flex: 1 1 100%;
+
+    /* 🔥 FIX: ensure all cards are visible without scroll */
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
     /* ANIMATION BASE */
 .card {
@@ -291,6 +300,10 @@ button:active {
 <!-- FEEDBACK FORM -->
 <div class="container" id="feedback">
   <h2>PTM Feedback Form</h2>
+ <p style="color:#5a2d82; font-size:16px; margin-top:-10px; margin-bottom:15px; font-weight:900; text-align:center; letter-spacing:0.3px;">
+  We value your feedback — Together, we can support our students better.
+ </p>
+
 
   <label>Student Name</label>
   <input type="text" id="studentName">
@@ -304,23 +317,29 @@ button:active {
   <label>Department</label>
   <input type="text" id="department" value="AIDS">
 
-  <div class="section-title">College Related</div>
+  <div class="section-title">Department Related</div>
 
   <label>Teaching Quality</label>
+  <div style="font-size:12px; color:#666; margin-bottom:5px;">
+  Please rate from 1 (Very Poor) to 5 (Excellent)
+</div>
   <select id="teachingQuality">
     <option value="">Select</option>
     <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
   </select>
 
   <label>Syllabus Coverage</label>
+     <div style="font-size:12px; color:#666; margin-bottom:5px;">
+  Please rate from 1 (Very Poor) to 5 (Excellent)
+</div>
   <select id="syllabusCoverage">
     <option value="">Select</option>
     <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
   </select>
 
-  <div class="section-title">Department Related</div>
+  <!-- <div class="section-title">Department Related</div>-->
 
-  <label>What do you like most about the department?</label>
+  <label>What do you like most about the AIDS Department?</label>
   <textarea id="likesDepartment"></textarea>
 
   <label>What improvements would you suggest?</label>
@@ -329,18 +348,24 @@ button:active {
   <label>Any concerns regarding your ward’s performance?</label>
   <textarea id="performanceConcerns"></textarea>
 
-  <label>Suggestions for college/faculty</label>
+  <label>Suggestions for Department/faculty</label>
   <textarea id="suggestions"></textarea>
 
-  <div class="section-title">Others</div>
+  <div class="section-title">College Related</div>
 
-  <label>Training Effectiveness</label>
+  <label>How effective is the training provided to your ward by the college.</label>
+  <div style="font-size:12px; color:#666; margin-bottom:5px;">
+  Please rate from 1 (Very Poor) to 5 (Excellent)
+</div>
   <select id="trainingEffectiveness">
     <option value="">Select</option>
     <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
   </select>
 
-  <label>Overall Rating</label>
+  <label>Overall Rating on the AIDS Department</label>
+    <div style="font-size:12px; color:#666; margin-bottom:5px;">
+  Please rate from 1 (Very Poor) to 5 (Excellent)
+</div>
   <select id="overallRating">
     <option value="">Select</option>
     <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -354,7 +379,7 @@ button:active {
     <option>Maybe</option>
   </select>
 
-  <label>Overall Review (optional)</label>
+  <label>Overall Feedback and Suggestions for the College.</label>
   <textarea id="overallReview"></textarea>
 
   <button id="submitBtn" onclick="submitForm()">Submit Feedback</button>
