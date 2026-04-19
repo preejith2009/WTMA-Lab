@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Functions - Lab Notes</title>
+
+<style>
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:40px;
+background:#f4f6f9;
+line-height:1.6;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+flex:1;
+}
+
+h1{
+text-align:center;
+color:#2c3e50;
+margin-bottom:30px;
+}
+
+h2{
+color:#1a5276;
+margin-top:40px;
+}
+
+pre{
+background:#272822;
+color:#f8f8f2;
+padding:15px;
+border-radius:6px;
+overflow-x:auto;
+}
+
+.code-title{
+background:#e8f4ff;
+padding:10px;
+border-left:5px solid #3498db;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.example{
+background:#fdf2e9;
+padding:10px;
+border-left:5px solid #e67e22;
+margin-top:10px;
+}
+
+.quiz-section{
+width:90%;
+margin:60px auto;
+padding:60px 20px;
+background:#173b6c;
+border-radius:25px;
+text-align:center;
+}
+
+.quiz-title{
+color:#ffffff;
+font-size:32px;
+font-weight:600;
+margin-bottom:35px;
+}
+
+.quiz-btn{
+display:inline-block;
+padding:18px 45px;
+background:linear-gradient(45deg,#f59e0b,#d97706);
+color:white;
+font-size:20px;
+font-weight:600;
+border-radius:50px;
+text-decoration:none;
+transition:0.3s ease;
+}
+
+footer{
+margin-top:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Week 5 - Python Functions</h1>
+
+<p>
+A <b>function</b> is a block of reusable code used to perform a specific task.
+Functions help in reducing code repetition and improving readability.
+</p>
+
+<h3>Key Concepts of Functions</h3>
+<ul>
+<li>Functions are defined using <b>def</b> keyword</li>
+<li>They can take <b>arguments</b></li>
+<li>They can return values using <b>return</b></li>
+<li>Support for default arguments and multiple arguments</li>
+</ul>
+
+<h2>Understanding Functions in Detail</h2>
+
+<div class="code-title">Basic Function Syntax</div>
+
+<pre>
+def function_name(parameters):
+    # Step 1: Input processing
+    # Step 2: Logic / computation
+    return value
+</pre>
+
+<b>Explanation of Each Block</b>
+
+<ul>
+<li><b>def</b> → Keyword used to define a function</li>
+<li><b>function_name</b> → Name of the function (user-defined)</li>
+<li><b>parameters</b> → Inputs passed to the function</li>
+<li><b>:</b> → Indicates start of function block</li>
+<li><b>Indented block</b> → Contains logic of the function</li>
+<li><b>return</b> → Sends result back to the caller</li>
+</ul>
+
+<hr>
+
+<h2>Function Arguments</h2>
+
+<p>Arguments are values passed to a function when it is called.</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+def add(a, b):
+    return a + b
+
+print(add(5, 3))
+</pre>
+
+<ul>
+<li><b>a, b</b> → Parameters</li>
+<li><b>5, 3</b> → Arguments passed during function call</li>
+</ul>
+
+<h3>Types of Arguments</h3>
+
+<ul>
+<li><b>Positional Arguments</b> → Values passed in order</li>
+<li><b>Default Arguments</b> → Predefined values</li>
+<li><b>*args</b> → Multiple values passed as tuple</li>
+</ul>
+
+<div class="code-title">Default Argument Example</div>
+
+<pre>
+def greet(name="Student"):
+    print("Hello", name)
+
+greet()
+greet("John")
+</pre>
+
+<hr>
+
+<h2>How Arguments are Passed</h2>
+
+<ul>
+<li>Values are passed from function call → to parameters</li>
+<li>Execution happens inside function</li>
+<li>Result is returned back</li>
+</ul>
+
+<div class="code-title">Flow Representation</div>
+
+<pre>
+Function Call → Parameters → Execution → Return → Output
+</pre>
+
+<hr>
+
+<h2>Return Statement</h2>
+
+<p>
+The <b>return</b> statement is used to send a result back to the function call.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+def square(n):
+    return n * n
+
+result = square(4)
+print(result)
+</pre>
+
+<ul>
+<li>Function computes value</li>
+<li><b>return</b> sends result back</li>
+<li>Value can be stored in a variable</li>
+</ul>
+
+<h3>Important Points</h3>
+
+<ul>
+<li>A function can return multiple values</li>
+<li>If no return → function returns <b>None</b></li>
+<li>Execution stops after return</li>
+</ul>
+
+<div class="code-title">Multiple Return Example</div>
+
+<pre>
+def calc(a, b):
+    return a+b, a*b
+
+sum_val, prod_val = calc(2,3)
+</pre>
+
+<hr>
+
+<div class="example">
+💡 Tip for Students:<br>
+Always use functions to break large problems into smaller parts. 
+This makes debugging and understanding easier.
+</div>
+
+<hr>
+
+<h1>Python Function Programs Explanation</h1>
+
+<!-- PROGRAM 1 -->
+
+<h2>Program 1 – Salary Calculation using Functions</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+def calculate_gross_salary(hours_worked, hourly_rate=20.0):
+    return hours_worked * hourly_rate
+
+def calculate_deductions(gross_salary, deduction_rate=0.15):
+    return deduction_rate * gross_salary
+
+def calculate_net_salary(gross_salary, deductions):
+    return gross_salary - deductions
+
+def print_salary_details(hours_worked, hourly_rate, monthly_salary):
+    print(f"Hours Worked: {hours_worked:.2f} hours")
+    print(f"Hourly Rate: {hourly_rate:.2f} per hour")
+    print(f"Net Salary: {monthly_salary:.2f}")
+
+hours_worked = float(input())
+hourly_rate = float(input())
+
+gross_salary = calculate_gross_salary(hours_worked, hourly_rate)
+deductions = calculate_deductions(gross_salary)
+monthly_salary = calculate_net_salary(gross_salary, deductions)
+
+print_salary_details(hours_worked, hourly_rate, monthly_salary)
+</pre>
+
+<b>Explanation</b>
+<ul>
+<li>Functions are used to divide the salary calculation into smaller tasks.</li>
+<li>Gross salary is calculated using hours and rate.</li>
+<li>Deductions are calculated as 15% of gross salary.</li>
+<li>Net salary is calculated by subtracting deductions.</li>
+</ul>
+
+<div class="example">
+Input: 40 20 <br>
+Output: Net Salary displayed
+</div>
+
+<!-- PROGRAM 2 -->
+
+<h2>Program 2 – Calculate Hypotenuse</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+def calculate_hypotenuse(a, b):
+    return (pow(a,2) + pow(b,2))**0.5
+
+side1 = float(input())
+side2 = float(input())
+
+result = calculate_hypotenuse(side1, side2)
+print(f"The length of the hypotenuse is: {result:.2f}")
+</pre>
+
+<b>Explanation</b>
+<ul>
+<li>Uses Pythagorean theorem.</li>
+<li>Function returns square root of sum of squares.</li>
+</ul>
+
+<div class="example">
+Input: 3 4 <br>
+Output: 5.00
+</div>
+
+<!-- PROGRAM 3 -->
+
+<h2>Program 3 – Print Odd Numbers using *args</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+def find_odd_numbers(*args):
+    first = True
+    for n in args:
+        for i in range(1, n + 1, 2):
+            if not first:
+                print(", ", end="")
+            print(i, end="")
+            first = False
+
+user_input = input()
+numbers = map(int, user_input.split())
+
+find_odd_numbers(*numbers)
+</pre>
+
+<b>Explanation</b>
+<ul>
+<li>*args allows multiple inputs.</li>
+<li>Loop generates odd numbers.</li>
+<li>Comma formatting handled manually.</li>
+</ul>
+
+<div class="example">
+Input: 5 3 <br>
+Output: 1,3,5,1,3
+</div>
+
+<!-- PROGRAM 4 -->
+
+<h2>Program 4 – Find Maximum of Three Numbers</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+def find_max(a, b, c):
+    max_val = a
+    if b > max_val:
+        max_val = b
+    if c > max_val:
+        max_val = c
+    return max_val
+
+num1, num2, num3 = map(float, input().split())
+
+maximum = find_max(num1, num2, num3)
+print(f"{maximum:.2f}")
+</pre>
+
+<b>Explanation</b>
+<ul>
+<li>Compares three numbers using conditional statements.</li>
+<li>Returns the largest value.</li>
+</ul>
+
+<div class="example">
+Input: 5 8 3 <br>
+Output: 8.00
+</div>
+
+<!-- PROGRAM 5 -->
+
+<h2>Program 5 – Count Even and Odd Numbers</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+n = int(input())
+array_nums = [int(i) for i in input().split()[:n]]
+
+odd_ctr = len(list(filter(lambda x: (x % 2 != 0), array_nums)))
+even_ctr = len(list(filter(lambda x: (x % 2 == 0), array_nums)))
+
+print(even_ctr)
+print(odd_ctr)
+</pre>
+
+<b>Explanation</b>
+<ul>
+<li>Uses lambda and filter functions.</li>
+<li>Counts even and odd numbers separately.</li>
+</ul>
+
+<div class="example">
+Input: 5 <br>
+1 2 3 4 5 <br>
+Output: 2 3
+</div>
+
+<!-- QUIZ -->
+
+<div class="quiz-section">
+<h2 class="quiz-title">Ready to Test Your Knowledge?</h2>
+<a href="quiz5.html" class="quiz-btn">Take Your Quiz</a>
+</div>
+
+</div>
+
+<footer style="text-align:center; padding:10px;">
+&copy; 2026 Python Lab | Department of AIDS
+</footer>
+
+</body>
+</html>
