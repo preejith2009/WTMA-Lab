@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Python Lists - Lab Notes</title>
+<title>Python Data Structures - Lab Notes</title>
+
 <style>
 body{
 font-family:Arial, Helvetica, sans-serif;
 margin:40px;
 background:#f4f6f9;
 line-height:1.6;
-
-/* added for footer alignment */
 min-height:100vh;
 display:flex;
 flex-direction:column;
@@ -21,8 +20,6 @@ background:white;
 padding:30px;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,0.1);
-
-/* pushes footer to bottom */
 flex:1;
 }
 
@@ -60,46 +57,9 @@ border-left:5px solid #e67e22;
 margin-top:10px;
 }
 
-ul{
-margin-top:10px;
+footer{
+margin-top:auto;
 }
-.quiz-section{
-    width:90%;
-    margin:60px auto;
-    padding:60px 20px;
-    background:#173b6c; /* Deep blue */
-    border-radius:25px;
-    text-align:center;
-}
-
-.quiz-title{
-    color:#ffffff;
-    font-size:32px;
-    font-weight:600;
-    margin-bottom:35px;
-}
-
-.quiz-btn{
-    display:inline-block;
-    padding:18px 45px;
-    background:linear-gradient(45deg,#f59e0b,#d97706);
-    color:white;
-    font-size:20px;
-    font-weight:600;
-    border-radius:50px;
-    text-decoration:none;
-    transition:0.3s ease;
-}
-
-.quiz-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-  footer {
-        margin-top: auto;
-    }
-
 </style>
 </head>
 
@@ -107,25 +67,37 @@ margin-top:10px;
 
 <div class="container">
 
-<h1 style="text-align:center;">Week 4 - Python Non-Primitive Data Structures - LIST</h1>
+<h1>Week 4 - Python Non-Primitive Data Structures</h1>
 
 <p>
-Python provides several built-in data structures that allow us to store collections of data.
-These are called <b>Non-Primitive Data Structures</b> because they can hold multiple values
-instead of a single value.
+Python provides built-in data structures to store collections of data efficiently. 
+The four major non-primitive data structures are:
 </p>
 
-<h3>The four built-in non-primitive data structures in Python are:</h3>
-
 <ul>
-<li><b>List</b> – Ordered collection of elements that can be changed.</li>
-<li><b>Tuple</b> – Ordered collection but cannot be modified.</li>
-<li><b>Set</b> – Unordered collection of unique elements.</li>
-<li><b>Dictionary</b> – Collection of key-value pairs.</li>
+<li><b>List</b> – Ordered and mutable</li>
+<li><b>Tuple</b> – Ordered and immutable</li>
+<li><b>Set</b> – Unordered and unique elements</li>
+<li><b>Dictionary</b> – Key-value pair structure</li>
 </ul>
 
+<hr>
+
+<h2>Difference Between List, Tuple, Set and Dictionary</h2>
+
+<pre>
+List        Tuple       Set         Dictionary
+[]          ()          {}          {key:value}
+
+Ordered     Ordered     Unordered   Ordered
+Mutable     Immutable   Mutable     Mutable
+
+Duplicates  Allowed     Not Allowed Keys Not Allowed
+</pre>
+
 <p>
-In our syllabus we mainly focus on the <b>List</b> data structure.
+Lists and tuples store ordered data, but tuples cannot be modified once created.
+Sets remove duplicates automatically, and dictionaries store data as key-value pairs for fast lookup.
 </p>
 
 <hr>
@@ -133,51 +105,34 @@ In our syllabus we mainly focus on the <b>List</b> data structure.
 <h2>Python List</h2>
 
 <p>
-A <b>List</b> is one of the most commonly used data structures in Python.
-It is used to store multiple items in a single variable.
+A List is a dynamic and flexible data structure used to store multiple values. 
+It supports different data types and allows modification of elements.
 </p>
 
-<h3>Characteristics of Lists</h3>
-
-<ul>
-<li>Lists are <b>ordered</b>.</li>
-<li>Lists are <b>mutable</b> (can be modified).</li>
-<li>Lists allow <b>duplicate values</b>.</li>
-<li>Lists can contain different data types.</li>
-</ul>
-
-<h3>Creating a List</h3>
-
+<h3>Example</h3>
 <pre>
-numbers = [10, 20, 30, 40]
-names = ["Alice", "Bob", "Charlie"]
+a = [23, 45, 12, 67, 34]
+a.append(89)
+a.remove(45)
+print(a)
 </pre>
 
-<h3>Accessing List Elements</h3>
+<div class="example">
+Output: [23, 12, 67, 34, 89]
+</div>
 
-<pre>
-numbers = [10,20,30]
-
-print(numbers[0])   # first element
-print(numbers[1])   # second element
-</pre>
-
-<h3>Common List Operations</h3>
-
+<h3>Applications of List</h3>
 <ul>
-<li><b>append()</b> – Adds an element at the end</li>
-<li><b>insert()</b> – Adds an element at a specific position</li>
-<li><b>remove()</b> – Removes an element</li>
-<li><b>pop()</b> – Removes element using index</li>
-<li><b>len()</b> – Returns length of list</li>
+<li>Store and manipulate data easily</li>
+<li>Used in stacks (LIFO) and queues (FIFO)</li>
+<li>Perform iteration and calculations</li>
+<li>Dynamic data storage (grows/shrinks)</li>
+<li>String processing and tokenization</li>
 </ul>
 
 
-<h1 style="text-align:center; color:#2c3e50; margin-bottom:30px;">
-Week 4 – Python List Programs Explanation
-</h1>
 
-<h2>Program Explanations</h2>
+<h2>Python List Programs Explanation</h2>
 
 <hr>
 
@@ -457,23 +412,166 @@ Original List : [1,2,3,4,5] <br>
 Replaced List : [0,4,27,16,125]
 </div>
 
-<!-- QUIZ CTA SECTION -->
+</div>
 
-<div class="quiz-section">
+<hr>
 
-    <h2 class="quiz-title">
-        Ready to Test Your Knowledge?
-    </h2>
+<h2>Python Tuple</h2>
 
-    <a href="quiz4.html" class="quiz-btn">
-        Take Your Quiz
-    </a>
+<p>
+A Tuple is similar to a list but immutable (cannot be changed after creation). 
+It is useful when data should remain constant.
+</p>
+
+<h3>Example</h3>
+<pre>
+p = (10, 20)
+print(p)
+</pre>
+
+<div class="example">
+Output: (10, 20)
+</div>
+
+<h3>Applications of Tuple</h3>
+<ul>
+<li>Store fixed data like coordinates</li>
+<li>Used as dictionary keys</li>
+<li>Store heterogeneous data</li>
+</ul>
+
+<hr>
+
+<h2>Python Set</h2>
+
+<p>
+A Set is an unordered collection of unique elements. 
+It automatically removes duplicates and supports mathematical operations.
+</p>
+
+<h3>Example</h3>
+<pre>
+a = [1, 2, 2, 3, 4, 4]
+u = set(a)
+print(u)
+</pre>
+
+<div class="example">
+Output: {1, 2, 3, 4}
+</div>
+
+<h3>Applications of Set</h3>
+<ul>
+<li>Removing duplicate elements</li>
+<li>Performing union, intersection, difference</li>
+<li>Fast membership checking</li>
+<li>Finding common elements between datasets</li>
+</ul>
+
+<hr>
+
+<h2>Python Dictionary</h2>
+
+<p>
+A Dictionary stores data in key-value pairs and allows fast access using keys. 
+Each key must be unique.
+</p>
+
+<h3>Example</h3>
+<pre>
+rec = {
+ 'id': 1,
+ 'name': 'John',
+ 'age': 25
+}
+print(rec['name'])
+</pre>
+
+<div class="example">
+Output: John
+</div>
+
+
+<h3>Grouping Data by Keys</h3>
+
+<p>
+Dictionaries can be used to group data by certain keys. 
+This is very useful in data analysis and aggregation tasks.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+emp = [
+    {'name': 'prajj', 'dept': 'HR'},
+    {'name': 'brij', 'dept': 'IT'},
+    {'name': 'kareena', 'dept': 'HR'},
+    {'name': 'aryan', 'dept': 'IT'}
+]
+
+grp = {}
+
+for e in emp:
+    dept = e['dept']
+    grp.setdefault(dept, []).append(e['name'])
+
+print(grp)
+</pre>
+
+<div class="example">
+Output: {'HR': ['prajj', 'kareena'], 'IT': ['brij', 'aryan']}
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>The program starts with a list <b>emp</b>, where each element is a dictionary containing employee <b>name</b> and <b>department</b>.</li>
+
+<li>An empty dictionary <b>grp</b> is created to store grouped data.</li>
+
+<li>The loop <b>for e in emp:</b> iterates through each employee record.</li>
+
+<li>For each employee, the department is accessed using:
+<b>e['dept']</b>.</li>
+
+<li><b>setdefault(dept, [])</b> checks whether the department already exists as a key in the dictionary:
+<ul>
+<li>If it exists → returns the existing list</li>
+<li>If not → creates a new empty list for that department</li>
+</ul>
+</li>
+
+<li><b>.append(e['name'])</b> adds the employee name to the corresponding department list.</li>
+
+<li>This process repeats for all employees, grouping names based on department.</li>
+
+<li>Finally, the grouped dictionary is printed.</li>
+
+</ul>
+
+<h3>Applications of Dictionary</h3>
+<ul>
+<li>Database record representation</li>
+<li>Counting frequency of elements</li>
+<li>Fast lookup tables</li>
+<li>Handling JSON data</li>
+<li>Grouping data by keys</li>
+</ul>
+
+<hr>
+
+<h2>When to Use Which Data Structure?</h2>
+
+<ul>
+<li><b>Use List</b> → when order matters and data changes frequently</li>
+<li><b>Use Tuple</b> → when data should not change</li>
+<li><b>Use Set</b> → when uniqueness is required</li>
+<li><b>Use Dictionary</b> → when data is in key-value form</li>
+</ul>
 
 </div>
 
-</div>
-<br>
-<br>
 <footer style="text-align:center; padding:10px;">
 &copy; 2026 Python Lab | Department of AIDS
 </footer>
