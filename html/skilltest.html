@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WTMA Model Test</title>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <style>
@@ -97,6 +97,8 @@ WTMA Lab Model Test
 
 <div style="margin-top:20px; text-align:center;">
 
+<!--
+
 <a href="http://172.16.0.3/rec/" target="_blank"
 style="display:inline-block;
 padding:10px 20px;
@@ -108,6 +110,19 @@ font-weight:bold;
 margin-right:10px;">
 Download Servlet Softwares
 </a>
+-->
+
+<a href="https://drive.google.com/drive/folders/1G4jDc192IiusOokHXxLszOVATabRoBCL0WqcHs0xRY4w6rMgQw2RVuedydA-6LrBUArH7u2F?usp=drive_link" target="_blank"
+style="display:inline-block;
+padding:10px 20px;
+background-color:#007bff;
+color:white;
+text-decoration:none;
+border-radius:5px;
+font-weight:bold;
+margin-right:10px;">
+Download Servlet Softwares
+
 
 <a href="https://developer.android.com/studio" target="_blank"
 style="display:inline-block;
@@ -122,11 +137,19 @@ Download Android Studio
 
 </div>
 
+<!---->
 <p style="text-align:center; font-weight:bold; color:#ec0a0a;">
 If required, download the softwares from the above links.
 </p>
 
-<p>Enter your Register Number to view your assigned questions. Do not refresh once questions are loaded.</p>
+<p style="text-align:center;">
+Enter your Register Number to view your assigned questions.
+</p>
+
+<p id="examWarning"
+   style="color:#ff6b6b; font-weight:bold; text-align:center; display:none;">
+⚠ Do NOT refresh or close the page after starting the exam. Your answers may be lost.
+</p>
 
 <div id="studentInfo" style="margin-top:15px; font-size:18px; font-weight:bold; color:#5ad7ff;"></div>
 <br>
@@ -201,6 +224,9 @@ Submit Answer 2
 
 let DB={};
 
+let isQ1Submitted = false;
+let isQ2Submitted = false;
+
 async function loadExcel(){
 
 const response=await fetch("WTMA_SkillTest_Questions_new.xlsx");
@@ -252,7 +278,12 @@ document.getElementById("q2").textContent=DB[reg].q2;
 document.getElementById("questions").style.display="block";
 message.textContent="";
 
+document.getElementById("examWarning").style.display = "block";
 document.getElementById("regno").disabled=true;
+
+window.onbeforeunload = function () {
+    return "Exam is in progress. Refreshing will lose your answers!";
+};
 
 }
 
@@ -268,19 +299,91 @@ document.getElementById("studentInfo").textContent="";
 
 function submitQ1(){
 
-document.getElementById("ans1").disabled=true;
+let ans1 = document.getElementById("ans1").value.trim();
 
-document.getElementById("msg1").textContent=
+if(ans1 === ""){
+Swal.fire({
+    title: "Missing Answer",
+    text: "Please enter your answer for Question 1 before submitting.",
+    icon: "warning",
+    background: "#101a33",
+    color: "#ffffff",
+    confirmButtonColor: "#28a745"
+});
+return;
+}
+
+document.getElementById("ans1").disabled = true;
+
+document.getElementById("msg1").textContent =
 "Answer submitted successfully.";
+
+isQ1Submitted = true;
+
+// Optional: Enable Q2 button if you added ID
+let btnQ2 = document.getElementById("btnQ2");
+if(btnQ2){
+    btnQ2.disabled = false;
+}
+
+// Success popup
+Swal.fire({
+    title: "Submitted!",
+    text: "Answer 1 submitted successfully.",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false,
+    background: "#101a33",
+    color: "#ffffff"
+});
 
 }
 
 function submitQ2(){
 
-document.getElementById("ans2").disabled=true;
+if(!isQ1Submitted){
+Swal.fire({
+    title: "Not Allowed",
+    text: "Please submit Answer 1 before submitting Answer 2.",
+    icon: "error",
+    background: "#101a33",
+    color: "#ffffff",
+    confirmButtonColor: "#dc3545"
+});
+return;
+}
 
-document.getElementById("msg2").textContent=
+let ans2 = document.getElementById("ans2").value.trim();
+
+if(ans2 === ""){
+Swal.fire({
+    title: "Missing Answer",
+    text: "Please enter your answer for Question 2 before submitting.",
+    icon: "warning",
+    background: "#101a33",
+    color: "#ffffff",
+    confirmButtonColor: "#28a745"
+});
+return;
+}
+
+document.getElementById("ans2").disabled = true;
+
+document.getElementById("msg2").textContent =
 "Answer submitted successfully.";
+
+isQ2Submitted = true;
+
+// Success popup
+Swal.fire({
+    title: "Submitted!",
+    text: "Answer 2 submitted successfully.",
+    icon: "success",
+    timer: 1500,
+    showConfirmButton: false,
+    background: "#101a33",
+    color: "#ffffff"
+});
 
 }
 
