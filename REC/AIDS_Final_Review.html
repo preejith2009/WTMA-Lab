@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Final Year Placement Status</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+
+.header h1{
+margin:5px 0;
+font-size:20px;
+}
+
+.dept{
+color:#d6b3ff;
+font-size:14px;
+font-weight:bold;
+}
+
+/* MAIN */
+.main-content{
+flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:10px 20px 20px;  /* top padding reduced */
+}
+
+.container{
+width:100%;
+max-width:600px;
+margin:auto;
+padding:20px;
+}
+
+/* INPUT */
+input{
+padding:12px;
+width:65%;
+border-radius:6px;
+border:none;
+font-size:16px;
+}
+
+button{
+padding:12px 15px;
+margin-left:10px;
+cursor:pointer;
+border:none;
+border-radius:6px;
+background:#5a2d82;
+color:white;
+transition:0.3s;
+font-size:16px;
+}
+
+button:hover{
+background:#7b3fb3;
+transform:scale(1.05);
+}
+
+/* RESULT BOX */
+.result-box{
+margin-top:20px;
+padding:20px;
+background:#1c2a55;
+border-radius:10px;
+text-align:center;
+font-size:18px;
+}
+
+/* FOOTER */
+footer{
+background:#343a40;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+@media (max-width:600px){
+
+input{
+width:100%;
+margin-bottom:10px;
+}
+
+button{
+width:100%;
+margin:5px 0;
+}
+
+}
+
+.form-box{
+  margin-top:15px;
+}
+
+.form-box label{
+  display:block;
+  margin-top:12px;
+  font-size:14px;
+  color:#d1d9ff;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  border-radius:6px;
+  border:none;
+  font-size:14px;
+}
+
+.form-box textarea{
+  resize:vertical;
+}
+
+.form-box .radio-group{
+  margin-top:5px;
+}
+
+.form-box .radio-group input{
+  width:auto;
+  margin-right:5px;
+}
+
+.form-box button{
+  margin-top:15px;
+  width:100%;
+  background:#00c896;
+  font-weight:bold;
+}
+
+.form-box button:hover{
+  background:#00e6a8;
+}
+
+.loader {
+  margin: 10px auto;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #00c896;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+.header{
+  background:#003366;
+  padding:10px 20px;
+}
+
+/* FORCE single row */
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:center; /* 👈 important */
+  gap:15px;
+  flex-wrap:nowrap; /* 👈 prevents breaking */
+}
+
+/* Logo */
+.logo{
+  height:60px;
+  min-width:60px; /* 👈 prevents shrinking */
+  object-fit:contain;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Text */
+.header-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.header-text h1{
+  margin:0;
+  font-size:20px;
+  white-space:nowrap; /* 👈 prevents wrapping */
+}
+
+.dept{
+  color:#d6b3ff;
+  font-size:13px;
+}
+
+.header-text{
+  display:flex;
+  flex-direction:column;
+  gap:10px;   /* 👈 modern clean spacing */
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+
+  <div class="header-row">
+
+    <img src="REC_LOGO.jpg" class="logo">
+
+    <div class="header-text">
+      <h1>Rajalakshmi Engineering College</h1> 
+      <div class="dept">Department of Artificial Intelligence and Data Science</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="main-content">
+
+<div class="container">
+
+<h2 style="text-align:center;">Final Year Placement Review Portal</h2>
+
+<p style="text-align:center; color:#9fb3ff;">
+Enter your Register Number to view placement details
+</p>
+
+<!-- INPUT -->
+<div style="text-align:center;">
+<input id="regno" placeholder="Enter Register Number, Eg- 221801000">
+<button onclick="getDetails()">Check</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<div id="message" style="margin-top:10px;color:#ff6b6b;text-align:center;"></div>
+
+<div id="studentInfo" style="margin-top:15px;font-size:18px;color:#5ad7ff;text-align:center;"></div>
+
+<div id="result" style="display:none;"></div>
+
+<div id="thankYouCard" style="display:none; max-width:600px; margin:20px auto; padding:25px; background:#1c2a55; border-radius:12px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+
+  <h2 id="thankTitle" style="color:#00ff9c;"></h2>
+
+  <p id="thankMsg1" style="font-size:16px; margin-top:10px;"></p>
+
+  <p id="thankMsg2" style="color:#cfd8ff; margin-top:10px;"></p>
+
+  <p id="thankMsg3" style="color:#9fb3ff; margin-top:10px;"></p>
+
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+let DB = {};
+
+async function loadExcel(){
+
+const response = await fetch("Final Year Placement Details.xlsx"); // 🔁 your file name
+
+const data = await response.arrayBuffer();
+
+const workbook = XLSX.read(data,{type:"array"});
+
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+const rows = XLSX.utils.sheet_to_json(sheet);
+
+rows.forEach(r => {
+
+const reg = String(r["ROLL NO"]).trim();
+
+DB[reg] = {
+    name: r["NAME"] ?? "",
+    status: r["Placement Status"] ?? "",
+    company: r["COMPANY NAME"] ?? ""
+};
+
+});
+
+}
+
+loadExcel();
+
+function getDetails(){
+
+const reg = document.getElementById("regno").value.trim();
+const message = document.getElementById("message");
+
+if(!reg){
+message.textContent="Please enter Register Number";
+return;
+}
+
+if(!DB[reg]){
+message.textContent="Register Number not found";
+return;
+}
+
+// Show Name
+document.getElementById("studentInfo").textContent =
+"Student Name : " + DB[reg].name + " | Register Number : " + reg;
+
+// Placement Output
+let output = "";
+
+if(DB[reg].status.toLowerCase() === "placed"){
+
+output = `
+<div class="result-box" style="color:#00ff9c;">
+
+<div style="text-align:center;">
+🎉 You are Placed! <br><br>
+Company (as per record): <b>${DB[reg].company}</b>
+</div>
+
+<hr style="margin:15px 0;">
+
+<div class="form-box">
+
+<h3 style="text-align:center;">Placement Feedback</h3>
+
+<label>Name</label>
+<input type="text" id="name" value="${DB[reg].name}" readonly>
+
+<label>Register Number</label>
+<input type="text" id="regnoField" value="${reg}" readonly>
+
+<label>Mobile Number</label>
+<input type="text" id="mobile">
+
+<label>Confirm / Update Company Name</label>
+<input type="text" id="company" value="${DB[reg].company}">
+
+<label>Has your offer letter been issued?</label>
+<select id="offerLetter">
+  <option value="">--Select--</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<label>Expected Joining Date</label>
+<input type="date" id="joiningDate">
+
+<label>How was the interview process?</label>
+<select id="interview">
+  <option value="">--Select--</option>
+  <option>Easy</option>
+  <option>Moderate</option>
+  <option>Difficult</option>
+</select>
+
+<label>Is College Training Useful?</label>
+<select id="training">
+  <option value="">--Select--</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<label>Offered Salary (LPA)</label>
+<input type="number" id="salary" step="0.1">
+
+<label>Are you satisfied with your salary?</label>
+<div class="radio-group">
+  <input type="radio" name="satisfaction" value="Yes"> Yes
+  <input type="radio" name="satisfaction" value="No"> No
+</div>
+
+<label>Your Feedback for the Department</label>
+<textarea id="suggestions" rows="3"></textarea>
+
+<label>Your Overall Review of the College Experience</label>
+<div style="font-size:13px; color:#9fb3ff; margin-bottom:5px;">
+  (This feedback will be kept confidential and will not be shared with anyone.)
+</div>
+<textarea id="comments" rows="3" placeholder="share your experience, challenges, or any additional thoughts..."></textarea>
+
+<button onclick="submitPlacedFeedback()">Submit Feedback</button>
+
+<div id="formMsg" style="margin-top:10px;text-align:center;"></div>
+<div class="loader" id="loader" style="display:none;"></div>
+
+</div>
+
+</div>
+`;
+} else{
+
+output = `
+<div class="result-box" style="color:#ff6b6b; text-align:left;">
+
+<div style="text-align:center;">
+⚠️ You are Not Placed
+</div>
+
+<hr style="margin:15px 0;">
+
+<div class="form-box">
+
+<h3 style="text-align:center;">Placement Support Feedback</h3>
+
+<label>Name</label>
+<input type="text" id="name" value="${DB[reg].name}" readonly>
+
+<label>Register Number</label>
+<input type="text" id="regnoField" value="${reg}" readonly>
+
+<label>Mobile Number</label>
+<input type="text" id="mobile">
+
+<label>Have you opted for higher studies?</label>
+<select id="higherStudies" onchange="toggleUniversityField()">
+  <option value="">--Select--</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<div id="universityField" style="display:none;">
+  <label>If yes, which University?</label>
+  <input type="text" id="university">
+</div>
+
+<label>Do you have any standing arrears?</label>
+<select id="arrears" onchange="toggleArrearCount()">
+  <option value="">--Select--</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<div id="arrearCountField" style="display:none;">
+  <label>If yes, number of arrears</label>
+  <input type="number" id="arrearCount">
+</div>
+
+<label>Reason for not getting placed</label>
+<textarea id="reason" rows="3"></textarea>
+
+<label>Which area needs improvement?</label>
+<select id="improvement">
+  <option value="">--Select--</option>
+  <option>Aptitude</option>
+  <option>Technical Skills</option>
+  <option>Communication</option>
+  <option>Interview Skills</option>
+</select>
+
+<label>Is College Training Useful?</label>
+<select id="training">
+  <option value="">--Select--</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<label>Your Feedback for the Department</label>
+<textarea id="suggestions" rows="3"></textarea>
+
+<label>Your Overall Review of the College Experience</label>
+<div style="font-size:13px; color:#9fb3ff; margin-bottom:5px;">
+  (This feedback will be kept confidential and will not be shared with anyone.)
+</div>
+<textarea id="comments" rows="3" placeholder="Share your experience, challenges, or any additional thoughts..."></textarea>
+
+<button onclick="submitNotPlacedFeedback()">Submit Feedback</button>
+
+<div id="formMsg" style="margin-top:10px;text-align:center;"></div>
+<div class="loader" id="loader" style="display:none;"></div>
+
+</div>
+</div>
+`;
+}
+
+document.getElementById("result").innerHTML = output;
+document.getElementById("result").style.display = "block";
+
+message.textContent="";
+}
+
+function clearAll(){
+
+document.getElementById("regno").value="";
+document.getElementById("studentInfo").textContent="";
+document.getElementById("message").textContent="";
+document.getElementById("result").style.display="none";
+document.getElementById("result").innerHTML="";
+
+}
+
+
+function submitPlacedFeedback(){
+
+const btn = event.target;
+const msg = document.getElementById("formMsg");
+const loader = document.getElementById("loader");
+
+btn.disabled = true;
+btn.innerText = "Submitting...";
+loader.style.display = "block";
+msg.innerText = "";
+
+const data = {
+  name: document.getElementById("name").value,
+  regno: document.getElementById("regnoField").value,
+  mobile: document.getElementById("mobile").value,
+  status: "Placed",
+  company: document.getElementById("company").value,
+  offerLetter: document.getElementById("offerLetter").value,
+  joiningDate: document.getElementById("joiningDate").value,
+  interview: document.getElementById("interview").value,
+  training: document.getElementById("training").value,
+  salary: document.getElementById("salary").value,
+  satisfaction: document.querySelector('input[name="satisfaction"]:checked')?.value || "",
+  suggestions: document.getElementById("suggestions").value,
+  comments: document.getElementById("comments").value
+};
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbyceItIOdEXQMQ5WP4qZBBevkFgKwuGLpH_PqL662eTrXNEeSDP0skGE6jKgTGczZDa/exec";
+
+fetch(scriptURL, {
+  method: "POST",
+  body: JSON.stringify(data)
+})
+.then(res => res.text())
+.then(() => {
+
+  loader.style.display = "none";
+
+  showThankYou("Placed");
+
+})
+.catch(() => {
+
+  loader.style.display = "none";
+  btn.disabled = false;
+  btn.innerText = "Submit Feedback";
+
+  msg.innerText = "❌ Error submitting feedback!";
+
+});
+}
+
+function submitNotPlacedFeedback(){
+
+const btn = event.target;
+const msg = document.getElementById("formMsg");
+const loader = document.getElementById("loader");
+
+btn.disabled = true;
+btn.innerText = "Submitting...";
+loader.style.display = "block";
+msg.innerText = "";
+
+const data = {
+  name: document.getElementById("name").value,
+  regno: document.getElementById("regnoField").value,
+  status: "Not Placed",
+  mobile: document.getElementById("mobile").value,
+  higherStudies: document.getElementById("higherStudies").value,
+  university: document.getElementById("university").value,
+  arrears: document.getElementById("arrears").value,
+  arrearCount: document.getElementById("arrearCount").value,
+  reason: document.getElementById("reason").value,
+  improvement: document.getElementById("improvement").value,
+  training: document.getElementById("training").value,
+  suggestions: document.getElementById("suggestions").value,
+  comments: document.getElementById("comments").value
+};
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbyceItIOdEXQMQ5WP4qZBBevkFgKwuGLpH_PqL662eTrXNEeSDP0skGE6jKgTGczZDa/exec";
+
+fetch(scriptURL, {
+  method: "POST",
+  body: JSON.stringify(data)
+})
+.then(res => res.text())
+.then(() => {
+
+  loader.style.display = "none";
+  showThankYou("Not Placed");
+})
+.catch(() => {
+
+  loader.style.display = "none";
+  btn.disabled = false;
+  btn.innerText = "Submit Feedback";
+
+  msg.innerText = "❌ Error submitting feedback!";
+
+});
+}
+
+function toggleUniversityField(){
+  const val = document.getElementById("higherStudies").value;
+  document.getElementById("universityField").style.display = 
+    (val === "Yes") ? "block" : "none";
+}
+
+function toggleArrearCount(){
+  const val = document.getElementById("arrears").value;
+  document.getElementById("arrearCountField").style.display = 
+    (val === "Yes") ? "block" : "none";
+}
+
+function showThankYou(status){
+
+  const title = document.getElementById("thankTitle");
+  const msg1 = document.getElementById("thankMsg1");
+  const msg2 = document.getElementById("thankMsg2");
+  const msg3 = document.getElementById("thankMsg3");
+
+  if(status === "Placed"){
+    title.innerHTML = "🎉 Congratulations!";
+    msg1.innerText = "Your placement feedback has been successfully submitted.";
+    msg2.innerText = "We are proud of your achievement! Your journey will inspire future students.";
+    msg3.innerText = "Wishing you great success in your career ahead 🚀";
+  } else {
+    title.innerHTML = "💪 Keep Going!";
+    msg1.innerText = "Your response has been successfully recorded.";
+    msg2.innerText = "Thank you for your honest feedback. This helps us improve training and placement support.";
+    msg3.innerText = "Stay confident — your opportunity is coming soon. Keep pushing forward! 🔥";
+  }
+
+  // 🔒 Disable Reg No input
+ const regInput = document.getElementById("regno");
+
+regInput.value = "";       // 🔥 clear text
+regInput.disabled = true;  // 🔒 disable field
+
+  // Hide form
+  document.getElementById("result").style.display = "none";
+
+  // Show thank you
+  document.getElementById("thankYouCard").style.display = "block";
+
+  document.getElementById("thankYouCard")
+    .scrollIntoView({ behavior: "smooth" });
+
+  //eset after few seconds
+  // setTimeout(() => {
+  //  clearAll();
+  //   document.getElementById("thankYouCard").style.display = "none";
+  // }, 8000);
+}
+
+</script>
+
+</body>
+</html>
