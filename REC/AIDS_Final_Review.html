@@ -41,18 +41,19 @@ font-weight:bold;
 
 /* MAIN */
 .main-content{
-flex:1;
+ flex:1;
   display:flex;
   justify-content:center;
-  align-items:flex-start;
-  padding:10px 20px 20px;  /* top padding reduced */
+  align-items:center;   /* 👈 centers vertically */
+  padding:10px;
 }
 
 .container{
 width:100%;
-max-width:600px;
-margin:auto;
-padding:20px;
+  max-width:600px;
+  margin:0 auto;
+  padding:15px;
+  box-sizing:border-box;
 }
 
 /* INPUT */
@@ -84,11 +85,13 @@ transform:scale(1.05);
 /* RESULT BOX */
 .result-box{
 margin-top:20px;
-padding:20px;
-background:#1c2a55;
-border-radius:10px;
-text-align:center;
-font-size:18px;
+  padding:15px;
+  background:#1c2a55;
+  border-radius:10px;
+  text-align:left;   /* 👈 BIG FIX */
+  font-size:16px;
+  width:100%;
+  box-sizing:border-box;
 }
 
 /* FOOTER */
@@ -260,34 +263,47 @@ display:flex;
 }
 
 @media (max-width:600px){
-  .header-text h1{
-    font-size:14px;
-  }
 
-  .dept{
-    font-size:12px;
+  /* HEADER */
+  .header-row{
+    flex-direction:column;
   }
 
   .logo{
     height:45px;
   }
-}
-
-@media (max-width:600px){
-
-  .logo{
-    height:35px;
-  }
 
   .header-text h1{
-    font-size:12px;
+    font-size:16px;
   }
 
   .dept{
-    font-size:9px;
+    font-size:12px;
+  }
+
+  /* LAYOUT */
+  .container{
+    padding:10px;
+  }
+
+  .result-box{
+    padding:12px;
+    border-radius:8px;
+  }
+
+  /* FORM */
+  .form-box input,
+  .form-box select,
+  .form-box textarea{
+    font-size:16px;   /* prevents zoom */
+  }
+
+  h2{
+    font-size:18px;
   }
 
 }
+
 </style>
 
 </head>
@@ -431,7 +447,10 @@ Company (as per record): <b>${DB[reg].company}</b>
 <label>Mobile Number</label>
 <input type="text" id="mobile">
 
-<label>Confirm / Update Company Name</label>
+<label>Personal Mail ID</label>
+<input type="email" id="email">
+
+<label>Confirm / Update Company Name & Your Designation</label>
 <input type="text" id="company" value="${DB[reg].company}">
 
 <label>Has your offer letter been issued?</label>
@@ -460,7 +479,7 @@ Company (as per record): <b>${DB[reg].company}</b>
 </select>
 
 <label>Offered Salary (LPA)</label>
-<input type="number" id="salary" step="0.1">
+<input type="text" id="salary" inputmode="decimal" placeholder="Eg: 4.5">
 
 <label>Are you satisfied with your salary?</label>
 <div class="radio-group">
@@ -468,7 +487,7 @@ Company (as per record): <b>${DB[reg].company}</b>
   <input type="radio" name="satisfaction" value="No"> No
 </div>
 
-<label>Your Feedback for the Department</label>
+<label>Your Feedback for the Department / Placement Team</label>
 <textarea id="suggestions" rows="3"></textarea>
 
 <label>Your Overall Review of the College Experience</label>
@@ -491,8 +510,16 @@ Company (as per record): <b>${DB[reg].company}</b>
 output = `
 <div class="result-box" style="color:#ff6b6b; text-align:left;">
 
-<div style="text-align:center;">
-⚠️ You are Not Placed
+<div style="text-align:center; line-height:1.6;">
+  
+  <div style="font-size:18px; font-weight:800;">
+    💪 You're yet to be placed — keep pushing forward!
+  </div>
+
+  <div style="margin-top:8px; font-size:14px; font-weight:600; color:#cfd8ff;">
+    🌟 The Placement Team and Department will continue to support you in your journey.
+  </div>
+
 </div>
 
 <hr style="margin:15px 0;">
@@ -509,6 +536,9 @@ output = `
 
 <label>Mobile Number</label>
 <input type="text" id="mobile">
+
+<label>Personal Mail ID</label>
+<input type="email" id="email">
 
 <label>Have you opted for higher studies?</label>
 <select id="higherStudies" onchange="toggleUniversityField()">
@@ -553,7 +583,7 @@ output = `
   <option>No</option>
 </select>
 
-<label>Your Feedback for the Department</label>
+<label>Your Feedback for the Department / Placement Team</label>
 <textarea id="suggestions" rows="3"></textarea>
 
 <label>Your Overall Review of the College Experience</label>
@@ -604,6 +634,7 @@ const data = {
   name: document.getElementById("name").value,
   regno: document.getElementById("regnoField").value,
   mobile: document.getElementById("mobile").value,
+  email: document.getElementById("email").value,
   status: "Placed",
   company: document.getElementById("company").value,
   offerLetter: document.getElementById("offerLetter").value,
@@ -657,6 +688,7 @@ const data = {
   regno: document.getElementById("regnoField").value,
   status: "Not Placed",
   mobile: document.getElementById("mobile").value,
+  email: document.getElementById("email").value,
   higherStudies: document.getElementById("higherStudies").value,
   university: document.getElementById("university").value,
   arrears: document.getElementById("arrears").value,
