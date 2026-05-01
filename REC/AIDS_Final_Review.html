@@ -364,6 +364,15 @@ Enter your Register Number to view placement details
 
   <p id="thankMsg3" style="color:#9fb3ff; margin-top:10px;"></p>
 
+  <div style="margin-top:20px;">
+ ⬅️
+  <a href="#" onclick="goBack()" 
+style="color:#00ff9c; text-decoration:underline;">
+ Close this page
+</a>
+
+</div>
+
 </div>
 
 </div>
@@ -781,6 +790,9 @@ regInput.disabled = true;  // 🔒 disable field
   // }, 8000);
 }
 
+function goBack(){
+  window.history.back();
+}
 </script>
 
 </body>
