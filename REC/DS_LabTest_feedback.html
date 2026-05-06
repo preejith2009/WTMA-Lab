@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Structures Lab Exam Feedback</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial;
+  background:#0b1220;
+  color:white;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* HEADER */
+.header{
+  background:#003366;
+  padding:10px 20px;
+}
+
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  text-align:center;
+}
+
+.logo{
+  height:60px;
+  min-width:60px;
+  object-fit:contain;
+}
+
+.header-text{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.header-text h1{
+  margin:0;
+  font-size:22px;
+}
+
+.dept{
+  color:#d6b3ff;
+  font-size:14px;
+  font-weight:bold;
+}
+
+/* MAIN */
+.main-content{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 10px;
+}
+
+.container{
+  width:100%;
+  max-width:700px;
+}
+
+.form-box{
+  background:#1c2a55;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
+
+.form-box h2{
+  text-align:center;
+  margin-top:0;
+  color:#00ffcc;
+}
+
+.form-box p{
+  text-align:center;
+  color:#cfd8ff;
+  margin-bottom:20px;
+}
+
+/* LABELS */
+.form-box label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:5px;
+  color:#d1d9ff;
+  font-size:14px;
+}
+
+/* INPUTS */
+.form-box input,
+.form-box select,
+.form-box textarea{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  font-size:15px;
+  box-sizing:border-box;
+}
+
+.form-box textarea{
+  resize:vertical;
+}
+
+/* RADIO GROUP */
+.radio-group{
+  margin-top:5px;
+}
+
+.radio-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:normal;
+}
+
+.radio-group input{
+  width:auto;
+  margin-right:8px;
+}
+
+/* CHECKBOX GROUP */
+.checkbox-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:normal;
+}
+
+.checkbox-group input{
+  width:auto;
+  margin-right:8px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:14px;
+  margin-top:25px;
+  border:none;
+  border-radius:8px;
+  background:#00c896;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#00e6a8;
+  transform:scale(1.02);
+}
+
+/* THANK YOU */
+.thankyou{
+  display:none;
+  margin-top:20px;
+  background:#1c2a55;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.thankyou h2{
+  color:#00ff9c;
+}
+
+.thankyou p{
+  color:#cfd8ff;
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#343a40;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+
+  .header-row{
+    flex-direction:column;
+  }
+
+  .logo{
+    height:50px;
+  }
+
+  .header-text h1{
+    font-size:18px;
+  }
+
+  .dept{
+    font-size:12px;
+  }
+
+  .form-box{
+    padding:15px;
+  }
+
+  .form-box input,
+  .form-box select,
+  .form-box textarea{
+    font-size:16px;
+  }
+
+}
+
+/* LOADER */
+
+.loader{
+  margin:20px auto;
+  border:4px solid #f3f3f3;
+  border-top:4px solid #00c896;
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+
+  <div class="header-row">
+
+    <img src="REC_LOGO.jpg" class="logo">
+
+    <div class="header-text">
+      <h1>Rajalakshmi Engineering College</h1>
+      <div class="dept">
+        Department of Artificial Intelligence and Data Science
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main-content">
+
+<div class="container">
+
+<div class="form-box">
+
+<h2>Data Structure Todays Lab Exam Feedback</h2>
+
+<p>
+Today's attendance will be considered based on the successful submission of this feedback form.<br><br>
+
+Your valuable feedback will help us improve lab sessions, coding practice methods, debugging support, and future Lab Exam preparation.
+</p>
+
+<form id="feedbackForm">
+
+<!-- STUDENT DETAILS -->
+
+<label>Name</label>
+<input type="text" id="name" placeholder="Enter your name" required>
+
+<label>Register Number</label>
+<input type="text" id="regno" placeholder="Enter Register Number, Eg- 251801000" required>
+
+<!-- QUESTION 1 -->
+
+<label>1. How difficult was today’s lab exam?</label>
+
+<div class="radio-group">
+<label><input type="radio" name="difficulty" value="Easy" required> Easy</label>
+<label><input type="radio" name="difficulty" value="Moderate"> Moderate</label>
+<label><input type="radio" name="difficulty" value="Difficult"> Difficult</label>
+<label><input type="radio" name="difficulty" value="Very Difficult"> Very Difficult</label>
+</div>
+
+<!-- QUESTION 2 -->
+
+<label>2. Were the programs asked in the exam familiar from regular lab practice?</label>
+
+<select id="familiarity" required>
+  <option value="">--Select--</option>
+  <option>Yes, completely</option>
+  <option>Mostly familiar</option>
+  <option>Partially familiar</option>
+  <option>Completely new</option>
+</select>
+
+<!-- QUESTION 3 -->
+
+<label>3. What was the main difficulty you faced during the exam?</label>
+
+<select id="mainDifficulty" required>
+  <option value="">--Select--</option>
+  <option>Understanding the logic</option>
+  <option>Writing syntax</option>
+  <option>Debugging errors</option>
+  <option>Lack of practice</option>
+  <option>Time management</option>
+  <option>Stress / nervousness</option>
+  <option>System / software issues</option>
+  <option>Others</option>
+</select>
+
+<!-- QUESTION 4 -->
+
+<label>4. Did you practice programs individually before the exam?</label>
+
+<select id="practice" required>
+  <option value="">--Select--</option>
+  <option>Daily</option>
+  <option>Frequently</option>
+  <option>Occasionally</option>
+  <option>Rarely</option>
+  <option>Never</option>
+</select>
+
+<!-- QUESTION 5 -->
+
+<label>5. Do you feel the difficulty level of the exam was:</label>
+
+<select id="comparison" required>
+  <option value="">--Select--</option>
+  <option>Lower than practice sessions</option>
+  <option>Similar to practice sessions</option>
+  <option>Higher than practice sessions</option>
+</select>
+
+<!-- QUESTION 6 -->
+
+<label>6. What type of support would help you improve lab performance?</label>
+
+<div class="checkbox-group">
+
+<label>
+<input type="checkbox" name="support" value="More practice problems">
+More practice problems
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Step-by-step coding explanation">
+Step-by-step coding explanation
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Debugging sessions">
+Debugging sessions
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Mock lab exams">
+Mock lab exams
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Video demonstrations">
+Video demonstrations
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Extra practice hours">
+Extra practice hours
+</label>
+
+<label>
+<input type="checkbox" name="support" value="Simplified notes">
+Simplified notes
+</label>
+
+</div>
+
+<!-- QUESTION 7 -->
+
+<label>7. What is your biggest challenge in Data Structures programming?</label>
+
+<textarea
+id="challenge"
+rows="3"
+placeholder="Share your biggest challenge..."
+></textarea>
+
+<!-- QUESTION 8 -->
+
+<label>8. Suggestions to improve lab teaching or exam preparation:</label>
+
+<textarea
+id="suggestions"
+rows="5"
+placeholder="Enter your suggestions..."
+></textarea>
+
+<div class="loader" id="loader" style="display:none;"></div>
+
+<button type="submit">
+Submit Feedback
+</button>
+
+
+</form>
+
+</div>
+
+<!-- THANK YOU -->
+
+<div class="thankyou" id="thankyou">
+
+<h2>✅ Feedback Submitted Successfully</h2>
+
+<p>
+Thank you for sharing your honest feedback.<br><br>
+
+Your responses will help us improve lab sessions,
+practice methods, and future exam preparation.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+document
+.getElementById("feedbackForm")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+/* SUBMIT BUTTON */
+
+const btn = document.querySelector("button[type='submit']");
+
+const loader = document.getElementById("loader");
+
+btn.disabled = true;
+btn.innerText = "Submitting...";
+
+loader.style.display = "block";
+
+/* MULTI CHECKBOX VALUES */
+
+let support = [];
+
+document
+.querySelectorAll('input[name="support"]:checked')
+.forEach(cb => {
+  support.push(cb.value);
+});
+
+/* FORM DATA */
+
+const data = {
+
+  name:
+  document.getElementById("name").value,
+
+  regno:
+  document.getElementById("regno").value,
+
+  difficulty:
+  document.querySelector('input[name="difficulty"]:checked')?.value || "",
+
+  familiarity:
+  document.getElementById("familiarity").value,
+
+  mainDifficulty:
+  document.getElementById("mainDifficulty").value,
+
+  practice:
+  document.getElementById("practice").value,
+
+  comparison:
+  document.getElementById("comparison").value,
+
+  supportNeeded:
+  support.join(", "),
+
+  challenge:
+  document.getElementById("challenge").value,
+
+  suggestions:
+  document.getElementById("suggestions").value
+
+};
+
+/* GOOGLE APPS SCRIPT URL */
+
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbxRdi9fHA4zQZrV1-Jc0eI8dXSTFgP5fA97Y0_MZm81C4g95OU8-DBbg9v3nRceKB3PWg/exec";
+
+/* SEND DATA */
+
+fetch(scriptURL, {
+
+  method: "POST",
+
+  mode: "no-cors",
+
+  headers: {
+    "Content-Type": "application/json"
+  },
+
+  body: JSON.stringify(data)
+
+})
+
+.then(() => {
+
+    loader.style.display = "none";
+
+  /* HIDE FORM */
+
+  document.querySelector(".form-box").style.display = "none";
+
+  /* SHOW THANK YOU */
+
+  document.getElementById("thankyou").style.display = "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+})
+
+.catch(error => {
+
+    loader.style.display = "none";
+
+  console.log(error);
+
+  alert("❌ Error submitting feedback");
+
+  btn.disabled = false;
+
+  btn.innerText = "Submit Feedback";
+
+});
+
+});
+
+</script>
+</body>
+</html>
