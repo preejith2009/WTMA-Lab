@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Exception Handling - Lab Notes</title>
+
+<style>
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin:40px;
+    background:#f4f6f9;
+    line-height:1.6;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    flex:1;
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:30px;
+}
+
+h2{
+    color:#1a5276;
+    margin-top:40px;
+}
+
+h3{
+    color:#21618c;
+    margin-top:25px;
+}
+
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:6px;
+    overflow-x:auto;
+}
+
+.code-title{
+    background:#e8f4ff;
+    padding:10px;
+    border-left:5px solid #3498db;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.example{
+    background:#fdf2e9;
+    padding:10px;
+    border-left:5px solid #e67e22;
+    margin-top:10px;
+}
+
+.note{
+    background:#fdf2e9;
+    padding:15px;
+    border-left:5px solid #e67e22;
+    margin-top:20px;
+}
+
+footer{
+    margin-top:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Week 5 - Exception Handling in Python</h1>
+
+<p>
+Python Exception Handling allows a program to handle unexpected errors during execution without terminating abruptly. 
+Instead of stopping the program completely, Python provides mechanisms to detect errors, handle them properly, 
+and continue execution whenever possible.
+</p>
+
+<p>
+Exception handling improves program reliability, prevents crashes, and helps developers write robust applications.
+</p>
+
+<hr>
+
+<h2>Difference Between Errors and Exceptions</h2>
+
+<p>
+Errors and exceptions are both problems that occur in a program, but they differ in severity and handling.
+</p>
+
+<pre>
+Error                           Exception
+
+Serious problem                 Runtime problem
+
+Cannot usually be handled       Can be handled
+
+Causes program termination      Program can continue
+
+Example:
+Syntax Error                    ZeroDivisionError
+Indentation Error               ValueError
+</pre>
+
+<ul>
+
+<li>
+<b>Error:</b> Errors are serious problems in a program that generally cannot be handled during execution.
+Examples include syntax errors and indentation errors.
+</li>
+
+<li>
+<b>Exception:</b> Exceptions are runtime problems that occur during program execution and can be handled using exception handling techniques.
+</li>
+
+</ul>
+
+<hr>
+
+<h2>Types of Errors in Python</h2>
+
+<h3>1. Syntax Errors</h3>
+
+<p>
+Syntax errors occur when Python rules are violated while writing the program.
+The interpreter detects these errors before execution.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+print("Hello"
+</pre>
+
+<div class="example">
+Output : SyntaxError
+</div>
+
+<h3>2. Runtime Errors</h3>
+
+<p>
+Runtime errors occur during program execution.
+These errors generate exceptions.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+a = 10
+b = 0
+print(a / b)
+</pre>
+
+<div class="example">
+Output : ZeroDivisionError
+</div>
+
+<h3>3. Logical Errors</h3>
+
+<p>
+Logical errors occur when the program executes successfully but produces incorrect output.
+These errors are difficult to identify because no error message is generated.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+a = 10
+b = 20
+
+print("Addition =", a - b)
+</pre>
+
+<div class="example">
+Output : Addition = -10
+</div>
+
+<hr>
+
+<h2>What is Exception Handling?</h2>
+
+<p>
+Exception handling is a mechanism used to handle runtime errors in a program.
+Python provides special keywords such as <b>try</b>, <b>except</b>, <b>else</b>, and <b>finally</b>
+to manage exceptions effectively.
+</p>
+
+<p>
+When an exception occurs, Python transfers control to the appropriate exception handling block instead of terminating the program abruptly.
+</p>
+
+<hr>
+
+<h2>Advantages of Exception Handling</h2>
+
+<ul>
+
+<li>Prevents abnormal termination of programs</li>
+
+<li>Improves program reliability and stability</li>
+
+<li>Helps in debugging and identifying errors</li>
+
+<li>Allows graceful handling of unexpected situations</li>
+
+<li>Improves user experience</li>
+
+<li>Makes programs more secure and robust</li>
+
+</ul>
+
+<hr>
+
+<h2>Python Exception Handling Keywords</h2>
+
+<pre>
+try       -> Used to test code for errors
+
+except    -> Used to handle the error
+
+else      -> Executes if no exception occurs
+
+finally   -> Executes always
+
+raise      -> Used to generate exceptions manually
+</pre>
+
+<hr>
+
+<h2>The try and except Blocks</h2>
+
+<p>
+The <b>try</b> block contains code that may generate an exception.
+If an exception occurs, the control moves to the <b>except</b> block.
+</p>
+
+<div class="code-title">Syntax</div>
+
+<pre>
+try:
+    # risky code
+
+except:
+    # handling code
+</pre>
+
+<div class="code-title">Example</div>
+
+<pre>
+try:
+    a = 10
+    b = 0
+    print(a / b)
+
+except:
+    print("Cannot divide by zero")
+</pre>
+
+<div class="example">
+Output : Cannot divide by zero
+</div>
+
+<pre>except Exception as e:
+    print("Error:", e)</pre>
+    
+<hr>
+
+<h2>Handling Multiple Exceptions</h2>
+
+<p>
+Python allows handling multiple exceptions using multiple except blocks.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+try:
+    num = int(input("Enter Number: "))
+    print(10 / num)
+
+except ZeroDivisionError:
+    print("Division by zero is not allowed")
+
+except ValueError:
+    print("Invalid Input")
+</pre>
+
+
+<hr>
+
+<h2>Using else Block</h2>
+
+<p>
+The <b>else</b> block executes only when no exception occurs in the try block.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+try:
+    a = 10
+    b = 2
+    print(a / b)
+
+except:
+    print("Error")
+
+else:
+    print("Division Successful")
+</pre>
+
+<div class="example">
+Output :
+5.0
+Division Successful
+</div>
+
+<hr>
+
+<h2>Using finally Block</h2>
+
+<p>
+The <b>finally</b> block always executes whether an exception occurs or not.
+It is mainly used for cleanup activities such as closing files and releasing resources.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+try:
+    print(10 / 2)
+
+except:
+    print("Error")
+
+finally:
+    print("Program Ended")
+</pre>
+
+<div class="example">
+Output :
+5.0
+Program Ended
+</div>
+
+<hr>
+
+<h2>Raising Exceptions using raise</h2>
+
+<p>
+The <b>raise</b> keyword is used to generate exceptions manually.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+age = -5
+
+if age < 0:
+    raise ValueError("Age cannot be negative")
+</pre>
+
+<hr>
+
+<h2>Common Built-in Exceptions in Python</h2>
+
+<pre>
+ZeroDivisionError      -> Division by zero
+
+ValueError             -> Invalid value
+
+TypeError              -> Wrong data type
+
+IndexError             -> Invalid index access
+
+KeyError               -> Invalid dictionary key
+
+FileNotFoundError      -> File does not exist
+</pre>
+
+<hr>
+
+<h2>Real-Time Applications of Exception Handling</h2>
+
+<ul>
+
+<li>ATM and Banking Applications</li>
+
+<li>File Handling Systems</li>
+
+<li>Database Applications</li>
+
+<li>Login Authentication Systems</li>
+
+<li>Online Payment Processing</li>
+
+<li>Network Communication Programs</li>
+
+<li>Input Validation in Forms</li>
+
+</ul>
+
+<hr>
+
+<h2>Using pass Statement in Exception Handling</h2>
+
+<p>
+The <b>pass</b> statement is used when the programmer does not want to execute any code
+for a particular exception. It acts as a placeholder and prevents the program from
+showing an error.
+</p>
+
+<p>
+The pass statement is useful during program development when exception handling
+logic is not yet implemented.
+</p>
+
+<div class="code-title">Syntax</div>
+
+<pre>
+try:
+    # risky code
+
+except:
+    pass
+</pre>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    num1 = 10
+    num2 = 0
+
+    result = num1 / num2
+
+    print(result)
+
+except ZeroDivisionError:
+
+    pass
+
+print("Program Continues")
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>The program attempts division by zero.</li>
+
+<li>ZeroDivisionError occurs during execution.</li>
+
+<li>The except block contains only pass statement.</li>
+
+<li>No error message is displayed.</li>
+
+<li>The program execution continues normally.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>pass</b> is a null statement in Python.</li>
+
+<li>It performs no action when executed.</li>
+
+<li>The exception is ignored silently.</li>
+
+<li>The program continues execution after the exception block.</li>
+
+</ul>
+
+<div class="example">
+Output : Program Continues
+</div>
+
+<div class="note">
+
+<b>Note for Students:</b><br><br>
+
+Exception handling is one of the most important concepts in Python programming. 
+In real-world applications, unexpected situations such as invalid input, missing files, network failures, 
+or division by zero can occur frequently.
+
+By using exception handling, programmers can prevent application crashes and ensure smooth program execution.
+
+Students are advised to practice different exception handling programs to understand how Python manages runtime errors effectively.
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM LIST FOR EXCEPTION HANDLING NOTES -->
+<!-- Add Below Theory Section in Existing Page -->
+<!-- ========================================= -->
+
+
+<hr>
+
+<h2>Python Exception Handling Programs</h2>
+
+<div class="note">
+
+<b>Note for Students:</b><br><br>
+
+The following programs demonstrate how exception handling is used in real-world applications.
+These programs include input validation, file handling, user-defined exceptions,
+and runtime error management.
+
+Students are advised to understand:
+<ul>
+
+<li>Where exceptions may occur in a program</li>
+
+<li>How try-except blocks prevent abnormal termination</li>
+
+<li>How custom exceptions are created</li>
+
+<li>How exception handling improves program reliability</li>
+
+<li>How file operations are handled safely</li>
+
+</ul>
+
+</div>
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 1 -->
+<!-- ========================================= -->
+
+<h2>Program 1 – Valid Positive Integer Average Calculator</h2>
+
+<p>
+Write a program that calculates the average of integers entered by the user.
+The program should validate inputs using exception handling.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+    n = int(input())
+
+    if n <= 0:
+        print("Error: Length must be positive")
+        exit()
+
+except ValueError:
+    print("Error: Enter numeric value")
+    exit()
+
+numbers = []
+
+for i in range(n):
+
+    while True:
+
+        try:
+            num = int(input())
+            numbers.append(num)
+            break
+
+        except ValueError:
+            print("Error: Invalid number")
+            exit()
+
+average = sum(numbers) / n
+
+print("The average is:", round(average, 2))
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>The program first reads the number of integers.</li>
+
+<li>Exception handling validates numeric input.</li>
+
+<li>The loop repeatedly accepts integer values.</li>
+
+<li>If invalid data is entered, ValueError occurs.</li>
+
+<li>The average is calculated after all valid inputs are entered.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>try</b> block contains risky statements.</li>
+
+<li><b>ValueError</b> handles invalid numeric input.</li>
+
+<li><b>sum(numbers)</b> calculates total sum.</li>
+
+<li><b>round()</b> limits output to two decimal places.</li>
+
+</ul>
+
+<div class="example">
+Input : 10 20 30 40 <br>
+Output : The average is: 25.0
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 2 -->
+<!-- ========================================= -->
+
+<h2>Program 2 – Absence of Words / Text Sanitization</h2>
+
+<p>
+Write a program to sanitize text by removing special characters
+and storing the cleaned content into a file.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+import re
+
+try:
+
+    text = input("Enter text: ")
+
+    cleaned = re.sub(r'[^A-Za-z0-9 ]', '', text)
+
+    filename = "clean_text.txt"
+
+    with open(filename, "w") as file:
+        file.write(cleaned)
+
+    print("Text saved successfully")
+
+except Exception as e:
+    print("Error:", e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters text containing special characters.</li>
+
+<li>Regular expression removes unwanted symbols.</li>
+
+<li>The cleaned text is stored in a file.</li>
+
+<li>Exceptions are handled safely.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>re.sub()</b> replaces unwanted characters.</li>
+
+<li><b>open()</b> creates file in write mode.</li>
+
+<li><b>with</b> automatically closes the file.</li>
+
+</ul>
+
+<div class="example">
+Input : Hello@123!! <br>
+Output : Text saved successfully
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 3 -->
+<!-- ========================================= -->
+
+<h2>Program 3 – Eligible to Vote Validation</h2>
+
+<p>
+Write a program to check voting eligibility using exception handling.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    age = int(input("Enter Age: "))
+
+    if age < 18:
+        raise Exception("Not Eligible to Vote")
+
+    print("Eligible to Vote")
+
+except ValueError:
+    print("Enter valid age")
+
+except Exception as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters age.</li>
+
+<li>If age is less than 18, exception is raised.</li>
+
+<li>Otherwise, user is eligible.</li>
+
+<li>Invalid input is handled separately.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>raise</b> manually generates exception.</li>
+
+<li><b>Exception as e</b> stores exception message.</li>
+
+<li>ValueError handles invalid input types.</li>
+
+</ul>
+
+<div class="example">
+Input : 15 <br>
+Output : Not Eligible to Vote
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 4 -->
+<!-- ========================================= -->
+
+<h2>Program 4 – Character Frequency Counter</h2>
+
+<p>
+Write a program to count frequency of characters in a string.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    text = input("Enter String: ")
+
+    frequency = {}
+
+    for ch in text:
+
+        if ch != ' ':
+
+            frequency[ch] = frequency.get(ch, 0) + 1
+
+    print("Character Frequencies:")
+
+    for key, value in frequency.items():
+        print(key, ":", value)
+
+except Exception as e:
+    print("Error:", e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters a string.</li>
+
+<li>Dictionary stores frequency count.</li>
+
+<li>Spaces are ignored.</li>
+
+<li>Each occurrence increases count value.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>get(ch,0)</b> initializes default count.</li>
+
+<li><b>items()</b> iterates through dictionary.</li>
+
+<li>Exception block handles runtime issues.</li>
+
+</ul>
+
+<div class="example">
+Input : hello <br>
+Output : h=1 e=1 l=2 o=1
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 5 -->
+<!-- ========================================= -->
+
+<h2>Program 5 – User Defined Exception</h2>
+
+<p>
+Write a program to validate register number and mobile number
+using user-defined exceptions.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+class InvalidRegister(Exception):
+    pass
+
+class InvalidMobile(Exception):
+    pass
+
+try:
+
+    reg = input("Enter Register Number: ")
+
+    if len(reg) != 10:
+        raise InvalidRegister("Invalid Register Number")
+
+    mobile = input("Enter Mobile Number: ")
+
+    if len(mobile) != 10:
+        raise InvalidMobile("Invalid Mobile Number")
+
+    print("Valid Details")
+
+except InvalidRegister as e:
+    print(e)
+
+except InvalidMobile as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>Two custom exceptions are created.</li>
+
+<li>Register number and mobile number are validated.</li>
+
+<li>If conditions fail, exceptions are raised.</li>
+
+<li>Specific error messages are displayed.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li>Custom exception classes inherit Exception class.</li>
+
+<li><b>raise</b> generates user-defined exception.</li>
+
+<li>Separate except blocks improve readability.</li>
+
+</ul>
+
+<div class="example">
+Input : 98765 <br>
+Output : Invalid Mobile Number
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 6 -->
+<!-- ========================================= -->
+
+<h2>Program 6 – Online Checkout Exception System</h2>
+
+<p>
+Write a program to simulate an online checkout system using exception handling.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    total = int(input("Enter Amount: "))
+
+    if total > 5000:
+        raise Exception("Credit Limit Exceeded")
+
+    print("Order Processed")
+
+except ValueError:
+    print("Invalid Input")
+
+except Exception as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters order amount.</li>
+
+<li>If amount exceeds credit limit, exception occurs.</li>
+
+<li>Otherwise order is processed successfully.</li>
+
+</ul>
+
+</div>
+
+<div class="example">
+Input : 6000 <br>
+Output : Credit Limit Exceeded
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 7 -->
+<!-- ========================================= -->
+
+<h2>Program 7 – Event Date-Time Validation</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from datetime import datetime
+
+try:
+
+    date = input("Enter Date and Time: ")
+
+    datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+
+    print("Valid Date Format")
+
+except ValueError:
+    print("Event time is not in format")
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters date and time.</li>
+
+<li>The format is validated using datetime.</li>
+
+<li>If invalid format is entered, exception occurs.</li>
+
+</ul>
+
+</div>
+
+<div class="example">
+Input : 2025-02-15 10:30:00 <br>
+Output : Valid Date Format
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 8 -->
+<!-- ========================================= -->
+
+<h2>Program 8 – File Word Replacement</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    text = "Python is powerful"
+
+    with open("sample.txt", "w") as file:
+        file.write(text)
+
+    with open("sample.txt", "r") as file:
+        content = file.read()
+
+    updated = content.replace("powerful", "easy")
+
+    print(updated)
+
+except Exception as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>Text is written into file.</li>
+
+<li>The file content is read again.</li>
+
+<li>Specific words are replaced.</li>
+
+<li>Updated text is displayed.</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 9 -->
+<!-- ========================================= -->
+
+<h2>Program 9 – File Sorting Operations</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    names = ["John", "Alice", "David"]
+
+    names.sort()
+
+    with open("names.txt", "w") as file:
+
+        for name in names:
+            file.write(name + "\n")
+
+    print("Names Sorted Successfully")
+
+except Exception as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>Names are stored in list.</li>
+
+<li>List is sorted alphabetically.</li>
+
+<li>Sorted names are written into file.</li>
+
+<li>Exceptions are handled properly.</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PROGRAM 10 -->
+<!-- ========================================= -->
+
+<h2>Program 10 – File Handling Palindrome Checker</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+try:
+
+    word = input("Enter Word: ")
+
+    with open("word.txt", "w") as file:
+        file.write(word)
+
+    with open("word.txt", "r") as file:
+        text = file.read()
+
+    cleaned = text.lower()
+
+    if cleaned == cleaned[::-1]:
+        print("Palindrome")
+
+    else:
+        print("Not Palindrome")
+
+except Exception as e:
+    print(e)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters a word.</li>
+
+<li>The word is stored in a file.</li>
+
+<li>The file content is read and checked.</li>
+
+<li>Reverse comparison identifies palindrome.</li>
+
+</ul>
+
+</div>
+
+<div class="example">
+Input : madam <br>
+Output : Palindrome
+</div>
+
+<hr>
+
+<h2>Reference Videos</h2>
+
+<p>
+Students can refer to the following video tutorials to better understand
+Python Exception Handling concepts and real-time program execution.
+</p>
+
+<ul>
+
+<li>
+<b>Python Exception Handling Tutorial – Beginners Guide</b><br>
+<a href="https://www.youtube.com/watch?v=ZUqGMDppEDs" target="_blank">
+https://www.youtube.com/watch?v=ZUqGMDppEDs
+</a>
+</li>
+
+<br>
+
+<li>
+<b>Python Exception Handling with Examples and Programs</b><br>
+<a href="https://www.youtube.com/watch?v=Z09I_OHuflw&t=411s" target="_blank">
+https://www.youtube.com/watch?v=Z09I_OHuflw&t=411s
+</a>
+</li>
+
+</ul>
+
+
+
+</div>
+
+<footer style="text-align:center; padding:10px;">
+&copy; 2026 Python Lab | Department of AIDS
+</footer>
+
+</body>
+</html>
