@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python I/O Operations and Collections - Lab Notes</title>
+
+<style>
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin:40px;
+    background:#f4f6f9;
+    line-height:1.6;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    flex:1;
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:30px;
+}
+
+h2{
+    color:#1a5276;
+    margin-top:40px;
+}
+
+h3{
+    color:#21618c;
+    margin-top:25px;
+}
+
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:6px;
+    overflow-x:auto;
+}
+
+.code-title{
+    background:#e8f4ff;
+    padding:10px;
+    border-left:5px solid #3498db;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.example{
+    background:#fdf2e9;
+    padding:10px;
+    border-left:5px solid #e67e22;
+    margin-top:10px;
+}
+
+.note{
+    background:#fdf2e9;
+    padding:15px;
+    border-left:5px solid #e67e22;
+    margin-top:20px;
+}
+
+.logic{
+    background:#f4ecf7;
+    padding:15px;
+    border-left:5px solid #8e44ad;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table, th, td{
+    border:1px solid #ccc;
+}
+
+th{
+    background:#d6eaf8;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+}
+
+footer{
+    margin-top:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Week 10 - Python I/O Operations and Collection Packages</h1>
+
+<p>
+Python provides powerful features for handling input and output operations.
+It also offers collection packages that help programmers store and manipulate data efficiently.
+</p>
+
+<p>
+I/O Operations allow programs to interact with files and users, while collection packages
+provide advanced data structures for managing large amounts of information.
+</p>
+
+<hr>
+
+<h2>What are I/O Operations?</h2>
+
+<p>
+I/O stands for Input and Output operations.
+These operations are used to read data from users or files and write data to the screen or files.
+</p>
+
+<h3>Types of I/O Operations</h3>
+
+<ul>
+
+<li><b>Input Operation</b> – Accepting data from user or file</li>
+
+<li><b>Output Operation</b> – Displaying or storing data</li>
+
+<li><b>File Handling</b> – Reading and writing files</li>
+
+</ul>
+
+<hr>
+
+<h2>Input and Output Functions</h2>
+
+<div class="code-title">Example</div>
+
+<pre>
+name = input("Enter Name: ")
+
+print("Welcome", name)
+</pre>
+
+<div class="example">
+Input : John <br>
+Output : Welcome John
+</div>
+
+<hr>
+
+<h2>File Handling in Python</h2>
+
+<p>
+Python supports file handling operations using built-in functions.
+Files can be opened in different modes such as read, write, append, and binary mode.
+</p>
+
+<table>
+
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>r</td>
+<td>Read Mode</td>
+</tr>
+
+<tr>
+<td>w</td>
+<td>Write Mode</td>
+</tr>
+
+<tr>
+<td>a</td>
+<td>Append Mode</td>
+</tr>
+
+<tr>
+<td>rb</td>
+<td>Read Binary Mode</td>
+</tr>
+
+<tr>
+<td>wb</td>
+<td>Write Binary Mode</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Opening a File</h2>
+
+<div class="code-title">Syntax</div>
+
+<pre>
+file = open("filename.txt", "mode")
+</pre>
+
+<div class="code-title">Example</div>
+
+<pre>
+file = open("sample.txt", "w")
+
+file.write("Python File Handling")
+
+file.close()
+</pre>
+
+<div class="example">
+Output : File Created Successfully
+</div>
+
+<hr>
+
+<h2>Using with Statement</h2>
+
+<p>
+The <b>with</b> statement automatically closes the file after operation completion.
+It improves file safety and reduces errors.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+with open("data.txt", "w") as file:
+
+    file.write("Hello Students")
+</pre>
+
+<hr>
+
+<h2>Reading Data from File</h2>
+
+<div class="code-title">Example</div>
+
+<pre>
+with open("data.txt", "r") as file:
+
+    content = file.read()
+
+    print(content)
+</pre>
+
+<div class="example">
+Output : Hello Students
+</div>
+
+<hr>
+
+<h2>What are Collection Packages?</h2>
+
+<p>
+Python Collection Packages are specialized container data structures available
+in the <b>collections</b> module.
+</p>
+
+<p>
+These collections provide additional functionalities compared to normal lists,
+tuples, and dictionaries.
+</p>
+
+<hr>
+
+<h2>Advantages of Collection Packages</h2>
+
+<ul>
+
+<li>Improves data organization</li>
+
+<li>Provides efficient data storage</li>
+
+<li>Reduces coding complexity</li>
+
+<li>Supports faster operations</li>
+
+<li>Useful for real-time applications</li>
+
+</ul>
+
+<hr>
+
+<h2>Important Collection Classes</h2>
+
+<table>
+
+<tr>
+<th>Collection</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Counter</td>
+<td>Counts frequency of elements</td>
+</tr>
+
+<tr>
+<td>deque</td>
+<td>Double-ended queue</td>
+</tr>
+
+<tr>
+<td>defaultdict</td>
+<td>Dictionary with default values</td>
+</tr>
+
+<tr>
+<td>namedtuple</td>
+<td>Tuple with named fields</td>
+</tr>
+
+<tr>
+<td>OrderedDict</td>
+<td>Maintains insertion order</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Counter Collection</h2>
+
+<p>
+Counter is used to count frequency of elements in a list or string.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+from collections import Counter
+
+text = "python"
+
+result = Counter(text)
+
+print(result)
+</pre>
+
+<div class="example">
+Output : Counter({'p':1, 'y':1, 't':1, 'h':1, 'o':1, 'n':1})
+</div>
+
+<hr>
+
+<h2>deque Collection</h2>
+
+<p>
+deque allows insertion and deletion from both ends efficiently.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+from collections import deque
+
+data = deque([10,20,30])
+
+data.appendleft(5)
+
+data.append(40)
+
+print(data)
+</pre>
+
+<div class="example">
+Output : deque([5, 10, 20, 30, 40])
+</div>
+
+<hr>
+
+<h2>defaultdict Collection</h2>
+
+<p>
+defaultdict automatically assigns default values for missing keys.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+from collections import defaultdict
+
+data = defaultdict(int)
+
+data["a"] += 1
+
+print(data["a"])
+</pre>
+
+<div class="example">
+Output : 1
+</div>
+
+<hr>
+
+<h2>namedtuple Collection</h2>
+
+<p>
+namedtuple gives names to tuple fields for better readability.
+</p>
+
+<div class="code-title">Example</div>
+
+<pre>
+from collections import namedtuple
+
+Student = namedtuple("Student", ["name", "age"])
+
+s1 = Student("John", 20)
+
+print(s1.name)
+</pre>
+
+<div class="example">
+Output : John
+</div>
+
+<hr>
+
+<h2>Real-Time Applications of I/O Operations</h2>
+
+<ul>
+
+<li>Student Record Management Systems</li>
+
+<li>Banking Applications</li>
+
+<li>Inventory Systems</li>
+
+<li>Online Registration Systems</li>
+
+<li>Attendance Management</li>
+
+<li>Report Generation Systems</li>
+
+</ul>
+
+<hr>
+
+<h2>Program 1 – Write Data into File</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+with open("students.txt", "w") as file:
+
+    file.write("Alice\n")
+
+    file.write("Bob\n")
+
+print("Data Written Successfully")
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>File is opened in write mode.</li>
+
+<li>Student names are written into file.</li>
+
+<li>The file closes automatically.</li>
+
+</ul>
+
+</div>
+
+<div class="example">
+Output : Data Written Successfully
+</div>
+
+<hr>
+
+<h2>Program 2 – Read File Content</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+with open("students.txt", "r") as file:
+
+    content = file.read()
+
+    print(content)
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>File is opened in read mode.</li>
+
+<li>Entire content is read.</li>
+
+<li>Data is displayed on screen.</li>
+
+</ul>
+
+</div>
+
+<hr>
+
+<h2>Program 3 – Append Data into File</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+with open("students.txt", "a") as file:
+
+    file.write("Charlie\n")
+
+print("Data Appended")
+</pre>
+
+<div class="example">
+Output : Data Appended
+</div>
+
+<hr>
+
+<h2>Program 4 – Count Word Frequency using Counter</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import Counter
+
+words = ["python", "java", "python", "c"]
+
+result = Counter(words)
+
+print(result)
+</pre>
+
+<div class="example">
+Output : Counter({'python':2, 'java':1, 'c':1})
+</div>
+
+<hr>
+
+<h2>Program 5 – Queue Operations using deque</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import deque
+
+queue = deque()
+
+queue.append("A")
+
+queue.append("B")
+
+queue.appendleft("Start")
+
+print(queue)
+</pre>
+
+<div class="example">
+Output : deque(['Start', 'A', 'B'])
+</div>
+
+<hr>
+
+<h2>Program 6 – Student Record using namedtuple</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import namedtuple
+
+Student = namedtuple("Student", ["name", "mark"])
+
+s1 = Student("Alice", 90)
+
+print(s1.name)
+
+print(s1.mark)
+</pre>
+
+<div class="example">
+Output :
+Alice
+90
+</div>
+
+<hr>
+
+<h2>Program 7 – Name Sorting and File Storage</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+def sort_and_save_names(names, filename):
+
+    sorted_names = sorted(names)
+
+    with open(filename, 'w') as file:
+
+        for name in sorted_names:
+
+            file.write(name + '\n')
+
+    return sorted_names
+
+
+def main():
+
+    names = []
+
+    filename = 'sorted_names.txt'
+
+    while True:
+
+        name = input()
+
+        if name.lower() == 'q':
+            break
+
+        names.append(name)
+
+    sorted_names = sort_and_save_names(names, filename)
+
+    for name in sorted_names:
+        print(name)
+
+if __name__ == "__main__":
+
+    main()
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>User enters multiple names.</li>
+
+<li>Input stops when user enters q.</li>
+
+<li>Names are sorted alphabetically.</li>
+
+<li>Sorted names are stored into a file.</li>
+
+<li>Sorted output is displayed.</li>
+
+</ul>
+
+</div>
+
+<div class="example">
+Input :
+John
+Alice
+David
+q
+
+<br><br>
+
+Output :
+Alice
+David
+John
+</div>
+
+<hr>
+
+<h2>Program 8 – Character Frequency Counter</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import Counter
+
+text = input("Enter Text: ")
+
+result = Counter(text)
+
+print(result)
+</pre>
+
+<div class="example">
+Input : hello <br>
+Output : Counter({'l':2, 'h':1, 'e':1, 'o':1})
+</div>
+
+<hr>
+
+<h2>Program 9 – File Copy Operation</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+with open("source.txt", "r") as source:
+
+    data = source.read()
+
+with open("destination.txt", "w") as destination:
+
+    destination.write(data)
+
+print("File Copied Successfully")
+</pre>
+
+<div class="example">
+Output : File Copied Successfully
+</div>
+
+<hr>
+
+<h2>Program 10 – Student Marks Dictionary</h2>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import defaultdict
+
+marks = defaultdict(int)
+
+marks["Alice"] = 90
+
+marks["Bob"] = 85
+
+print(marks)
+</pre>
+
+<hr>
+
+<h2>ChainMap Collection</h2>
+
+<p>
+ChainMap is a collection class available in the <b>collections</b> module.
+It is used to combine multiple dictionaries into a single view without merging them permanently.
+</p>
+
+<p>
+ChainMap helps programmers search values across multiple dictionaries efficiently.
+It is useful in applications involving department records, configuration settings,
+and data lookup systems.
+</p>
+
+<div class="code-title">Program</div>
+
+<pre>
+from collections import ChainMap
+
+n1 = int(input())
+
+dept_a = {}
+
+for _ in range(n1):
+
+    name, phone = input().split()
+
+    dept_a[name] = phone
+
+
+n2 = int(input())
+
+dept_b = {}
+
+for _ in range(n2):
+
+    name, phone = input().split()
+
+    dept_b[name] = phone
+
+
+q = int(input())
+
+queries = [input().strip() for _ in range(q)]
+
+
+merged = ChainMap(dept_a, dept_b)
+
+
+for name in queries:
+
+    print(merged.get(name, "Not found"))
+</pre>
+
+<div class="logic">
+
+<b>Logic</b>
+
+<ul>
+
+<li>The program creates two dictionaries for two departments.</li>
+
+<li>User enters employee name and phone number.</li>
+
+<li>ChainMap combines both dictionaries.</li>
+
+<li>The query names are searched in merged dictionaries.</li>
+
+<li>If name exists, phone number is displayed.</li>
+
+<li>If name is missing, "Not found" is printed.</li>
+
+</ul>
+
+</div>
+
+<b>Explanation</b>
+
+<ul>
+
+<li><b>ChainMap()</b> combines multiple dictionaries into one view.</li>
+
+<li><b>input().split()</b> separates name and phone number.</li>
+
+<li><b>merged.get()</b> searches safely without generating errors.</li>
+
+<li><b>"Not found"</b> is displayed for unavailable entries.</li>
+
+</ul>
+
+<div class="example">
+
+Input :<br><br>
+
+2<br>
+Alice 9876543210<br>
+John 9123456780<br>
+
+2<br>
+David 9988776655<br>
+Maria 9871234567<br>
+
+3<br>
+Alice<br>
+Maria<br>
+Steve<br><br>
+
+Output :<br><br>
+
+9876543210<br>
+9871234567<br>
+Not found
+
+</div>
+
+<div class="example">
+Output : defaultdict(<class 'int'>, {'Alice':90, 'Bob':85})
+</div>
+
+<hr>
+
+<h2>Reference Videos</h2>
+
+<div class="example">
+
+<p>
+Students can refer to the following videos for better understanding
+of Python File Handling and Collection Packages.
+</p>
+
+</div>
+
+<ul>
+
+<li>
+<b>Python File Handling Tutorial</b><br>
+
+<a href="https://www.youtube.com/watch?v=Uh2ebFW8OYM" target="_blank">
+https://www.youtube.com/watch?v=Uh2ebFW8OYM
+</a>
+
+</li>
+
+<br>
+
+<li>
+<b>Python Collections Module Tutorial</b><br>
+
+<a href="https://www.youtube.com/watch?v=qp8u-frRAnU" target="_blank">
+https://www.youtube.com/watch?v=qp8u-frRAnU
+</a>
+
+</li>
+
+</ul>
+
+<div class="note">
+
+<b>Note for Students:</b><br><br>
+
+I/O Operations and Collection Packages are very important topics in Python programming.
+These concepts are widely used in real-world applications involving file processing,
+data analysis, report generation, queue systems, and data management.
+
+Students are advised to practice all file handling and collection programs thoroughly
+to improve programming skills and understand real-time applications.
+
+</div>
+
+</div>
+
+<footer style="text-align:center; padding:10px;">
+&copy; 2026 Python Lab | Department of AIDS
+</footer>
+
+</body>
+</html>
