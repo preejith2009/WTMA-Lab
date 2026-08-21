@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DBMS Preparation Notes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:#222;
+    line-height:1.6;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:30px auto;
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+h1{
+    text-align:center;
+    color:#5b3cc4;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+h2{
+    color:#5b3cc4;
+    border-left:6px solid #667eea;
+    padding-left:12px;
+    margin-top:35px;
+}
+
+h3{
+    color:#764ba2;
+    margin-top:25px;
+}
+
+.note{
+    background:#f3f0ff;
+    border-left:5px solid #764ba2;
+    padding:15px 18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+.warning{
+    background:#fff4e5;
+    border-left:5px solid #ff9800;
+    padding:15px 18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+.success{
+    background:#eafaf1;
+    border-left:5px solid #2eaf67;
+    padding:15px 18px;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+pre{
+    background:#1e1e2f;
+    color:#f5f5f5;
+    padding:18px;
+    border-radius:10px;
+    overflow-x:auto;
+    font-size:15px;
+    line-height:1.5;
+}
+
+code{
+    font-family:Consolas,monospace;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:#667eea;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8f8ff;
+}
+
+.quiz-btn{
+    display:block;
+    width:max-content;
+    margin:35px auto 10px;
+    padding:14px 30px;
+    background:linear-gradient(45deg,#42a5f5,#764ba2);
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(80,70,180,.3);
+    transition:.3s;
+}
+
+.quiz-btn:hover{
+    transform:scale(1.05);
+}
+
+@media(max-width:700px){
+
+    .container{
+        width:94%;
+        padding:20px;
+        margin:15px auto;
+    }
+
+    pre{
+        font-size:13px;
+    }
+
+    h1{
+        font-size:25px;
+    }
+
+    h2{
+        font-size:21px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DBMS Preparation Notes</h1>
+
+<p class="subtitle">
+DDL • DML • Aggregate Functions • Subqueries
+</p>
+
+<div class="note">
+
+<strong>Before starting the quiz:</strong>
+
+<br><br>
+
+Read all four topics below and study the example queries carefully.
+The quiz questions are based on these concepts and SQL query patterns.
+
+</div>
+
+
+<!-- ================= DDL ================= -->
+
+<h2>1. DDL – Data Definition Language</h2>
+
+<p>
+
+<strong>DDL</strong> is used to define and modify the structure of
+database objects such as tables and columns.
+
+</p>
+
+
+<h3>Important DDL Commands</h3>
+
+<table>
+
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>CREATE</td>
+<td>Creates a new database object such as a table.</td>
+</tr>
+
+<tr>
+<td>ALTER</td>
+<td>Changes the structure of an existing table.</td>
+</tr>
+
+<tr>
+<td>DROP</td>
+<td>Removes a database object or column.</td>
+</tr>
+
+<tr>
+<td>TRUNCATE</td>
+<td>Removes all rows from a table while keeping the table structure.</td>
+</tr>
+
+</table>
+
+
+<h3>ALTER TABLE – Rename a Column</h3>
+
+<p>
+To rename a column:
+</p>
+
+<pre><code>ALTER TABLE STUDENT
+RENAME COLUMN CGPA TO Grade_Point;</code></pre>
+
+<p>
+
+Here, the column <strong>CGPA</strong> is renamed to
+<strong>Grade_Point</strong>.
+
+</p>
+
+
+<h3>ALTER TABLE – Modify Column Size</h3>
+
+<p>
+To increase the size of the City column:
+</p>
+
+<pre><code>ALTER TABLE STUDENT
+MODIFY City VARCHAR(50);</code></pre>
+
+
+<div class="note">
+
+<strong>Remember:</strong>
+
+<code>MODIFY</code> is used to change the definition of an existing
+column, such as its datatype or size.
+
+</div>
+
+
+<h3>ALTER TABLE – Remove a Column</h3>
+
+<pre><code>ALTER TABLE STUDENT
+DROP COLUMN Email;</code></pre>
+
+<p>
+
+This permanently removes the <strong>Email</strong> column from
+the table.
+
+</p>
+
+
+<div class="warning">
+
+<strong>Exam Tip:</strong>
+
+Do not confuse <code>DROP COLUMN</code> with <code>DELETE</code>.
+
+DROP COLUMN changes the table structure, while DELETE removes rows.
+
+</div>
+
+
+
+<!-- ================= DML ================= -->
+
+<h2>2. DML – Data Manipulation Language</h2>
+
+<p>
+
+<strong>DML</strong> is used to manipulate the data stored inside tables.
+
+</p>
+
+
+<h3>Important DML Commands</h3>
+
+<table>
+
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>INSERT</td>
+<td>Adds new rows to a table.</td>
+</tr>
+
+<tr>
+<td>UPDATE</td>
+<td>Modifies existing data.</td>
+</tr>
+
+<tr>
+<td>DELETE</td>
+<td>Removes rows from a table.</td>
+</tr>
+
+</table>
+
+
+<h3>UPDATE Example</h3>
+
+<p>
+Update Rahul's city to Mumbai:
+</p>
+
+<pre><code>UPDATE STUDENT
+SET City = 'Mumbai'
+WHERE Student_Name = 'Rahul';</code></pre>
+
+
+<div class="warning">
+
+<strong>Very Important:</strong>
+
+Always check the <code>WHERE</code> condition in an UPDATE query.
+
+Without WHERE, all rows may be updated.
+
+</div>
+
+
+<h3>DELETE Example</h3>
+
+<pre><code>DELETE FROM STUDENT
+WHERE Student_Name = 'Rahul';</code></pre>
+
+
+<h3>INSERT Example</h3>
+
+<pre><code>INSERT INTO STUDENT
+(Student_ID, Student_Name, Department, City)
+VALUES
+(101, 'Rahul', 'CSE', 'Chennai');</code></pre>
+
+
+<h3>SELECT – Retrieving Data</h3>
+
+<p>
+
+The SELECT statement is used to retrieve data from a table.
+
+</p>
+
+<pre><code>SELECT Student_Name, Department
+FROM STUDENT;</code></pre>
+
+<p>
+
+This displays only the <strong>Student_Name</strong> and
+<strong>Department</strong> columns.
+
+</p>
+
+
+<h3>WHERE Condition</h3>
+
+<p>
+Display students whose CGPA is greater than 8:
+</p>
+
+<pre><code>SELECT *
+FROM STUDENT
+WHERE CGPA &gt; 8;</code></pre>
+
+
+<p>
+Display courses having more than 3 credits:
+</p>
+
+<pre><code>SELECT *
+FROM COURSE
+WHERE Credits &gt; 3;</code></pre>
+
+
+
+<!-- ================= AGGREGATE ================= -->
+
+<h2>3. Aggregate Functions</h2>
+
+<p>
+
+Aggregate functions perform calculations on a group of rows and
+return a single result.
+
+</p>
+
+
+<table>
+
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+
+<tr>
+<td>COUNT()</td>
+<td>Counts rows or values</td>
+<td>COUNT(*)</td>
+</tr>
+
+<tr>
+<td>SUM()</td>
+<td>Calculates total</td>
+<td>SUM(Marks)</td>
+</tr>
+
+<tr>
+<td>AVG()</td>
+<td>Calculates average</td>
+<td>AVG(Marks)</td>
+</tr>
+
+<tr>
+<td>MIN()</td>
+<td>Finds minimum value</td>
+<td>MIN(Marks)</td>
+</tr>
+
+<tr>
+<td>MAX()</td>
+<td>Finds maximum value</td>
+<td>MAX(Marks)</td>
+</tr>
+
+</table>
+
+
+<h3>COUNT()</h3>
+
+<p>
+Count the total number of students:
+</p>
+
+<pre><code>SELECT COUNT(*) AS Total_Students
+FROM STUDENT;</code></pre>
+
+
+<p>
+Count students in the CSE department:
+</p>
+
+<pre><code>SELECT COUNT(*) AS CSE_Students
+FROM STUDENT
+WHERE Department = 'CSE';</code></pre>
+
+
+<h3>MIN()</h3>
+
+<p>
+Find the lowest marks obtained:
+</p>
+
+<pre><code>SELECT MIN(Marks) AS Lowest_Marks
+FROM ENROLLMENT;</code></pre>
+
+
+<h3>MAX()</h3>
+
+<p>
+Find the highest marks obtained:
+</p>
+
+<pre><code>SELECT MAX(Marks) AS Highest_Marks
+FROM ENROLLMENT;</code></pre>
+
+
+<h3>AVG()</h3>
+
+<p>
+Find the average marks:
+</p>
+
+<pre><code>SELECT AVG(Marks) AS Average_Marks
+FROM ENROLLMENT;</code></pre>
+
+
+<h3>SUM()</h3>
+
+<p>
+Find the total marks:
+</p>
+
+<pre><code>SELECT SUM(Marks) AS Total_Marks
+FROM ENROLLMENT;</code></pre>
+
+
+<div class="success">
+
+<strong>Remember:</strong>
+
+<br><br>
+
+COUNT = Number of records
+<br>
+
+SUM = Total
+<br>
+
+AVG = Average
+<br>
+
+MIN = Lowest value
+<br>
+
+MAX = Highest value
+
+</div>
+
+
+
+<!-- ================= SUBQUERY ================= -->
+
+<h2>4. Subquery – Inner Query</h2>
+
+<p>
+
+A <strong>subquery</strong> is a query written inside another SQL query.
+
+The inner query is executed as part of the outer query.
+
+</p>
+
+
+<p>
+
+A subquery is usually written inside parentheses:
+
+</p>
+
+<pre><code>SELECT ...
+FROM ...
+WHERE column = (
+    SELECT ...
+);</code></pre>
+
+
+<h3>Example 1 – Student with Lowest CGPA</h3>
+
+<pre><code>SELECT *
+FROM STUDENT
+WHERE CGPA = (
+    SELECT MIN(CGPA)
+    FROM STUDENT
+);</code></pre>
+
+
+<p>
+
+The inner query finds the minimum CGPA.
+
+The outer query then displays the student whose CGPA matches that value.
+
+</p>
+
+
+<h3>Example 2 – Using IN with a Subquery</h3>
+
+<p>
+
+Display course names associated with Student_ID 101:
+
+</p>
+
+<pre><code>SELECT Course_Name
+FROM COURSE
+WHERE Course_ID IN (
+    SELECT Course_ID
+    FROM ENROLLMENT
+    WHERE Student_ID = 101
+);</code></pre>
+
+
+<p>
+
+The inner query obtains the relevant Course_ID values.
+
+The outer query uses those IDs to retrieve Course_Name.
+
+</p>
+
+
+<h3>Example 3 – Nested Subquery</h3>
+
+<p>
+
+Display students enrolled in Java Programming:
+
+</p>
+
+<pre><code>SELECT *
+FROM STUDENT
+WHERE Student_ID IN (
+    SELECT Student_ID
+    FROM ENROLLMENT
+    WHERE Course_ID = (
+        SELECT Course_ID
+        FROM COURSE
+        WHERE Course_Name = 'Java Programming'
+    )
+);</code></pre>
+
+
+<div class="note">
+
+<strong>Understand the flow:</strong>
+
+<br><br>
+
+1. Find the Course_ID for Java Programming.
+<br>
+2. Find Student_ID values enrolled in that Course_ID.
+<br>
+3. Display the corresponding students.
+
+</div>
+
+
+<h3>Example 4 – NOT IN</h3>
+
+<p>
+
+Display students who are not enrolled in any course:
+
+</p>
+
+<pre><code>SELECT *
+FROM STUDENT
+WHERE Student_ID NOT IN (
+    SELECT Student_ID
+    FROM ENROLLMENT
+);</code></pre>
+
+
+
+<!-- ================= QUICK REVISION ================= -->
+
+<h2>5. Quick Revision for the Quiz</h2>
+
+
+<table>
+
+<tr>
+<th>Requirement</th>
+<th>SQL Pattern</th>
+</tr>
+
+<tr>
+<td>Rename a column</td>
+<td>ALTER TABLE ... RENAME COLUMN ...</td>
+</tr>
+
+<tr>
+<td>Modify column size</td>
+<td>ALTER TABLE ... MODIFY ...</td>
+</tr>
+
+<tr>
+<td>Remove a column</td>
+<td>ALTER TABLE ... DROP COLUMN ...</td>
+</tr>
+
+<tr>
+<td>Update data</td>
+<td>UPDATE ... SET ... WHERE ...</td>
+</tr>
+
+<tr>
+<td>Display selected columns</td>
+<td>SELECT column1, column2 FROM table;</td>
+</tr>
+
+<tr>
+<td>Filter rows</td>
+<td>SELECT ... WHERE condition;</td>
+</tr>
+
+<tr>
+<td>Count records</td>
+<td>COUNT(*)</td>
+</tr>
+
+<tr>
+<td>Find lowest value</td>
+<td>MIN(column)</td>
+</tr>
+
+<tr>
+<td>Find average</td>
+<td>AVG(column)</td>
+</tr>
+
+<tr>
+<td>Find total</td>
+<td>SUM(column)</td>
+</tr>
+
+<tr>
+<td>Use inner query</td>
+<td>WHERE column IN (SELECT ...)</td>
+</tr>
+
+</table>
+
+
+<div class="warning">
+
+<strong>Before starting the quiz, make sure you understand:</strong>
+
+<br><br>
+
+✔ Difference between DDL and DML
+
+<br>
+
+✔ ALTER TABLE operations
+
+<br>
+
+✔ UPDATE with WHERE
+
+<br>
+
+✔ SELECT with WHERE
+
+<br>
+
+✔ COUNT, MIN, MAX, AVG and SUM
+
+<br>
+
+✔ How an inner query works
+
+<br>
+
+✔ Difference between IN and NOT IN
+
+<br>
+
+✔ How nested subqueries work
+
+</div>
+
+
+<a class="quiz-btn" href="dbms_quiz.html">
+
+Start DBMS Quiz →
+
+</a>
+
+
+</div>
+
+</body>
+</html>
