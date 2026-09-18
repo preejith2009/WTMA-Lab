@@ -1,1 +1,358 @@
-this is 2nd Yr
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIDS Second Yr Student Details</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+.header img{
+height:80px;
+max-width:100%;
+margin-bottom:5px;
+}
+.header h1{margin:5px 0;font-size:18px;}
+.dept{color:#d6b3ff;font-size:13px;font-weight:bold;}
+
+.main-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+.container{width:100%;max-width:650px;margin:auto;padding:20px;}
+
+.qr-section{text-align:center;margin-bottom:20px;}
+.qr-section img{
+width:160px;max-width:80%;margin-top:10px;background:white;
+padding:8px;border-radius:8px;
+}
+
+input{
+padding:12px;width:65%;border-radius:6px;border:none;font-size:16px;
+}
+button{
+padding:12px 15px;margin-left:10px;cursor:pointer;border:none;
+border-radius:6px;background:#5a2d82;color:white;transition:0.3s;font-size:16px;
+}
+button:hover{background:#7b3fb3;transform:scale(1.05);}
+
+.markbox{
+margin-top:15px;padding:15px;background:#1c2a55;
+border-radius:8px;font-size:16px;
+}
+
+.subject-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+font-size:14px;
+text-align:center;
+}
+.subject-table th{
+padding:10px;
+border:1px solid #444;
+background:#2a3b7a;
+}
+.subject-table td{
+padding:10px 8px;
+border:1px solid #444;
+}
+.subject-table tr:nth-child(even){background:#172344;}
+.subject-table tr:hover{background:#24376d;}
+
+.att-cell{color:#5ad7ff;font-weight:bold;}
+.mark-cell{color:#ffd166;font-weight:bold;}
+
+footer{
+background:#343a40;color:white;text-align:center;padding:15px;
+}
+
+@media (max-width:600px){
+.container{padding:15px;}
+h2{font-size:18px;}
+input{width:100%;box-sizing:border-box;}
+button{width:100%;margin:5px 0;}
+.markbox{font-size:15px;padding:12px;}
+.subject-table{font-size:12px;}
+.subject-table th,.subject-table td{padding:8px 4px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="REC_Logo.png">
+  <h1>Department of Artificial Intelligence</h1>
+  <div class="dept">III Semester - 2nd Year</div>
+</div>
+
+<div class="main-content">
+<div class="container">
+
+<div style="margin:20px 0;">
+<h3 style="text-align:center;color:#ffd166;">Semester Subjects</h3>
+
+<table class="subject-table">
+<tr>
+<th>Course Code</th>
+<th>Subject Name</th>
+</tr>
+<tr><td>MA23313</td><td>Discrete Mathematics for AI</td></tr>
+<tr><td>CS23333</td><td>Object Oriented Programming using Java</td></tr>
+<tr><td>CS23332</td><td>Database Management Systems</td></tr>
+<tr><td>CS23331</td><td>Design and Analysis of Algorithms</td></tr>
+<tr><td>AI23231</td><td>Principles of Artificial Intelligence</td></tr>
+<tr><td>MC23112</td><td>Environmental Science and Engineering</td></tr>
+</table>
+<br>
+
+<style>
+@keyframes glowPulse {
+0% { box-shadow:0 0 5px #ffd166; }
+50% { box-shadow:0 0 15px #ffd166; }
+100% { box-shadow:0 0 5px #ffd166; }
+}
+@keyframes textPulse {
+0% { transform:scale(1); }
+50% { transform:scale(1.08); }
+100% { transform:scale(1); }
+}
+.glow-btn {
+display:inline-block !important;
+width:auto !important;
+padding:4px 8px;
+font-size:11px;
+font-weight:600;
+color:#ffd166;
+border:1px solid #ffd166;
+border-radius:6px;
+text-decoration:none;
+background:transparent;
+animation:glowPulse 2.5s infinite;
+transition:all 0.3s ease;
+white-space:nowrap;
+}
+.text-pulse {display:inline-block;animation:textPulse 1.5s infinite;}
+</style>
+
+<div style="display:flex;justify-content:flex-end;">
+<a href="2ndYrStudent_Details.pdf" target="_blank" class="glow-btn"
+onmouseover="this.style.background='#ffd166';this.style.color='#000';this.style.boxShadow='0 0 20px #ffd166';"
+onmouseout="this.style.background='transparent';this.style.color='#ffd166';this.style.boxShadow='0 0 5px #ffd166';">
+<span class="text-pulse">📄 Student List</span>
+</a>
+</div>
+</div>
+
+<h2 style="text-align:center;">AIDS Student Details Display Page</h2>
+
+<p style="text-align:center;color:#9fb3ff;">
+Enter Student Register Number to view Student details, eg 251801001
+</p>
+
+<div style="text-align:center;">
+<input id="regno" placeholder="Enter Register Number,eg 251801001">
+<button onclick="getMarks()">View Details</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+
+<div id="message" style="margin-top:10px;color:#ff6b6b;text-align:center;"></div>
+<div id="studentInfo" style="margin-top:15px;font-size:18px;color:#5ad7ff;text-align:center;"></div>
+
+<div id="marks" style="display:none">
+
+<div class="markbox">
+<b>No Of Arrears :</b>
+<span id="arrears"></span>
+</div>
+
+<div class="markbox">
+<b>GPA :</b>
+<span id="gpa"></span>
+</div>
+
+<h3 style="text-align:center;color:#ffd166;margin-bottom:10px;">
+Current Semester Attendance & CAT Marks
+</h3>
+
+<table class="subject-table">
+<thead>
+<tr>
+<th>Subject</th>
+<th>Attendance</th>
+<th>CAT Marks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Principles of Artificial Intelligence</td>
+<td><span id="att_0"></span>%</td>
+<td><span id="mark_0"></span></td>
+</tr>
+<tr>
+<td>Design and Analysis of Algorithms</td>
+<td><span id="att_1"></span>%</td>
+<td><span id="mark_1"></span></td>
+</tr>
+<tr>
+<td>Database Management Systems</td>
+<td><span id="att_2"></span>%</td>
+<td><span id="mark_2"></span></td>
+</tr>
+<tr>
+<td>Object Oriented Programming using Java</td>
+<td><span id="att_3"></span>%</td>
+<td><span id="mark_3"></span></td>
+</tr>
+<tr>
+<td>Discrete Mathematics for AI</td>
+<td><span id="att_4"></span>%</td>
+<td><span id="mark_4"></span></td>
+</tr>
+<tr>
+<td>Environmental Science and Engineering</td>
+<td><span id="att_5"></span>%</td>
+<td><span id="mark_5"></span></td>
+</tr>
+</tbody>
+</table>
+
+<div id="analysisLink" style="text-align:center;margin-top:20px;"></div>
+
+</div>
+
+<div class="qr-section">
+<p style="color:#9fb3ff;">
+Scan this QR code to submit your PTM Feedback After the Review of your Ward.
+</p>
+<img src="frame.png" alt="QR Code">
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+let DB={};
+
+function formatValue(value){
+if(value === undefined || value === null || value === "") return "-";
+if(typeof value === "number") return Number.isInteger(value) ? value : Number(value.toFixed(2));
+return String(value).trim();
+}
+
+async function loadExcel(){
+try {
+const response = await fetch("2026_PTM_SecondYr_data.xlsx");
+if(!response.ok) throw new Error("Excel file could not be loaded.");
+
+const data = await response.arrayBuffer();
+const workbook = XLSX.read(data,{type:"array"});
+const sheet = workbook.Sheets[workbook.SheetNames[0]];
+const rows = XLSX.utils.sheet_to_json(sheet);
+
+rows.forEach(r=>{
+const reg = String(r["Registration Id"] ?? "").trim();
+if(!reg) return;
+
+DB[reg] = r;
+});
+} catch(error) {
+document.getElementById("message").textContent =
+"Unable to load student data. Please keep the Excel file in the same folder as this HTML page.";
+console.error(error);
+}
+}
+
+loadExcel();
+
+function getMarks(){
+const reg=document.getElementById("regno").value.trim();
+const message=document.getElementById("message");
+
+if(!reg){
+message.textContent="Please enter Register Number";
+return;
+}
+
+if(!DB[reg]){
+message.textContent="Register Number not found";
+document.getElementById("marks").style.display="none";
+document.getElementById("studentInfo").textContent="";
+return;
+}
+
+const student=DB[reg];
+
+document.getElementById("studentInfo").textContent =
+"Student Name : " + (student["Name"] ?? "") + " | Register Number : " + reg;
+
+// These fields are displayed only if they exist in the Excel.
+document.getElementById("arrears").textContent =
+formatValue(student["No Of Arrears"] ?? student["Arrears"] ?? "-");
+
+document.getElementById("gpa").textContent =
+formatValue(student["GPA"] ?? student["Gpa"] ?? "-");
+
+document.getElementById("att_0").textContent = formatValue(student["Principles of Artificial Intelligence-A"]);
+document.getElementById("mark_0").textContent = formatValue(student["Principles of Artificial Intelligence-M"]);
+document.getElementById("att_1").textContent = formatValue(student["Design and Analysis of Algorithms-A"]);
+document.getElementById("mark_1").textContent = formatValue(student["Design and Analysis of Algorithms-M"]);
+document.getElementById("att_2").textContent = formatValue(student["Database Management Systems-A"]);
+document.getElementById("mark_2").textContent = formatValue(student["Database Management Systems-M"]);
+document.getElementById("att_3").textContent = formatValue(student["Object Oriented Programming using Java-A"]);
+document.getElementById("mark_3").textContent = formatValue(student["Object Oriented Programming using Java-M"]);
+document.getElementById("att_4").textContent = formatValue(student["Discrete Mathematics for AI-A"]);
+document.getElementById("mark_4").textContent = formatValue(student["Discrete Mathematics for AI-M"]);
+document.getElementById("att_5").textContent = formatValue(student["Environmental Science and Engineering-A"]);
+document.getElementById("mark_5").textContent = formatValue(student["Environmental Science and Engineering-M"]);
+
+document.getElementById("marks").style.display="block";
+message.textContent="";
+
+document.getElementById("analysisLink").innerHTML = `
+<a href="Result_Analysis_Sem2.pdf" target="_blank"
+style="display:inline-block;
+padding:12px 20px;
+background:#28a745;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;">
+📄 View Result Analysis
+</a>`;
+}
+
+function clearAll(){
+document.getElementById("regno").value="";
+document.getElementById("marks").style.display="none";
+document.getElementById("studentInfo").textContent="";
+document.getElementById("message").textContent="";
+document.getElementById("analysisLink").innerHTML="";
+}
+</script>
+
+</body>
+</html>
