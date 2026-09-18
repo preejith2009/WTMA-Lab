@@ -23,11 +23,14 @@ text-align:center;
 padding:15px;
 }
 .header img{
-height:80px;
-max-width:100%;
-margin-bottom:5px;
+    width:100%;
+    max-width:1150px;
+    height:220px;
+    object-fit:fill;
+    margin:0 auto;
+    display:block;
 }
-.header h1{margin:5px 0;font-size:18px;}
+.header h1{margin:20px 0;font-size:18px;}
 .dept{color:#d6b3ff;font-size:13px;font-weight:bold;}
 
 .main-content{
@@ -86,6 +89,9 @@ background:#343a40;color:white;text-align:center;padding:15px;
 }
 
 @media (max-width:600px){
+     .header img{
+        height:140px;
+    }
 .container{padding:15px;}
 h2{font-size:18px;}
 input{width:100%;box-sizing:border-box;}
