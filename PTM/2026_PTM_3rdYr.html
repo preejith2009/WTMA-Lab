@@ -1,1 +1,531 @@
-this is 3rd Yr
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIDS Third Yr Student Details</title>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+
+.header img{
+height:80px;
+max-width:100%;
+margin-bottom:5px;
+object-fit:contain;
+}
+
+.header h1{
+margin:5px 0;
+font-size:18px;
+}
+
+.dept{
+color:#d6b3ff;
+font-size:13px;
+font-weight:bold;
+}
+
+/* MAIN */
+.main-content{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:650px;
+margin:auto;
+padding:20px;
+}
+
+/* SUBJECT TABLE */
+.subject-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+font-size:14px;
+text-align:center;
+}
+
+.subject-table tr:first-child{
+background:#2a3b7a;
+}
+
+.subject-table th{
+padding:10px;
+border:1px solid #444;
+}
+
+.subject-table td{
+padding:8px;
+border:1px solid #444;
+}
+
+/* QR SECTION */
+.qr-section{
+text-align:center;
+margin-bottom:20px;
+}
+
+.qr-section img{
+width:160px;
+max-width:80%;
+margin-top:10px;
+background:white;
+padding:8px;
+border-radius:8px;
+}
+
+/* INPUT */
+input{
+padding:12px;
+width:65%;
+border-radius:6px;
+border:none;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+padding:12px 15px;
+margin-left:10px;
+cursor:pointer;
+border:none;
+border-radius:6px;
+background:#5a2d82;
+color:white;
+transition:0.3s;
+font-size:16px;
+}
+
+button:hover{
+background:#7b3fb3;
+transform:scale(1.05);
+}
+
+/* MARK BOX */
+.markbox{
+margin-top:15px;
+padding:15px;
+background:#1c2a55;
+border-radius:8px;
+font-size:16px;
+}
+
+.markbox-title{
+font-weight:bold;
+display:block;
+margin-bottom:8px;
+color:#ffffff;
+}
+
+.performance-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.data-label{
+color:#9fb3ff;
+font-size:14px;
+}
+
+.data-value{
+color:#ffd166;
+font-weight:bold;
+}
+
+/* STATUS / ERROR */
+#message{
+margin-top:10px;
+color:#ff6b6b;
+text-align:center;
+min-height:20px;
+}
+
+#studentInfo{
+margin-top:15px;
+font-size:18px;
+color:#5ad7ff;
+text-align:center;
+line-height:1.5;
+}
+
+/* GLOW BUTTON */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px #ffd166; }
+  50% { box-shadow: 0 0 15px #ffd166; }
+  100% { box-shadow: 0 0 5px #ffd166; }
+}
+
+@keyframes textPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.glow-btn {
+  display: inline-block !important;
+  width: auto !important;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffd166;
+  border: 1px solid #ffd166;
+  border-radius: 6px;
+  text-decoration: none;
+  background: transparent;
+  animation: glowPulse 2.5s infinite;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.text-pulse {
+  display:inline-block;
+  animation:textPulse 1.5s infinite;
+}
+
+/* RESULT ANALYSIS BUTTON */
+.analysis-btn{
+display:inline-block;
+padding:12px 20px;
+background:#28a745;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin-top:20px;
+}
+
+.hidden{
+display:none;
+}
+
+/* FOOTER */
+footer{
+background:#343a40;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+@media (max-width:600px){
+.container{
+padding:15px;
+}
+
+h2{
+font-size:18px;
+}
+
+input{
+width:100%;
+}
+
+button{
+width:100%;
+margin:5px 0;
+}
+
+.performance-row{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.markbox{
+font-size:15px;
+padding:12px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="REC_Logo.png" alt="REC Logo">
+  <h1>Department of Artificial Intelligence</h1>
+  <div class="dept">V Semester - 3rd Year</div>
+</div>
+
+<div class="main-content">
+
+<div class="container">
+
+<div style="margin:20px 0;">
+
+<h3 style="text-align:center; color:#ffd166;">Semester Subjects</h3>
+
+<table class="subject-table">
+<tr>
+<th>Subject Name</th>
+<th>Details Available</th>
+</tr>
+
+<tr>
+<td style="padding:8px; border:1px solid #444;">Big Data Architecture</td>
+<td style="padding:8px; border:1px solid #444;">AD23531</td>
+</tr>
+<tr>
+<td style="padding:8px; border:1px solid #444;">Principles of Data Science</td>
+<td style="padding:8px; border:1px solid #444;">AD23532</td>
+</tr>
+<tr>
+<td style="padding:8px; border:1px solid #444;">Deep Learning</td>
+<td style="padding:8px; border:1px solid #444;">AI23531</td>
+</tr>
+<tr>
+<td style="padding:8px; border:1px solid #444;">Low-Code Application Development using Zoho Creator</td>
+<td style="padding:8px; border:1px solid #444;">CB23F35</td>
+</tr>
+<tr>
+<td style="padding:8px; border:1px solid #444;">Computer Networks</td>
+<td style="padding:8px; border:1px solid #444;">CS23532</td>
+</tr>
+
+</table>
+<br>
+
+<div style="display:flex; justify-content:flex-end;">
+  <!-- Update this PDF filename when the third-year student list PDF is ready -->
+  <a href="2ndYrStudent_Details.pdf" target="_blank" class="glow-btn"
+     onmouseover="
+        this.style.background='#ffd166';
+        this.style.color='#000';
+        this.style.boxShadow='0 0 20px #ffd166';
+     "
+     onmouseout="
+        this.style.background='transparent';
+        this.style.color='#ffd166';
+        this.style.boxShadow='0 0 5px #ffd166';
+     ">
+     <span class="text-pulse">📄 Student List</span>
+  </a>
+</div>
+
+</div>
+
+<h2 style="text-align:center;">AIDS Student Details Display Page</h2>
+
+<p style="text-align:center; color:#9fb3ff;">
+Enter Student Register Number to view Student details, eg 241801001
+</p>
+
+<!-- INPUT -->
+<div style="text-align:center;">
+<input id="regno" placeholder="Enter Register Number, eg 241801001" autocomplete="off">
+<button onclick="getMarks()">View Details</button>
+<button onclick="clearAll()">Clear</button>
+</div>
+
+<div id="message"></div>
+
+<div id="studentInfo"></div>
+
+<div id="marks" class="hidden">
+
+<div id="subjectMarks"></div>
+
+<div id="analysisLink" style="text-align:center;"></div>
+
+</div>
+
+<!-- QR CODE -->
+<div class="qr-section">
+ <p style="color:#9fb3ff;">
+Scan this QR code to submit your PTM Feedback After the Review of your Ward.
+</p>
+  <img src="frame.png" alt="QR Code">
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+let DB = {};
+
+const SUBJECTS = [{"name": "Big Data Architecture", "attendance": "Big Data Architecture-A", "marks": "Big Data Architecture-M"}, {"name": "Principles of Data Science", "attendance": "Principles of Data Science-A", "marks": "Principles of Data Science-M"}, {"name": "Deep Learning", "attendance": "Deep Learning-A", "marks": "Deep Learning-M"}, {"name": "Low-Code Application Development using Zoho Creator", "attendance": "Low-Code Application Development using Zoho Creator-A", "marks": "Low-Code Application Development using Zoho Creator-M"}, {"name": "Computer Networks", "attendance": "Computer Networks-A", "marks": "Computer Networks-M"}];
+
+async function loadExcel(){
+    try{
+        const response = await fetch("2026_PTM_ThirdYr_data.xlsx");
+
+        if(!response.ok){
+            throw new Error("Unable to load Excel file.");
+        }
+
+        const data = await response.arrayBuffer();
+        const workbook = XLSX.read(data, {type:"array"});
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+        const rows = XLSX.utils.sheet_to_json(sheet, {defval:""});
+
+        rows.forEach(r => {
+
+            const reg = String(r["Registration Id"] ?? "").trim();
+
+            // Ignore blank/non-numeric rows and any accidental repeated header row.
+            if(!/^\d+$/.test(reg)) return;
+
+            DB[reg] = {
+                name: String(r["Name"] ?? "").trim(),
+                subjects: {}
+            };
+
+            SUBJECTS.forEach(s => {
+                DB[reg].subjects[s.name] = {
+                    attendance: r[s.attendance] ?? "",
+                    marks: r[s.marks] ?? ""
+                };
+            });
+
+        });
+
+    } catch(error) {
+        document.getElementById("message").textContent =
+            "Unable to load student data. Make sure 2026_PTM_ThirdYr_data.xlsx is in the same folder as this HTML file.";
+        console.error(error);
+    }
+}
+
+loadExcel();
+
+function formatValue(value) {
+    if(value === null || value === undefined || value === "") return "-";
+
+    // Keep percentages / marks neat without unnecessary trailing zeroes.
+    if(typeof value === "number") {
+        return Number.isInteger(value) ? value : Number(value.toFixed(2));
+    }
+
+    return value;
+}
+
+function getMarks(){
+
+    const reg = document.getElementById("regno").value.trim();
+    const message = document.getElementById("message");
+    const studentInfo = document.getElementById("studentInfo");
+    const marksBox = document.getElementById("marks");
+    const subjectMarks = document.getElementById("subjectMarks");
+    const analysisLink = document.getElementById("analysisLink");
+
+    if(!reg){
+        message.textContent = "Please enter Register Number";
+        marksBox.classList.add("hidden");
+        return;
+    }
+
+    if(Object.keys(DB).length === 0){
+        message.textContent = "Student data is still loading. Please try again.";
+        return;
+    }
+
+    if(!DB[reg]){
+        message.textContent = "Register Number not found";
+        marksBox.classList.add("hidden");
+        studentInfo.textContent = "";
+        return;
+    }
+
+    const student = DB[reg];
+
+    studentInfo.textContent =
+        "Student Name : " + student.name + " | Register Number : " + reg;
+
+    let subjectHTML = "";
+
+    SUBJECTS.forEach(s => {
+
+        const data = student.subjects[s.name] || {};
+
+        subjectHTML += `
+            <div class="markbox">
+                <span class="markbox-title">${s.name}</span>
+
+                <div class="performance-row">
+                    <div>
+                        <span class="data-label">Attendance :</span>
+                        <span class="data-value">${formatValue(data.attendance)}%</span>
+                    </div>
+
+                    <div>
+                        <span class="data-label">Marks :</span>
+                        <span class="data-value">${formatValue(data.marks)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    subjectMarks.innerHTML = subjectHTML;
+
+    // Common result-analysis link. Change filename when the third-year PDF is ready.
+    analysisLink.innerHTML = `
+        <a href="Result_Analysis_ThirdYr.pdf"
+           target="_blank"
+           class="analysis-btn">
+           📄 View Result Analysis
+        </a>
+    `;
+
+    marksBox.classList.remove("hidden");
+    message.textContent = "";
+
+}
+
+function clearAll(){
+
+    document.getElementById("regno").value = "";
+    document.getElementById("marks").classList.add("hidden");
+    document.getElementById("studentInfo").textContent = "";
+    document.getElementById("message").textContent = "";
+    document.getElementById("subjectMarks").innerHTML = "";
+    document.getElementById("analysisLink").innerHTML = "";
+
+}
+
+document.getElementById("regno").addEventListener("keydown", function(event) {
+    if(event.key === "Enter"){
+        getMarks();
+    }
+});
+
+</script>
+
+</body>
+</html>
