@@ -303,6 +303,9 @@ button:active {
 
   <div style="text-align:center;">
     <a href="#feedback" class="btn">Proceed to Feedback</a>
+    <a href="../PTM/index.html" class="btn">
+        🏠 Proceed to PTM Main Page
+    </a>
   </div>
 </div>
 
@@ -312,7 +315,6 @@ button:active {
  <p style="color:#5a2d82; font-size:16px; margin-top:-10px; margin-bottom:15px; font-weight:900; text-align:center; letter-spacing:0.3px;">
   We value your feedback — Together, we can support our students better.
  </p>
-
 
   <label>Student Name</label>
   <input type="text" id="studentName">
@@ -367,9 +369,9 @@ button:active {
 </div>
 
 <div id="thankYouCard" style="display:none; max-width:650px; margin:20px auto; padding:25px; background:white; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center;">
-  
+
   <h2 style="color:#5a2d82;">✅ Thank You!</h2>
-  
+
   <p style="font-size:16px; margin-top:10px;">
     Your feedback has been successfully submitted.
   </p>
@@ -377,6 +379,28 @@ button:active {
   <p style="color:#555; margin-top:5px;">
     We appreciate your valuable time and suggestions.
   </p>
+
+  <!-- Proceed to Feedback -->
+  <div style="margin-top:20px;">
+    <a href="#feedback"
+       style="color:#5a2d82; font-weight:bold; text-decoration:none;">
+       📝 Proceed to Feedback
+    </a>
+  </div>
+
+  <!-- Proceed to PTM Main Page -->
+  <div style="margin-top:15px;">
+    <a href="https://preejith2009.github.io/WTMA-Lab/PTM/"
+       style="display:inline-block;
+              padding:12px 22px;
+              background:linear-gradient(90deg,#003366,#5a2d82);
+              color:white;
+              text-decoration:none;
+              border-radius:6px;
+              font-weight:bold;">
+       🏠 Proceed to PTM Main Page
+    </a>
+  </div>
 
 </div>
 
@@ -423,6 +447,7 @@ function submitForm() {
     loader.style.display = "none";
     formContainer.style.display = "none";
     thankYouCard.style.display = "block";
+  
      // Redirect back to the feedback form after 2 seconds
     setTimeout(() => {
         window.location.hash = "feedback";
