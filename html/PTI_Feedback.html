@@ -22,9 +22,14 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    .header img {
-      height: 50px;
-    }
+     .header img {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto 8px auto;
+    object-fit: contain;
+}
 
     .header h1 {
       margin: 5px 0;
@@ -142,6 +147,14 @@
 
    /* MOBILE OPTIMIZATION */
 @media (max-width: 600px) {
+ .header img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 6px auto;
+    object-fit: contain;
+}
   .header h1 { 
     font-size: 16px; 
   }
@@ -163,8 +176,8 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.6s ease;
 }
 
@@ -253,11 +266,7 @@ button:active {
   100% { transform: rotate(360deg); }
 }
 
-.header img{
-  height: 80px;   /* increased from ~50px */
-  max-width: 100%;
-  margin-bottom: 5px;
-}
+
 
   </style>
 </head>
@@ -266,7 +275,7 @@ button:active {
 
 <!-- HEADER -->
 <div class="header">
-  <img src="../mat/REC_Logo.jpg">
+  <img src="../PTM/REC_Logo.png">
   <h1>Rajalakshmi Engineering College</h1>
   <div class="dept">Department of Artificial Intelligence</div>
 </div>
@@ -311,11 +320,13 @@ button:active {
   <label>Register Number</label>
   <input type="text" id="regNo">
 
-  <label>Parent Name</label>
-  <input type="text" id="parentName">
-
-  <label>Department</label>
-  <input type="text" id="department" value="AIDS">
+  <label>Student Year</label>
+     <div style="font-size:12px; color:#666; margin-bottom:5px;">
+</div>
+  <select id="studentYear">
+    <option value="">Select</option>
+    <option>II-Yr</option><option>III-Yr</option>
+  </select>
 
   <div class="section-title">Department Related</div>
 
@@ -339,45 +350,13 @@ button:active {
 
   <!-- <div class="section-title">Department Related</div>-->
 
-  <label>What do you like most about the AIDS Department?</label>
+  <label>Your Comment on AIDS Department</label>
   <textarea id="likesDepartment"></textarea>
 
   <label>What improvements would you suggest?</label>
   <textarea id="improvements"></textarea>
 
-  <label>Any concerns regarding your ward’s performance?</label>
-  <textarea id="performanceConcerns"></textarea>
-
-  <label>Suggestions for Department/faculty</label>
-  <textarea id="suggestions"></textarea>
-
   <div class="section-title">College Related</div>
-
-  <label>How effective is the training provided to your ward by the college.</label>
-  <div style="font-size:12px; color:#666; margin-bottom:5px;">
-  Please rate from 1 (Very Poor) to 5 (Excellent)
-</div>
-  <select id="trainingEffectiveness">
-    <option value="">Select</option>
-    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-  </select>
-
-  <label>Overall Rating on the AIDS Department</label>
-    <div style="font-size:12px; color:#666; margin-bottom:5px;">
-  Please rate from 1 (Very Poor) to 5 (Excellent)
-</div>
-  <select id="overallRating">
-    <option value="">Select</option>
-    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-  </select>
-
-  <label>Would you recommend this institution?</label>
-  <select id="recommendation">
-    <option value="">Select</option>
-    <option>Yes</option>
-    <option>No</option>
-    <option>Maybe</option>
-  </select>
 
   <label>Overall Feedback and Suggestions for the College.</label>
   <textarea id="overallReview"></textarea>
@@ -410,111 +389,53 @@ function submitForm() {
   const thankYouCard = document.getElementById("thankYouCard");
 
   const studentName = document.getElementById("studentName").value.trim();
-  const parentName = document.getElementById("parentName").value.trim();
+  const regNo = document.getElementById("regNo").value.trim();
+  const studentYear = document.getElementById("studentYear").value;
   const errorMsg = document.getElementById("errorMsg");
 
-  // 🚨 VALIDATION
-  if (studentName === "" || parentName === "") {
-    errorMsg.textContent = "⚠️ Student Name and Parent Name are required";
-    return; // stop submission
-  } else {
-    errorMsg.textContent = ""; // clear message
+  if (studentName === "" || regNo === "" || studentYear === "") {
+    errorMsg.textContent = "⚠️ Student Name, Register Number and Student Year are required";
+    return;
   }
 
-  // Show loading
+  errorMsg.textContent = "";
   btn.disabled = true;
   btn.innerText = "Submitting...";
   loader.style.display = "block";
 
   const data = {
     studentName: studentName,
-    regNo: document.getElementById("regNo").value,
-    parentName: parentName,
-    department: document.getElementById("department").value,
+    regNo: regNo,
+    studentYear: studentYear,
     teachingQuality: document.getElementById("teachingQuality").value,
     syllabusCoverage: document.getElementById("syllabusCoverage").value,
     likesDepartment: document.getElementById("likesDepartment").value,
     improvements: document.getElementById("improvements").value,
-    performanceConcerns: document.getElementById("performanceConcerns").value,
-    suggestions: document.getElementById("suggestions").value,
-    trainingEffectiveness: document.getElementById("trainingEffectiveness").value,
-    overallRating: document.getElementById("overallRating").value,
-    recommendation: document.getElementById("recommendation").value,
     overallReview: document.getElementById("overallReview").value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbxdeWXIFuGsHQbF1oN5fHg0PWyE-zJKF7BRIGLZ58Q-LfFvyULN3L93KmIvB0YmzvLQ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyf3-kH_0QESIw2Noe8fNKY-2jpvMN8QJNQtIq_MrOYJnoOTkmqIDvQAXZfGbxT4M-E/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
   .then(res => res.json())
   .then(() => {
-
     loader.style.display = "none";
-
-    // Hide form
     formContainer.style.display = "none";
-
-    // Show thank you card
     thankYouCard.style.display = "block";
-
-    // Scroll to it
-    thankYouCard.scrollIntoView({ behavior: "smooth" });
-
+     // Redirect back to the feedback form after 2 seconds
+    setTimeout(() => {
+        window.location.hash = "feedback";
+        window.location.reload();
+    }, 4000);
   })
   .catch(() => {
-
     loader.style.display = "none";
     btn.disabled = false;
     btn.innerText = "Submit Feedback";
-
     errorMsg.textContent = "❌ Error submitting feedback. Try again.";
-
   });
 }
-</script>
-
-<footer>
-© 2026 Department of AIDS
-</footer>
-
-
-<script>
-const cards = document.querySelectorAll(".card");
-
-function revealCards() {
-  const triggerBottom = window.innerHeight * 0.85;
-
-  cards.forEach(card => {
-    const cardTop = card.getBoundingClientRect().top;
-
-    if (cardTop < triggerBottom) {
-      card.classList.add("show");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealCards);
-window.addEventListener("load", revealCards);
-
-</script>
-
-<!-- 👇 ADD YOUR CARD SCRIPT HERE -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-
-      cards.forEach(c => c.classList.remove("active"));
-      card.classList.add("active");
-
-    });
-  });
-
-});
 </script>
 
 
