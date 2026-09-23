@@ -66,6 +66,7 @@ box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
 .card h2{
+  margin-top:-20px;
 margin-bottom:20px;
 }
 
@@ -158,8 +159,91 @@ button{width:100%;margin:5px 0;}
   display:inline-block;
   animation: textPulse 1.5s infinite;
 }
+
+.student-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+/* Animated hint */
+.student-list-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+
+    background: rgba(255, 209, 102, 0.08);
+    border: 1px solid rgba(255, 209, 102, 0.35);
+
+    box-shadow: 0 0 8px rgba(255, 209, 102, 0.15);
+
+    animation: hintGlow 2s infinite ease-in-out;
+}
+
+/* Golden highlighted words */
+.student-list-hint .highlight {
+    color: #ffd166;
+    text-shadow: 0 0 8px rgba(255, 209, 102, 0.8);
+    animation: textShine 2s infinite;
+}
+
+/* Moving arrow */
+.student-list-hint .arrow {
+    color: #ffd166;
+    font-size: 18px;
+    display: inline-block;
+
+    animation: arrowMove 1.2s infinite ease-in-out;
+}
+
+/* Gentle glowing effect */
+@keyframes hintGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 209, 102, 0.15);
+        transform: translateY(0);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(255, 209, 102, 0.35);
+        transform: translateY(-2px);
+    }
+}
+
+/* Text shimmer */
+@keyframes textShine {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+}
+
+/* Arrow movement */
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+}
+
 </style>
   
+<br>
+    
+<!--old data -->
+<!--
 <div style="display:flex; justify-content:flex-end;">
   <a href="2026Student_Details.pdf" target="_blank" class="glow-btn"
      onmouseover="
@@ -176,7 +260,7 @@ button{width:100%;margin:5px 0;}
      <span class="text-pulse">📄 Student List</span>
   </a>
 </div>
-
+-->
 <h2>PTM Student Portal</h2>
 
 <p style="color:#9fb3ff;">
@@ -190,10 +274,53 @@ II Year Students
 <button class="btn" onclick="goToPage('third')">
 III Year Students
 </button>
+</br>
+<!-- ===============================
+     STUDENT LIST SECTION
+     =============================== -->
 
+<div class="student-list-container">
+
+    <div class="student-list-hint">
+
+        <span class="arrow">👉</span>
+
+            <span class="highlight">Find II and III Yr Student Reg No here</span>
+  
+
+        <span class="arrow">👇</span>
+
+    </div>
+
+
+    <a href="2026Student_Details.pdf"
+       target="_blank"
+       class="glow-btn"
+
+       onmouseover="
+          this.style.background='#ffd166';
+          this.style.color='#000';
+          this.style.boxShadow='0 0 20px #ffd166';
+       "
+
+       onmouseout="
+          this.style.background='transparent';
+          this.style.color='#ffd166';
+          this.style.boxShadow='0 0 5px #ffd166';
+       "
+    >
+
+        <span class="text-pulse">
+            📄 Click Me
+        </span>
+
+    </a>
+</div>
 </div>
 
 </div>
+
+
 
 <footer>
 © 2026 Department of AIDS
