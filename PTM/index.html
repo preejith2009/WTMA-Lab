@@ -293,28 +293,68 @@ III Year Students
     </div>
 
 
+   <div style="display:flex; flex-direction:column; align-items:center; width:100%; gap:12px;">
+
+    <!-- Student List / Click Me -->
     <a href="2026Student_Details.pdf"
        target="_blank"
        class="glow-btn"
-
+       style="
+          display:inline-block !important;
+          width:auto !important;
+          padding:6px 14px;
+          margin:0;
+          text-align:center;
+       "
        onmouseover="
           this.style.background='#ffd166';
           this.style.color='#000';
           this.style.boxShadow='0 0 20px #ffd166';
        "
-
        onmouseout="
           this.style.background='transparent';
           this.style.color='#ffd166';
           this.style.boxShadow='0 0 5px #ffd166';
-       "
-    >
+       ">
+       
+      <span class="text-pulse" style="display:block; text-align:left; margin-left:-5px;">📄 Click Me</span>
 
-        <span class="text-pulse">
-            📄 Click Me
-        </span>
-<a href="../html/PTI_Feedback.html">This od for PTI Feedback form</a>
     </a>
+
+
+    <!-- PTI Feedback Button -->
+    <a href="../html/PTI_Feedback.html"
+       style="
+          display:block;
+          width:100%;
+          max-width:300px;
+          padding:12px 18px;
+          margin:0;
+          background:linear-gradient(90deg,#003366,#5a2d82);
+          color:white;
+          text-decoration:none;
+          border:1px solid #9fb3ff;
+          border-radius:8px;
+          font-size:15px;
+          font-weight:bold;
+          text-align:center;
+          box-shadow:0 0 10px rgba(159,179,255,0.25);
+          transition:all 0.3s ease;
+       "
+       onmouseover="
+          this.style.transform='scale(1.03)';
+          this.style.boxShadow='0 0 18px rgba(159,179,255,0.55)';
+       "
+       onmouseout="
+          this.style.transform='scale(1)';
+          this.style.boxShadow='0 0 10px rgba(159,179,255,0.25)';
+       ">
+
+       📝 Parent / PTI Feedback
+
+    </a>
+
+</div>
 </div>
 </div>
 
