@@ -873,7 +873,7 @@ footer {
 
         <div id="successMessage">
 
-            ✅ Thank you! Your requirements have been recorded.
+            ✅ Thank you! Your requirements have been recorded.</br>Please Close this Page..
 
         </div>
 
@@ -1011,7 +1011,47 @@ document
 
     };
 
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwfVQoq9_ywz8RuIuK4b8AU9WiYZPHoTDH-ynBGqiIgtaA6_XCb5SgNsg5-Mc4DF7_Z_Q/exec";
 
+fetch(SCRIPT_URL, {
+
+    method: "POST",
+
+    mode: "no-cors",
+
+    headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+    },
+
+    body: JSON.stringify(studentData)
+
+})
+.then(function() {
+
+    document
+        .getElementById("successMessage")
+        .style.display = "block";
+
+    document
+        .getElementById("successMessage")
+        .innerHTML =
+        "✅ Your response has been submitted successfully!. Please close this page...";
+
+    document
+        .getElementById("codingForm")
+        .reset();
+
+})
+.catch(function(error) {
+
+    console.error(error);
+
+    alert(
+        "There was a problem submitting your response. Please try again."
+    );
+
+});
 
     /* =========================
        TEMPORARY CHECK
