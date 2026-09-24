@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Java & DBMS Coding Skill Improvement</title>
+
+<style>
+
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: white;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #003366;
+    text-align: center;
+    padding: 15px;
+}
+
+.header img {
+    width: 100%;
+    max-width: 950px;
+    height: 200px;
+
+    object-fit: fill;
+
+    margin: 0 auto;
+    display: block;
+}
+
+.header h1 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.dept {
+    color: #d6b3ff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 25px 15px;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+
+    background: #1c2a55;
+
+    width: 100%;
+    max-width: 650px;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 20px rgba(0,0,0,0.35),
+        0 0 35px rgba(90,45,130,0.15);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.form-card h2 {
+
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    font-size: 23px;
+
+    color: white;
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #9fb3ff;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+
+    margin-top: 22px;
+    margin-bottom: 15px;
+
+    padding: 10px 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #003366,
+            #5a2d82
+        );
+
+    border-left: 4px solid #ffd166;
+
+    border-radius: 7px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+.required {
+
+    color: #ffd166;
+}
+
+
+/* =========================
+   TEXT INPUT
+========================= */
+
+input[type="text"] {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: #101a35;
+
+    color: white;
+
+    border: 1px solid #52658f;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+
+    border-color: #ffd166;
+
+    box-shadow:
+        0 0 8px rgba(255,209,102,0.3);
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea {
+
+    width: 100%;
+
+    min-height: 115px;
+
+    padding: 12px 14px;
+
+    background: #101a35;
+
+    color: white;
+
+    border: 1px solid #52658f;
+
+    border-radius: 7px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+    resize: vertical;
+
+    transition: 0.3s;
+}
+
+textarea:focus {
+
+    border-color: #ffd166;
+
+    box-shadow:
+        0 0 8px rgba(255,209,102,0.3);
+}
+
+
+/* =========================
+   CONFIDENCE OPTIONS
+========================= */
+
+.confidence-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(159,179,255,0.25);
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.option:hover {
+
+    background:
+        rgba(90,45,130,0.45);
+
+    border-color: #9fb3ff;
+
+    transform: translateX(3px);
+}
+
+
+.option input {
+
+    accent-color: #ffd166;
+
+    transform: scale(1.1);
+
+    cursor: pointer;
+}
+
+
+.option-text {
+
+    font-size: 14px;
+
+    font-weight: normal;
+}
+
+
+/* =========================
+   HINT TEXT
+========================= */
+
+.hint {
+
+    margin-top: 7px;
+
+    color: #9fb3ff;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit-btn {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #003366,
+            #5a2d82
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: 1px solid #9fb3ff;
+
+    box-shadow:
+        0 0 10px rgba(159,179,255,0.25);
+
+    transition: all 0.3s ease;
+}
+
+
+.submit-btn:hover {
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 20px rgba(159,179,255,0.55);
+}
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
+#successMessage {
+
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    text-align: center;
+
+    background:
+        rgba(40,167,69,0.15);
+
+    border:
+        1px solid #5be37d;
+
+    color: #8dffad;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    background: #343a40;
+
+    text-align: center;
+
+    padding: 15px;
+
+    font-size: 13px;
+
+    color: #ddd;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+
+        padding: 10px;
+    }
+
+    .header img {
+
+        height: 120px;
+    }
+
+    .header h1 {
+
+        font-size: 17px;
+    }
+
+    .dept {
+
+        font-size: 12px;
+    }
+
+    .main {
+
+        padding: 15px 10px;
+    }
+
+    .form-card {
+
+        padding: 20px 16px;
+    }
+
+    .form-card h2 {
+
+        font-size: 19px;
+    }
+
+    .section-title {
+
+        font-size: 15px;
+    }
+
+    input[type="text"],
+    textarea {
+
+        font-size: 14px;
+    }
+
+    .option-text {
+
+        font-size: 13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+    <img
+        src="/PTM/REC_Logo.png"
+        alt="Rajalakshmi Engineering College Logo">
+
+    <h1>
+        Rajalakshmi Engineering College
+    </h1>
+
+    <div class="dept">
+        Department of Artificial Intelligence
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="main">
+
+
+<div class="form-card">
+
+
+    <!-- TITLE -->
+
+    <h2>
+        💻 Coding Skill Improvement Form
+    </h2>
+
+
+    <div class="subtitle">
+        Java &amp; DBMS / SQL – Student Requirements
+    </div>
+
+
+
+    <form id="codingForm">
+
+
+        <!-- =========================
+             STUDENT DETAILS
+        ========================= -->
+
+        <div class="section-title">
+            👨‍🎓 Student Details
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Student Name
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="studentName"
+                name="studentName"
+                placeholder="Enter your full name"
+                required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+                Register Number
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="registerNumber"
+                name="registerNumber"
+                placeholder="Enter your register number"
+                required>
+
+        </div>
+
+
+
+        <!-- =========================
+             JAVA CONFIDENCE
+        ========================= -->
+
+        <div class="section-title">
+            ☕ Java Coding
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                How confident are you in
+                Java coding?
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <div class="confidence-box">
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="javaConfidence"
+                        value="Very Confident"
+                        required>
+
+                    <span class="option-text">
+                        🟢 Very Confident
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="javaConfidence"
+                        value="Somewhat Confident">
+
+                    <span class="option-text">
+                        🟡 Somewhat Confident
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="javaConfidence"
+                        value="Need More Practice">
+
+                    <span class="option-text">
+                        🟠 Need More Practice
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="javaConfidence"
+                        value="Not Confident At All">
+
+                    <span class="option-text">
+                        🔴 Not Confident At All
+                    </span>
+
+                </label>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             JAVA REQUIREMENT
+        ========================= -->
+
+        <div class="form-group">
+
+            <label>
+
+                What specific support, practice,
+                or changes would you like to be
+                implemented to help you improve
+                your Java coding skills and score
+                good marks?
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <textarea
+                id="javaRequirement"
+                name="javaRequirement"
+                placeholder="Tell us what you need in Java..."
+                required></textarea>
+
+
+            <div class="hint">
+
+                Example: More coding practice,
+                simple problems first, solved examples,
+                debugging practice, exam-oriented
+                coding questions, extra practice sessions,
+                doubt-clearing sessions, etc.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             DBMS CONFIDENCE
+        ========================= -->
+
+        <div class="section-title">
+            🗄️ DBMS / SQL
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+
+                How confident are you in
+                DBMS / SQL coding?
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <div class="confidence-box">
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="dbmsConfidence"
+                        value="Very Confident"
+                        required>
+
+                    <span class="option-text">
+                        🟢 Very Confident
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="dbmsConfidence"
+                        value="Somewhat Confident">
+
+                    <span class="option-text">
+                        🟡 Somewhat Confident
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="dbmsConfidence"
+                        value="Need More Practice">
+
+                    <span class="option-text">
+                        🟠 Need More Practice
+                    </span>
+
+                </label>
+
+
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="dbmsConfidence"
+                        value="Not Confident At All">
+
+                    <span class="option-text">
+                        🔴 Not Confident At All
+                    </span>
+
+                </label>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             DBMS REQUIREMENT
+        ========================= -->
+
+        <div class="form-group">
+
+            <label>
+
+                What specific support, practice,
+                or changes would you like to be
+                implemented to help you improve
+                your DBMS / SQL skills and score
+                good marks?
+
+                <span class="required">*</span>
+
+            </label>
+
+
+            <textarea
+                id="dbmsRequirement"
+                name="dbmsRequirement"
+                placeholder="Tell us what you need in DBMS / SQL..."
+                required></textarea>
+
+
+            <div class="hint">
+
+                Example: More SQL practice,
+                queries from basics, solved examples,
+                JOIN practice, subqueries,
+                exam-oriented questions, extra practice
+                sessions, doubt-clearing sessions, etc.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             SUBMIT
+        ========================= -->
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            🚀 Submit Your Requirement
+
+        </button>
+
+
+
+        <!-- SUCCESS -->
+
+        <div id="successMessage">
+
+            ✅ Thank you! Your requirements have been recorded.
+
+        </div>
+
+
+    </form>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026 Department of AIDS
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+document
+.getElementById("codingForm")
+.addEventListener("submit", function(event) {
+
+
+    event.preventDefault();
+
+
+    /* =========================
+       GET STUDENT DETAILS
+    ========================= */
+
+    const name =
+        document
+        .getElementById("studentName")
+        .value
+        .trim();
+
+
+    const regNo =
+        document
+        .getElementById("registerNumber")
+        .value
+        .trim();
+
+
+
+    /* =========================
+       GET JAVA DATA
+    ========================= */
+
+    const java =
+        document.querySelector(
+            'input[name="javaConfidence"]:checked'
+        );
+
+
+    const javaRequirement =
+        document
+        .getElementById("javaRequirement")
+        .value
+        .trim();
+
+
+
+    /* =========================
+       GET DBMS DATA
+    ========================= */
+
+    const dbms =
+        document.querySelector(
+            'input[name="dbmsConfidence"]:checked'
+        );
+
+
+    const dbmsRequirement =
+        document
+        .getElementById("dbmsRequirement")
+        .value
+        .trim();
+
+
+
+    /* =========================
+       VALIDATION
+    ========================= */
+
+    if (
+        !name ||
+        !regNo ||
+        !java ||
+        !javaRequirement ||
+        !dbms ||
+        !dbmsRequirement
+    ) {
+
+        alert(
+            "Please complete all required fields."
+        );
+
+        return;
+
+    }
+
+
+
+    /* =========================
+       DATA OBJECT
+    ========================= */
+
+    const studentData = {
+
+        studentName: name,
+
+        registerNumber: regNo,
+
+        javaConfidence: java.value,
+
+        javaRequirement: javaRequirement,
+
+        dbmsConfidence: dbms.value,
+
+        dbmsRequirement: dbmsRequirement
+
+    };
+
+
+
+    /* =========================
+       TEMPORARY CHECK
+       GOOGLE SHEETS CAN BE
+       CONNECTED LATER
+    ========================= */
+
+    console.log(studentData);
+
+
+
+    /* =========================
+       SUCCESS MESSAGE
+    ========================= */
+
+    document
+    .getElementById("successMessage")
+    .style.display = "block";
+
+
+    document
+    .getElementById("successMessage")
+    .scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
