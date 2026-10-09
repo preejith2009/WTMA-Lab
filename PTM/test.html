@@ -408,8 +408,6 @@ async function loadExcel(){
 
             DB[reg] = {
                 name: String(r["Name"] ?? "").trim(),
-                arrears: r["No Of Arrears"] ?? "",
-                gpa: r["GPA"] ?? "",
                 subjects: {}
             };
 
@@ -474,21 +472,7 @@ function getMarks(){
     studentInfo.textContent =
      "Student Name : " + student.name + " | Register Number : " + reg;
 
-    let subjectHTML = `
-        <div class="markbox">
-            <span class="markbox-title" style="text-align: center;">Academic Summary</span>
-            <div class="performance-row">
-                <div>
-                    <span class="data-label">No Of Arrears :</span>
-                    <span class="data-value">${formatValue(student.arrears)}</span>
-                </div>
-                <div>
-                    <span class="data-label">CGPA :</span>
-                    <span class="data-value">${formatValue(student.gpa)}</span>
-                </div>
-            </div>
-        </div>
-    `;
+    let subjectHTML = "";
 
     SUBJECTS.forEach(s => {
 
@@ -515,14 +499,14 @@ function getMarks(){
 
     subjectMarks.innerHTML = subjectHTML;
 
-    //Common result-analysis link. Change filename when the third-year PDF is ready.
-    analysisLink.innerHTML = `
-        <a href="Result_analysis_24-28 sem4.pdf"
-           target="_blank"
-           class="analysis-btn">
-           📄 View Result Analysis
-        </a>
-    `;
+    // Common result-analysis link. Change filename when the third-year PDF is ready.
+    // analysisLink.innerHTML = `
+    //     <a href="Result_Analysis_ThirdYr.pdf"
+    //        target="_blank"
+    //        class="analysis-btn">
+    //        📄 View Result Analysis
+    //     </a>
+    // `;
 
     marksBox.classList.remove("hidden");
     message.textContent = "";
