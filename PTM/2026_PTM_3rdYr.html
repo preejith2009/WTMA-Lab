@@ -470,7 +470,7 @@ function getMarks(){
     const student = DB[reg];
 
     studentInfo.textContent =
-        "Student Name : " + student.name + " | Register Number : " + reg;
+     "Student Name : " + student.name + " | Register Number : " + reg;
 
     let subjectHTML = "";
 
@@ -489,7 +489,7 @@ function getMarks(){
                     </div>
 
                     <div>
-                        <span class="data-label">CAT Marks :</span>
+                        <span class="data-label">CAT Marks(Out of 75):</span>
                         <span class="data-value">${formatValue(data.marks)}</span>
                     </div>
                 </div>
@@ -500,13 +500,13 @@ function getMarks(){
     subjectMarks.innerHTML = subjectHTML;
 
     // Common result-analysis link. Change filename when the third-year PDF is ready.
-    analysisLink.innerHTML = `
-        <a href="Result_Analysis_ThirdYr.pdf"
-           target="_blank"
-           class="analysis-btn">
-           📄 View Result Analysis
-        </a>
-    `;
+    // analysisLink.innerHTML = `
+    //     <a href="Result_Analysis_ThirdYr.pdf"
+    //        target="_blank"
+    //        class="analysis-btn">
+    //        📄 View Result Analysis
+    //     </a>
+    // `;
 
     marksBox.classList.remove("hidden");
     message.textContent = "";

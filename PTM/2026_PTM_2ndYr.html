@@ -192,12 +192,12 @@ Enter Student Register Number to view Student details, eg 251801001
 </div>
 
 <div class="markbox">
-<b>GPA :</b>
+<b>Total CGPA :</b>
 <span id="gpa"></span>
 </div>
 
 <h3 style="text-align:center;color:#ffd166;margin-bottom:10px;">
-Current Semester Attendance & CAT Marks
+Current Semester Attendance & CAT Marks (Mark Out of 75)
 </h3>
 
 <table class="subject-table">
@@ -220,12 +220,16 @@ Current Semester Attendance & CAT Marks
 <td><span id="mark_1"></span></td>
 </tr>
 <tr>
-<td>Database Management Systems</td>
+<td>Database Management Systems </br style="color:#ffd166;">  <span style="color:#ffd166;">
+    (Skill Test Mark Out of 75)
+  </span></td>
 <td><span id="att_2"></span>%</td>
 <td><span id="mark_2"></span></td>
 </tr>
 <tr>
-<td>Object Oriented Programming using Java</td>
+<td>Object Oriented Programming using Java </br>  <span style="color:#ffd166;">
+    (Skill Test Mark Out of 65)
+  </span></td>
 <td><span id="att_3"></span>%</td>
 <td><span id="mark_3"></span></td>
 </tr>
@@ -317,10 +321,10 @@ document.getElementById("studentInfo").textContent =
 
 // These fields are displayed only if they exist in the Excel.
 document.getElementById("arrears").textContent =
-formatValue(student["No Of Arrears"] ?? student["Arrears"] ?? "-");
+formatValue(student["No Of Arrears"] ?? student["Arrears"] ?? "Not Available");
 
 document.getElementById("gpa").textContent =
-formatValue(student["GPA"] ?? student["Gpa"] ?? "-");
+formatValue(student["GPA"] ?? student["Gpa"] ?? "Not Available");
 
 document.getElementById("att_0").textContent = formatValue(student["Principles of Artificial Intelligence-A"]);
 document.getElementById("mark_0").textContent = formatValue(student["Principles of Artificial Intelligence-M"]);
@@ -338,17 +342,17 @@ document.getElementById("mark_5").textContent = formatValue(student["Environment
 document.getElementById("marks").style.display="block";
 message.textContent="";
 
-document.getElementById("analysisLink").innerHTML = `
-<a href="Result_Analysis_Sem2.pdf" target="_blank"
-style="display:inline-block;
-padding:12px 20px;
-background:#28a745;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;">
-📄 View Result Analysis
-</a>`;
+// document.getElementById("analysisLink").innerHTML = `
+// <a href="Result_Analysis_Sem2.pdf" target="_blank"
+// style="display:inline-block;
+// padding:12px 20px;
+// background:#28a745;
+// color:white;
+// border-radius:8px;
+// text-decoration:none;
+// font-weight:bold;">
+// 📄 View Result Analysis
+// </a>`;
 }
 
 function clearAll(){
