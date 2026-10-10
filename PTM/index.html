@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AIDS PTM Portal</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0b1220;
+color:white;
+margin:0;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+.header{
+background:#003366;
+text-align:center;
+padding:15px;
+}
+
+.header img{
+    width:100%;
+    max-width:950px;
+    height:200px;
+    object-fit:fill;
+    margin:0 auto;
+    display:block;
+}
+
+.header h1{
+margin:10px 0;
+font-size:20px;
+}
+
+.dept{
+color:#d6b3ff;
+font-size:14px;
+font-weight:bold;
+}
+
+/* MAIN */
+.main{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+background:#1c2a55;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:100%;
+max-width:400px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.card h2{
+  margin-top:-20px;
+margin-bottom:20px;
+}
+
+/* BUTTONS */
+.btn{
+display:block;
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+background:#5a2d82;
+color:white;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#7b3fb3;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+background:#343a40;
+text-align:center;
+padding:15px;
+}
+
+@media (max-width:600px){
+     .header img{
+        height:120px;
+    }
+.container{padding:15px;}
+h2{font-size:18px;}
+input{width:100%;box-sizing:border-box;}
+button{width:100%;margin:5px 0;}
+.markbox{font-size:15px;padding:12px;}
+.subject-table{font-size:12px;}
+.subject-table th,.subject-table td{padding:8px 4px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  <img src="REC_Logo.png" alt="Rajalakshmi Engineering College Logo">
+  <h1>Rajalakshmi Engineering College</h1>
+  <div class="dept">Department of Artificial Intelligence</div>
+</div>
+
+<div class="main">
+
+<div class="card">
+
+  <style>
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px #ffd166; }
+  50% { box-shadow: 0 0 15px #ffd166; }
+  100% { box-shadow: 0 0 5px #ffd166; }
+}
+
+@keyframes textPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.glow-btn {
+  display: inline-block !important;   /* 🔥 force inline */
+  width: auto !important;             /* 🔥 prevent full width */
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffd166;
+  border: 1px solid #ffd166;
+  border-radius: 6px;
+  text-decoration: none;
+  background: transparent;
+  animation: glowPulse 2.5s infinite;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.text-pulse {
+  display:inline-block;
+  animation: textPulse 1.5s infinite;
+}
+
+.student-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+/* Animated hint */
+.student-list-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+
+    background: rgba(255, 209, 102, 0.08);
+    border: 1px solid rgba(255, 209, 102, 0.35);
+
+    box-shadow: 0 0 8px rgba(255, 209, 102, 0.15);
+
+    animation: hintGlow 2s infinite ease-in-out;
+}
+
+/* Golden highlighted words */
+.student-list-hint .highlight {
+    color: #ffd166;
+    text-shadow: 0 0 8px rgba(255, 209, 102, 0.8);
+    animation: textShine 2s infinite;
+}
+
+/* Moving arrow */
+.student-list-hint .arrow {
+    color: #ffd166;
+    font-size: 18px;
+    display: inline-block;
+
+    animation: arrowMove 1.2s infinite ease-in-out;
+}
+
+/* Gentle glowing effect */
+@keyframes hintGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 209, 102, 0.15);
+        transform: translateY(0);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(255, 209, 102, 0.35);
+        transform: translateY(-2px);
+    }
+}
+
+/* Text shimmer */
+@keyframes textShine {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+}
+
+/* Arrow movement */
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+}
+
+</style>
+  
+<br>
+    
+<!--old data -->
+<!--
+<div style="display:flex; justify-content:flex-end;">
+  <a href="2026Student_Details.pdf" target="_blank" class="glow-btn"
+     onmouseover="
+        this.style.background='#ffd166';
+        this.style.color='#000';
+        this.style.boxShadow='0 0 20px #ffd166';
+     "
+     onmouseout="
+        this.style.background='transparent';
+        this.style.color='#ffd166';
+        this.style.boxShadow='0 0 5px #ffd166';
+     "
+  >
+     <span class="text-pulse">📄 Student List</span>
+  </a>
+</div>
+-->
+<h2>PTM Student Portal</h2>
+
+<p style="color:#9fb3ff;">
+Select Year to View Student Details
+</p>
+
+<button class="btn" onclick="goToPage('second')">
+II Year Students
+</button>
+
+<button class="btn" onclick="goToPage('third')">
+III Year Students
+</button>
+</br>
+<!-- ===============================
+     STUDENT LIST SECTION
+     =============================== -->
+
+<div class="student-list-container">
+
+    <div class="student-list-hint">
+
+        <span class="arrow">👉</span>
+
+            <span class="highlight">Find II and III Yr Student Reg No here</span>
+  
+
+        <span class="arrow">👇</span>
+
+    </div>
+
+
+   <div style="display:flex; flex-direction:column; align-items:center; width:100%; gap:12px;">
+
+    <!-- Student List / Click Me -->
+    <a href="2026Student_Details.pdf"
+       target="_blank"
+       class="glow-btn"
+       style="
+          display:inline-block !important;
+          width:auto !important;
+          padding:6px 14px;
+          margin:0;
+          text-align:center;
+       "
+       onmouseover="
+          this.style.background='#ffd166';
+          this.style.color='#000';
+          this.style.boxShadow='0 0 20px #ffd166';
+       "
+       onmouseout="
+          this.style.background='transparent';
+          this.style.color='#ffd166';
+          this.style.boxShadow='0 0 5px #ffd166';
+       ">
+       
+      <span class="text-pulse" style="display:block; text-align:left; margin-left:-5px;">📄 Click Me</span>
+
+    </a>
+
+
+    <!-- PTI Feedback Button -->
+    <a href="../html/PTI_Feedback.html"
+       style="
+          display:block;
+          width:100%;
+          max-width:300px;
+          padding:12px 18px;
+          margin:0;
+          background:linear-gradient(90deg,#003366,#5a2d82);
+          color:white;
+          text-decoration:none;
+          border:1px solid #9fb3ff;
+          border-radius:8px;
+          font-size:15px;
+          font-weight:bold;
+          text-align:center;
+          box-shadow:0 0 10px rgba(159,179,255,0.25);
+          transition:all 0.3s ease;
+       "
+       onmouseover="
+          this.style.transform='scale(1.03)';
+          this.style.boxShadow='0 0 18px rgba(159,179,255,0.55)';
+       "
+       onmouseout="
+          this.style.transform='scale(1)';
+          this.style.boxShadow='0 0 10px rgba(159,179,255,0.25)';
+       ">
+
+       📝 Parent / PTM Feedback
+
+    </a>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<footer>
+© 2026 Department of AIDS
+</footer>
+
+<script>
+
+function goToPage(year){
+
+//if(year === "second"){
+// window.location.href = "PTM_2ndYr.html";
+// }
+
+// if(year === "third"){
+// window.location.href = "PTM_3rdYr.html";
+// }
+
+if(year === "second"){
+ window.location.href = "2026_PTM_2ndYr.html";
+ }
+
+ if(year === "third"){
+ window.location.href = "2026_PTM_3rdYr.html";
+ }
+
+}
+
+</script>
+
+</body>
+</html>
