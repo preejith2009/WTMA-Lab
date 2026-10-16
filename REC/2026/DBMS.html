@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DBMS – Video Learning Resources | Units II–V</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root { --purple: #6a0dad; --blue: #007bff; }
+    body {
+      background: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+      color: #212529;
+    }
+    .navbar-brand { font-weight: 700; letter-spacing: .2px; }
+    .hero {
+      background: linear-gradient(135deg, #007bff, #5b3cc4);
+      color: white;
+      padding: 52px 0;
+      text-align: center;
+    }
+    .hero h1 { font-weight: 800; letter-spacing: .4px; }
+    .hero p { margin-bottom: 0; }
+    .video-resources-heading {
+      background: #ffffff;
+      border: 3px solid #6a0dad;
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 0 0 26px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+      text-align: center;
+    }
+    .video-resources-heading h2 {
+      margin-bottom: 8px;
+      color: #4b087a;
+      font-weight: 900;
+    }
+    .video-resources-heading p {
+      margin: 0;
+      color: #212529;
+      font-weight: 700;
+    }
+    .unit-section {
+      padding: 28px;
+      margin-bottom: 28px;
+      border-radius: 16px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.055);
+    }
+    .unit-2 { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+    .unit-3 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+    .unit-4 { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .unit-5 { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+    h2 { color: var(--purple); font-weight: 800; margin-bottom: 8px; }
+    .unit-subtitle { color: #495057; margin-bottom: 22px; }
+    .syllabus-overview {
+      background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+    }
+    .syllabus-unit {
+      background: rgba(255,255,255,.58);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-top: 14px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+    .syllabus-unit h3 {
+      color: #6a0dad;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .syllabus-unit p { margin: 0; }
+    .video-card {
+      height: 100%;
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(33,37,41,.08);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.045);
+    }
+    .ratio.video-thumbnail {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #26324a, #6a0dad);
+    }
+    .video-thumbnail > a {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #26324a, #6a0dad);
+    }
+    .video-thumbnail img.video-thumb {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center;
+      border: 0;
+    }
+    .video-thumbnail .thumb-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(.85rem, 1.7vw, 1.15rem);
+      background: linear-gradient(135deg, #26324a, #6a0dad);
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: #fff;
+      background: rgba(220, 53, 69, .96);
+      border-radius: 999px;
+      width: 58px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      line-height: 1;
+      box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+    .video-thumbnail a:hover .play-overlay { background: #b02a37; }
+    .video-thumbnail a:focus-visible { outline: 3px solid #ffc107; outline-offset: -3px; }
+    .video-title { font-weight: 700; text-align: center; margin: 12px 0 4px; }
+    .video-link { display: block; text-align: center; font-size: .9rem; overflow-wrap: anywhere; }
+    .topic-label {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #5b2a86;
+      background: #f3e8ff;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 8px;
+    }
+    footer { margin-top: 28px; }
+    @media (max-width: 576px) {
+      .hero { padding: 38px 16px; }
+      .hero h1 { font-size: 1.7rem; }
+      .video-resources-heading {
+      background: #ffffff;
+      border: 3px solid #6a0dad;
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 0 0 26px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+      text-align: center;
+    }
+    .video-resources-heading h2 {
+      margin-bottom: 8px;
+      color: #4b087a;
+      font-weight: 900;
+    }
+    .video-resources-heading p {
+      margin: 0;
+      color: #212529;
+      font-weight: 700;
+    }
+    .unit-section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">DBMS Learning Resources</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#syllabus">Syllabus</a></li>\n          <li class="nav-item"><a class="nav-link" href="#video-resources">Video References</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unit2">Unit 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unit3">Unit 3</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unit4">Unit 4</a></li>
+          <li class="nav-item"><a class="nav-link" href="#unit5">Unit 5</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>DATABASE MANAGEMENT SYSTEMS</h1>
+      <p class="lead mt-2">Video Learning Resources | Units 2, 3, 4 and 5</p>
+      <p class="mt-2">Choose a topic and select a video thumbnail to watch the Video Lesson.</p>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <section class="unit-section syllabus-overview" id="syllabus">
+      <h2>Syllabus</h2>
+      <div class="syllabus-unit">
+        <h3>UNIT II – Entity Relationship Model</h3>
+        <p>Entity Relationship Model – Constraints -Entity Relationship Diagram - Design Issues of ER Model – Extended ER Features – Mapping ER Model to Relational Model– Query Processing – Heuristics for Query Optimization.</p>
+      </div>
+      <div class="syllabus-unit">
+        <h3>UNIT- III - NORMAL FORMS AND INDEXING</h3>
+        <p>Motivation for Normal Forms – Functional dependencies – Armstrong’s Axioms for Functional Dependencies – Closure for a set of Functional Dependencies – Definitions of 1NF-2NF-3NF and BCNF – Multivalued Dependency 4NF - Joint Dependency- 5NF-File Organization-Indexing B+ tree ,B-Tree</p>
+      </div>
+      <div class="syllabus-unit">
+        <h3>UNIT IV - TRANSACTIONS</h3>
+        <p>Transaction Concepts – ACID Properties – Schedules – Serializability – Transaction support in SQL – Need for Concurrency – Concurrency control –Two Phase Locking- Timestamp – Multiversion – Validation and Snapshot isolation– Multiple Granularity locking – Deadlock Handling – Recovery Concepts – Recovery based on deferred and immediate update – Shadow paging – ARIES Algorithm.</p>
+      </div>
+      <div class="syllabus-unit">
+        <h3>UNIT-V &nbsp; NOSQL DATABASE</h3>
+        <p>NoSQL Database vs.SQL Databases – CAP Theorem –Migrating from RDBMS to NoSQL – MongoDB – CRUD Operations– MongoDB Sharding – MongoDB Replication – Web Application Development using MongoDB with Python and Java.</p>
+      </div>
+    </section>
+
+    <section class="video-resources-heading" id="video-resources">
+      <h2>Video References</h2>
+      <p>Watch the following topic-wise videos to support your learning for Units II–V.</p>
+    </section>
+
+    <section class="unit-section unit-2" id="unit2">
+      <h2>Unit 2 – Entity Relationship Model</h2>
+      <p class="unit-subtitle">ER model, constraints, ER diagrams, design issues, extended ER features and mapping ER models to relational models.</p>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=88cs2yH2ges" target="_blank" rel="noopener" aria-label="Watch Entity Relationship Model – Video 1 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Entity Relationship Model – Video 1</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/88cs2yH2ges/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/88cs2yH2ges/hqdefault.jpg" alt="Thumbnail for Entity Relationship Model – Video 1" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Entity Relationship Model – Video 1</p>
+            <a class="video-link" href="https://www.youtube.com/watch?v=88cs2yH2ges" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=rorft23glC0" target="_blank" rel="noopener" aria-label="Watch Entity Relationship Model – Video 2 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Entity Relationship Model – Video 2</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/rorft23glC0/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/rorft23glC0/hqdefault.jpg" alt="Thumbnail for Entity Relationship Model – Video 2" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Entity Relationship Model – Video 2</p>
+            <a class="video-link" href="https://www.youtube.com/watch?v=rorft23glC0" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="unit-section unit-3" id="unit3">
+      <h2>Unit 3 – Normal Forms and Indexing</h2>
+      <p class="unit-subtitle">Normalization, file organization, ordered indices, B-tree and B+ tree structures and operations.</p>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=ABwD8IYByfk" target="_blank" rel="noopener" aria-label="Watch Normalization on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Normalization</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/ABwD8IYByfk/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/ABwD8IYByfk/hqdefault.jpg" alt="Thumbnail for Normalization" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Normalization</p>
+            <a class="video-link" href="https://www.youtube.com/watch?v=ABwD8IYByfk" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=YPhQaQnfW8c" target="_blank" rel="noopener" aria-label="Watch File Organization – Heap, Sequential and Hashed on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">File Organization – Heap, Sequential and Hashed</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/YPhQaQnfW8c/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/YPhQaQnfW8c/hqdefault.jpg" alt="Thumbnail for File Organization – Heap, Sequential and Hashed" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">File Organization: Heap, Sequential and Hashed</p>
+            <a class="video-link" href="https://www.youtube.com/watch?v=YPhQaQnfW8c" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=TJnvn8VGRCw" target="_blank" rel="noopener" aria-label="Watch Indexing on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Indexing</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/TJnvn8VGRCw/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/TJnvn8VGRCw/hqdefault.jpg" alt="Thumbnail for Indexing" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Indexing</p>
+            <a class="video-link" href="https://youtu.be/TJnvn8VGRCw" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=QCqzadqGN9s" target="_blank" rel="noopener" aria-label="Watch B-tree on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">B-tree</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/QCqzadqGN9s/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/QCqzadqGN9s/hqdefault.jpg" alt="Thumbnail for B-tree" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">B-tree</p>
+            <a class="video-link" href="https://youtu.be/QCqzadqGN9s" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=t1uM5vO94lI" target="_blank" rel="noopener" aria-label="Watch B+ tree on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">B+ tree</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/t1uM5vO94lI/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/t1uM5vO94lI/hqdefault.jpg" alt="Thumbnail for B+ tree" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">B+ tree</p>
+            <a class="video-link" href="https://youtu.be/t1uM5vO94lI" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="unit-section unit-4" id="unit4">
+      <h2>Unit 4 – Transactions</h2>
+      <p class="unit-subtitle">Transaction concepts, ACID properties, schedules, serializability, concurrency, recovery and the ARIES algorithm.</p>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=dk8ElEF4b9A" target="_blank" rel="noopener" aria-label="Watch Transaction Concepts and ACID Properties on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Transaction Concepts and ACID Properties</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/dk8ElEF4b9A/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/dk8ElEF4b9A/hqdefault.jpg" alt="Thumbnail for Transaction Concepts and ACID Properties" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Transaction Concepts &amp; ACID Properties</p>
+            <a class="video-link" href="https://youtu.be/dk8ElEF4b9A" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=5dKjsuH3lnU" target="_blank" rel="noopener" aria-label="Watch Schedules and Serializability on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Schedules and Serializability</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/5dKjsuH3lnU/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/5dKjsuH3lnU/hqdefault.jpg" alt="Thumbnail for Schedules and Serializability" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Schedules &amp; Serializability</p>
+            <a class="video-link" href="https://youtu.be/5dKjsuH3lnU" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=vyNZFDa7Ih4" target="_blank" rel="noopener" aria-label="Watch Concurrency – Video 1 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Concurrency – Video 1</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/vyNZFDa7Ih4/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/vyNZFDa7Ih4/hqdefault.jpg" alt="Thumbnail for Concurrency – Video 1" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Concurrency – Video 1</p>
+            <a class="video-link" href="https://youtu.be/vyNZFDa7Ih4" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=OSfcmmoQWgU" target="_blank" rel="noopener" aria-label="Watch Concurrency – Video 2 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Concurrency – Video 2</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/OSfcmmoQWgU/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/OSfcmmoQWgU/hqdefault.jpg" alt="Thumbnail for Concurrency – Video 2" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Concurrency – Video 2</p>
+            <a class="video-link" href="https://youtu.be/OSfcmmoQWgU" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=ubU5c4YjEXY" target="_blank" rel="noopener" aria-label="Watch Shadow Paging and Checkpoints – Video 1 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Shadow Paging and Checkpoints – Video 1</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/ubU5c4YjEXY/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/ubU5c4YjEXY/hqdefault.jpg" alt="Thumbnail for Shadow Paging and Checkpoints – Video 1" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Shadow Paging &amp; Checkpoints – Video 1</p>
+            <a class="video-link" href="https://youtu.be/ubU5c4YjEXY" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=TKq9YkVfADc" target="_blank" rel="noopener" aria-label="Watch Shadow Paging and Checkpoints – Video 2 on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Shadow Paging and Checkpoints – Video 2</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/TKq9YkVfADc/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/TKq9YkVfADc/hqdefault.jpg" alt="Thumbnail for Shadow Paging and Checkpoints – Video 2" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Shadow Paging &amp; Checkpoints – Video 2</p>
+            <a class="video-link" href="https://www.youtube.com/watch?v=TKq9YkVfADc" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=8tfVqyRm1vw" target="_blank" rel="noopener" aria-label="Watch Log-based Recovery – Deferred and Immediate Update on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">Log-based Recovery – Deferred and Immediate Update</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/8tfVqyRm1vw/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/8tfVqyRm1vw/hqdefault.jpg" alt="Thumbnail for Log-based Recovery – Deferred and Immediate Update" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">Recovery Concepts: Log-based Recovery</p>
+            <a class="video-link" href="https://youtu.be/8tfVqyRm1vw" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=mCsd2VU81mQ" target="_blank" rel="noopener" aria-label="Watch ARIES Algorithm on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">ARIES Algorithm</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/mCsd2VU81mQ/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/mCsd2VU81mQ/hqdefault.jpg" alt="Thumbnail for ARIES Algorithm" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">ARIES Algorithm</p>
+            <a class="video-link" href="https://youtu.be/mCsd2VU81mQ" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="unit-section unit-5" id="unit5">
+      <h2>Unit 5 – NoSQL Database</h2>
+      <p class="unit-subtitle">NoSQL versus SQL, types of NoSQL stores, CAP theorem, MongoDB basics, CRUD operations and replication.</p>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=VnzImJ0qF-Y" target="_blank" rel="noopener" aria-label="Watch NoSQL vs SQL and CAP Theorem on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">NoSQL vs SQL and CAP Theorem</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/VnzImJ0qF-Y/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/VnzImJ0qF-Y/hqdefault.jpg" alt="Thumbnail for NoSQL vs SQL and CAP Theorem" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">NoSQL vs SQL, NoSQL Types &amp; CAP Theorem</p>
+            <a class="video-link" href="https://youtu.be/VnzImJ0qF-Y" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=BVPP8etiHVs" target="_blank" rel="noopener" aria-label="Watch MongoDB Basics on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">MongoDB Basics</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/BVPP8etiHVs/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/BVPP8etiHVs/hqdefault.jpg" alt="Thumbnail for MongoDB Basics" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">MongoDB Basics: Documents, Collections &amp; BSON</p>
+            <a class="video-link" href="https://youtu.be/BVPP8etiHVs" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=H5sDjNfl3xA" target="_blank" rel="noopener" aria-label="Watch MongoDB CRUD Operations on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">MongoDB CRUD Operations</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/H5sDjNfl3xA/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/H5sDjNfl3xA/hqdefault.jpg" alt="Thumbnail for MongoDB CRUD Operations" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">MongoDB CRUD Operations</p>
+            <a class="video-link" href="https://youtu.be/H5sDjNfl3xA" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="video-card">
+            <div class="ratio ratio-16x9 video-thumbnail">
+              <a href="https://www.youtube.com/watch?v=jLEp1XI_L6Q" target="_blank" rel="noopener" aria-label="Watch MongoDB Replication and Replica Sets on YouTube">
+                <span class="thumb-fallback" aria-hidden="true">MongoDB Replication and Replica Sets</span>
+                <img class="video-thumb" src="https://i.ytimg.com/vi/jLEp1XI_L6Q/maxresdefault.jpg" data-fallback="https://i.ytimg.com/vi/jLEp1XI_L6Q/hqdefault.jpg" alt="Thumbnail for MongoDB Replication and Replica Sets" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.style.display='none';}">
+                <span class="play-overlay" aria-hidden="true">▶</span>
+              </a>
+            </div>
+            <p class="video-title">MongoDB Replication: Replica Sets &amp; Failover</p>
+            <a class="video-link" href="https://youtu.be/jLEp1XI_L6Q" target="_blank" rel="noopener">Learn This Topic</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    &copy; 2026 DBMS Learning Resources | Department of AIDS
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // If a high-resolution YouTube thumbnail is unavailable, try the standard thumbnail.
+    // If both fail, the styled topic placeholder remains visible instead of a black box.
+    document.querySelectorAll('.video-thumb').forEach(function (img) {
+      img.addEventListener('error', function () {
+        if (img.dataset.fallback) {
+          img.src = img.dataset.fallback;
+          img.dataset.fallback = '';
+        } else {
+          img.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
