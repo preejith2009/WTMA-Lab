@@ -46,6 +46,12 @@
   #mentorDashboard .status-pill{justify-self:start}
 }
 
+
+/* PTM attendance reminder for mentors */
+.ptm-attendance-instruction{margin:12px 16px 0;padding:11px 14px;border:1px solid #f1d49a;border-left:4px solid #d99a24;border-radius:9px;background:#fff9eb;color:#684b16;font-size:12px;line-height:1.55}
+.ptm-attendance-instruction strong{font-weight:850}
+@media(max-width:760px){.ptm-attendance-instruction{margin:10px 10px 0;font-size:11px;padding:10px 11px}}
+
 /* Mentor follow-up comments */
 .comment-link{display:inline-block;margin-top:7px;padding:0;border:0;background:none;color:#5b43a6;text-decoration:underline;font:inherit;font-weight:600;cursor:pointer}
 .comment-modal-backdrop{position:fixed;inset:0;z-index:9999;background:rgba(20,18,35,.48);display:flex;align-items:center;justify-content:center;padding:18px}
@@ -93,6 +99,9 @@
     </div>
     <div class="dashboard-table">
       <div class="table-top"><h3>My Allocated Students</h3><span class="count-pill" id="mentorStudentCount">0 students</span></div>
+      <div class="ptm-attendance-instruction" role="note">
+        <strong>PTM attendance confirmation:</strong> Before marking the parent meeting as Completed, please add a comment confirming whether the parent will be attending the upcoming PTM (Yes / No).
+      </div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -340,7 +349,7 @@ function renderMentorDashboard(data) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'complete-btn';
-      button.textContent = 'I have Called the Parent';
+      button.textContent = 'Meeting with Parent';
       button.addEventListener('click', () =>
         completeParentMeeting(student.regNo, button)
       );
