@@ -1,12 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>AIDS First Yr Student Details</title>
-
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-
 <style>
 body{
 font-family:Arial;
@@ -83,6 +82,14 @@ border:1px solid #444;
 
 .att-cell{color:#5ad7ff;font-weight:bold;}
 .mark-cell{color:#ffd166;font-weight:bold;}
+.mark-cell.fail-cell{
+    color:#ff6b6b;
+    background:rgba(255, 70, 70, 0.16);
+    border:1px solid rgba(255, 107, 107, 0.55);
+    border-radius:5px;
+    padding:3px 8px;
+    display:inline-block;
+}
 
 footer{
 background:#343a40;color:white;text-align:center;padding:15px;
@@ -100,60 +107,68 @@ button{width:100%;margin:5px 0;}
 .subject-table{font-size:12px;}
 .subject-table th,.subject-table td{padding:8px 4px;}
 }
+
+/* Dark Yellow Font for Student Summary Values */
+#arrears,
+#percentage,
+#attendance {
+    color: #d4a017;
+    font-weight: bold;
+}
 </style>
 </head>
-
 <body>
-
 <div class="header">
-  <img src="REC_Logo.png">
-  <h1>Department of Artificial Intelligence</h1>
-  <div class="dept">I Semester - Ist Year</div>
+<img src="REC_Logo.png"/>
+<h1>Department of Artificial Intelligence</h1>
+<div class="dept">I Semester - Ist Year</div>
 </div>
-
 <div class="main-content">
 <div class="container">
-
 <div style="margin:20px 0;">
 <h3 style="text-align:center;color:#ffd166;">Semester Subjects</h3>
-
 <table class="subject-table">
-<tr>
-<th>Course Code</th>
-<th>Subject Name</th>
-</tr>
+    <tr>
+        <th>Subject Name</th>
+        <th>Subject Code</th>
+    </tr>
 
-<tr>
-<td style="padding:8px; border:1px solid #444;">Basic Electrical & Electronics Engg</td>
-<td style="padding:8px; border:1px solid #444;">EE23133</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Mathematical Foundations for AI</td>
-<td style="padding:8px; border:1px solid #444;">MA23116</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Physics for Information Science</td>
-<td style="padding:8px; border:1px solid #444;">PH23132</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Heritage of Tamils</td>
-<td style="padding:8px; border:1px solid #444;">GE23117</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Technical Communication I</td>
-<td style="padding:8px; border:1px solid #444;">HS23111</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Indian Constitution and Freedom Movement</td>
-<td style="padding:8px; border:1px solid #444;">MC23111</td>
-</tr>
-<tr>
-<td style="padding:8px; border:1px solid #444;">Programming using C</td>
-<td style="padding:8px; border:1px solid #444;">GE23131</td>
-</tr>
+    <tr>
+        <td>Basic Electrical & Electronics Engg</td>
+        <td>EE23133</td>
+    </tr>
+
+    <tr>
+        <td>Mathematical Foundations for AI</td>
+        <td>MA23116</td>
+    </tr>
+
+    <tr>
+        <td>Physics for Information Science</td>
+        <td>PH23132</td>
+    </tr>
+
+    <tr>
+        <td>Heritage of Tamils</td>
+        <td>GE23117</td>
+    </tr>
+
+    <tr>
+        <td>Technical Communication I</td>
+        <td>HS23111</td>
+    </tr>
+
+    <tr>
+        <td>Indian Constitution and Freedom Movement</td>
+        <td>MC23111</td>
+    </tr>
+
+    <tr>
+        <td>Programming using C</td>
+        <td>GE23131</td>
+    </tr>
 </table>
-<br>
-
+<br/>
 <style>
 @keyframes glowPulse {
 0% { box-shadow:0 0 5px #ffd166; }
@@ -182,209 +197,203 @@ white-space:nowrap;
 }
 .text-pulse {display:inline-block;animation:textPulse 1.5s infinite;}
 </style>
-
 <div style="display:flex;justify-content:flex-end;">
-<a href="IstYr_student_Details.pdf" target="_blank" class="glow-btn"
-onmouseover="this.style.background='#ffd166';this.style.color='#000';this.style.boxShadow='0 0 20px #ffd166';"
-onmouseout="this.style.background='transparent';this.style.color='#ffd166';this.style.boxShadow='0 0 5px #ffd166';">
+<a class="glow-btn" href="IstYr_student_Details.pdf" onmouseout="this.style.background='transparent';this.style.color='#ffd166';this.style.boxShadow='0 0 5px #ffd166';" onmouseover="this.style.background='#ffd166';this.style.color='#000';this.style.boxShadow='0 0 20px #ffd166';" target="_blank">
 <span class="text-pulse">📄 Student List</span>
 </a>
 </div>
 </div>
-
 <h2 style="text-align:center;">AIDS Student Mark Display Page</h2>
-
 <p style="text-align:center;color:#9fb3ff;">
-Enter Student Register Number to view Student details, eg 2618010001
+Enter Student Register Number to view student details, eg. 2618010001
 </p>
-
 <div style="text-align:center;">
-<input id="regno" placeholder="Enter Register Number,eg 2618010001">
+<input id="regno" placeholder="Enter Register Number,eg 2618010001"/>
 <button onclick="getMarks()">View Details</button>
 <button onclick="clearAll()">Clear</button>
 </div>
-
 <div id="message" style="margin-top:10px;color:#ff6b6b;text-align:center;"></div>
 <div id="studentInfo" style="margin-top:15px;font-size:18px;color:#5ad7ff;text-align:center;"></div>
-
 <div id="marks" style="display:none">
-
 <div class="markbox">
-<b>No Of Arrears :</b>
+<b>No of Subjects Failed :</b>
 <span id="arrears"></span>
 </div>
-
 <div class="markbox">
-<b>Total CGPA :</b>
-<span id="gpa"></span>
+<b>Mark Percentage :</b>
+<span id="percentage"></span>%
 </div>
-
+<div class="markbox">
+<b>Attendance Percentage :</b>
+<span id="attendance"></span>%
+</div>
 <h3 style="text-align:center;color:#ffd166;margin-bottom:10px;">
-Current Semester Attendance & CAT Marks (Mark Out of 75)
+CAT Marks (Out of 75)
 </h3>
-
 <table class="subject-table">
 <thead>
 <tr>
 <th>Subject</th>
-<th>CAT Marks</th>
+<th>Marks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Principles of Artificial Intelligence</td>
-<td><span id="att_0"></span>%</td>
-<td><span id="mark_0"></span></td>
+<td>Basic Electrical &amp; Electronics Engg</td>
+<td><span class="mark-cell" id="subject_0"></span></td>
 </tr>
 <tr>
-<td>Design and Analysis of Algorithms</td>
-<td><span id="att_1"></span>%</td>
-<td><span id="mark_1"></span></td>
+<td>Mathematical Foundations for AI</td>
+<td><span class="mark-cell" id="subject_1"></span></td>
 </tr>
 <tr>
-<td>Database Management Systems </br style="color:#ffd166;">  <span style="color:#ffd166;">
-    (Skill Test Mark Out of 75)
-  </span></td>
-<td><span id="att_2"></span>%</td>
-<td><span id="mark_2"></span></td>
+<td>Physics for Information Science</td>
+<td><span class="mark-cell" id="subject_2"></span></td>
 </tr>
 <tr>
-<td>Object Oriented Programming using Java </br>  <span style="color:#ffd166;">
-    (Skill Test Mark Out of 65)
-  </span></td>
-<td><span id="att_3"></span>%</td>
-<td><span id="mark_3"></span></td>
+<td>Heritage of Tamils</td>
+<td><span class="mark-cell" id="subject_3"></span></td>
 </tr>
 <tr>
-<td>Discrete Mathematics for AI</td>
-<td><span id="att_4"></span>%</td>
-<td><span id="mark_4"></span></td>
+<td>Technical Communication I</td>
+<td><span class="mark-cell" id="subject_4"></span></td>
 </tr>
 <tr>
-<td>Environmental Science and Engineering</td>
-<td><span id="att_5"></span>%</td>
-<td><span id="mark_5"></span></td>
+<td>Indian Constitution and Freedom Movement</td>
+<td><span class="mark-cell" id="subject_5"></span></td>
 </tr>
 </tbody>
 </table>
-
 <div id="analysisLink" style="text-align:center;margin-top:20px;"></div>
-
 </div>
-
 <div class="qr-section">
 <p style="color:#9fb3ff;">
 Scan this QR code to submit your PTM Feedback After the Review of your Ward.
 </p>
-<img src="frame.png" alt="QR Code">
-</div>
-
+<img alt="QR Code" src="frame.png"/>
 </div>
 </div>
-
+</div>
 <footer>
 © 2026 Department of AIDS
 </footer>
-
 <script>
-let DB={};
+let DB = {};
+let dataLoaded = false;
 
-function formatValue(value){
-if(value === undefined || value === null || value === "") return "-";
-if(typeof value === "number") return Number.isInteger(value) ? value : Number(value.toFixed(2));
-return String(value).trim();
+function formatValue(value) {
+    if (value === undefined || value === null || value === "") return "-";
+    if (typeof value === "number") {
+        return Number.isInteger(value) ? value : Number(value.toFixed(2));
+    }
+    return String(value).trim();
 }
 
-async function loadExcel(){
-try {
-const response = await fetch("2026_PTM_FirstYr_data.xlsx");
-if(!response.ok) throw new Error("Excel file could not be loaded.");
+async function loadExcel() {
+    const message = document.getElementById("message");
+    try {
+        const response = await fetch("2026_PTM_FirstYr_data.xlsx");
+        if (!response.ok) throw new Error("Excel file could not be loaded.");
 
-const data = await response.arrayBuffer();
-const workbook = XLSX.read(data,{type:"array"});
-const sheet = workbook.Sheets[workbook.SheetNames[0]];
-const rows = XLSX.utils.sheet_to_json(sheet);
+        const data = await response.arrayBuffer();
+        const workbook = XLSX.read(data, { type: "array" });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(sheet);
 
-rows.forEach(r=>{
-const reg = String(r["Registration Id"] ?? "").trim();
-if(!reg) return;
+        DB = {};
+        rows.forEach(student => {
+            const reg = String(student["Registration Id"] ?? "").trim();
+            if (reg) DB[reg] = student;
+        });
 
-DB[reg] = r;
-});
-} catch(error) {
-document.getElementById("message").textContent =
-"Unable to load student data. Please keep the Excel file in the same folder as this HTML page.";
-console.error(error);
-}
+        dataLoaded = true;
+        message.textContent = "";
+    } catch (error) {
+        dataLoaded = false;
+        message.textContent =
+            "Unable to load student data. Please keep 2026_PTM_FirstYr_data.xlsx in the same folder as this HTML page.";
+        console.error(error);
+    }
 }
 
 loadExcel();
 
-function getMarks(){
-const reg=document.getElementById("regno").value.trim();
-const message=document.getElementById("message");
+function getMarks() {
+    const reg = document.getElementById("regno").value.trim();
+    const message = document.getElementById("message");
+    const marks = document.getElementById("marks");
+    const studentInfo = document.getElementById("studentInfo");
 
-if(!reg){
-message.textContent="Please enter Register Number";
-return;
+    if (!reg) {
+        message.textContent = "Please enter Register Number";
+        marks.style.display = "none";
+        studentInfo.textContent = "";
+        return;
+    }
+
+    if (!dataLoaded) {
+        message.textContent = "Student data is still loading. Please try again in a moment.";
+        marks.style.display = "none";
+        return;
+    }
+
+    const student = DB[reg];
+    if (!student) {
+        message.textContent = "Register Number not found";
+        marks.style.display = "none";
+        studentInfo.textContent = "";
+        return;
+    }
+
+    studentInfo.textContent =
+        "Student Name : " + (student["Name"] ?? "") + " | Register Number : " + reg;
+
+    document.getElementById("arrears").textContent =
+        formatValue(student["Count Of Arears"]);
+
+    document.getElementById("percentage").textContent =
+        formatValue(student["Mark Percentage"]);
+
+    document.getElementById("attendance").textContent =
+        formatValue(student["Attendance"]);
+
+    const subjects = ["Basic Electrical & Electronics Engg", "Mathematical Foundations for AI", "Physics for Information Science", "Heritage of Tamils", "Technical Communication I", "Indian Constitution and Freedom Movement"];
+    subjects.forEach((subject, index) => {
+        const markElement = document.getElementById("subject_" + index);
+        const rawMark = student[subject];
+        const numericMark = Number(rawMark);
+
+        markElement.textContent = formatValue(rawMark);
+
+        // Highlight failure marks only when a valid mark is present and is below 38.
+        const isFailure =
+            rawMark !== undefined &&
+            rawMark !== null &&
+            String(rawMark).trim() !== "" &&
+            Number.isFinite(numericMark) &&
+            numericMark < 38;
+
+        markElement.classList.toggle("fail-cell", isFailure);
+    });
+
+    marks.style.display = "block";
+    message.textContent = "";
+
+    document.getElementById("analysisLink").innerHTML = `
+        <a href="FirstYrReport.pdf" target="_blank"
+        style="display:inline-block;padding:12px 20px;background:#28a745;
+        color:white;border-radius:8px;text-decoration:none;font-weight:bold;">
+        📄 View Result Analysis
+        </a>`;
 }
 
-if(!DB[reg]){
-message.textContent="Register Number not found";
-document.getElementById("marks").style.display="none";
-document.getElementById("studentInfo").textContent="";
-return;
-}
-
-const student=DB[reg];
-
-document.getElementById("studentInfo").textContent =
-"Student Name : " + (student["Name"] ?? "") + " | Register Number : " + reg;
-
-// These fields are displayed only if they exist in the Excel.
-document.getElementById("arrears").textContent =
-formatValue(student["No Of Arrears"] ?? student["Arrears"] ?? "Not Available");
-
-document.getElementById("gpa").textContent =
-formatValue(student["GPA"] ?? student["Gpa"] ?? "Not Available");
-
-document.getElementById("att_0").textContent = formatValue(student["Principles of Artificial Intelligence-A"]);
-document.getElementById("mark_0").textContent = formatValue(student["Principles of Artificial Intelligence-M"]);
-document.getElementById("att_1").textContent = formatValue(student["Design and Analysis of Algorithms-A"]);
-document.getElementById("mark_1").textContent = formatValue(student["Design and Analysis of Algorithms-M"]);
-document.getElementById("att_2").textContent = formatValue(student["Database Management Systems-A"]);
-document.getElementById("mark_2").textContent = formatValue(student["Database Management Systems-M"]);
-document.getElementById("att_3").textContent = formatValue(student["Object Oriented Programming using Java-A"]);
-document.getElementById("mark_3").textContent = formatValue(student["Object Oriented Programming using Java-M"]);
-document.getElementById("att_4").textContent = formatValue(student["Discrete Mathematics for AI-A"]);
-document.getElementById("mark_4").textContent = formatValue(student["Discrete Mathematics for AI-M"]);
-document.getElementById("att_5").textContent = formatValue(student["Environmental Science and Engineering-A"]);
-document.getElementById("mark_5").textContent = formatValue(student["Environmental Science and Engineering-M"]);
-
-document.getElementById("marks").style.display="block";
-message.textContent="";
-
-document.getElementById("analysisLink").innerHTML = `
-<a href="Result_analysis_25-29_SEM2.pdf" target="_blank"
-style="display:inline-block;
-padding:12px 20px;
-background:#28a745;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;">
-📄 View Result Analysis
-</a>`;
-}
-
-function clearAll(){
-document.getElementById("regno").value="";
-document.getElementById("marks").style.display="none";
-document.getElementById("studentInfo").textContent="";
-document.getElementById("message").textContent="";
-document.getElementById("analysisLink").innerHTML="";
+function clearAll() {
+    document.getElementById("regno").value = "";
+    document.getElementById("marks").style.display = "none";
+    document.getElementById("studentInfo").textContent = "";
+    document.getElementById("message").textContent = "";
+    document.getElementById("analysisLink").innerHTML = "";
 }
 </script>
-
 </body>
 </html>
